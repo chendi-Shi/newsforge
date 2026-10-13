@@ -1,0 +1,96 @@
+{
+  "scope": "internal validation only; original evaluator/model/metrics unchanged",
+  "run_id": "ranker-seed17",
+  "selected_epoch": 1,
+  "rows": 512,
+  "fixed_validation_rows": 12000,
+  "row_selection": "first rows in the sorted fixed seed-2026 internal-validation sample",
+  "selected_row_indices_sha256": "07a60d02a0f955ef0cb5964ef819ee1585eae631134c7ee7392e6a7661361a6e",
+  "checkpoint_sha256": "6790a60d345e71333eabadaa46d7e1765fc7b9294c31f8a1a9bec1a22e50dd00",
+  "data_manifest_sha256": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+  "training_source_sha256": {
+    "models.py": "d2379f85cfe6861458d87100d9e988069144e5a4b9e0e2519695763e1747b1af",
+    "train.py": "c325e7221be318a05acff3bc1c685dd57d9bd9c5af6d578b3e6e2b2158879a64",
+    "store.py": "0c6c3662478db583538bcb93b195761861688aaf01c1cfd3b1d5c6290054e08b",
+    "evaluate.py": "4dc7237f30a4e6b9fc305e538cd4951c57ac58a940127e34a22c1157b52dd1f8",
+    "metrics.py": "b1467c60980c2ccd27bdaf715191bf0d411acfb3115f12ea1b0003dce64e6008"
+  },
+  "scheduler_source_sha256": "8980977d0323e8a6bc161bc84b8cda72c20faf9a2109b35c1adc90137d2e8eff",
+  "per_impression_metric_equivalence_atol": 1e-12,
+  "metric_equivalence_passed": true,
+  "metric_differences": {
+    "auc": {
+      "finite_pairs": 512,
+      "same_nan_mask": true,
+      "max_absolute_difference": 0.0,
+      "pairs_differing_more_than_1e_12": 0,
+      "aggregate_mean_difference": -2.220446049250313e-16
+    },
+    "mrr": {
+      "finite_pairs": 512,
+      "same_nan_mask": true,
+      "max_absolute_difference": 0.0,
+      "pairs_differing_more_than_1e_12": 0,
+      "aggregate_mean_difference": 0.0
+    },
+    "ndcg5": {
+      "finite_pairs": 512,
+      "same_nan_mask": true,
+      "max_absolute_difference": 0.0,
+      "pairs_differing_more_than_1e_12": 0,
+      "aggregate_mean_difference": 0.0
+    },
+    "ndcg10": {
+      "finite_pairs": 512,
+      "same_nan_mask": true,
+      "max_absolute_difference": 0.0,
+      "pairs_differing_more_than_1e_12": 0,
+      "aggregate_mean_difference": 0.0
+    }
+  },
+  "original": {
+    "seconds": 1.051019400008954,
+    "initial_rss_bytes": 256942080,
+    "max_observed_rss_bytes": 322363392,
+    "final_rss_bytes": 309350400,
+    "rss_sampling_interval_ms": 20
+  },
+  "scheduled": {
+    "seconds": 0.7405972999986261,
+    "initial_rss_bytes": 309350400,
+    "max_observed_rss_bytes": 316375040,
+    "final_rss_bytes": 311943168,
+    "rss_sampling_interval_ms": 20
+  },
+  "observed_wall_time_ratio_original_over_scheduled": 1.4191510015104076,
+  "scheduling": {
+    "strategy": "stable_candidate_count",
+    "ranker_only": true,
+    "impressions": 512,
+    "batch_size": 32,
+    "candidate_exposures": 21800,
+    "original_candidate_slots": 80000,
+    "scheduled_candidate_slots": 27616,
+    "original_padding_slots": 58200,
+    "scheduled_padding_slots": 5816,
+    "candidate_slot_ratio": 0.3452,
+    "padding_slot_ratio": 0.09993127147766323,
+    "same_population": true,
+    "same_candidates_within_each_impression": true,
+    "metric_rows_restored_to_original_order": true,
+    "wrapper_seconds": 0.7405812999932095
+  },
+  "environment": {
+    "python": "3.10.21",
+    "torch": "2.14.0+cpu",
+    "threads": 1,
+    "device": "cpu",
+    "system_available_memory_bytes": 1885925376
+  },
+  "limitations": [
+    "One original-order then scheduled-order pair on a shared desktop; background training and filesystem caching are uncontrolled.",
+    "Observed RSS is sampled at 20 ms and includes already-loaded data/models; it is not an allocation peak.",
+    "Float differences refer to per-impression metrics, not candidate logits.",
+    "No official-dev labels were evaluated, and no training or checkpoint selection was changed."
+  ]
+}

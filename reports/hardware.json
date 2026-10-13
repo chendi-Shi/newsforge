@@ -1,0 +1,10 @@
+{
+  "captured_at_utc": "2026-10-10T09:03:24.7372677Z",
+  "processor": "11th Gen Intel(R) Core(TM) i5-1130G7 @ 1.10GHz",
+  "physical_cores": 4,
+  "logical_processors": 8,
+  "physical_memory_bytes": 16885276672,
+  "training_device": "cpu",
+  "shared_desktop": true,
+  "unrelated_processes_stopped": false
+}

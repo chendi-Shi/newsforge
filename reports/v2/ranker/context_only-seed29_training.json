@@ -1,0 +1,161 @@
+{
+  "run_id": "context_only-seed29",
+  "variant": "context_only",
+  "seed": 29,
+  "feature_names": [
+    "ema_log1p_clicks",
+    "ema_log1p_exposures",
+    "ema_smoothed_ctr",
+    "log1p_observed_age_hours",
+    "known_before_feedback_cutoff",
+    "no_past_exposure",
+    "past_global_click_prior"
+  ],
+  "feature_count": 7,
+  "model_path": "artifacts/v2/ranker/context_only-seed29.joblib",
+  "model_sha256": "f6bdf0b6707a16271f52d976f8bedbc7a4d491747b5dba71cd8fe2c233e3f968",
+  "bindings": {
+    "data_manifest_sha256": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+    "news_features_sha256": "c4831220c97afe072eb5af628e740860b4c665624b47e5bc2a1655169e60f3dc",
+    "news_first_seen_sha256": "e65cb72ccfdd4a2afdb9325b68ddc6ed34b4dca858edd686e6a2c23893c5b414",
+    "training_cache_sha256": "e6fde05b44c683385c17def7a1bb295aa4b524e89c4fc654b1b9f2ba843de52b",
+    "temporal_manifest_sha256": "e7837008652092988418d3c52dafaa6120e870a16451c48e39e385aa14ebcfff",
+    "temporal_policy_hash": "be3838344edd2d0d9f4b88fb7727d8d6a8d9a60714f0ac77fb99faa0917e89d2",
+    "temporal_arrays": {
+      "hour_clicks.npy": {
+        "sha256": "55602706313ab63f654d7ea11e38df3d2d78004b5f862850dcaed0eb24a88bd5",
+        "bytes": 69990272,
+        "shape": [
+          168,
+          104152
+        ],
+        "dtype": "uint32"
+      },
+      "hour_exposures.npy": {
+        "sha256": "a405574d7d32ef27c8e45f19e4d30ae39161f743cfbba9feb0f1cca5a718de63",
+        "bytes": 69990272,
+        "shape": [
+          168,
+          104152
+        ],
+        "dtype": "uint32"
+      },
+      "snapshot_times.npy": {
+        "sha256": "c5aa5ad2d316e5a05ae2b349e083b6ce654152d397a20f0ad1bc7702c63863af",
+        "bytes": 1472,
+        "shape": [
+          168
+        ],
+        "dtype": "int64"
+      },
+      "snapshot_clicks.npy": {
+        "sha256": "8eaa6332fa3613021b18ec4a44c24d8197d9d9ccc07118fd8be491445ade7e87",
+        "bytes": 69990272,
+        "shape": [
+          168,
+          104152
+        ],
+        "dtype": "float32"
+      },
+      "snapshot_exposures.npy": {
+        "sha256": "069fc1748c31f8e919194b5da9f0f2612e913253ef07d2e2fcc2ae0643de4fdf",
+        "bytes": 69990272,
+        "shape": [
+          168,
+          104152
+        ],
+        "dtype": "float32"
+      },
+      "frozen_clicks.npy": {
+        "sha256": "392a04134ba9bd64b8efd36c4529216a58e57a66ee72006f63015f0b0e8f661c",
+        "bytes": 416736,
+        "shape": [
+          104152
+        ],
+        "dtype": "float32"
+      },
+      "frozen_exposures.npy": {
+        "sha256": "f01b94455df0fcbc0e795ad8b8471277ab3aa819752c3f9fab8f7f01f4129ca3",
+        "bytes": 416736,
+        "shape": [
+          104152
+        ],
+        "dtype": "float32"
+      }
+    },
+    "source_sha256": "524f96ce39eeeda9ff04de58d7842e09840a0e2513bf3bcf507d8702dcb3c00c"
+  },
+  "config": {
+    "max_iter": 80,
+    "max_leaf_nodes": 15,
+    "max_bins": 63,
+    "l2_regularization": 1.0,
+    "learning_rate": 0.1,
+    "early_stopping": false,
+    "random_state": 29
+  },
+  "sampling": {
+    "positive_pairs": 100000,
+    "binary_examples": 500000,
+    "sampling_seed": 2026,
+    "positive_indices_sha256": "9696f7373c174f5f14af747861023fe64df0313286417e80805a09980f51935e",
+    "training_rows_sha256": "0c2d62e6b15686f5420e8b318777ba3581ea78a0cc6f622ad51883f197f19a56",
+    "candidate_ids_sha256": "8e0d75a13ca52286908bfd66a0416bd39b2de166e0b7d810b982fed7c3f76e4d",
+    "labels_sha256": "504052010664b1da21b4736659211650d8e4681ae37ae76f5db81439a7cf8040",
+    "negative_policy": "four uniform replacement draws from fixed same-exposure nonclick pool",
+    "sampling_bias": "positive-pair sampling overweights multi-click impressions; 1:4 scores are not population CTR",
+    "source_training_cache": {
+      "cache_version": 3,
+      "pool_size": 16,
+      "sampler": "grouped_random_keys_v1",
+      "max_chunk_exposures": 400000,
+      "data_manifest_sha256": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+      "features_sha256": "c4831220c97afe072eb5af628e740860b4c665624b47e5bc2a1655169e60f3dc",
+      "seed": 20261010,
+      "train_impressions": 1897844,
+      "positive_training_examples": 2869013,
+      "skipped_no_positive_or_negative": 0,
+      "seconds": 97.51093020000553,
+      "sampling_seconds": 68.3819180999999,
+      "sampling_chunks": 176,
+      "mean_history_chunk_rows": 7294,
+      "negative_policy": "Only label=0 in the same training impression; exclude every ID with any positive occurrence; no held-out labels.",
+      "sampling_policy": "Uniform exposure-occurrence sample without replacement when count >= pool_size; otherwise independent draws with replacement. Fixed seed and chunk protocol shared across arms.",
+      "rng_change": "RNG consumption differs from the former per-row numpy.choice implementation; the sampling distribution and eligible item policy are unchanged."
+    }
+  },
+  "fit_seconds": 13.416154399999982,
+  "internal_validation": {
+    "impressions": 6000,
+    "candidate_exposures": 236440,
+    "row_indices_sha256": "1213fa77eb222a99058202aa3295f177f9a837c040d713fbce92a66ad04520ab",
+    "metrics": {
+      "auc": {
+        "mean": 0.647940427513899,
+        "eligible_impressions": 6000
+      },
+      "mrr": {
+        "mean": 0.28881770930576733,
+        "eligible_impressions": 6000
+      },
+      "ndcg5": {
+        "mean": 0.3095881429523354,
+        "eligible_impressions": 6000
+      },
+      "ndcg10": {
+        "mean": 0.3709448897113827,
+        "eligible_impressions": 6000
+      }
+    },
+    "metric_columns": [
+      "auc",
+      "mrr",
+      "ndcg5",
+      "ndcg10"
+    ],
+    "all_logged_candidates": true,
+    "official_dev_evaluated": false
+  },
+  "threads": 1,
+  "official_dev_evaluated": false
+}

@@ -1,0 +1,459 @@
+<workspace>/newsforge\.venv\lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_same_size_corrupt_archives_are_rejected_before_extraction (test_data.DownloadIntegrityTests) ... ok
+TF-IDF fitting 23 training-observable news
+{
+  "dataset": "MIND-large",
+  "dataset_version": "upstream Recommenders public release",
+  "rows": 14,
+  "impressions": 14,
+  "candidates": 28,
+  "positives": 14,
+  "users": 4,
+  "news": 25,
+  "news_including_padding": 26,
+  "official_train_rows": 12,
+  "official_dev_rows": 2,
+  "train_cutoff_timestamp": 1573293600,
+  "splits": {
+    "0": {
+      "impressions": 11,
+      "candidates": 22,
+      "positives": 11,
+      "users": 3,
+      "candidate_news": 2,
+      "min_timestamp": 1573257600,
+      "max_timestamp": 1573293600,
+      "positive_rate": 0.5
+    },
+    "1": {
+      "impressions": 1,
+      "candidates": 2,
+      "positives": 1,
+      "users": 1,
+      "candidate_news": 2,
+      "min_timestamp": 1573297200,
+      "max_timestamp": 1573297200,
+      "positive_rate": 0.5
+    },
+    "2": {
+      "impressions": 2,
+      "candidates": 4,
+      "positives": 2,
+      "users": 2,
+      "candidate_news": 2,
+      "min_timestamp": 1573347600,
+      "max_timestamp": 1573351200,
+      "positive_rate": 0.5
+    }
+  },
+  "split_names": {
+    "0": "train",
+    "1": "internal_validation",
+    "2": "locked_official_dev"
+  },
+  "internal_split": "official train, first ~85% by timestamp; ties kept together",
+  "test_policy": "official dev full candidate sets, excluded from fitting and hyperparameter selection",
+  "history_length": 20,
+  "history_padding": "right; index 0",
+  "history_truncation": "last 20 clicked news",
+  "history_source": "provided request-time history, ordered by time; no reconstruction from held-out labels",
+  "timestamp_policy": "source has no timezone; interpreted as UTC only for a deterministic epoch coordinate",
+  "news_first_seen_policy": "minimum request time observing ID in history/candidates; availability proxy, not publication time",
+  "unobserved_news_first_seen": 9223372036854775807,
+  "user_id_encoding": "integer suffix of source U-prefixed ID",
+  "impression_id_policy": "original numeric ID, may repeat across train/dev; global array row is unique",
+  "news_id_policy": "union catalog index only, not a learned item-ID feature",
+  "features": {
+    "dimensions": 6,
+    "text_dimensions": 4,
+    "svd_actual_components": 4,
+    "tfidf_vocabulary_size": 77,
+    "tfidf_max_features": 1000,
+    "ngram_range": [
+      1,
+      2
+    ],
+    "min_df": 1,
+    "fit_news": 23,
+    "fit_policy": "only history/candidate IDs observable in split 0",
+    "categories": 1,
+    "category_unknown_column": 4,
+    "text_l2_normalized": true,
+    "padding_row_all_zero": true,
+    "svd_explained_variance_ratio_sum": 0.13636362552642822
+  },
+  "data_quality": {
+    "missing_catalog_news": 0,
+    "catalog_conflicts_kept_train_version": 0,
+    "empty_history_impressions": 1,
+    "duplicate_candidate_impressions": 0
+  },
+  "processing_seconds": 0.634071600000425
+}
+test_contract_and_heldout_text_isolation (test_data.PipelineTests) ... ok
+TF-IDF fitting 23 training-observable news
+{
+  "dataset": "MIND-large",
+  "dataset_version": "upstream Recommenders public release",
+  "rows": 14,
+  "impressions": 14,
+  "candidates": 28,
+  "positives": 14,
+  "users": 4,
+  "news": 25,
+  "news_including_padding": 26,
+  "official_train_rows": 12,
+  "official_dev_rows": 2,
+  "train_cutoff_timestamp": 1573293600,
+  "splits": {
+    "0": {
+      "impressions": 11,
+      "candidates": 22,
+      "positives": 11,
+      "users": 3,
+      "candidate_news": 2,
+      "min_timestamp": 1573257600,
+      "max_timestamp": 1573293600,
+      "positive_rate": 0.5
+    },
+    "1": {
+      "impressions": 1,
+      "candidates": 2,
+      "positives": 1,
+      "users": 1,
+      "candidate_news": 2,
+      "min_timestamp": 1573297200,
+      "max_timestamp": 1573297200,
+      "positive_rate": 0.5
+    },
+    "2": {
+      "impressions": 2,
+      "candidates": 4,
+      "positives": 2,
+      "users": 2,
+      "candidate_news": 2,
+      "min_timestamp": 1573347600,
+      "max_timestamp": 1573351200,
+      "positive_rate": 0.5
+    }
+  },
+  "split_names": {
+    "0": "train",
+    "1": "internal_validation",
+    "2": "locked_official_dev"
+  },
+  "internal_split": "official train, first ~85% by timestamp; ties kept together",
+  "test_policy": "official dev full candidate sets, excluded from fitting and hyperparameter selection",
+  "history_length": 20,
+  "history_padding": "right; index 0",
+  "history_truncation": "last 20 clicked news",
+  "history_source": "provided request-time history, ordered by time; no reconstruction from held-out labels",
+  "timestamp_policy": "source has no timezone; interpreted as UTC only for a deterministic epoch coordinate",
+  "news_first_seen_policy": "minimum request time observing ID in history/candidates; availability proxy, not publication time",
+  "unobserved_news_first_seen": 9223372036854775807,
+  "user_id_encoding": "integer suffix of source U-prefixed ID",
+  "impression_id_policy": "original numeric ID, may repeat across train/dev; global array row is unique",
+  "news_id_policy": "union catalog index only, not a learned item-ID feature",
+  "features": {
+    "dimensions": 6,
+    "text_dimensions": 4,
+    "svd_actual_components": 4,
+    "tfidf_vocabulary_size": 77,
+    "tfidf_max_features": 1000,
+    "ngram_range": [
+      1,
+      2
+    ],
+    "min_df": 1,
+    "fit_news": 23,
+    "fit_policy": "only history/candidate IDs observable in split 0",
+    "categories": 1,
+    "category_unknown_column": 4,
+    "text_l2_normalized": true,
+    "padding_row_all_zero": true,
+    "svd_explained_variance_ratio_sum": 0.13636362552642822
+  },
+  "data_quality": {
+    "missing_catalog_news": 0,
+    "catalog_conflicts_kept_train_version": 0,
+    "empty_history_impressions": 1,
+    "duplicate_candidate_impressions": 0
+  },
+  "processing_seconds": 0.25053070000012667
+}
+TF-IDF fitting 23 training-observable news
+{
+  "dataset": "MIND-large",
+  "dataset_version": "upstream Recommenders public release",
+  "rows": 14,
+  "impressions": 14,
+  "candidates": 28,
+  "positives": 14,
+  "users": 4,
+  "news": 25,
+  "news_including_padding": 26,
+  "official_train_rows": 12,
+  "official_dev_rows": 2,
+  "train_cutoff_timestamp": 1573293600,
+  "splits": {
+    "0": {
+      "impressions": 11,
+      "candidates": 22,
+      "positives": 11,
+      "users": 3,
+      "candidate_news": 2,
+      "min_timestamp": 1573257600,
+      "max_timestamp": 1573293600,
+      "positive_rate": 0.5
+    },
+    "1": {
+      "impressions": 1,
+      "candidates": 2,
+      "positives": 1,
+      "users": 1,
+      "candidate_news": 2,
+      "min_timestamp": 1573297200,
+      "max_timestamp": 1573297200,
+      "positive_rate": 0.5
+    },
+    "2": {
+      "impressions": 2,
+      "candidates": 4,
+      "positives": 2,
+      "users": 2,
+      "candidate_news": 2,
+      "min_timestamp": 1573347600,
+      "max_timestamp": 1573351200,
+      "positive_rate": 0.5
+    }
+  },
+  "split_names": {
+    "0": "train",
+    "1": "internal_validation",
+    "2": "locked_official_dev"
+  },
+  "internal_split": "official train, first ~85% by timestamp; ties kept together",
+  "test_policy": "official dev full candidate sets, excluded from fitting and hyperparameter selection",
+  "history_length": 20,
+  "history_padding": "right; index 0",
+  "history_truncation": "last 20 clicked news",
+  "history_source": "provided request-time history, ordered by time; no reconstruction from held-out labels",
+  "timestamp_policy": "source has no timezone; interpreted as UTC only for a deterministic epoch coordinate",
+  "news_first_seen_policy": "minimum request time observing ID in history/candidates; availability proxy, not publication time",
+  "unobserved_news_first_seen": 9223372036854775807,
+  "user_id_encoding": "integer suffix of source U-prefixed ID",
+  "impression_id_policy": "original numeric ID, may repeat across train/dev; global array row is unique",
+  "news_id_policy": "union catalog index only, not a learned item-ID feature",
+  "features": {
+    "dimensions": 6,
+    "text_dimensions": 4,
+    "svd_actual_components": 4,
+    "tfidf_vocabulary_size": 77,
+    "tfidf_max_features": 1000,
+    "ngram_range": [
+      1,
+      2
+    ],
+    "min_df": 1,
+    "fit_news": 23,
+    "fit_policy": "only history/candidate IDs observable in split 0",
+    "categories": 1,
+    "category_unknown_column": 4,
+    "text_l2_normalized": true,
+    "padding_row_all_zero": true,
+    "svd_explained_variance_ratio_sum": 0.13636362552642822
+  },
+  "data_quality": {
+    "missing_catalog_news": 0,
+    "catalog_conflicts_kept_train_version": 0,
+    "empty_history_impressions": 1,
+    "duplicate_candidate_impressions": 0
+  },
+  "processing_seconds": 0.30348810000032245
+}
+test_heldout_labels_do_not_change_training_statistics_or_text (test_data.PipelineTests) ... ok
+test_timestamp_ties_and_locked_official_split (test_data.TemporalSplitTests) ... ok
+test_batch_32_boundary_and_nonranker_identity (test_evaluation_scheduler.EvaluationSchedulerTest) ... ok
+test_empty_history_dimension_and_tied_scores (test_evaluation_scheduler.EvaluationSchedulerTest) ... ok
+test_invalid_rows_and_single_impression (test_evaluation_scheduler.EvaluationSchedulerTest) ... ok
+test_nine_checkpoint_provenance_and_original_warmup_schema (test_evaluation_scheduler.EvaluationSchedulerTest) ... ok
+test_real_evaluator_restores_every_row_and_all_history_masks (test_evaluation_scheduler.EvaluationSchedulerTest) ... ok
+test_stable_sort_and_known_padding_slots (test_evaluation_scheduler.EvaluationSchedulerTest) ... ok
+test_validation_proof_rejects_changed_identity_or_failed_metrics (test_evaluation_scheduler.EvaluationSchedulerTest) ... ok
+test_cache_rejects_heldout_rows_and_invalid_negatives (test_gbdt.GBDTTests) ... ok
+test_empty_history_and_invalid_shapes (test_gbdt.GBDTTests) ... ok
+test_estimator_serialization_full_candidates_and_test_lock (test_gbdt.GBDTTests) ... ok
+test_float64_memmap_keeps_same_samples_without_estimator_input_copy (test_gbdt.GBDTTests) ... ok
+test_known_cosines_negative_max_and_category_features (test_gbdt.GBDTTests) ... ok
+test_memory_preflight_rejects_before_allocation (test_gbdt.GBDTTests) ... ok
+test_padding_mask_and_candidate_batch_invariance (test_gbdt.GBDTTests) ... ok
+test_rich_features_include_raw_content_without_changing_similarity (test_gbdt.GBDTTests) ... ok
+test_sampling_and_training_matrix_are_reproducible_and_train_only (test_gbdt.GBDTTests) ... ok
+test_two_feature_selection_preserves_original_and_keeps_test_locked (test_gbdt.GBDTTests) ... ok
+test_audit_requires_bound_full_population_and_metric_equivalence (test_gbdt_scheduler.GBDTSchedulerTests) ... ok
+test_ragged_candidate_metrics_nan_masks_groups_and_original_row_order (test_gbdt_scheduler.GBDTSchedulerTests) ... ok
+test_auc_with_ties_matches_sklearn (test_metrics.MetricsTest) ... ok
+test_identical_models_bootstrap_zero (test_metrics.MetricsTest) ... ok
+test_multiple_positive_mrr_is_not_first_hit (test_metrics.MetricsTest) ... ok
+test_perfect_and_single_class (test_metrics.MetricsTest) ... ok
+test_empty_history_ranker_is_finite (test_models.ModelTests) ... ok
+test_gradient_flow_to_every_trainable_component (test_models.ModelTests) ... ok
+test_ranker_batch_loop_and_padding_invariance (test_models.ModelTests) ... ok
+test_serialization_and_config_roundtrip (test_models.ModelTests) ... ok
+test_shape_validation (test_models.ModelTests) ... ok
+test_tower_batch_loop_and_inferred_mask (test_models.ModelTests) ... ok
+test_tower_shapes_norms_empty_and_padding (test_models.ModelTests) ... ok
+test_adaptive_overfetch_and_explicit_cap_do_not_fill_future_items (test_retrieval.RetrievalTests) ... ok
+test_corrupted_artifact_is_rejected_before_faiss_load (test_retrieval.RetrievalTests) ... ok
+test_exact_matches_numpy_dot_products (test_retrieval.RetrievalTests) ... ok
+test_explicit_cutoff_can_expand_or_shrink_observed_catalogue (test_retrieval.RetrievalTests) ... ok
+test_hnsw_matches_high_recall_reference_on_fixed_small_fixture (test_retrieval.RetrievalTests) ... ok
+test_invalid_query_and_k_are_rejected (test_retrieval.RetrievalTests) ... ok
+test_manifest_tampering_is_rejected (test_retrieval.RetrievalTests) ... ok
+test_persistence_hnsw_and_exact_keep_ids_scores_and_versions (test_retrieval.RetrievalTests) ... ok
+test_popularity_uses_training_counts_and_same_filters (test_retrieval.RetrievalTests) ... ok
+test_timestamp_seen_pad_oov_unknown_and_bad_vectors_filtered (test_retrieval.RetrievalTests) ... ok
+negative cache 2/2 impressions (1 vectorized chunks)
+test_all_skipped_groups_and_no_training_rows (test_sampling.SamplingTest) ... ok
+negative cache 2/2 impressions (1 vectorized chunks)
+test_cache_excludes_clicked_ids_and_heldout_impressions (test_sampling.SamplingTest) ... ok
+negative cache 10/10 impressions (1 vectorized chunks)
+negative cache 10/10 impressions (1 vectorized chunks)
+test_fixed_seed_and_heldout_labels_cannot_change_cache (test_sampling.SamplingTest) ... ok
+test_hard_negatives_are_top_two_and_stay_inside_pool (test_sampling.SamplingTest) ... ok
+test_invalid_pool_size_and_training_ids_rejected (test_sampling.SamplingTest) ... ok
+negative cache 5/5 impressions (1 vectorized chunks)
+negative cache 5/5 impressions (1 vectorized chunks)
+negative cache 5/5 impressions (1 vectorized chunks)
+negative cache 5/5 impressions (1 vectorized chunks)
+test_ragged_empty_multiple_positive_and_duplicate_boundaries (test_sampling.SamplingTest) ... ok
+negative cache 20,001/20,001 impressions (2 vectorized chunks)
+test_sampling_across_exposure_chunk_boundary (test_sampling.SamplingTest) ... ok
+negative cache 1/1 impressions (1 vectorized chunks)
+test_signature_rejects_feature_manifest_and_pool_changes (test_sampling.SamplingTest) ... ok
+negative cache 1,500/1,500 impressions (1 vectorized chunks)
+negative cache 1,500/1,500 impressions (1 vectorized chunks)
+test_uniform_long_and_short_sampling (test_sampling.SamplingTest) ... ok
+test_http_sampler_rejects_launcher_pid_when_health_reports_child (test_service.ProcessLifecycleTests) ... ok
+test_owned_tree_rejects_unrelated_or_reused_pid_and_cleans_wrapper_children (test_service.ProcessLifecycleTests) ... ok
+test_real_localhost_service_pid_rss_and_exception_cleanup (test_service.ProcessLifecycleTests)
+lifecycle smoke launcher_pid=16840 actual_server_pid=22316 rss_mb=217.5
+Lifecycle smoke only: one synthetic request, no benchmark timings. ... ok
+test_batch_is_equivalent_to_single_and_batches_model_calls (test_service.ServiceTests) ... ok
+test_cold_start_uses_only_training_popularity_and_no_ranker (test_service.ServiceTests) ... ok
+test_empty_catalogue_at_cutoff_returns_shortfall (test_service.ServiceTests) ... ok
+test_health_exposes_versions_not_user_data (test_service.ServiceTests) ... ok
+test_invalid_model_cutoff_or_earlier_index_default_rejected (test_service.ServiceTests) ... ok
+test_invalid_request_bounds_and_candidate_pool_rejected (test_service.ServiceTests) ... ok
+test_known_history_without_features_uses_cold_fallback_and_stays_excluded (test_service.ServiceTests) ... ok
+test_pad_oov_unknown_and_future_history_rejected (test_service.ServiceTests) ... ok
+test_real_model_checkpoint_load_and_stale_index_rejection (test_service.ServiceTests) ... ok
+test_recommend_reranks_and_filters_seen_future_and_pad (test_service.ServiceTests) ... ok
+test_training_cutoff_blocks_warm_cold_and_batch_before_inference (test_service.ServiceTests) ... ok
+test_truncated_history_still_excludes_every_seen_article (test_service.ServiceTests) ... ok
+test_warmup_exercises_index_and_models (test_service.ServiceTests) ... ok
+negative cache 12/12 impressions (1 vectorized chunks)
+{"variant": "mean_random", "seed": 17, "epoch": 1, "examples": 8, "total_examples": 12, "loss": 1.6603881120681763, "examples_per_second": 146.1237924229806}
+{"variant": "mean_random", "seed": 17, "epoch": 1, "validation": {"auc": {"mean": 0.8333333333333334, "eligible_impressions": 6}, "mrr": {"mean": 1.0, "eligible_impressions": 6}, "ndcg5": {"mean": 1.0, "eligible_impressions": 6}, "ndcg10": {"mean": 1.0, "eligible_impressions": 6}}}
+{"variant": "mean_random", "seed": 17, "epoch": 2, "examples": 8, "total_examples": 12, "loss": 0.8596308827400208, "examples_per_second": 437.6056407336914}
+{"variant": "mean_random", "seed": 17, "epoch": 2, "validation": {"auc": {"mean": 0.8333333333333334, "eligible_impressions": 6}, "mrr": {"mean": 1.0, "eligible_impressions": 6}, "ndcg5": {"mean": 1.0, "eligible_impressions": 6}, "ndcg10": {"mean": 1.0, "eligible_impressions": 6}}}
+{"variant": "mean_mixed", "seed": 17, "epoch": 1, "examples": 8, "total_examples": 12, "loss": 1.6603881120681763, "examples_per_second": 367.4022365612457}
+{"variant": "mean_mixed", "seed": 17, "epoch": 1, "validation": {"auc": {"mean": 0.8333333333333334, "eligible_impressions": 6}, "mrr": {"mean": 1.0, "eligible_impressions": 6}, "ndcg5": {"mean": 1.0, "eligible_impressions": 6}, "ndcg10": {"mean": 1.0, "eligible_impressions": 6}}}
+{"variant": "mean_mixed", "seed": 17, "epoch": 2, "examples": 8, "total_examples": 12, "loss": 0.8645830154418945, "examples_per_second": 203.88606846505323}
+{"variant": "mean_mixed", "seed": 17, "epoch": 2, "validation": {"auc": {"mean": 0.8333333333333334, "eligible_impressions": 6}, "mrr": {"mean": 1.0, "eligible_impressions": 6}, "ndcg5": {"mean": 1.0, "eligible_impressions": 6}, "ndcg10": {"mean": 1.0, "eligible_impressions": 6}}}
+{"baseline": "popularity", "metrics": {"auc": {"mean": 1.0, "eligible_impressions": 6}, "mrr": {"mean": 1.0, "eligible_impressions": 6}, "ndcg5": {"mean": 1.0, "eligible_impressions": 6}, "ndcg10": {"mean": 1.0, "eligible_impressions": 6}}}
+{"baseline": "content", "metrics": {"auc": {"mean": 0.3333333333333333, "eligible_impressions": 6}, "mrr": {"mean": 0.611111111111111, "eligible_impressions": 6}, "ndcg5": {"mean": 0.7103099178571526, "eligible_impressions": 6}, "ndcg10": {"mean": 0.7103099178571526, "eligible_impressions": 6}}}
+{"run_id": "mean_random-seed17", "metrics": {"auc": {"mean": 0.8333333333333334, "eligible_impressions": 6}, "mrr": {"mean": 1.0, "eligible_impressions": 6}, "ndcg5": {"mean": 1.0, "eligible_impressions": 6}, "ndcg10": {"mean": 1.0, "eligible_impressions": 6}}}
+{"run_id": "mean_mixed-seed17", "metrics": {"auc": {"mean": 0.8333333333333334, "eligible_impressions": 6}, "mrr": {"mean": 1.0, "eligible_impressions": 6}, "ndcg5": {"mean": 1.0, "eligible_impressions": 6}, "ndcg10": {"mean": 1.0, "eligible_impressions": 6}}}
+test_matched_warmup_full_epochs_and_test_lock (test_training.TrainingIntegrationTest) ... ok
+test_descendant_cleanup_survives_wrapper_exit_and_kills_only_owned_tree (test_v2_benchmark.OwnedProcessTreeTest) ... ok
+test_offline_wait_does_not_finish_with_a_live_worker_after_wrapper_exit (test_v2_benchmark.OwnedProcessTreeTest) ... ok
+test_real_stdlib_http_worker_is_owned_sampled_and_cleaned_after_exception (test_v2_benchmark.OwnedProcessTreeTest) ... ok
+test_reused_pid_creation_time_is_rejected_and_never_signalled (test_v2_benchmark.OwnedProcessTreeTest) ... ok
+test_sampler_stops_before_reading_reused_pid_memory (test_v2_benchmark.OwnedProcessTreeTest) ... ok
+test_wrapper_child_health_is_accepted_and_sampler_uses_child_identity (test_v2_benchmark.OwnedProcessTreeTest) ... ok
+test_cleanup_requires_tracked_tree_and_accepts_no_launch (test_v2_benchmark.V2BenchmarkTest) ... ok
+test_http_errors_do_not_count_as_successful_queries (test_v2_benchmark.V2BenchmarkTest) ... ok
+test_parity_failure_is_counted_and_invalid_warmup_fails_fast (test_v2_benchmark.V2BenchmarkTest) ... ok
+test_real_loopback_requests_count_queries_and_batches_separately (test_v2_benchmark.V2BenchmarkTest) ... ok
+test_response_comparison_detects_identity_provenance_and_score_drift (test_v2_benchmark.V2BenchmarkTest) ... ok
+test_sampler_uses_only_internal_post_cutoff_rows_without_label_files (test_v2_benchmark.V2BenchmarkTest) ... ok
+test_server_pid_mismatch_rejected_without_stopping_foreign_process (test_v2_benchmark.V2BenchmarkTest) ... ok
+test_internal_selection_labels_mature_before_first_dev_cutoff (test_v2_experiment.BootstrapTests) ... ok
+test_invalid_shape_and_denominator (test_v2_experiment.BootstrapTests) ... ok
+test_ratio_is_micro_not_query_mean (test_v2_experiment.BootstrapTests) ... ok
+test_zero_and_constant_ratio (test_v2_experiment.BootstrapTests) ... ok
+test_bindings_cover_population_retrieval_and_model_sidecars (test_v2_experiment.FrozenSelectionTests) ... ok
+test_loaded_model_must_match_selected_variant_and_seed (test_v2_experiment.FrozenSelectionTests) ... ok
+test_selected_model_rejects_a_self_consistent_replacement (test_v2_experiment.FrozenSelectionTests) ... ok
+test_rejects_early_stopping_changed_rounds_or_training_budget (test_v2_mature_selection.MatureSelectionTests) ... ok
+test_rejects_missing_duplicate_models_and_preserves_existing_evidence (test_v2_mature_selection.MatureSelectionTests) ... ok
+test_rejects_mutated_weight_bytes_and_mature_boundary (test_v2_mature_selection.MatureSelectionTests) ... ok
+test_reselection_keeps_nine_identities_and_never_fits (test_v2_mature_selection.MatureSelectionTests) ... ok
+test_sampling_excludes_exact_cutoff_and_early_rows (test_v2_mature_selection.MatureSelectionTests) ... ok
+test_candidate_batch_padding_and_variant_invariance (test_v2_ranker.V2RankerTests) ... ok
+test_context_cutoff_age_prior_padding_and_hour_cache (test_v2_ranker.V2RankerTests) ... ok
+test_hour_batched_memmap_preserves_sample_order_and_dtype (test_v2_ranker.V2RankerTests) ... ok
+test_internal_full_candidate_cache_and_dev_guard (test_v2_ranker.V2RankerTests) ... ok
+test_low_memory_preflight_refuses_declared_budget (test_v2_ranker.V2RankerTests) ... ok
+test_model_roundtrip_score_reuse_and_tamper_rejection (test_v2_ranker.V2RankerTests) ... ok
+test_runtime_module_does_not_import_torch (test_v2_ranker.V2RankerTests) ... ok
+test_selection_preserves_all_ablation_rows_and_deterministic_ties (test_v2_ranker.V2RankerTests) ... ok
+test_temporal_policy_and_feature_file_changes_reject_loading (test_v2_ranker.V2RankerTests) ... ok
+test_training_sample_sequence_shared_and_no_current_label_features (test_v2_ranker.V2RankerTests) ... ok
+test_v1_content_definition_is_equivalent (test_v2_ranker.V2RankerTests) ... ok
+test_cache_reuses_hour_recipe_and_bounds_entries (test_v2_retrieval.V2RetrievalTest) ... ok
+test_default_path_does_not_reuse_or_retain_query_routes (test_v2_retrieval.V2RetrievalTest) ... ok
+test_empty_history_small_catalogue_and_no_future_padding (test_v2_retrieval.V2RetrievalTest) ... ok
+test_fixed_pool_strict_cutoff_all_history_seen_and_sources (test_v2_retrieval.V2RetrievalTest) ... ok
+test_freeze_feedback_changes_popularity_without_catalogue_change (test_v2_retrieval.V2RetrievalTest) ... ok
+test_invalid_recipe (test_v2_retrieval.V2RetrievalTest) ... ok
+test_model_feedback_must_precede_cutoff_including_exact_hour (test_v2_retrieval.V2RetrievalTest) ... ok
+test_no_freshness_removes_only_window (test_v2_retrieval.V2RetrievalTest) ... ok
+test_numpy_encoder_mask_empty_and_hash_binding (test_v2_retrieval.V2RetrievalTest) ... ok
+test_query_route_cache_is_exact_across_all_nine_ablation_recipes (test_v2_retrieval.V2RetrievalTest) ... ok
+test_query_route_cache_keys_cover_full_history_time_window_and_budget (test_v2_retrieval.V2RetrievalTest) ... ok
+test_query_route_cache_preserves_empty_zero_and_exact_tie_cases (test_v2_retrieval.V2RetrievalTest) ... ok
+test_rrf_votes_and_tie_policy_match_declared_routes (test_v2_retrieval.V2RetrievalTest) ... ok
+test_snapshot_and_history_validation (test_v2_retrieval.V2RetrievalTest) ... ok
+test_window_backfills_same_cutoff_without_changing_denominator (test_v2_retrieval.V2RetrievalTest) ... ok
+test_zero_click_popularity_uses_exposure_then_first_seen_then_id (test_v2_retrieval.V2RetrievalTest) ... ok
+test_zero_vectors_fallback_is_counted_and_does_not_raise (test_v2_retrieval.V2RetrievalTest) ... ok
+test_accepts_complete_fixed_epoch_state_without_old_validation_score (test_v2_select_backbone.CheckpointTests) ... ok
+test_rejects_changed_data_source_cache_or_unmatured_cutoff (test_v2_select_backbone.CheckpointTests) ... ok
+test_rejects_first_epoch_checkpoint_and_wrong_loaded_state (test_v2_select_backbone.CheckpointTests) ... ok
+test_rejects_partial_or_changed_training_history (test_v2_select_backbone.CheckpointTests) ... ok
+test_does_not_silently_reduce_formal_population (test_v2_select_backbone.MaturedRowsTests) ... ok
+test_fixed_seed_sample_is_sorted_and_exact (test_v2_select_backbone.MaturedRowsTests) ... ok
+test_half_open_boundaries_and_internal_split_only (test_v2_select_backbone.MaturedRowsTests) ... ok
+test_current_backbone_matches_tensor_state_not_serialized_file_hash (test_v2_select_backbone.WinnerTests) ... ok
+test_exact_tie_prefers_lower_seed_not_input_order (test_v2_select_backbone.WinnerTests) ... ok
+test_highest_full_candidate_ndcg_wins (test_v2_select_backbone.WinnerTests) ... ok
+test_requires_three_finite_complete_candidates (test_v2_select_backbone.WinnerTests) ... ok
+test_default_latest_snapshot_and_batch_match_single (test_v2_service.V2ServiceTest) ... ok
+test_engine_and_offline_share_candidate_pool_and_tie_order (test_v2_service.V2ServiceTest) ... ok
+test_http_filters_invalid_times_ids_and_exposes_binding (test_v2_service.V2ServiceTest) ... ok
+test_long_history_excludes_every_id_but_ranker_uses_last_twenty (test_v2_service.V2ServiceTest) ... ok
+test_model_maturity_is_strict_at_exact_hour (test_v2_service.V2ServiceTest) ... ok
+test_no_rerank_preserves_fused_order_and_reports_null_scores (test_v2_service.V2ServiceTest) ... ok
+test_runtime_rejects_self_consistent_artifact_replacements (test_v2_service.V2ServiceTest) ... ok
+test_selection_requires_explicit_recipe_and_selected_ranker (test_v2_service.V2ServiceTest) ... ok
+test_zero_query_service_returns_popularity_without_422 (test_v2_service.V2ServiceTest) ... ok
+Temporal histogram 16/16 candidate exposures
+Temporal histogram 16/16 candidate exposures
+test_budget_counts_and_no_overwrite (test_v2_temporal.TemporalTests) ... ok
+Temporal histogram 16/16 candidate exposures
+Temporal histogram 16/16 candidate exposures
+test_future_label_perturbation_cannot_change_earlier_snapshot (test_v2_temporal.TemporalTests) ... ok
+Temporal histogram 16/16 candidate exposures
+test_same_size_source_and_snapshot_corruption_are_rejected (test_v2_temporal.TemporalTests) ... ok
+Temporal histogram 16/16 candidate exposures
+test_snapshot_bounds_and_frozen_training_availability (test_v2_temporal.TemporalTests) ... ok
+Temporal histogram 16/16 candidate exposures
+test_strict_cutoff_ties_hour_end_decay_and_readonly (test_v2_temporal.TemporalTests) ... ok
+
+----------------------------------------------------------------------
+Ran 148 tests in 54.446s
+
+OK

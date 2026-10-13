@@ -1,0 +1,16 @@
+# Direct dependencies verified in the local Python 3.10.21 environment.
+# CPU-only PyTorch wheel; the remaining packages use the normal PyPI index.
+# This is a direct-dependency pin set, not a complete transitive hash lock.
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.14.0+cpu
+numpy==1.26.4
+scipy==1.15.3
+scikit-learn==1.6.1
+joblib==1.6.0
+threadpoolctl==3.7.0
+faiss-cpu==1.15.1
+fastapi==0.143.0
+pydantic==2.14.0
+uvicorn==0.54.0
+httpx==0.28.1
+psutil==7.2.2

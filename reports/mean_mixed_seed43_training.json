@@ -1,0 +1,324 @@
+{
+  "config": {
+    "feature_dim": 115,
+    "hidden": 128,
+    "embedding_dim": 64,
+    "user_pooling": "mean"
+  },
+  "kind": "tower",
+  "variant": "mean_mixed",
+  "seed": 43,
+  "best_epoch": 1,
+  "validation_ndcg10": 0.38875050209160006,
+  "run_id": "mean_mixed-seed43",
+  "history": [
+    {
+      "epoch": 1,
+      "negative_policy": "four_random",
+      "training_examples": 2869013,
+      "loss": 1.3146351695479852,
+      "training_seconds": 122.30033199999889,
+      "state_sha256": "f03f3e2fbcc3e92e670965b9eeee59fc491b1e8527b494afbd0d41cc5be41c1a",
+      "validation": {
+        "impressions": 12000,
+        "candidate_exposures": 477756,
+        "metrics": {
+          "auc": {
+            "mean": 0.6630553254982183,
+            "eligible_impressions": 12000
+          },
+          "mrr": {
+            "mean": 0.302473911572923,
+            "eligible_impressions": 12000
+          },
+          "ndcg5": {
+            "mean": 0.3269219842917297,
+            "eligible_impressions": 12000
+          },
+          "ndcg10": {
+            "mean": 0.38875050209160006,
+            "eligible_impressions": 12000
+          }
+        },
+        "groups": {
+          "empty_history": {
+            "impressions": 338,
+            "metrics": {
+              "auc": {
+                "mean": 0.5,
+                "eligible_impressions": 338
+              },
+              "mrr": {
+                "mean": 0.20737677255227452,
+                "eligible_impressions": 338
+              },
+              "ndcg5": {
+                "mean": 0.21021839243644388,
+                "eligible_impressions": 338
+              },
+              "ndcg10": {
+                "mean": 0.2661913239646391,
+                "eligible_impressions": 338
+              }
+            }
+          },
+          "history_1_to_5": {
+            "impressions": 1741,
+            "metrics": {
+              "auc": {
+                "mean": 0.632565354644981,
+                "eligible_impressions": 1741
+              },
+              "mrr": {
+                "mean": 0.30450813555559286,
+                "eligible_impressions": 1741
+              },
+              "ndcg5": {
+                "mean": 0.32633102087757454,
+                "eligible_impressions": 1741
+              },
+              "ndcg10": {
+                "mean": 0.38450449979618373,
+                "eligible_impressions": 1741
+              }
+            }
+          },
+          "history_6_to_20": {
+            "impressions": 9921,
+            "metrics": {
+              "auc": {
+                "mean": 0.6739610546861918,
+                "eligible_impressions": 9921
+              },
+              "mrr": {
+                "mean": 0.30535681138495324,
+                "eligible_impressions": 9921
+              },
+              "ndcg5": {
+                "mean": 0.3310016820390466,
+                "eligible_impressions": 9921
+              },
+              "ndcg10": {
+                "mean": 0.39367110406753314,
+                "eligible_impressions": 9921
+              }
+            }
+          },
+          "has_train_unseen_clicked_news": {
+            "impressions": 904,
+            "metrics": {
+              "auc": {
+                "mean": 0.6653685974601742,
+                "eligible_impressions": 904
+              },
+              "mrr": {
+                "mean": 0.3079219332011318,
+                "eligible_impressions": 904
+              },
+              "ndcg5": {
+                "mean": 0.349869780445476,
+                "eligible_impressions": 904
+              },
+              "ndcg10": {
+                "mean": 0.40114236167792294,
+                "eligible_impressions": 904
+              }
+            }
+          },
+          "has_zero_train_click_news": {
+            "impressions": 2182,
+            "metrics": {
+              "auc": {
+                "mean": 0.6542126680341939,
+                "eligible_impressions": 2182
+              },
+              "mrr": {
+                "mean": 0.2837590457775425,
+                "eligible_impressions": 2182
+              },
+              "ndcg5": {
+                "mean": 0.312172677465815,
+                "eligible_impressions": 2182
+              },
+              "ndcg10": {
+                "mean": 0.3713106296305516,
+                "eligible_impressions": 2182
+              }
+            }
+          }
+        },
+        "seconds": 3.887942400004249,
+        "protocol": "all logged candidates; impression macro average; no evaluation negative sampling"
+      }
+    },
+    {
+      "epoch": 2,
+      "negative_policy": "two_hard_two_random",
+      "training_examples": 2869013,
+      "loss": 1.5719289343013363,
+      "training_seconds": 285.0282981999917,
+      "state_sha256": "389fbd2708fd814b56505ab312ae9588b9bdbe2f82fc6c49a2ea45e6c1f129a9",
+      "validation": {
+        "impressions": 12000,
+        "candidate_exposures": 477756,
+        "metrics": {
+          "auc": {
+            "mean": 0.6581544172594876,
+            "eligible_impressions": 12000
+          },
+          "mrr": {
+            "mean": 0.3009421962497783,
+            "eligible_impressions": 12000
+          },
+          "ndcg5": {
+            "mean": 0.32534864387576445,
+            "eligible_impressions": 12000
+          },
+          "ndcg10": {
+            "mean": 0.3873668809159412,
+            "eligible_impressions": 12000
+          }
+        },
+        "groups": {
+          "empty_history": {
+            "impressions": 338,
+            "metrics": {
+              "auc": {
+                "mean": 0.5,
+                "eligible_impressions": 338
+              },
+              "mrr": {
+                "mean": 0.20737677255227452,
+                "eligible_impressions": 338
+              },
+              "ndcg5": {
+                "mean": 0.21021839243644388,
+                "eligible_impressions": 338
+              },
+              "ndcg10": {
+                "mean": 0.2661913239646391,
+                "eligible_impressions": 338
+              }
+            }
+          },
+          "history_1_to_5": {
+            "impressions": 1741,
+            "metrics": {
+              "auc": {
+                "mean": 0.6429838423049923,
+                "eligible_impressions": 1741
+              },
+              "mrr": {
+                "mean": 0.31144254134537824,
+                "eligible_impressions": 1741
+              },
+              "ndcg5": {
+                "mean": 0.3363990666107675,
+                "eligible_impressions": 1741
+              },
+              "ndcg10": {
+                "mean": 0.394001980045803,
+                "eligible_impressions": 1741
+              }
+            }
+          },
+          "history_6_to_20": {
+            "impressions": 9921,
+            "metrics": {
+              "auc": {
+                "mean": 0.6662048319383995,
+                "eligible_impressions": 9921
+              },
+              "mrr": {
+                "mean": 0.3022872232025368,
+                "eligible_impressions": 9921
+              },
+              "ndcg5": {
+                "mean": 0.32733183498602053,
+                "eligible_impressions": 9921
+              },
+              "ndcg10": {
+                "mean": 0.3903308594125091,
+                "eligible_impressions": 9921
+              }
+            }
+          },
+          "has_train_unseen_clicked_news": {
+            "impressions": 904,
+            "metrics": {
+              "auc": {
+                "mean": 0.6581090854827568,
+                "eligible_impressions": 904
+              },
+              "mrr": {
+                "mean": 0.3288641491919244,
+                "eligible_impressions": 904
+              },
+              "ndcg5": {
+                "mean": 0.36759435169357074,
+                "eligible_impressions": 904
+              },
+              "ndcg10": {
+                "mean": 0.4195308152371169,
+                "eligible_impressions": 904
+              }
+            }
+          },
+          "has_zero_train_click_news": {
+            "impressions": 2182,
+            "metrics": {
+              "auc": {
+                "mean": 0.6417809084827641,
+                "eligible_impressions": 2182
+              },
+              "mrr": {
+                "mean": 0.279853662250236,
+                "eligible_impressions": 2182
+              },
+              "ndcg5": {
+                "mean": 0.3082891066995809,
+                "eligible_impressions": 2182
+              },
+              "ndcg10": {
+                "mean": 0.3678233056336007,
+                "eligible_impressions": 2182
+              }
+            }
+          }
+        },
+        "seconds": 6.256072500007576,
+        "protocol": "all logged candidates; impression macro average; no evaluation negative sampling"
+      }
+    }
+  ],
+  "parameters": 46209,
+  "training_seconds": 407.3286301999906,
+  "trained_on_all_eligible_clicks": true,
+  "eligible_positive_examples_per_epoch": 2869013,
+  "training_configuration": {
+    "epochs": 2,
+    "batch_size": 1024,
+    "threads": 1,
+    "learning_rate": 0.001,
+    "validation_impressions": 12000,
+    "negative_pool_size": 16
+  },
+  "data_manifest_sha256": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+  "training_source_sha256": {
+    "models.py": "d2379f85cfe6861458d87100d9e988069144e5a4b9e0e2519695763e1747b1af",
+    "train.py": "c325e7221be318a05acff3bc1c685dd57d9bd9c5af6d578b3e6e2b2158879a64",
+    "store.py": "0c6c3662478db583538bcb93b195761861688aaf01c1cfd3b1d5c6290054e08b",
+    "evaluate.py": "4dc7237f30a4e6b9fc305e538cd4951c57ac58a940127e34a22c1157b52dd1f8",
+    "metrics.py": "b1467c60980c2ccd27bdaf715191bf0d411acfb3115f12ea1b0003dce64e6008"
+  },
+  "training_cache_signature": {
+    "cache_version": 3,
+    "sampler": "grouped_random_keys_v1",
+    "seed": 20261010,
+    "pool_size": 16,
+    "max_chunk_exposures": 400000,
+    "data_manifest_sha256": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+    "features_sha256": "c4831220c97afe072eb5af628e740860b4c665624b47e5bc2a1655169e60f3dc"
+  },
+  "train_cutoff_timestamp": 1573716628
+}

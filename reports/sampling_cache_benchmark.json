@@ -1,0 +1,36 @@
+{
+  "fixture": "synthetic sampling/IO benchmark, not MIND model or serving latency",
+  "rows": 20000,
+  "candidate_exposures": 1000000,
+  "train_rows": 14545,
+  "pool_size": 16,
+  "repeats": 3,
+  "threads": 1,
+  "python": "3.10.21",
+  "numpy": "1.26.4",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "scope": "input hashes, negative sampling, positive indices, writes, mean history, memmap loads; fixture creation and verification excluded",
+  "reference": "former per-impression np.isin + Generator.choice retained in tests/test_sampling.py",
+  "timings_seconds": {
+    "reference": [
+      4.677912099999958,
+      8.13843170000473,
+      4.456284500003676
+    ],
+    "vectorized": [
+      1.8603913999977522,
+      1.2934474000066984,
+      1.0453629000112414
+    ]
+  },
+  "reference_median_seconds": 4.677912099999958,
+  "vectorized_median_seconds": 1.2934474000066984,
+  "speedup": 3.6166233740743783,
+  "same_positive_examples_and_mean_history": true,
+  "both_pass_eligibility_and_replacement_contracts": true,
+  "rng_note": "Fixed shared seed per implementation; distributions match, individual draws need not",
+  "limitations": [
+    "Synthetic fixture; full-MIND wall time must be measured separately.",
+    "Shared desktop background load and filesystem caching are uncontrolled."
+  ]
+}

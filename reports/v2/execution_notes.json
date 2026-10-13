@@ -1,0 +1,62 @@
+{
+  "scope": "Execution history before and during frozen v2 official-dev evaluation",
+  "temporal_recovery": {
+    "report": "recovery.json",
+    "incomplete_artifact_used_for_training": false,
+    "action": "Preserved interrupted output; rebuilt and verified all temporal arrays before formal training."
+  },
+  "internal_selection_attempts": [
+    {
+      "status": "stopped_before_selection_was_written",
+      "reason": "sklearn OpenMP runtime is loaded by model unpickling; apply the one-thread limit again after loading.",
+      "official_dev_metrics_evaluated": false
+    },
+    {
+      "status": "stopped_before_selection_was_written",
+      "reason": "Avoid repeated identical semantic scoring across ablation recipes; add opt-in, exact-output query-route reuse and verify it on internal requests.",
+      "official_dev_metrics_evaluated": false,
+      "equivalence_evidence": "query_cache_equivalence.json"
+    }
+  ],
+  "unit_test_environment_repairs": [
+    {
+      "report": "../v2_full_unit_tests.txt",
+      "observed": "120 passed; one dependency-isolation subprocess import timed out at 45 seconds.",
+      "repair": "Increase that import deadline to 180 seconds; it is not a latency benchmark.",
+      "targeted_recheck": "../v2_unit_test_recheck.txt"
+    },
+    {
+      "report": "../v2_unit_tests_memory_attempt.txt",
+      "observed": "128 passed; three tiny GBDT fixture fits were rejected because ambient available RAM fell below the production 512 MiB reserve.",
+      "repair": "Mock available memory only within those tiny training tests. Keep the production preflight and its dedicated rejection test unchanged.",
+      "targeted_recheck": "Three affected tests passed in 3.940 seconds."
+    }
+  ],
+  "maturity_boundary_review": {
+    "performed_before_official_v2_dev_evaluation": true,
+    "finding": "52 of the original 6000 ranker validation queries had labels at or after 2019-11-14 23:00, later than the first dev request's strict feedback cutoff.",
+    "action": "Require 09:00 <= validation timestamp < 23:00 for final ranker, fixed-two-epoch backbone, and candidate selection. Retain earlier wider-window validation as development records only.",
+    "hgb_training_unchanged": "All nine estimators used fixed 80-round training with early_stopping=false; validation never updated their weights.",
+    "backbone_training_unchanged": "The three mean_random candidates all completed and saved epoch 2. Re-select among these fixed-two-epoch states using only mature internal labels."
+  },
+  "pre_dev_release_verification": {
+    "unit_test_report": "../v2_release_unit_tests.txt",
+    "unit_tests_passed": 148,
+    "unit_test_seconds": 54.446,
+    "cache_audit": "query_cache_equivalence.json",
+    "cache_exact_candidate_batches": 576,
+    "mature_backbone_selection": "backbone_matured_selection.json",
+    "mature_ranker_selection": "ranker_matured_selection.json",
+    "backbone_selected_seed": 43,
+    "ranker_selected_run": "full-seed29",
+    "performed_before_official_v2_dev_evaluation": true
+  },
+  "catalogue_wall_clock_interruption_observation": {
+    "progress_2000_elapsed_seconds": 356.2,
+    "progress_2250_elapsed_seconds": 1285.6,
+    "observation": "A concurrent tool response was also delayed about 890 seconds. Execution subsequently continued with the same process, inputs and frozen configuration; the underlying cause was not established.",
+    "timing_interpretation": "Retain elapsed time as observed. Do not infer algorithm throughput or service performance from this interrupted shared-desktop ablation run.",
+    "evaluation_timestamps": "All relevance and temporal-state decisions use fixed source-data timestamps, not wall-clock time."
+  },
+  "interpretation": "Interrupted internal runs were not model-selection evidence. No failed or incomplete output was substituted for the frozen formal results."
+}

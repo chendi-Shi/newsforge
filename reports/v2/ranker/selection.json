@@ -1,0 +1,300 @@
+{
+  "criterion": "internal impression-macro ndcg10",
+  "tie_break": "variant content_only/context_only/full, then seed ascending",
+  "models": [
+    {
+      "run_id": "content_only-seed17",
+      "variant": "content_only",
+      "seed": 17,
+      "model_path": "artifacts/v2/ranker/content_only-seed17.joblib",
+      "model_sha256": "ca8a6e3f155b49d728818d8d663f30d3a2a8f013c6eb5f6666189d95af729615",
+      "metrics": {
+        "auc": {
+          "mean": 0.5925927592409699,
+          "eligible_impressions": 6000
+        },
+        "mrr": {
+          "mean": 0.26621072144220354,
+          "eligible_impressions": 6000
+        },
+        "ndcg5": {
+          "mean": 0.28295281096224,
+          "eligible_impressions": 6000
+        },
+        "ndcg10": {
+          "mean": 0.3436106867484606,
+          "eligible_impressions": 6000
+        }
+      }
+    },
+    {
+      "run_id": "content_only-seed29",
+      "variant": "content_only",
+      "seed": 29,
+      "model_path": "artifacts/v2/ranker/content_only-seed29.joblib",
+      "model_sha256": "3674b97d2bd529926883af1e2e178018be93e6f763e58680383349d80f9d530e",
+      "metrics": {
+        "auc": {
+          "mean": 0.5924137316164974,
+          "eligible_impressions": 6000
+        },
+        "mrr": {
+          "mean": 0.2666330056646354,
+          "eligible_impressions": 6000
+        },
+        "ndcg5": {
+          "mean": 0.28327219603218085,
+          "eligible_impressions": 6000
+        },
+        "ndcg10": {
+          "mean": 0.34465813628867104,
+          "eligible_impressions": 6000
+        }
+      }
+    },
+    {
+      "run_id": "content_only-seed43",
+      "variant": "content_only",
+      "seed": 43,
+      "model_path": "artifacts/v2/ranker/content_only-seed43.joblib",
+      "model_sha256": "533d92c3dbcfe1f222986d4fa0029dd00d846c7cd178efd10ebbc3142452df2e",
+      "metrics": {
+        "auc": {
+          "mean": 0.5935079980326339,
+          "eligible_impressions": 6000
+        },
+        "mrr": {
+          "mean": 0.26662537844273665,
+          "eligible_impressions": 6000
+        },
+        "ndcg5": {
+          "mean": 0.2827878344157637,
+          "eligible_impressions": 6000
+        },
+        "ndcg10": {
+          "mean": 0.34471353238504826,
+          "eligible_impressions": 6000
+        }
+      }
+    },
+    {
+      "run_id": "context_only-seed17",
+      "variant": "context_only",
+      "seed": 17,
+      "model_path": "artifacts/v2/ranker/context_only-seed17.joblib",
+      "model_sha256": "9c21df3ccb783ddca6a50f3dbb8fd52bf2d7071ed3b9ae973c7a5d58c4057255",
+      "metrics": {
+        "auc": {
+          "mean": 0.649184071253508,
+          "eligible_impressions": 6000
+        },
+        "mrr": {
+          "mean": 0.2896335709777428,
+          "eligible_impressions": 6000
+        },
+        "ndcg5": {
+          "mean": 0.31086097821269004,
+          "eligible_impressions": 6000
+        },
+        "ndcg10": {
+          "mean": 0.37291586049334885,
+          "eligible_impressions": 6000
+        }
+      }
+    },
+    {
+      "run_id": "context_only-seed29",
+      "variant": "context_only",
+      "seed": 29,
+      "model_path": "artifacts/v2/ranker/context_only-seed29.joblib",
+      "model_sha256": "f6bdf0b6707a16271f52d976f8bedbc7a4d491747b5dba71cd8fe2c233e3f968",
+      "metrics": {
+        "auc": {
+          "mean": 0.647940427513899,
+          "eligible_impressions": 6000
+        },
+        "mrr": {
+          "mean": 0.28881770930576733,
+          "eligible_impressions": 6000
+        },
+        "ndcg5": {
+          "mean": 0.3095881429523354,
+          "eligible_impressions": 6000
+        },
+        "ndcg10": {
+          "mean": 0.3709448897113827,
+          "eligible_impressions": 6000
+        }
+      }
+    },
+    {
+      "run_id": "context_only-seed43",
+      "variant": "context_only",
+      "seed": 43,
+      "model_path": "artifacts/v2/ranker/context_only-seed43.joblib",
+      "model_sha256": "ca8ca40b230451f969c064410af6fb49b94bce03ed9c824442aea510368091ae",
+      "metrics": {
+        "auc": {
+          "mean": 0.649135989502026,
+          "eligible_impressions": 6000
+        },
+        "mrr": {
+          "mean": 0.29058936889864256,
+          "eligible_impressions": 6000
+        },
+        "ndcg5": {
+          "mean": 0.3098683411368945,
+          "eligible_impressions": 6000
+        },
+        "ndcg10": {
+          "mean": 0.3731409167618088,
+          "eligible_impressions": 6000
+        }
+      }
+    },
+    {
+      "run_id": "full-seed17",
+      "variant": "full",
+      "seed": 17,
+      "model_path": "artifacts/v2/ranker/full-seed17.joblib",
+      "model_sha256": "ea6f683486bea3d0d86f9e22c81e568bfa3141c4819084e88d18d77a2e3252f6",
+      "metrics": {
+        "auc": {
+          "mean": 0.6745797499259208,
+          "eligible_impressions": 6000
+        },
+        "mrr": {
+          "mean": 0.30880060400419035,
+          "eligible_impressions": 6000
+        },
+        "ndcg5": {
+          "mean": 0.3337332328659071,
+          "eligible_impressions": 6000
+        },
+        "ndcg10": {
+          "mean": 0.39650937743280484,
+          "eligible_impressions": 6000
+        }
+      }
+    },
+    {
+      "run_id": "full-seed29",
+      "variant": "full",
+      "seed": 29,
+      "model_path": "artifacts/v2/ranker/full-seed29.joblib",
+      "model_sha256": "2bbe0dfa4aae158768c453a2ddc2781a26a1cce34c46622a7bb4d49b9aa611e5",
+      "metrics": {
+        "auc": {
+          "mean": 0.6760291141911209,
+          "eligible_impressions": 6000
+        },
+        "mrr": {
+          "mean": 0.31211967200740015,
+          "eligible_impressions": 6000
+        },
+        "ndcg5": {
+          "mean": 0.3361745732153033,
+          "eligible_impressions": 6000
+        },
+        "ndcg10": {
+          "mean": 0.399349518917473,
+          "eligible_impressions": 6000
+        }
+      }
+    },
+    {
+      "run_id": "full-seed43",
+      "variant": "full",
+      "seed": 43,
+      "model_path": "artifacts/v2/ranker/full-seed43.joblib",
+      "model_sha256": "d6a452cd9a3147caa7800ebd817185b057e52d0dd77437dc8e7ddae138cacad7",
+      "metrics": {
+        "auc": {
+          "mean": 0.6757403072314069,
+          "eligible_impressions": 6000
+        },
+        "mrr": {
+          "mean": 0.3117867626913988,
+          "eligible_impressions": 6000
+        },
+        "ndcg5": {
+          "mean": 0.33609626517297114,
+          "eligible_impressions": 6000
+        },
+        "ndcg10": {
+          "mean": 0.39938600818780073,
+          "eligible_impressions": 6000
+        }
+      }
+    }
+  ],
+  "best_by_variant": {
+    "content_only": {
+      "run_id": "content_only-seed43",
+      "variant": "content_only",
+      "seed": 43,
+      "model_path": "artifacts/v2/ranker/content_only-seed43.joblib",
+      "model_sha256": "533d92c3dbcfe1f222986d4fa0029dd00d846c7cd178efd10ebbc3142452df2e",
+      "internal_ndcg10": 0.34471353238504826
+    },
+    "context_only": {
+      "run_id": "context_only-seed43",
+      "variant": "context_only",
+      "seed": 43,
+      "model_path": "artifacts/v2/ranker/context_only-seed43.joblib",
+      "model_sha256": "ca8ca40b230451f969c064410af6fb49b94bce03ed9c824442aea510368091ae",
+      "internal_ndcg10": 0.3731409167618088
+    },
+    "full": {
+      "run_id": "full-seed43",
+      "variant": "full",
+      "seed": 43,
+      "model_path": "artifacts/v2/ranker/full-seed43.joblib",
+      "model_sha256": "d6a452cd9a3147caa7800ebd817185b057e52d0dd77437dc8e7ddae138cacad7",
+      "internal_ndcg10": 0.39938600818780073
+    }
+  },
+  "selected": {
+    "run_id": "full-seed43",
+    "variant": "full",
+    "seed": 43,
+    "model_path": "artifacts/v2/ranker/full-seed43.joblib",
+    "model_sha256": "d6a452cd9a3147caa7800ebd817185b057e52d0dd77437dc8e7ddae138cacad7",
+    "internal_ndcg10": 0.39938600818780073
+  },
+  "best_variant": "full",
+  "best_run_id": "full-seed43",
+  "sampling": {
+    "positive_pairs": 100000,
+    "binary_examples": 500000,
+    "sampling_seed": 2026,
+    "positive_indices_sha256": "9696f7373c174f5f14af747861023fe64df0313286417e80805a09980f51935e",
+    "training_rows_sha256": "0c2d62e6b15686f5420e8b318777ba3581ea78a0cc6f622ad51883f197f19a56",
+    "candidate_ids_sha256": "8e0d75a13ca52286908bfd66a0416bd39b2de166e0b7d810b982fed7c3f76e4d",
+    "labels_sha256": "504052010664b1da21b4736659211650d8e4681ae37ae76f5db81439a7cf8040",
+    "negative_policy": "four uniform replacement draws from fixed same-exposure nonclick pool",
+    "sampling_bias": "positive-pair sampling overweights multi-click impressions; 1:4 scores are not population CTR",
+    "source_training_cache": {
+      "cache_version": 3,
+      "pool_size": 16,
+      "sampler": "grouped_random_keys_v1",
+      "max_chunk_exposures": 400000,
+      "data_manifest_sha256": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+      "features_sha256": "c4831220c97afe072eb5af628e740860b4c665624b47e5bc2a1655169e60f3dc",
+      "seed": 20261010,
+      "train_impressions": 1897844,
+      "positive_training_examples": 2869013,
+      "skipped_no_positive_or_negative": 0,
+      "seconds": 97.51093020000553,
+      "sampling_seconds": 68.3819180999999,
+      "sampling_chunks": 176,
+      "mean_history_chunk_rows": 7294,
+      "negative_policy": "Only label=0 in the same training impression; exclude every ID with any positive occurrence; no held-out labels.",
+      "sampling_policy": "Uniform exposure-occurrence sample without replacement when count >= pool_size; otherwise independent draws with replacement. Fixed seed and chunk protocol shared across arms.",
+      "rng_change": "RNG consumption differs from the former per-row numpy.choice implementation; the sampling distribution and eligible item policy are unchanged."
+    }
+  },
+  "validation_row_indices_sha256": "1213fa77eb222a99058202aa3295f177f9a837c040d713fbce92a66ad04520ab",
+  "official_dev_used_for_selection": false,
+  "study_status": "v2 retrospective benchmark: v1 official-dev results were already observed"
+}

@@ -1,0 +1,68 @@
+{
+  "status": "passed",
+  "completed_checkpoint_count": 9,
+  "data_manifest_sha256": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+  "training_source_sha256": {
+    "models.py": "d2379f85cfe6861458d87100d9e988069144e5a4b9e0e2519695763e1747b1af",
+    "train.py": "c325e7221be318a05acff3bc1c685dd57d9bd9c5af6d578b3e6e2b2158879a64",
+    "store.py": "0c6c3662478db583538bcb93b195761861688aaf01c1cfd3b1d5c6290054e08b",
+    "evaluate.py": "4dc7237f30a4e6b9fc305e538cd4951c57ac58a940127e34a22c1157b52dd1f8",
+    "metrics.py": "b1467c60980c2ccd27bdaf715191bf0d411acfb3115f12ea1b0003dce64e6008"
+  },
+  "training_cache_signature": {
+    "cache_version": 3,
+    "sampler": "grouped_random_keys_v1",
+    "seed": 20261010,
+    "pool_size": 16,
+    "max_chunk_exposures": 400000,
+    "data_manifest_sha256": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+    "features_sha256": "c4831220c97afe072eb5af628e740860b4c665624b47e5bc2a1655169e60f3dc"
+  },
+  "serving_artifacts": {
+    "retriever.pt": {
+      "run_id": "mean_random-seed43",
+      "sha256": "01225e5d5d39eff85b1e9fc1345276530066a1efc20918ada96a54e2bd405526"
+    },
+    "reranker.pt": {
+      "run_id": "ranker-seed29",
+      "sha256": "bbc07980291edeb55548543336d4ea7226109b65545501699e134ea34cec84c2"
+    },
+    "article_embeddings.npy": {
+      "sha256": "30151a2cce8070b6100a654416f635ad1a8a6aaa37056a33f2b37cbb07544b1a"
+    }
+  },
+  "evaluation_scheduling": {
+    "version": "stable_candidate_count_v1",
+    "scheduler_source_sha256": "8980977d0323e8a6bc161bc84b8cda72c20faf9a2109b35c1adc90137d2e8eff",
+    "entrypoint_source_sha256": "21d792a54dd0e0d07f7d724a76cb763db3ea0f1e6cc328de25f5a48eaaca4432",
+    "ranker_only": true,
+    "ranker_batch_size": 32,
+    "internal_validation_audits": [
+      {
+        "run_id": "ranker-seed17",
+        "evidence_file": "evaluation_scheduler_validation_12000.json",
+        "evidence_sha256": "2d1d2edcf57fa5a75b62a8c1c2dd4491a8aa6fa91066e55ffcb0c4b8baed1673",
+        "reused": true,
+        "passed": true
+      },
+      {
+        "run_id": "ranker-seed29",
+        "evidence_file": "evaluation_scheduler_ranker_seed29_validation_12000.json",
+        "evidence_sha256": "5332252f5f9a34d83e49541d31fa03c84fc60fc5d23a76a7762335150a4a8488",
+        "reused": true,
+        "passed": true
+      },
+      {
+        "run_id": "ranker-seed43",
+        "evidence_file": "evaluation_scheduler_ranker_seed43_validation_12000.json",
+        "evidence_sha256": "c657c7cdac58cf4edde2f64b4a1a5a818a42c5dbf55871feb710f25540c240ef",
+        "reused": true,
+        "passed": true
+      }
+    ],
+    "per_impression_equivalence_atol": 1e-12,
+    "original_metric_row_order_restored": true,
+    "training_and_checkpoint_selection_unchanged": true
+  },
+  "official_dev_labels_evaluated_by_preflight": false
+}

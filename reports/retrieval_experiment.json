@@ -1,0 +1,54 @@
+{
+  "query_split": "locked official dev",
+  "seed": 2026,
+  "sample_impressions": 5000,
+  "full_split_impressions": 376471,
+  "positive_clicked_items": 7576,
+  "eligible_positive_items": 7560,
+  "repeat_clicks_excluded_by_service": 16,
+  "cold_eligible_positive_items": 5686,
+  "catalogue_size_min_max": [
+    101527,
+    104151
+  ],
+  "model_selection": "Internal validation only",
+  "candidate_pool_size": 100,
+  "max_overfetch": 8192,
+  "cold_start_policy": "train click popularity, no reranking",
+  "selected_retriever": "mean_random-seed43",
+  "selected_ranker": "ranker-seed29",
+  "metrics": {
+    "popularity": {
+      "click_micro_recall10": 0.0,
+      "click_micro_recall100": 0.005939809926082365,
+      "eligible_click_micro_recall100": 0.005952380952380952,
+      "cold_eligible_click_recall100": 0.0
+    },
+    "content_exact": {
+      "click_micro_recall10": 0.0006599788806758184,
+      "click_micro_recall100": 0.004487856388595565,
+      "eligible_click_micro_recall100": 0.004497354497354497,
+      "cold_eligible_click_recall100": 0.002989799507562434
+    },
+    "two_tower_hnsw": {
+      "click_micro_recall10": 0.0013199577613516368,
+      "click_micro_recall100": 0.008183738120380148,
+      "eligible_click_micro_recall100": 0.0082010582010582,
+      "cold_eligible_click_recall100": 0.00685895181146676
+    },
+    "two_stage": {
+      "click_micro_recall10": 0.001979936642027455,
+      "click_micro_recall100": 0.008183738120380148,
+      "eligible_click_micro_recall100": 0.0082010582010582,
+      "cold_eligible_click_recall100": 0.00685895181146676
+    }
+  },
+  "seconds": 111.32751050000661,
+  "limitations": [
+    "First observed in a request is a catalogue-availability proxy, not publication time.",
+    "Only logged clicks are relevance evidence; unexposed news feedback is unknown.",
+    "Full-click denominator includes repeated clicks excluded by service; eligible denominator is separate.",
+    "This is not official MIND ranking evaluation or causal online reward.",
+    "Reordering the same top100 cannot change recall100; compare top10 for reranking."
+  ]
+}

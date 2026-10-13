@@ -1,0 +1,90 @@
+{
+  "scope": "fixed internal validation only; original GBDT model/features/evaluator unchanged",
+  "rows": 12000,
+  "fixed_validation_rows": 12000,
+  "row_selection": "first rows in the sorted fixed seed-2026 internal-validation sample",
+  "selected_row_indices_sha256": "58dd0af6cba54cabcad6ceb8a729be40d7c88d6a1516da9ca6acaf414d93f6da",
+  "checkpoint_sha256": "7a2d99c80188cd2d18df1dc2ba05e7aa76e2b420c762ab19ae3cacb43d841571",
+  "data_manifest_sha256": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+  "evaluation_source_sha256": {
+    "gbdt.py": "3caac77ffbd3404a391b3b573bc3b237cf87c2296690276d5b3207418f1c8703",
+    "store.py": "0c6c3662478db583538bcb93b195761861688aaf01c1cfd3b1d5c6290054e08b",
+    "evaluate.py": "4dc7237f30a4e6b9fc305e538cd4951c57ac58a940127e34a22c1157b52dd1f8",
+    "metrics.py": "b1467c60980c2ccd27bdaf715191bf0d411acfb3115f12ea1b0003dce64e6008"
+  },
+  "scheduler_source_sha256": "009c8df9fcff63666ab243521241c3be870ec701fc30f6cb121ef747661ff94f",
+  "order_helper_source_sha256": "8980977d0323e8a6bc161bc84b8cda72c20faf9a2109b35c1adc90137d2e8eff",
+  "feature_mode": "rich",
+  "feature_count": 85,
+  "per_impression_metric_equivalence_atol": 1e-12,
+  "metric_equivalence_passed": true,
+  "metric_differences": {
+    "auc": {
+      "finite_pairs": 12000,
+      "same_nan_mask": true,
+      "max_absolute_difference": 0.0,
+      "pairs_differing_more_than_1e_12": 0,
+      "aggregate_mean_difference": 0.0
+    },
+    "mrr": {
+      "finite_pairs": 12000,
+      "same_nan_mask": true,
+      "max_absolute_difference": 0.0,
+      "pairs_differing_more_than_1e_12": 0,
+      "aggregate_mean_difference": 0.0
+    },
+    "ndcg5": {
+      "finite_pairs": 12000,
+      "same_nan_mask": true,
+      "max_absolute_difference": 0.0,
+      "pairs_differing_more_than_1e_12": 0,
+      "aggregate_mean_difference": 0.0
+    },
+    "ndcg10": {
+      "finite_pairs": 12000,
+      "same_nan_mask": true,
+      "max_absolute_difference": 0.0,
+      "pairs_differing_more_than_1e_12": 0,
+      "aggregate_mean_difference": 0.0
+    }
+  },
+  "original": {
+    "seconds": 82.00117409999075,
+    "initial_rss_bytes": 300175360,
+    "max_observed_rss_bytes": 548052992,
+    "final_rss_bytes": 503812096,
+    "rss_sampling_interval_ms": 20
+  },
+  "scheduled": {
+    "seconds": 40.0547024999978,
+    "initial_rss_bytes": 503812096,
+    "max_observed_rss_bytes": 539107328,
+    "final_rss_bytes": 504492032,
+    "rss_sampling_interval_ms": 20
+  },
+  "scheduling": {
+    "strategy": "stable_candidate_count",
+    "gbdt_only": true,
+    "batch_size": 64,
+    "impressions": 12000,
+    "candidate_exposures": 477756,
+    "original_candidate_slots": 2217760,
+    "scheduled_candidate_slots": 486720,
+    "original_padding_slots": 1740004,
+    "scheduled_padding_slots": 8964,
+    "same_population": true,
+    "same_candidates_within_each_impression": true,
+    "metric_rows_restored_to_original_order": true,
+    "wrapper_seconds": 40.05467570001201
+  },
+  "environment": {
+    "threads": 1,
+    "system_available_memory_before": 2256871424
+  },
+  "limitations": [
+    "One original-then-scheduled pair on a shared desktop; load and cache warmth are uncontrolled.",
+    "RSS is sampled in the actual process at 20 ms and includes mapped pages; it is not an exact allocation peak.",
+    "Comparison is per-impression metrics, not feature matrices or classifier probabilities.",
+    "No official-dev evaluation, model fitting or checkpoint selection occurred."
+  ]
+}

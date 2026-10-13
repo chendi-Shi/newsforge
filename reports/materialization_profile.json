@@ -1,0 +1,29 @@
+{
+  "unprofiled": [
+    {
+      "mapped": false,
+      "rows": 10000,
+      "candidates": 370122,
+      "seconds": 7.314500099993893,
+      "cpu_seconds": 4.5625,
+      "positive_rows": 15216
+    },
+    {
+      "mapped": true,
+      "rows": 10000,
+      "candidates": 370122,
+      "seconds": 8.32823169999756,
+      "cpu_seconds": 4.546875,
+      "positive_rows": 15216
+    }
+  ],
+  "profiled": {
+    "mapped": true,
+    "rows": 10000,
+    "candidates": 370122,
+    "seconds": 8.063882100002957,
+    "cpu_seconds": 4.6875,
+    "positive_rows": 15216
+  },
+  "profile": "         871932 function calls in 7.373 seconds\n\n   Ordered by: cumulative time\n   List reduced from 89 to 20 due to restriction <20>\n\n   ncalls  tottime  percall  cumtime  percall filename:lineno(function)\n        1    1.992    1.992    8.215    8.215 <stdin>:15(run)\n    39812    2.253    0.000    2.253    0.000 {method 'at' of 'numpy.ufunc' objects}\n    20000    0.702    0.000    1.811    0.000 {built-in method numpy.fromiter}\n    90004    0.438    0.000    0.826    0.000 <user-home>/miniconda3\\envs\\rl-cpu\\lib\\site-packages\\numpy\\core\\memmap.py:334(__getitem__)\n    10000    0.511    0.000    0.511    0.000 <stdin>:36(<listcomp>)\n    50014    0.326    0.000    0.389    0.000 <user-home>/miniconda3\\envs\\rl-cpu\\lib\\site-packages\\numpy\\core\\memmap.py:289(__array_finalize__)\n   380122    0.276    0.000    0.276    0.000 <stdin>:38(<genexpr>)\n    10000    0.257    0.000    0.257    0.000 {method 'update' of 'set' objects}\n    10001    0.022    0.000    0.186    0.000 {method 'sum' of 'numpy.ndarray' objects}\n    10001    0.011    0.000    0.164    0.000 <user-home>/miniconda3\\envs\\rl-cpu\\lib\\site-packages\\numpy\\core\\_methods.py:47(_sum)\n    10001    0.153    0.000    0.153    0.000 {method 'reduce' of 'numpy.ufunc' objects}\n       10    0.000    0.000    0.146    0.015 <stdin>:16(alloc)\n       10    0.001    0.000    0.146    0.015 <user-home>/miniconda3\\envs\\rl-cpu\\lib\\site-packages\\numpy\\lib\\format.py:844(open_memmap)\n    30020    0.145    0.000    0.145    0.000 {method 'split' of 'str' objects}\n       10    0.002    0.000    0.132    0.013 <user-home>/miniconda3\\envs\\rl-cpu\\lib\\site-packages\\numpy\\core\\memmap.py:209(__new__)\n       20    0.087    0.004    0.087    0.004 {built-in method io.open}\n    50024    0.039    0.000    0.039    0.000 {built-in method builtins.hasattr}\n       10    0.039    0.004    0.039    0.004 {method 'flush' of '_io.BufferedRandom' objects}\n    70135    0.025    0.000    0.025    0.000 {built-in method builtins.len}\n    50004    0.023    0.000    0.023    0.000 <user-home>/miniconda3\\envs\\rl-cpu\\lib\\site-packages\\numpy\\core\\multiarray.py:1393(may_share_memory)\n\n\n"
+}

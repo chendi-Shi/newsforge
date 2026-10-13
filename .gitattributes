@@ -1,0 +1,4 @@
+# Evidence contains SHA256 bindings. Preserve JSON/report bytes across clones.
+* -text
+# Python sources were measured with LF; force the same checkout on Windows.
+*.py text eol=lf

@@ -1,0 +1,1444 @@
+{
+  "created_at_utc": "2026-10-10T11:46:03.396419+00:00",
+  "environment": {
+    "python": "3.10.21",
+    "pytorch": "2.14.0+cpu",
+    "faiss": "1.15.1",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 140 Stepping 1, GenuineIntel",
+    "physical_cpu_count": 4,
+    "logical_cpu_count": 8,
+    "configured_threads": 1,
+    "native_thread_pools": [
+      {
+        "internal_api": "openblas",
+        "prefix": "libopenblas",
+        "num_threads": 1
+      },
+      {
+        "internal_api": "openblas",
+        "prefix": "libopenblas",
+        "num_threads": 1
+      },
+      {
+        "internal_api": "openmp",
+        "prefix": "vcomp",
+        "num_threads": 1
+      },
+      {
+        "internal_api": "openmp",
+        "prefix": "libiomp",
+        "num_threads": 1
+      },
+      {
+        "internal_api": "openmp",
+        "prefix": "libiomp",
+        "num_threads": 1
+      }
+    ],
+    "device": "cpu",
+    "background_activity_controlled": false,
+    "system_cpu_percent_before": 67.6,
+    "system_available_ram_mb_before": 2605.98046875,
+    "background_activity_note": "Shared desktop; unrelated processes are not stopped by this benchmark."
+  },
+  "query_sample": {
+    "split": "internal_validation",
+    "split_value": 1,
+    "seed": 2026,
+    "available_requests": 334904,
+    "sampled_requests": 128,
+    "sampling": "uniform without replacement, no labels read",
+    "empty_history_requests": 3,
+    "sample_array_rows": [
+      1353192,
+      2211314,
+      967265,
+      730451,
+      1910310,
+      1148848,
+      1949269,
+      1780811,
+      2171614,
+      2136892,
+      346158,
+      1286574,
+      1506944,
+      1221699,
+      1292979,
+      1552161,
+      468788,
+      1103849,
+      1951775,
+      437085,
+      1462480,
+      1436717,
+      714325,
+      939481,
+      1900983,
+      956226,
+      368772,
+      1478621,
+      1326520,
+      325684,
+      1001285,
+      2114254,
+      1853100,
+      369749,
+      208894,
+      4101,
+      1763953,
+      920663,
+      1772317,
+      1608784,
+      758021,
+      631877,
+      1006829,
+      76405,
+      1631814,
+      396084,
+      1778565,
+      1000047,
+      667240,
+      178569,
+      1563091,
+      2153926,
+      510357,
+      1417336,
+      1049434,
+      1172096,
+      1055312,
+      2010104,
+      1773647,
+      671134,
+      1115604,
+      912748,
+      1027197,
+      816069,
+      1034047,
+      1099985,
+      204691,
+      506816,
+      1065348,
+      1455481,
+      1178551,
+      220136,
+      2020059,
+      1571233,
+      937840,
+      2053630,
+      462759,
+      701642,
+      1203369,
+      621182,
+      1040048,
+      1478261,
+      1905506,
+      9531,
+      815487,
+      1254757,
+      399547,
+      831497,
+      1434217,
+      1679795,
+      930587,
+      1043156,
+      2088351,
+      792682,
+      1347273,
+      1396921,
+      263469,
+      1426106,
+      59590,
+      1679434,
+      1660159,
+      1854672,
+      1915662,
+      1158307,
+      679333,
+      1386091,
+      422106,
+      77870,
+      801703,
+      973010,
+      584949,
+      2158744,
+      29347,
+      771715,
+      1779075,
+      605213,
+      351108,
+      87941,
+      236464,
+      175429,
+      1622250,
+      1842925,
+      827583,
+      963038,
+      730540,
+      1326059,
+      2093879,
+      1623871
+    ]
+  },
+  "dataset_manifest_sha256": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+  "ann": {
+    "queries": 125,
+    "k": 100,
+    "warmup_queries": 8,
+    "catalogue_rows": 104152,
+    "indexed_items": 104151,
+    "embedding_dimension": 64,
+    "ann_kind": "hnsw",
+    "ann_index_version": "4b879793af61eecd30070b03603b0faca919d04a3b09a129d05ef03ed4f843a3",
+    "model_version": "36c40c93dd64bb101363b5eb0783120459b7403d4d5e6966f29c6fcc5c4785a9",
+    "exact_latency": {
+      "count": 125,
+      "p50_ms": 5.1635,
+      "p95_ms": 6.676239999999999,
+      "mean_ms": 5.1279183999999995,
+      "max_ms": 8.4581
+    },
+    "ann_latency": {
+      "count": 125,
+      "p50_ms": 1.1888,
+      "p95_ms": 1.6910599999999998,
+      "mean_ms": 1.1937744000000001,
+      "max_ms": 2.2588
+    },
+    "mean_ann_recall_at_k": 0.8912800000000001,
+    "queries_with_ann_shortfall": 0,
+    "exact_vs_numpy": {
+      "all_passed": true,
+      "checks": [
+        {
+          "max_score_abs_error": 5.960464477539063e-08,
+          "below_top_k_threshold": 0,
+          "correct_count": true,
+          "passed": true
+        },
+        {
+          "max_score_abs_error": 1.1920928955078125e-07,
+          "below_top_k_threshold": 0,
+          "correct_count": true,
+          "passed": true
+        },
+        {
+          "max_score_abs_error": 2.9802322387695312e-08,
+          "below_top_k_threshold": 0,
+          "correct_count": true,
+          "passed": true
+        },
+        {
+          "max_score_abs_error": 1.1920928955078125e-07,
+          "below_top_k_threshold": 0,
+          "correct_count": true,
+          "passed": true
+        },
+        {
+          "max_score_abs_error": 1.1920928955078125e-07,
+          "below_top_k_threshold": 0,
+          "correct_count": true,
+          "passed": true
+        },
+        {
+          "max_score_abs_error": 5.960464477539063e-08,
+          "below_top_k_threshold": 0,
+          "correct_count": true,
+          "passed": true
+        },
+        {
+          "max_score_abs_error": 5.960464477539063e-08,
+          "below_top_k_threshold": 0,
+          "correct_count": true,
+          "passed": true
+        },
+        {
+          "max_score_abs_error": 5.960464477539063e-08,
+          "below_top_k_threshold": 0,
+          "correct_count": true,
+          "passed": true
+        }
+      ]
+    },
+    "faiss_threads": 1,
+    "ef_search": 128,
+    "max_overfetch": 8192,
+    "timing_scope": "FAISS search, adaptive overfetch, temporal and seen filters; user encoding excluded",
+    "recall_definition": "intersection(eligible ANN top-k, eligible exact top-k) / size(eligible exact top-k)",
+    "limitations": [
+      "ANN recall measures approximation agreement, not click relevance.",
+      "Equal-score ties can choose different item IDs.",
+      "Measured on real internal-validation queries, not official dev."
+    ],
+    "per_query": [
+      {
+        "query_number": 0,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.9,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 1,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.99,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 2,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.66,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 3,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.84,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 4,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 1.0,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 5,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.86,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 6,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.91,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 7,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.89,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 8,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.87,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 9,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.84,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 10,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.84,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 11,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.96,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 12,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.9,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 13,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.94,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 14,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.7,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 15,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.97,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 16,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.96,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 17,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.9,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 18,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.86,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 19,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.88,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 20,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.93,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 21,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.9,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 22,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.73,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 23,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.88,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 24,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.83,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 25,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.89,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 26,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.91,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 27,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.89,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 28,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.95,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 29,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.82,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 30,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.96,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 31,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.87,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 32,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.96,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 33,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.91,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 34,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.86,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 35,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.9,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 36,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.98,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 37,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.92,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 38,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.75,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 39,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.9,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 40,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.95,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 41,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.95,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 42,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.9,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 43,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.98,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 44,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.91,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 45,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.84,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 46,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.92,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 47,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.78,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 48,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.91,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 49,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.91,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 50,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.8,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 51,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.94,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 52,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.95,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 53,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.93,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 54,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.94,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 55,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.82,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 56,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.97,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 57,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.95,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 58,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.85,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 59,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.82,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 60,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.93,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 61,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.88,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 62,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.93,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 63,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.88,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 64,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.96,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 65,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.93,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 66,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.92,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 67,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.53,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 68,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.7,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 69,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.77,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 70,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.97,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 71,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.85,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 72,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.93,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 73,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.9,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 74,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.93,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 75,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.89,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 76,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.97,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 77,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.99,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 78,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.87,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 79,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.95,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 80,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.93,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 81,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.95,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 82,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.85,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 83,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.93,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 84,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.97,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 85,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.76,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 86,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.91,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 87,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.94,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 88,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.87,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 89,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.89,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 90,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.86,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 91,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.83,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 92,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.95,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 93,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.91,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 94,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.89,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 95,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.93,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 96,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.89,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 97,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.89,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 98,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.94,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 99,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.84,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 100,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.88,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 101,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.95,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 102,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.91,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 103,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.85,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 104,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.94,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 105,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.58,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 106,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.88,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 107,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.89,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 108,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.96,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 109,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.77,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 110,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.97,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 111,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.87,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 112,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.96,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 113,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.98,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 114,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.99,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 115,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.92,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 116,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.85,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 117,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.88,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 118,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.84,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 119,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 1.0,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 120,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.95,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 121,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.93,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 122,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.77,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 123,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.95,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      },
+      {
+        "query_number": 124,
+        "eligible_exact_count": 100,
+        "ann_count": 100,
+        "recall_at_k": 0.9,
+        "ann_examined": 200,
+        "ann_shortfall": 0
+      }
+    ],
+    "memory": {
+      "available": true,
+      "pid": 7032,
+      "samples": 70,
+      "sampling_interval_ms": 20,
+      "first_rss_mb": 219.3671875,
+      "max_observed_rss_mb": 400.56640625,
+      "last_rss_mb": 400.56640625
+    }
+  },
+  "http": {
+    "transport": "real localhost HTTP via urllib, a new connection per call",
+    "health": {
+      "status": "ok",
+      "model_version": "36c40c93dd64bb101363b5eb0783120459b7403d4d5e6966f29c6fcc5c4785a9",
+      "server_pid": 42320,
+      "index_version": "4b879793af61eecd30070b03603b0faca919d04a3b09a129d05ef03ed4f843a3",
+      "catalogue_items": 104151,
+      "catalogue_rows": 104152,
+      "index_kind": "hnsw",
+      "embedding_dimension": 64,
+      "default_as_of": 1573716628,
+      "model_train_cutoff": 1573716628,
+      "device": "cpu",
+      "torch_threads": 1,
+      "faiss_threads": 1,
+      "hnsw_m": 32,
+      "ef_search": 128,
+      "max_overfetch": 8192,
+      "max_history": 20,
+      "candidate_scoring_batch_size": 256
+    },
+    "base_url": "http://127.0.0.1:56410",
+    "server_pid": 42320,
+    "sampled_queries": 128,
+    "repetitions": 3,
+    "cases": [
+      {
+        "http_batch_size": 1,
+        "client_concurrency": 1,
+        "measured_http_requests": 384,
+        "successful_http_requests": 384,
+        "successful_recommendation_queries": 384,
+        "error_count": 0,
+        "error_examples": [],
+        "queries_with_top_k_shortfall": 0,
+        "warmup_http_requests_excluded": 8,
+        "request_latency": {
+          "count": 384,
+          "p50_ms": 12.115400000000001,
+          "p95_ms": 30.567164999999957,
+          "mean_ms": 14.123665104166667,
+          "max_ms": 106.5864
+        },
+        "wall_seconds": 5.507882299993071,
+        "http_requests_per_second": 69.71826540310839,
+        "recommendation_queries_per_second": 69.71826540310839,
+        "server_memory": {
+          "available": true,
+          "pid": 42320,
+          "samples": 170,
+          "sampling_interval_ms": 20,
+          "first_rss_mb": 306.21484375,
+          "max_observed_rss_mb": 321.984375,
+          "last_rss_mb": 321.984375
+        }
+      },
+      {
+        "http_batch_size": 1,
+        "client_concurrency": 4,
+        "measured_http_requests": 384,
+        "successful_http_requests": 384,
+        "successful_recommendation_queries": 384,
+        "error_count": 0,
+        "error_examples": [],
+        "queries_with_top_k_shortfall": 0,
+        "warmup_http_requests_excluded": 8,
+        "request_latency": {
+          "count": 384,
+          "p50_ms": 48.9437,
+          "p95_ms": 60.73418499999999,
+          "mean_ms": 49.07585182291666,
+          "max_ms": 91.2128
+        },
+        "wall_seconds": 4.750648400004138,
+        "http_requests_per_second": 80.83107139641517,
+        "recommendation_queries_per_second": 80.83107139641517,
+        "server_memory": {
+          "available": true,
+          "pid": 42320,
+          "samples": 153,
+          "sampling_interval_ms": 20,
+          "first_rss_mb": 321.984375,
+          "max_observed_rss_mb": 329.43359375,
+          "last_rss_mb": 329.43359375
+        }
+      },
+      {
+        "http_batch_size": 8,
+        "client_concurrency": 1,
+        "measured_http_requests": 48,
+        "successful_http_requests": 48,
+        "successful_recommendation_queries": 384,
+        "error_count": 0,
+        "error_examples": [],
+        "queries_with_top_k_shortfall": 0,
+        "warmup_http_requests_excluded": 8,
+        "request_latency": {
+          "count": 48,
+          "p50_ms": 29.4709,
+          "p95_ms": 35.84163,
+          "mean_ms": 29.34182708333334,
+          "max_ms": 38.7591
+        },
+        "wall_seconds": 1.4495745000021998,
+        "http_requests_per_second": 33.11316527707073,
+        "recommendation_queries_per_second": 264.9053222165658,
+        "server_memory": {
+          "available": true,
+          "pid": 42320,
+          "samples": 47,
+          "sampling_interval_ms": 20,
+          "first_rss_mb": 334.046875,
+          "max_observed_rss_mb": 337.71875,
+          "last_rss_mb": 337.71875
+        }
+      },
+      {
+        "http_batch_size": 8,
+        "client_concurrency": 4,
+        "measured_http_requests": 48,
+        "successful_http_requests": 48,
+        "successful_recommendation_queries": 384,
+        "error_count": 0,
+        "error_examples": [],
+        "queries_with_top_k_shortfall": 0,
+        "warmup_http_requests_excluded": 8,
+        "request_latency": {
+          "count": 48,
+          "p50_ms": 122.10365,
+          "p95_ms": 140.422305,
+          "mean_ms": 120.62715833333334,
+          "max_ms": 154.2431
+        },
+        "wall_seconds": 1.5031610000005458,
+        "http_requests_per_second": 31.932707141804883,
+        "recommendation_queries_per_second": 255.46165713443906,
+        "server_memory": {
+          "available": true,
+          "pid": 42320,
+          "samples": 49,
+          "sampling_interval_ms": 20,
+          "first_rss_mb": 337.71875,
+          "max_observed_rss_mb": 348.203125,
+          "last_rss_mb": 348.203125
+        }
+      }
+    ],
+    "all_requests_passed": true,
+    "latency_definition": "HTTP request round-trip; batch request latency is not per-query latency",
+    "throughput_definition": "successful recommendation queries / workload wall time",
+    "limitations": [
+      "Loopback desktop measurement, not remote network or production SLO.",
+      "Client queue wait before a worker starts is excluded from request latency but included in throughput wall time.",
+      "Warmup excluded; one server worker; model lock serializes concurrent inference.",
+      "RSS samples include loaded models/index/features, and can miss sub-20ms peaks."
+    ]
+  }
+}

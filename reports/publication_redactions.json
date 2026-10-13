@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "purpose": "Remove local account/workspace paths from published evidence without changing experimental values or test outcomes.",
+  "private_prefix_values_omitted": true,
+  "encoding_policy": "Decode UTF-8 without newline conversion, substitute only exact derived prefixes, encode UTF-8; preserve BOM and CRLF.",
+  "rules": [
+    {
+      "id": "workspace:json_escaped_backslash",
+      "source_derivation": "resolved parent directory of the NewsForge repository root",
+      "encoding": "json_escaped_backslash",
+      "source_prefix_sha256": "4573dc2d4a10945ea57452f1b14e5eb05431855b5bc7bae852c6f304a2e8f444",
+      "include_trailing_separator": true,
+      "matching": "literal case-sensitive substring; applied in this listed order",
+      "replacement": "<workspace>/"
+    },
+    {
+      "id": "workspace:native_backslash",
+      "source_derivation": "resolved parent directory of the NewsForge repository root",
+      "encoding": "native_backslash",
+      "source_prefix_sha256": "311730f28ca349358a60373bfef4cac5c06f25c4b76e0139c0595c952ebe3cfe",
+      "include_trailing_separator": true,
+      "matching": "literal case-sensitive substring; applied in this listed order",
+      "replacement": "<workspace>/"
+    },
+    {
+      "id": "workspace:forward_slash",
+      "source_derivation": "resolved parent directory of the NewsForge repository root",
+      "encoding": "forward_slash",
+      "source_prefix_sha256": "523ccf991bea171ffa59a0ea31d1acbb7ac520907fe3f60115526262dbc98a92",
+      "include_trailing_separator": true,
+      "matching": "literal case-sensitive substring; applied in this listed order",
+      "replacement": "<workspace>/"
+    },
+    {
+      "id": "user_home:json_escaped_backslash",
+      "source_derivation": "Path.home() resolved on the publication machine",
+      "encoding": "json_escaped_backslash",
+      "source_prefix_sha256": "6712cbd0cff923f8a77e2a2320ec4fd804a74f8272f9af0f8176f1bbf5545e9f",
+      "include_trailing_separator": true,
+      "matching": "literal case-sensitive substring; applied in this listed order",
+      "replacement": "<user-home>/"
+    },
+    {
+      "id": "user_home:native_backslash",
+      "source_derivation": "Path.home() resolved on the publication machine",
+      "encoding": "native_backslash",
+      "source_prefix_sha256": "75522cf99d39da23245421d23d8949ae5484c847302d32c07497ef8ffbab3543",
+      "include_trailing_separator": true,
+      "matching": "literal case-sensitive substring; applied in this listed order",
+      "replacement": "<user-home>/"
+    },
+    {
+      "id": "user_home:forward_slash",
+      "source_derivation": "Path.home() resolved on the publication machine",
+      "encoding": "forward_slash",
+      "source_prefix_sha256": "131c15c6606ec7dd470df03e65606d1d9e3c7255bca220530432cb8cee2d1f48",
+      "include_trailing_separator": true,
+      "matching": "literal case-sensitive substring; applied in this listed order",
+      "replacement": "<user-home>/"
+    }
+  ],
+  "files": [
+    {
+      "file": "reports/materialization_profile.json",
+      "original_sha256": "fbb28ce5a973069f5ed9eced58b72497a4c74bd851073e29cb626de1e168e683",
+      "published_sha256": "9dc3f03dd831226a48a9e44b0cd889713790f61391f3105452d8512d0652065e",
+      "original_bytes": 2846,
+      "published_bytes": 2798,
+      "replacement_counts": {
+        "user_home:json_escaped_backslash": 6
+      },
+      "original_backup": "artifacts/publication/unredacted_reports/reports/materialization_profile.json",
+      "only_path_prefix_substitutions": true,
+      "bound_by_other_report_sha_before_redaction": false
+    },
+    {
+      "file": "reports/unit_tests.txt",
+      "original_sha256": "a601647e1a0f4634f9ee6154b2bdec782084a0cbcbe08aece640bb8d7fcbcd4f",
+      "published_sha256": "a5f9e5642a26835f995662a4d1992ee7e84a5132451cb3e37fd74b2db836f2bf",
+      "original_bytes": 19318,
+      "published_bytes": 19258,
+      "replacement_counts": {
+        "workspace:native_backslash": 1
+      },
+      "original_backup": "artifacts/publication/unredacted_reports/reports/unit_tests.txt",
+      "only_path_prefix_substitutions": true,
+      "bound_by_other_report_sha_before_redaction": false
+    },
+    {
+      "file": "reports/v2_final_unit_tests.txt",
+      "original_sha256": "cb94c2b01133390c431c9b37b8024311a99c297a072d304f98be290edbb9a437",
+      "published_sha256": "4574516cbfa73b0aed4e51fd3393ed0841ede70f2cb41e6bba1eefe6943b0d3c",
+      "original_bytes": 25673,
+      "published_bytes": 25613,
+      "replacement_counts": {
+        "workspace:native_backslash": 1
+      },
+      "original_backup": "artifacts/publication/unredacted_reports/reports/v2_final_unit_tests.txt",
+      "only_path_prefix_substitutions": true,
+      "bound_by_other_report_sha_before_redaction": false
+    },
+    {
+      "file": "reports/v2_full_unit_tests.txt",
+      "original_sha256": "ebf1ac93d180b13bca96d65bf37d9108d9fbd26a4402d12f4bbd7e430d1043c7",
+      "published_sha256": "8d708e78e2d6a909090a64976fd258b1267cc495e09c128e7dfec4f4ed756f6b",
+      "original_bytes": 25767,
+      "published_bytes": 25565,
+      "replacement_counts": {
+        "workspace:json_escaped_backslash": 1,
+        "workspace:native_backslash": 2,
+        "user_home:native_backslash": 3
+      },
+      "original_backup": "artifacts/publication/unredacted_reports/reports/v2_full_unit_tests.txt",
+      "only_path_prefix_substitutions": true,
+      "bound_by_other_report_sha_before_redaction": false
+    },
+    {
+      "file": "reports/v2_release_unit_tests.txt",
+      "original_sha256": "884b22e654fb48aedcbcfca892a281ad0226f8f67ed5394685ea45b843049e3d",
+      "published_sha256": "a4cea449bc3785f553f745de7433397f3c3ee38fa692df14d50d81b258a06678",
+      "original_bytes": 27467,
+      "published_bytes": 27407,
+      "replacement_counts": {
+        "workspace:native_backslash": 1
+      },
+      "original_backup": "artifacts/publication/unredacted_reports/reports/v2_release_unit_tests.txt",
+      "only_path_prefix_substitutions": true,
+      "bound_by_other_report_sha_before_redaction": false
+    },
+    {
+      "file": "reports/v2_unit_tests_initial.txt",
+      "original_sha256": "82052bda4b083aa635b35c5fcf5811de3ded34a8ffa601e4c560661ed17330c3",
+      "published_sha256": "2c2432a2c72ce3877530d146f1358be7c6b18cd68696af0049007c0c7f094ce1",
+      "original_bytes": 4182,
+      "published_bytes": 4122,
+      "replacement_counts": {
+        "workspace:native_backslash": 1
+      },
+      "original_backup": "artifacts/publication/unredacted_reports/reports/v2_unit_tests_initial.txt",
+      "only_path_prefix_substitutions": true,
+      "bound_by_other_report_sha_before_redaction": false
+    },
+    {
+      "file": "reports/v2_unit_tests_memory_attempt.txt",
+      "original_sha256": "15803109e8ced4bb1479eec1adcd80ec7803fb37b0acbee20cd43c4c83195199",
+      "published_sha256": "a291c3e3fe6c8ffb8a9c189e7dcf4870bac07d9cf97e7b52d2314d1343eccf61",
+      "original_bytes": 29684,
+      "published_bytes": 29084,
+      "replacement_counts": {
+        "workspace:native_backslash": 10
+      },
+      "original_backup": "artifacts/publication/unredacted_reports/reports/v2_unit_tests_memory_attempt.txt",
+      "only_path_prefix_substitutions": true,
+      "bound_by_other_report_sha_before_redaction": false
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "run_id": "ranker-seed29",
+  "selected_epoch": 1,
+  "selected_row_indices_sha256": "58dd0af6cba54cabcad6ceb8a729be40d7c88d6a1516da9ca6acaf414d93f6da",
+  "checkpoint_sha256": "2e4f27b5d18e2224e83362b6a64f0861f87922ca78a79b90f68cb7c230412add",
+  "data_manifest_sha256": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+  "training_source_sha256": {
+    "models.py": "d2379f85cfe6861458d87100d9e988069144e5a4b9e0e2519695763e1747b1af",
+    "train.py": "c325e7221be318a05acff3bc1c685dd57d9bd9c5af6d578b3e6e2b2158879a64",
+    "store.py": "0c6c3662478db583538bcb93b195761861688aaf01c1cfd3b1d5c6290054e08b",
+    "evaluate.py": "4dc7237f30a4e6b9fc305e538cd4951c57ac58a940127e34a22c1157b52dd1f8",
+    "metrics.py": "b1467c60980c2ccd27bdaf715191bf0d411acfb3115f12ea1b0003dce64e6008"
+  },
+  "scheduler_source_sha256": "8980977d0323e8a6bc161bc84b8cda72c20faf9a2109b35c1adc90137d2e8eff",
+  "scope": "fixed internal validation only; no official-dev label reads",
+  "rows": 12000,
+  "fixed_validation_rows": 12000,
+  "metric_equivalence_passed": true,
+  "per_impression_metric_equivalence_atol": 1e-12,
+  "metric_differences": {
+    "auc": {
+      "finite_pairs": 12000,
+      "same_nan_mask": true,
+      "max_absolute_difference": 0.0,
+      "pairs_differing_more_than_1e_12": 0,
+      "aggregate_mean_difference": 0.0
+    },
+    "mrr": {
+      "finite_pairs": 12000,
+      "same_nan_mask": true,
+      "max_absolute_difference": 0.0,
+      "pairs_differing_more_than_1e_12": 0,
+      "aggregate_mean_difference": 0.0
+    },
+    "ndcg5": {
+      "finite_pairs": 12000,
+      "same_nan_mask": true,
+      "max_absolute_difference": 0.0,
+      "pairs_differing_more_than_1e_12": 0,
+      "aggregate_mean_difference": 5.551115123125783e-17
+    },
+    "ndcg10": {
+      "finite_pairs": 12000,
+      "same_nan_mask": true,
+      "max_absolute_difference": 0.0,
+      "pairs_differing_more_than_1e_12": 0,
+      "aggregate_mean_difference": 0.0
+    }
+  },
+  "original": {
+    "seconds": 27.7260443999985,
+    "initial_rss_bytes": 275804160,
+    "max_observed_rss_bytes": 499593216,
+    "final_rss_bytes": 497930240,
+    "rss_sampling_interval_ms": 20
+  },
+  "scheduled": {
+    "seconds": 15.536803899987717,
+    "initial_rss_bytes": 497930240,
+    "max_observed_rss_bytes": 500195328,
+    "final_rss_bytes": 500195328,
+    "rss_sampling_interval_ms": 20
+  },
+  "observed_wall_time_ratio_original_over_scheduled": 1.7845397662527245,
+  "scheduling": {
+    "strategy": "stable_candidate_count",
+    "ranker_only": true,
+    "impressions": 12000,
+    "batch_size": 32,
+    "candidate_exposures": 477756,
+    "original_candidate_slots": 1906752,
+    "scheduled_candidate_slots": 482624,
+    "original_padding_slots": 1428996,
+    "scheduled_padding_slots": 4868,
+    "candidate_slot_ratio": 0.2531131473836136,
+    "padding_slot_ratio": 0.003406587562176521,
+    "same_population": true,
+    "same_candidates_within_each_impression": true,
+    "metric_rows_restored_to_original_order": true,
+    "wrapper_seconds": 15.536782199997106
+  },
+  "environment": {
+    "python": "3.10.21",
+    "torch": "2.14.0+cpu",
+    "threads": 1
+  },
+  "limitations": [
+    "One original-then-scheduled pair; shared desktop load and cache warmth are uncontrolled.",
+    "Float comparison covers each impression's four metrics, not candidate logits."
+  ]
+}

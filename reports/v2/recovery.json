@@ -1,0 +1,7 @@
+{
+  "observed_issue": "Previous interrupted temporal manifest consisted of zero bytes; default loader rejected it before training. Cause not established.",
+  "recovery": "Preserved incomplete directory locally; rebuilt all snapshots from frozen processed data; source totals and hashes checked.",
+  "incomplete_manifest_sha256": "3eb82b900640ab25533dc4397fb6d86708ad0abe34b2729c64702cb42d505bdd",
+  "accepted_manifest_sha256": "e7837008652092988418d3c52dafaa6120e870a16451c48e39e385aa14ebcfff",
+  "incomplete_artifacts_used_for_training": false
+}

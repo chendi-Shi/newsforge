@@ -1,0 +1,12 @@
+test_batch_32_boundary_and_nonranker_identity (test_evaluation_scheduler.EvaluationSchedulerTest) ... ok
+test_empty_history_dimension_and_tied_scores (test_evaluation_scheduler.EvaluationSchedulerTest) ... ok
+test_invalid_rows_and_single_impression (test_evaluation_scheduler.EvaluationSchedulerTest) ... ok
+test_nine_checkpoint_provenance_and_original_warmup_schema (test_evaluation_scheduler.EvaluationSchedulerTest) ... ok
+test_real_evaluator_restores_every_row_and_all_history_masks (test_evaluation_scheduler.EvaluationSchedulerTest) ... ok
+test_stable_sort_and_known_padding_slots (test_evaluation_scheduler.EvaluationSchedulerTest) ... ok
+test_validation_proof_rejects_changed_identity_or_failed_metrics (test_evaluation_scheduler.EvaluationSchedulerTest) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 2.142s
+
+OK

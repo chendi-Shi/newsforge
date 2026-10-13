@@ -1,0 +1,89 @@
+{
+  "dataset": "MIND-large",
+  "dataset_version": "upstream Recommenders public release",
+  "rows": 2609219,
+  "impressions": 2609219,
+  "candidates": 97592931,
+  "positives": 3958501,
+  "users": 750434,
+  "news": 104151,
+  "news_including_padding": 104152,
+  "official_train_rows": 2232748,
+  "official_dev_rows": 376471,
+  "train_cutoff_timestamp": 1573716628,
+  "splits": {
+    "0": {
+      "impressions": 1897844,
+      "candidates": 70314722,
+      "positives": 2869013,
+      "users": 667880,
+      "candidate_news": 24643,
+      "min_timestamp": 1573257600,
+      "max_timestamp": 1573716628,
+      "positive_rate": 0.0408024510144547
+    },
+    "1": {
+      "impressions": 334904,
+      "candidates": 13192652,
+      "positives": 514643,
+      "users": 235958,
+      "candidate_news": 8028,
+      "min_timestamp": 1573716629,
+      "max_timestamp": 1573775999,
+      "positive_rate": 0.039009821527923275
+    },
+    "2": {
+      "impressions": 376471,
+      "candidates": 14085557,
+      "positives": 574845,
+      "users": 255990,
+      "candidate_news": 6997,
+      "min_timestamp": 1573776000,
+      "max_timestamp": 1573862383,
+      "positive_rate": 0.040810952665911615
+    }
+  },
+  "split_names": {
+    "0": "train",
+    "1": "internal_validation",
+    "2": "locked_official_dev"
+  },
+  "internal_split": "official train, first ~85% by timestamp; ties kept together",
+  "test_policy": "official dev full candidate sets, excluded from fitting and hyperparameter selection",
+  "history_length": 20,
+  "history_padding": "right; index 0",
+  "history_truncation": "last 20 clicked news",
+  "history_source": "provided request-time history, ordered by time; no reconstruction from held-out labels",
+  "timestamp_policy": "source has no timezone; interpreted as UTC only for a deterministic epoch coordinate",
+  "news_first_seen_policy": "minimum request time observing ID in history/candidates; availability proxy, not publication time",
+  "unobserved_news_first_seen": 9223372036854775807,
+  "user_id_encoding": "integer suffix of source U-prefixed ID",
+  "impression_id_policy": "original numeric ID, may repeat across train/dev; global array row is unique",
+  "news_id_policy": "union catalog index only, not a learned item-ID feature",
+  "features": {
+    "dimensions": 115,
+    "text_dimensions": 96,
+    "svd_actual_components": 96,
+    "tfidf_vocabulary_size": 60000,
+    "tfidf_max_features": 60000,
+    "ngram_range": [
+      1,
+      2
+    ],
+    "min_df": 2,
+    "fit_news": 98673,
+    "fit_policy": "only history/candidate IDs observable in split 0",
+    "categories": 18,
+    "category_unknown_column": 96,
+    "text_l2_normalized": true,
+    "padding_row_all_zero": true,
+    "svd_explained_variance_ratio_sum": 0.07345034182071686
+  },
+  "data_quality": {
+    "missing_catalog_news": 0,
+    "catalog_conflicts_kept_train_version": 0,
+    "empty_history_impressions": 57335,
+    "duplicate_candidate_impressions": 0
+  },
+  "processing_seconds": 1964.0151380000025
+}

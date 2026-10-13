@@ -1,0 +1,20 @@
+{
+  "history_count": 20,
+  "candidate_count": 100,
+  "recommendation_count": 10,
+  "shortfall_count": 0,
+  "model_version": "36c40c93dd64bb101363b5eb0783120459b7403d4d5e6966f29c6fcc5c4785a9",
+  "index_version": "4b879793af61eecd30070b03603b0faca919d04a3b09a129d05ef03ed4f843a3",
+  "checks": {
+    "internal_validation_only": true,
+    "nonempty_history": true,
+    "labels_not_read": true,
+    "model_cutoff_respected": true,
+    "response_versions_and_filters_valid": true,
+    "all_titles_found": true,
+    "utf8_terminal_output_verified": true,
+    "no_serving_processes_after_demo": true,
+    "temporary_server_log_removed": true,
+    "matches_formal_benchmark_versions": true
+  }
+}

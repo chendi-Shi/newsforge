@@ -1,0 +1,9 @@
+.venv/
+data/
+artifacts/
+__pycache__/
+*.pyc
+*.log
+newsforge-source-and-results.zip
+tests/*-test-*/
+tests/tmp*/

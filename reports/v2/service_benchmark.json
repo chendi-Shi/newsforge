@@ -1,0 +1,343 @@
+{
+  "benchmark_version": 2,
+  "created_at": "2026-10-13T05:25:55.079255+00:00",
+  "sampling": {
+    "split": "internal_validation",
+    "seed": 2026,
+    "queries": 64,
+    "minimum_timestamp": 1573722000,
+    "row_sha256": "8d10c6738082e15d9defc4ab395ca01a90b516ba393929e3608180ee250b8081"
+  },
+  "protocol": {
+    "transport": "localhost HTTP via urllib; fresh connection per request",
+    "request_order": "ascending sampled row IDs, same order in each round",
+    "cpu_threads": 1,
+    "server_workers": 1,
+    "execution": "offline worker exits before HTTP server starts",
+    "latency_includes": "client JSON serialization, connection, server work, response JSON decoding",
+    "timing_limit": "Shared desktop CPU; fixed small workload, not production capacity or a confidence interval."
+  },
+  "source_sha256": "6e63e4439fac65ae34bd308c3ee6215405a1e5651a7b238e87bcc08953df4365",
+  "selection_sha256": "2b1d7e70c24d36fadf8de076bb9ffe3a7ce0e37a46bb25b8978c03bc757c7280",
+  "processed_manifest_sha256": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+  "private_evidence": {
+    "requests_sha256": "53146af990cae3a70e2eaad12a3d9bfeeb56e3654bb456df6a3bc23762177ef5",
+    "offline_sha256": "98e0cdf6d2161ee19ad32564b58bb1d07fd9b0f4eb064ddc8d0049a3637cea0d",
+    "http_records_sha256": "38ed525ae9c153c2b978e71948a3f167822c42d435ddb3f8bd062cac13aadfd9"
+  },
+  "health": {
+    "status": "ok",
+    "api_version": "v2",
+    "model_version": "12cbf48e92244881b4fa7a6a5bef8f009c5dd70b50226effc1108fe31eefa3b2",
+    "candidate_config": {
+      "pool_size": 100,
+      "route_size": 200,
+      "recent_hours": 24,
+      "channels": [
+        "popular"
+      ],
+      "freeze_feedback": false,
+      "rank_constant": 60
+    },
+    "bindings": {
+      "candidate_generator_version": "7c7d7038646763be2281bc2789cefb1df785545f83d6359367e97422c02d05be",
+      "candidate_inputs": {
+        "features": "c4831220c97afe072eb5af628e740860b4c665624b47e5bc2a1655169e60f3dc",
+        "first_seen": "e65cb72ccfdd4a2afdb9325b68ddc6ed34b4dca858edd686e6a2c23893c5b414",
+        "train_clicks": "b36c71020a42d05a9f1e7b7de4d5e661b6af1b56d27898bac5cfde56ee23039d",
+        "train_exposures": "8437389af916eec567609182c9f2eee3f2f1897a29754ca4274717318dcc3848",
+        "embeddings": "30151a2cce8070b6100a654416f635ad1a8a6aaa37056a33f2b37cbb07544b1a",
+        "retriever": "01225e5d5d39eff85b1e9fc1345276530066a1efc20918ada96a54e2bd405526",
+        "encoder": "769db4a4ab25f879e0f3397bf0eb2922cf29d2bf3256bf1c4c2274dec2261283",
+        "encoder_manifest": "aa423e79664e3d4a2bef9479c1e4bf9f77baaf23eb56a9fea3c63b84fa70af33",
+        "data_manifest": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+        "news_ids": "c5e4332fd24c20c42c9199d7e1d5ceae2518d28996e2f4ea6665207f064b164f",
+        "temporal_manifest": "e7837008652092988418d3c52dafaa6120e870a16451c48e39e385aa14ebcfff"
+      },
+      "candidate_config_sha256": "f031199f9a209c3e3767471eb819b96fd92946e3db77d5ca659a71851c7a9699",
+      "selection_sha256": "2b1d7e70c24d36fadf8de076bb9ffe3a7ce0e37a46bb25b8978c03bc757c7280",
+      "temporal_manifest_sha256": "e7837008652092988418d3c52dafaa6120e870a16451c48e39e385aa14ebcfff",
+      "temporal_policy_sha256": "be3838344edd2d0d9f4b88fb7727d8d6a8d9a60714f0ac77fb99faa0917e89d2",
+      "ranker_sha256": null,
+      "ranker_manifest_sha256": null,
+      "reranker_enabled": false,
+      "service_source_sha256": "3c5125e2ed8550132f94438335027849d30f80adedc1d1b626b951d4aa57c293",
+      "runtime_source_sha256": {
+        "retrieval.py": "51f55d67591752d67b7565650e2d77333995925384ee6ba3083f0747b2a3eaf9",
+        "serve.py": "3c5125e2ed8550132f94438335027849d30f80adedc1d1b626b951d4aa57c293",
+        "temporal.py": "eab4f03b0d2db5aedcce1b6744a2c2df05521611525c179c36b8d81cc9b4a80a",
+        "ranker.py": "524f96ce39eeeda9ff04de58d7842e09840a0e2513bf3bcf507d8702dcb3c00c"
+      }
+    },
+    "catalogue_rows": 104152,
+    "default_as_of": 1573862383,
+    "minimum_as_of": 1573722000,
+    "maximum_as_of": 1573862383,
+    "timestamp_policy": "strict first_seen < hourly snapshot cutoff; no future snapshot fallback",
+    "device": "cpu",
+    "threads": 1,
+    "native_thread_pools": [
+      {
+        "internal_api": "openblas",
+        "prefix": "libopenblas",
+        "num_threads": 1
+      }
+    ],
+    "reranker_enabled": false
+  },
+  "api_contract_checks": [
+    {
+      "name": "oov_history",
+      "expected_status": 422,
+      "observed_status": 422,
+      "passed": true
+    },
+    {
+      "name": "pad_history",
+      "expected_status": 422,
+      "observed_status": 422,
+      "passed": true
+    },
+    {
+      "name": "negative_timestamp",
+      "expected_status": 422,
+      "observed_status": 422,
+      "passed": true
+    },
+    {
+      "name": "before_coverage",
+      "expected_status": 422,
+      "observed_status": 422,
+      "passed": true
+    },
+    {
+      "name": "after_coverage",
+      "expected_status": 422,
+      "observed_status": 422,
+      "passed": true
+    },
+    {
+      "name": "invalid_top_k",
+      "expected_status": 422,
+      "observed_status": 422,
+      "passed": true
+    },
+    {
+      "name": "empty_batch",
+      "expected_status": 422,
+      "observed_status": 422,
+      "passed": true
+    },
+    {
+      "name": "oversized_batch",
+      "expected_status": 422,
+      "observed_status": 422,
+      "passed": true
+    },
+    {
+      "name": "empty_history",
+      "expected_status": 200,
+      "observed_status": 200,
+      "passed": true
+    },
+    {
+      "name": "coverage_minimum",
+      "expected_status": 200,
+      "observed_status": 200,
+      "passed": true
+    },
+    {
+      "name": "coverage_maximum",
+      "expected_status": 200,
+      "observed_status": 200,
+      "passed": true
+    },
+    {
+      "name": "hour_boundary_minus_one",
+      "expected_status": 200,
+      "observed_status": 200,
+      "passed": true,
+      "expected_cutoff": 1573743600,
+      "observed_cutoff": 1573743600
+    },
+    {
+      "name": "hour_boundary_exact",
+      "expected_status": 200,
+      "observed_status": 200,
+      "passed": true,
+      "expected_cutoff": 1573747200,
+      "observed_cutoff": 1573747200
+    }
+  ],
+  "configurations": [
+    {
+      "batch_size": 1,
+      "concurrency": 1,
+      "rounds": 3,
+      "warmup_http_requests": 8,
+      "measured_http_requests": 192,
+      "measured_queries": 192,
+      "wall_seconds": 12.211899800000538,
+      "successful_queries_per_second": 15.722369421995385,
+      "latency_unit": "one HTTP request, including all queries in a batch",
+      "latency_ms": {
+        "p50": 19.946249998611165,
+        "p95": 203.83265500086054,
+        "p99": 374.0328110008704,
+        "max": 441.75340000037977
+      },
+      "http_errors": 0,
+      "failed_queries": 0,
+      "offline_http_mismatches": 0,
+      "queries_with_output_shortfall": 0,
+      "queries_with_retrieval_shortfall": 0,
+      "round_results": [
+        {
+          "round": 1,
+          "wall_seconds": 4.661559199999829,
+          "successful_queries_per_second": 13.729311857715409
+        },
+        {
+          "round": 2,
+          "wall_seconds": 3.5843729999996867,
+          "successful_queries_per_second": 17.8552845923138
+        },
+        {
+          "round": 3,
+          "wall_seconds": 3.965967600001022,
+          "successful_queries_per_second": 16.137297742922435
+        }
+      ]
+    },
+    {
+      "batch_size": 8,
+      "concurrency": 1,
+      "rounds": 3,
+      "warmup_http_requests": 8,
+      "measured_http_requests": 24,
+      "measured_queries": 192,
+      "wall_seconds": 9.397455600001194,
+      "successful_queries_per_second": 20.431062212198757,
+      "latency_unit": "one HTTP request, including all queries in a batch",
+      "latency_ms": {
+        "p50": 361.68540000016947,
+        "p95": 784.4088899994852,
+        "p99": 863.9593659992534,
+        "max": 874.4647999992594
+      },
+      "http_errors": 0,
+      "failed_queries": 0,
+      "offline_http_mismatches": 0,
+      "queries_with_output_shortfall": 0,
+      "queries_with_retrieval_shortfall": 0,
+      "round_results": [
+        {
+          "round": 1,
+          "wall_seconds": 3.3318845000012516,
+          "successful_queries_per_second": 19.208348908846016
+        },
+        {
+          "round": 2,
+          "wall_seconds": 3.0123419999999896,
+          "successful_queries_per_second": 21.245927587239503
+        },
+        {
+          "round": 3,
+          "wall_seconds": 3.053229099999953,
+          "successful_queries_per_second": 20.961414261380185
+        }
+      ]
+    },
+    {
+      "batch_size": 1,
+      "concurrency": 4,
+      "rounds": 3,
+      "warmup_http_requests": 8,
+      "measured_http_requests": 192,
+      "measured_queries": 192,
+      "wall_seconds": 11.71376059999784,
+      "successful_queries_per_second": 16.390978658043892,
+      "latency_unit": "one HTTP request, including all queries in a batch",
+      "latency_ms": {
+        "p50": 205.39240000016434,
+        "p95": 537.9501949998485,
+        "p99": 657.8764769998634,
+        "max": 946.7043000004196
+      },
+      "http_errors": 0,
+      "failed_queries": 0,
+      "offline_http_mismatches": 0,
+      "queries_with_output_shortfall": 0,
+      "queries_with_retrieval_shortfall": 0,
+      "round_results": [
+        {
+          "round": 1,
+          "wall_seconds": 4.742272400000729,
+          "successful_queries_per_second": 13.49563976965772
+        },
+        {
+          "round": 2,
+          "wall_seconds": 2.8923327999982575,
+          "successful_queries_per_second": 22.127467489231723
+        },
+        {
+          "round": 3,
+          "wall_seconds": 4.079155399998854,
+          "successful_queries_per_second": 15.689522394762893
+        }
+      ]
+    },
+    {
+      "batch_size": 8,
+      "concurrency": 4,
+      "rounds": 3,
+      "warmup_http_requests": 8,
+      "measured_http_requests": 24,
+      "measured_queries": 192,
+      "wall_seconds": 7.562836499999321,
+      "successful_queries_per_second": 25.38730012211916,
+      "latency_unit": "one HTTP request, including all queries in a batch",
+      "latency_ms": {
+        "p50": 1002.5605999999243,
+        "p95": 1271.9784900006744,
+        "p99": 1297.196012998993,
+        "max": 1303.4075999985362
+      },
+      "http_errors": 0,
+      "failed_queries": 0,
+      "offline_http_mismatches": 0,
+      "queries_with_output_shortfall": 0,
+      "queries_with_retrieval_shortfall": 0,
+      "round_results": [
+        {
+          "round": 1,
+          "wall_seconds": 3.1431814000006852,
+          "successful_queries_per_second": 20.361535608471737
+        },
+        {
+          "round": 2,
+          "wall_seconds": 2.1896247999993648,
+          "successful_queries_per_second": 29.228751884806275
+        },
+        {
+          "round": 3,
+          "wall_seconds": 2.230030299999271,
+          "successful_queries_per_second": 28.699161621266278
+        }
+      ]
+    }
+  ],
+  "resources": {
+    "server_peak_rss_bytes": 192364544,
+    "minimum_system_available_bytes": 799453184,
+    "resource_samples": 376,
+    "sample_interval_seconds": 0.1,
+    "sampling_error": null,
+    "measurement_window": "healthy server: API checks and all four HTTP cases; startup excluded",
+    "server_pid": 1952,
+    "server_create_time": 1791869087.0714574,
+    "rss_scope": "one owned HTTP server process; excludes benchmark client"
+  },
+  "elapsed_seconds": 69.33226540000032,
+  "passed": true
+}

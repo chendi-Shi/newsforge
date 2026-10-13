@@ -1,0 +1,22 @@
+{
+  "preflight": {
+    "available_bytes": 2082377728,
+    "float64_memmap_bytes": 88000000,
+    "estimated_binned_bytes": 11000000,
+    "working_and_system_reserve_bytes": 939524096,
+    "required_available_bytes": 1038524096,
+    "allowed": true
+  },
+  "observed": {
+    "pid": 6440,
+    "max_observed_rss_bytes": 958095360,
+    "minimum_system_available_bytes": 784420864,
+    "sampling_interval_seconds": 0.1,
+    "scope": "actual process RSS including mapped pages; sampled peak only"
+  },
+  "feature_construction_seconds": 23.15462789999998,
+  "training_matrix_bytes": 88000000,
+  "validation_feature_bytes": 20806720,
+  "source_sha256": "524f96ce39eeeda9ff04de58d7842e09840a0e2513bf3bcf507d8702dcb3c00c",
+  "official_dev_evaluated": false
+}

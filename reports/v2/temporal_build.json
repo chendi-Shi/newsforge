@@ -1,0 +1,151 @@
+{
+  "artifact_version": 1,
+  "created_at_utc": "2026-10-13T03:01:43.103534+00:00",
+  "policy": {
+    "version": "hour_end_ema_strict_delay_v1",
+    "bucket_seconds": 3600,
+    "feedback_delay_seconds": 3600,
+    "half_life_seconds": 43200,
+    "source_rule": "source_timestamp < snapshot_start - feedback_delay_seconds",
+    "catalogue_rule": "news_id > 0 and first_seen < cutoff",
+    "ema_clock": "cutoff; aggregate each event hour at its end, then decay between hour ends",
+    "ema_recurrence": "state(C) = 2**(-1/12) * state(C-3600) + histogram[C-3600,C)",
+    "availability_semantics": "first observed in request history/candidates, not publication time",
+    "feedback_semantics": "hypothetical fixed delay; actual click-arrival timestamps are unavailable",
+    "pad_index": 0
+  },
+  "policy_hash": "be3838344edd2d0d9f4b88fb7727d8d6a8d9a60714f0ac77fb99faa0917e89d2",
+  "builder_source_sha256": "eab4f03b0d2db5aedcce1b6744a2c2df05521611525c179c36b8d81cc9b4a80a",
+  "sources": {
+    "manifest.json": {
+      "sha256": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+      "bytes": 3077
+    },
+    "all_timestamps.npy": {
+      "sha256": "b701fd8ec3632243b1e6b67b5544f18e52023872c6d5e61ce9ef003c520a9e4e",
+      "bytes": 20873880
+    },
+    "all_offsets.npy": {
+      "sha256": "43ab7dfa5f2b2c967b3c9ec5b9813794622aeb44b132a6f7a036983f3954cbc5",
+      "bytes": 20873888
+    },
+    "all_candidates.npy": {
+      "sha256": "1494666249092025ae7b6ee0203ff205fbcee697f0bd17e068f100da9154a143",
+      "bytes": 390371852
+    },
+    "all_labels.npy": {
+      "sha256": "7158a9c62acbb1f6345e543e1dddcd6e99954547e25324fe89b65a5d10e614a4",
+      "bytes": 97593059
+    },
+    "news_first_seen.npy": {
+      "sha256": "e65cb72ccfdd4a2afdb9325b68ddc6ed34b4dca858edd686e6a2c23893c5b414",
+      "bytes": 833344
+    },
+    "news_train_clicks.npy": {
+      "sha256": "b36c71020a42d05a9f1e7b7de4d5e661b6af1b56d27898bac5cfde56ee23039d",
+      "bytes": 833344
+    },
+    "news_train_exposures.npy": {
+      "sha256": "8437389af916eec567609182c9f2eee3f2f1897a29754ca4274717318dcc3848",
+      "bytes": 833344
+    }
+  },
+  "arrays": {
+    "hour_clicks.npy": {
+      "sha256": "55602706313ab63f654d7ea11e38df3d2d78004b5f862850dcaed0eb24a88bd5",
+      "bytes": 69990272,
+      "shape": [
+        168,
+        104152
+      ],
+      "dtype": "uint32"
+    },
+    "hour_exposures.npy": {
+      "sha256": "a405574d7d32ef27c8e45f19e4d30ae39161f743cfbba9feb0f1cca5a718de63",
+      "bytes": 69990272,
+      "shape": [
+        168,
+        104152
+      ],
+      "dtype": "uint32"
+    },
+    "snapshot_times.npy": {
+      "sha256": "c5aa5ad2d316e5a05ae2b349e083b6ce654152d397a20f0ad1bc7702c63863af",
+      "bytes": 1472,
+      "shape": [
+        168
+      ],
+      "dtype": "int64"
+    },
+    "snapshot_clicks.npy": {
+      "sha256": "8eaa6332fa3613021b18ec4a44c24d8197d9d9ccc07118fd8be491445ade7e87",
+      "bytes": 69990272,
+      "shape": [
+        168,
+        104152
+      ],
+      "dtype": "float32"
+    },
+    "snapshot_exposures.npy": {
+      "sha256": "069fc1748c31f8e919194b5da9f0f2612e913253ef07d2e2fcc2ae0643de4fdf",
+      "bytes": 69990272,
+      "shape": [
+        168,
+        104152
+      ],
+      "dtype": "float32"
+    },
+    "frozen_clicks.npy": {
+      "sha256": "392a04134ba9bd64b8efd36c4529216a58e57a66ee72006f63015f0b0e8f661c",
+      "bytes": 416736,
+      "shape": [
+        104152
+      ],
+      "dtype": "float32"
+    },
+    "frozen_exposures.npy": {
+      "sha256": "f01b94455df0fcbc0e795ad8b8471277ab3aa819752c3f9fab8f7f01f4129ca3",
+      "bytes": 416736,
+      "shape": [
+        104152
+      ],
+      "dtype": "float32"
+    }
+  },
+  "data_manifest_sha256": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+  "n_news": 104152,
+  "n_snapshots": 168,
+  "min_as_of": 1573257600,
+  "max_as_of": 1573862383,
+  "snapshot_start_min": 1573257600,
+  "snapshot_start_max": 1573858800,
+  "train_cutoff_timestamp": 1573716628,
+  "internal_evaluation_min_timestamp": 1573722000,
+  "chunk_candidates": 200000,
+  "counts": {
+    "source_rows": 2609219,
+    "source_candidate_exposures": 97592931,
+    "source_positive_clicks": 3958501,
+    "histogram_counts_match_source": true,
+    "padding_zero": true
+  },
+  "validation": {
+    "array_hashes_generated": true,
+    "histogram_totals_recomputed": true,
+    "snapshot_state_checked_finite_nonnegative_clicks_le_exposures": true
+  },
+  "memory": {
+    "sampling_interval_ms": 100,
+    "samples": 412,
+    "initial_rss_bytes": 32182272,
+    "max_observed_rss_bytes": 848531456,
+    "minimum_system_available_bytes": 2327638016,
+    "note": "RSS includes mapped pages; sampling can miss peaks; shared desktop load is uncontrolled."
+  },
+  "seconds": 46.03091599999999,
+  "environment": {
+    "python": "3.10.21",
+    "numpy": "1.26.4"
+  },
+  "scope": "v2 retrospective temporal replay; v1 dev was previously inspected; no model fit or metric selection"
+}

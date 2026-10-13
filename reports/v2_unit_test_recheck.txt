@@ -1,0 +1,6 @@
+test_runtime_module_does_not_import_torch (tests.test_v2_ranker.V2RankerTests) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 28.392s
+
+OK

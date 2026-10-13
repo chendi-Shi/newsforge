@@ -1,0 +1,29 @@
+{
+  "dataset": "MIND-large",
+  "upstream_download_code": "https://github.com/recommenders-team/recommenders/blob/main/recommenders/datasets/mind.py",
+  "terms": "https://github.com/msnews/MIND/blob/master/MSR%20License_Data.pdf",
+  "use": "non-commercial research/testing/personal experimentation",
+  "redistribution": "Do not redistribute raw dataset; publish code and aggregate results only",
+  "downloads": [
+    {
+      "url": "https://huggingface.co/datasets/Recommenders/MIND/resolve/main/MINDlarge_train.zip",
+      "bytes": 531360717,
+      "sha256": "7e7da0ecc45db1d8769eebf92301675e7af443b0d5266ac12b6e102bb8399233",
+      "extracted": [
+        "news.tsv",
+        "behaviors.tsv"
+      ],
+      "source": "https://github.com/recommenders-team/recommenders/blob/main/recommenders/datasets/mind.py"
+    },
+    {
+      "url": "https://huggingface.co/datasets/Recommenders/MIND/resolve/main/MINDlarge_dev.zip",
+      "bytes": 103592887,
+      "sha256": "67b0437b48b6baee5655b6063a56d29edbcc92308fc0140555b0ae27263cf9e9",
+      "extracted": [
+        "news.tsv",
+        "behaviors.tsv"
+      ],
+      "source": "https://github.com/recommenders-team/recommenders/blob/main/recommenders/datasets/mind.py"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+# Optional figure generation, installed after requirements.txt or the v1 lock.
+# Observed in the working Python 3.10 environment; not a transitive/hash lock.
+# Actual plotting dependency versions are recorded in ablation.metadata.json.
+matplotlib==3.10.9

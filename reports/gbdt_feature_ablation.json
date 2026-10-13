@@ -1,0 +1,404 @@
+{
+  "amendment_stage": "added during internal validation while official dev remained locked; not part of the original feature protocol",
+  "reason": "give the tree baseline access to additional raw content information also available to neural models",
+  "original_protocol": "similarity-only 15 features, fixed 80 rounds; original model/report/validation arrays retained byte-for-byte",
+  "selection_metric": "internal-validation impression-macro ndcg10",
+  "tie_break": "similarity",
+  "selected_feature_mode": "rich",
+  "official_development_test_evaluated": false,
+  "shared_validation_row_indices_sha256": "58dd0af6cba54cabcad6ceb8a729be40d7c88d6a1516da9ca6acaf414d93f6da",
+  "shared_selected_positive_indices_sha256": "f6d4be72389414279acde85854aef0471e28657c29ac0e129433511a9db0945a",
+  "configurations": {
+    "similarity": {
+      "feature_count": 15,
+      "internal_validation": {
+        "impressions": 12000,
+        "candidate_exposures": 477756,
+        "metrics": {
+          "auc": {
+            "mean": 0.5885808624422469,
+            "eligible_impressions": 12000
+          },
+          "mrr": {
+            "mean": 0.2654069508419207,
+            "eligible_impressions": 12000
+          },
+          "ndcg5": {
+            "mean": 0.279698915266312,
+            "eligible_impressions": 12000
+          },
+          "ndcg10": {
+            "mean": 0.339476257586779,
+            "eligible_impressions": 12000
+          }
+        },
+        "groups": {
+          "empty_history": {
+            "impressions": 338,
+            "metrics": {
+              "auc": {
+                "mean": 0.5471022091537059,
+                "eligible_impressions": 338
+              },
+              "mrr": {
+                "mean": 0.2395711969161613,
+                "eligible_impressions": 338
+              },
+              "ndcg5": {
+                "mean": 0.24857984655885346,
+                "eligible_impressions": 338
+              },
+              "ndcg10": {
+                "mean": 0.30544830163591175,
+                "eligible_impressions": 338
+              }
+            }
+          },
+          "history_1_to_5": {
+            "impressions": 1741,
+            "metrics": {
+              "auc": {
+                "mean": 0.5546867694277517,
+                "eligible_impressions": 1741
+              },
+              "mrr": {
+                "mean": 0.2745677198968602,
+                "eligible_impressions": 1741
+              },
+              "ndcg5": {
+                "mean": 0.28674000052376164,
+                "eligible_impressions": 1741
+              },
+              "ndcg10": {
+                "mean": 0.34159731050894926,
+                "eligible_impressions": 1741
+              }
+            }
+          },
+          "history_6_to_20": {
+            "impressions": 9921,
+            "metrics": {
+              "auc": {
+                "mean": 0.5959419551496112,
+                "eligible_impressions": 9921
+              },
+              "mrr": {
+                "mean": 0.26467956306873824,
+                "eligible_impressions": 9921
+              },
+              "ndcg5": {
+                "mean": 0.27952350107317636,
+                "eligible_impressions": 9921
+              },
+              "ndcg10": {
+                "mean": 0.3402633451761242,
+                "eligible_impressions": 9921
+              }
+            }
+          },
+          "has_train_unseen_clicked_news": {
+            "impressions": 904,
+            "metrics": {
+              "auc": {
+                "mean": 0.5705994707558584,
+                "eligible_impressions": 904
+              },
+              "mrr": {
+                "mean": 0.2466912550217068,
+                "eligible_impressions": 904
+              },
+              "ndcg5": {
+                "mean": 0.2828681026379116,
+                "eligible_impressions": 904
+              },
+              "ndcg10": {
+                "mean": 0.34330376014857444,
+                "eligible_impressions": 904
+              }
+            }
+          },
+          "has_zero_train_click_news": {
+            "impressions": 2182,
+            "metrics": {
+              "auc": {
+                "mean": 0.5991344152733228,
+                "eligible_impressions": 2182
+              },
+              "mrr": {
+                "mean": 0.2575703866120076,
+                "eligible_impressions": 2182
+              },
+              "ndcg5": {
+                "mean": 0.28460014652652565,
+                "eligible_impressions": 2182
+              },
+              "ndcg10": {
+                "mean": 0.34322071801862913,
+                "eligible_impressions": 2182
+              }
+            }
+          }
+        },
+        "seconds": 44.09700999999768,
+        "protocol": "all logged candidates; impression macro average; no evaluation negative sampling",
+        "metric_columns": [
+          "auc",
+          "mrr",
+          "ndcg5",
+          "ndcg10"
+        ]
+      },
+      "config": {
+        "max_iter": 80,
+        "learning_rate": 0.1,
+        "max_leaf_nodes": 31,
+        "l2_regularization": 1.0,
+        "early_stopping": false,
+        "random_state": 2026
+      },
+      "sampling": {
+        "eligible_training_positive_pairs": 2869013,
+        "selected_positive_pairs": 500000,
+        "binary_training_examples": 2500000,
+        "positive_pair_cap": 500000,
+        "positive_pairs_subsampled": true,
+        "positive_pair_selection": "uniform without replacement, sorted cache indices; all when below cap",
+        "selected_positive_indices_sha256": "f6d4be72389414279acde85854aef0471e28657c29ac0e129433511a9db0945a",
+        "seed": 2026,
+        "negatives_per_positive": 4,
+        "negative_sampling_with_replacement": true,
+        "negative_policy": "four draws from Store's fixed pool of label=0 articles in the same split-0 impression",
+        "feature_matrix_bytes": 150000000,
+        "feature_construction_seconds": 56.33378220000304,
+        "calibration": "sampled 1:4 binary objective; probabilities are ranking scores, not population CTR",
+        "source_training_cache": {
+          "cache_version": 3,
+          "pool_size": 16,
+          "sampler": "grouped_random_keys_v1",
+          "max_chunk_exposures": 400000,
+          "data_manifest_sha256": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+          "features_sha256": "c4831220c97afe072eb5af628e740860b4c665624b47e5bc2a1655169e60f3dc",
+          "seed": 20261010,
+          "train_impressions": 1897844,
+          "positive_training_examples": 2869013,
+          "skipped_no_positive_or_negative": 0,
+          "seconds": 97.51093020000553,
+          "sampling_seconds": 68.3819180999999,
+          "sampling_chunks": 176,
+          "mean_history_chunk_rows": 7294,
+          "negative_policy": "Only label=0 in the same training impression; exclude every ID with any positive occurrence; no held-out labels.",
+          "sampling_policy": "Uniform exposure-occurrence sample without replacement when count >= pool_size; otherwise independent draws with replacement. Fixed seed and chunk protocol shared across arms.",
+          "rng_change": "RNG consumption differs from the former per-row numpy.choice implementation; the sampling distribution and eligible item policy are unchanged."
+        }
+      },
+      "threads": 1,
+      "fit_seconds": 56.74736039999698,
+      "total_seconds": 159.1337996999937,
+      "memory_observed": null,
+      "preserved_training_report": "gbdt_similarity_training.json",
+      "preserved_model_sha256": "a3af20ea19773537417f129faa57121610ff65424e1f82d873fe966382e37aa6"
+    },
+    "rich": {
+      "feature_count": 85,
+      "internal_validation": {
+        "impressions": 12000,
+        "candidate_exposures": 477756,
+        "metrics": {
+          "auc": {
+            "mean": 0.6409865183856497,
+            "eligible_impressions": 12000
+          },
+          "mrr": {
+            "mean": 0.28946184335636066,
+            "eligible_impressions": 12000
+          },
+          "ndcg5": {
+            "mean": 0.31340826959326096,
+            "eligible_impressions": 12000
+          },
+          "ndcg10": {
+            "mean": 0.3728375603123728,
+            "eligible_impressions": 12000
+          }
+        },
+        "groups": {
+          "empty_history": {
+            "impressions": 338,
+            "metrics": {
+              "auc": {
+                "mean": 0.5714962625986338,
+                "eligible_impressions": 338
+              },
+              "mrr": {
+                "mean": 0.23886425538172373,
+                "eligible_impressions": 338
+              },
+              "ndcg5": {
+                "mean": 0.2542791401806097,
+                "eligible_impressions": 338
+              },
+              "ndcg10": {
+                "mean": 0.3107454008369152,
+                "eligible_impressions": 338
+              }
+            }
+          },
+          "history_1_to_5": {
+            "impressions": 1741,
+            "metrics": {
+              "auc": {
+                "mean": 0.6146176986114045,
+                "eligible_impressions": 1741
+              },
+              "mrr": {
+                "mean": 0.29977541401496577,
+                "eligible_impressions": 1741
+              },
+              "ndcg5": {
+                "mean": 0.3186749196274939,
+                "eligible_impressions": 1741
+              },
+              "ndcg10": {
+                "mean": 0.3732034101691953,
+                "eligible_impressions": 1741
+              }
+            }
+          },
+          "history_6_to_20": {
+            "impressions": 9921,
+            "metrics": {
+              "auc": {
+                "mean": 0.6479813598011291,
+                "eligible_impressions": 9921
+              },
+              "mrr": {
+                "mean": 0.2893757691923445,
+                "eligible_impressions": 9921
+              },
+              "ndcg5": {
+                "mean": 0.31449852340153395,
+                "eligible_impressions": 9921
+              },
+              "ndcg10": {
+                "mean": 0.3748887855217243,
+                "eligible_impressions": 9921
+              }
+            }
+          },
+          "has_train_unseen_clicked_news": {
+            "impressions": 904,
+            "metrics": {
+              "auc": {
+                "mean": 0.6769705549833446,
+                "eligible_impressions": 904
+              },
+              "mrr": {
+                "mean": 0.2996079465498503,
+                "eligible_impressions": 904
+              },
+              "ndcg5": {
+                "mean": 0.34670000926327316,
+                "eligible_impressions": 904
+              },
+              "ndcg10": {
+                "mean": 0.3948587886836629,
+                "eligible_impressions": 904
+              }
+            }
+          },
+          "has_zero_train_click_news": {
+            "impressions": 2182,
+            "metrics": {
+              "auc": {
+                "mean": 0.6396975184191415,
+                "eligible_impressions": 2182
+              },
+              "mrr": {
+                "mean": 0.2719768705803728,
+                "eligible_impressions": 2182
+              },
+              "ndcg5": {
+                "mean": 0.30167919695733664,
+                "eligible_impressions": 2182
+              },
+              "ndcg10": {
+                "mean": 0.35819469137953663,
+                "eligible_impressions": 2182
+              }
+            }
+          }
+        },
+        "seconds": 28.043330000000424,
+        "protocol": "all logged candidates; impression macro average; no evaluation negative sampling",
+        "metric_columns": [
+          "auc",
+          "mrr",
+          "ndcg5",
+          "ndcg10"
+        ],
+        "feature_mode": "rich",
+        "feature_count": 85
+      },
+      "config": {
+        "max_iter": 80,
+        "learning_rate": 0.1,
+        "max_leaf_nodes": 31,
+        "l2_regularization": 1.0,
+        "early_stopping": false,
+        "random_state": 2026
+      },
+      "sampling": {
+        "eligible_training_positive_pairs": 2869013,
+        "selected_positive_pairs": 500000,
+        "binary_training_examples": 2500000,
+        "positive_pair_cap": 500000,
+        "positive_pairs_subsampled": true,
+        "positive_pair_selection": "uniform without replacement, sorted cache indices; all when below cap",
+        "selected_positive_indices_sha256": "f6d4be72389414279acde85854aef0471e28657c29ac0e129433511a9db0945a",
+        "seed": 2026,
+        "negatives_per_positive": 4,
+        "negative_sampling_with_replacement": true,
+        "negative_policy": "four draws from Store's fixed pool of label=0 articles in the same split-0 impression",
+        "feature_mode": "rich",
+        "feature_count": 85,
+        "feature_matrix_dtype": "float64",
+        "feature_matrix_storage": "memmap",
+        "feature_matrix_bytes": 1700000000,
+        "feature_construction_seconds": 97.50322750001214,
+        "calibration": "sampled 1:4 binary objective; probabilities are ranking scores, not population CTR",
+        "source_training_cache": {
+          "cache_version": 3,
+          "pool_size": 16,
+          "sampler": "grouped_random_keys_v1",
+          "max_chunk_exposures": 400000,
+          "data_manifest_sha256": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+          "features_sha256": "c4831220c97afe072eb5af628e740860b4c665624b47e5bc2a1655169e60f3dc",
+          "seed": 20261010,
+          "train_impressions": 1897844,
+          "positive_training_examples": 2869013,
+          "skipped_no_positive_or_negative": 0,
+          "seconds": 97.51093020000553,
+          "sampling_seconds": 68.3819180999999,
+          "sampling_chunks": 176,
+          "mean_history_chunk_rows": 7294,
+          "negative_policy": "Only label=0 in the same training impression; exclude every ID with any positive occurrence; no held-out labels.",
+          "sampling_policy": "Uniform exposure-occurrence sample without replacement when count >= pool_size; otherwise independent draws with replacement. Fixed seed and chunk protocol shared across arms.",
+          "rng_change": "RNG consumption differs from the former per-row numpy.choice implementation; the sampling distribution and eligible item policy are unchanged."
+        }
+      },
+      "threads": 1,
+      "fit_seconds": 322.542681299994,
+      "total_seconds": 450.6754108000023,
+      "memory_observed": {
+        "initial_rss_bytes": 301297664,
+        "max_observed_rss_bytes": 3652857856,
+        "minimum_system_available_bytes": 1982464,
+        "samples": 4021,
+        "sampling_interval_seconds": 0.1,
+        "scope": "whole GBDT process including mapped pages; sampled RSS is not an allocation-only or exact peak measure"
+      },
+      "preserved_training_report": "gbdt_rich_training.json",
+      "preserved_model_sha256": "7a2d99c80188cd2d18df1dc2ba05e7aa76e2b420c762ab19ae3cacb43d841571"
+    }
+  }
+}

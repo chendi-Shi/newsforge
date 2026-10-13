@@ -1,0 +1,19 @@
+{
+  "cache_version": 3,
+  "pool_size": 16,
+  "sampler": "grouped_random_keys_v1",
+  "max_chunk_exposures": 400000,
+  "data_manifest_sha256": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+  "features_sha256": "c4831220c97afe072eb5af628e740860b4c665624b47e5bc2a1655169e60f3dc",
+  "seed": 20261010,
+  "train_impressions": 1897844,
+  "positive_training_examples": 2869013,
+  "skipped_no_positive_or_negative": 0,
+  "seconds": 97.51093020000553,
+  "sampling_seconds": 68.3819180999999,
+  "sampling_chunks": 176,
+  "mean_history_chunk_rows": 7294,
+  "negative_policy": "Only label=0 in the same training impression; exclude every ID with any positive occurrence; no held-out labels.",
+  "sampling_policy": "Uniform exposure-occurrence sample without replacement when count >= pool_size; otherwise independent draws with replacement. Fixed seed and chunk protocol shared across arms.",
+  "rng_change": "RNG consumption differs from the former per-row numpy.choice implementation; the sampling distribution and eligible item policy are unchanged."
+}

@@ -1,0 +1,217 @@
+{
+  "model": "HistGradientBoostingClassifier",
+  "feature_names": [
+    "history_cosine_mean",
+    "history_cosine_max",
+    "history_cosine_top3_mean",
+    "history_cosine_std",
+    "text_cosine_mean",
+    "text_cosine_max",
+    "text_cosine_top3_mean",
+    "mean_profile_text_cosine",
+    "mean_profile_text_l1",
+    "mean_profile_text_l2",
+    "category_overlap_mean",
+    "category_overlap_max",
+    "last_valid_history_text_cosine",
+    "log1p_history_length",
+    "empty_history"
+  ],
+  "feature_version": 1,
+  "config": {
+    "max_iter": 80,
+    "learning_rate": 0.1,
+    "max_leaf_nodes": 31,
+    "l2_regularization": 1.0,
+    "early_stopping": false,
+    "random_state": 2026
+  },
+  "sampling": {
+    "eligible_training_positive_pairs": 2869013,
+    "selected_positive_pairs": 500000,
+    "binary_training_examples": 2500000,
+    "positive_pair_cap": 500000,
+    "positive_pairs_subsampled": true,
+    "positive_pair_selection": "uniform without replacement, sorted cache indices; all when below cap",
+    "selected_positive_indices_sha256": "f6d4be72389414279acde85854aef0471e28657c29ac0e129433511a9db0945a",
+    "seed": 2026,
+    "negatives_per_positive": 4,
+    "negative_sampling_with_replacement": true,
+    "negative_policy": "four draws from Store's fixed pool of label=0 articles in the same split-0 impression",
+    "feature_matrix_bytes": 150000000,
+    "feature_construction_seconds": 56.33378220000304,
+    "calibration": "sampled 1:4 binary objective; probabilities are ranking scores, not population CTR",
+    "source_training_cache": {
+      "cache_version": 3,
+      "pool_size": 16,
+      "sampler": "grouped_random_keys_v1",
+      "max_chunk_exposures": 400000,
+      "data_manifest_sha256": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+      "features_sha256": "c4831220c97afe072eb5af628e740860b4c665624b47e5bc2a1655169e60f3dc",
+      "seed": 20261010,
+      "train_impressions": 1897844,
+      "positive_training_examples": 2869013,
+      "skipped_no_positive_or_negative": 0,
+      "seconds": 97.51093020000553,
+      "sampling_seconds": 68.3819180999999,
+      "sampling_chunks": 176,
+      "mean_history_chunk_rows": 7294,
+      "negative_policy": "Only label=0 in the same training impression; exclude every ID with any positive occurrence; no held-out labels.",
+      "sampling_policy": "Uniform exposure-occurrence sample without replacement when count >= pool_size; otherwise independent draws with replacement. Fixed seed and chunk protocol shared across arms.",
+      "rng_change": "RNG consumption differs from the former per-row numpy.choice implementation; the sampling distribution and eligible item policy are unchanged."
+    }
+  },
+  "internal_validation": {
+    "impressions": 12000,
+    "candidate_exposures": 477756,
+    "metrics": {
+      "auc": {
+        "mean": 0.5885808624422469,
+        "eligible_impressions": 12000
+      },
+      "mrr": {
+        "mean": 0.2654069508419207,
+        "eligible_impressions": 12000
+      },
+      "ndcg5": {
+        "mean": 0.279698915266312,
+        "eligible_impressions": 12000
+      },
+      "ndcg10": {
+        "mean": 0.339476257586779,
+        "eligible_impressions": 12000
+      }
+    },
+    "groups": {
+      "empty_history": {
+        "impressions": 338,
+        "metrics": {
+          "auc": {
+            "mean": 0.5471022091537059,
+            "eligible_impressions": 338
+          },
+          "mrr": {
+            "mean": 0.2395711969161613,
+            "eligible_impressions": 338
+          },
+          "ndcg5": {
+            "mean": 0.24857984655885346,
+            "eligible_impressions": 338
+          },
+          "ndcg10": {
+            "mean": 0.30544830163591175,
+            "eligible_impressions": 338
+          }
+        }
+      },
+      "history_1_to_5": {
+        "impressions": 1741,
+        "metrics": {
+          "auc": {
+            "mean": 0.5546867694277517,
+            "eligible_impressions": 1741
+          },
+          "mrr": {
+            "mean": 0.2745677198968602,
+            "eligible_impressions": 1741
+          },
+          "ndcg5": {
+            "mean": 0.28674000052376164,
+            "eligible_impressions": 1741
+          },
+          "ndcg10": {
+            "mean": 0.34159731050894926,
+            "eligible_impressions": 1741
+          }
+        }
+      },
+      "history_6_to_20": {
+        "impressions": 9921,
+        "metrics": {
+          "auc": {
+            "mean": 0.5959419551496112,
+            "eligible_impressions": 9921
+          },
+          "mrr": {
+            "mean": 0.26467956306873824,
+            "eligible_impressions": 9921
+          },
+          "ndcg5": {
+            "mean": 0.27952350107317636,
+            "eligible_impressions": 9921
+          },
+          "ndcg10": {
+            "mean": 0.3402633451761242,
+            "eligible_impressions": 9921
+          }
+        }
+      },
+      "has_train_unseen_clicked_news": {
+        "impressions": 904,
+        "metrics": {
+          "auc": {
+            "mean": 0.5705994707558584,
+            "eligible_impressions": 904
+          },
+          "mrr": {
+            "mean": 0.2466912550217068,
+            "eligible_impressions": 904
+          },
+          "ndcg5": {
+            "mean": 0.2828681026379116,
+            "eligible_impressions": 904
+          },
+          "ndcg10": {
+            "mean": 0.34330376014857444,
+            "eligible_impressions": 904
+          }
+        }
+      },
+      "has_zero_train_click_news": {
+        "impressions": 2182,
+        "metrics": {
+          "auc": {
+            "mean": 0.5991344152733228,
+            "eligible_impressions": 2182
+          },
+          "mrr": {
+            "mean": 0.2575703866120076,
+            "eligible_impressions": 2182
+          },
+          "ndcg5": {
+            "mean": 0.28460014652652565,
+            "eligible_impressions": 2182
+          },
+          "ndcg10": {
+            "mean": 0.34322071801862913,
+            "eligible_impressions": 2182
+          }
+        }
+      }
+    },
+    "seconds": 44.09700999999768,
+    "protocol": "all logged candidates; impression macro average; no evaluation negative sampling",
+    "metric_columns": [
+      "auc",
+      "mrr",
+      "ndcg5",
+      "ndcg10"
+    ]
+  },
+  "validation_row_indices_sha256": "58dd0af6cba54cabcad6ceb8a729be40d7c88d6a1516da9ca6acaf414d93f6da",
+  "selection": "fixed 80 rounds, learning rate 0.1, 31 leaves; no hyperparameter search or early stopping",
+  "official_development_test_evaluated": false,
+  "fit_seconds": 56.74736039999698,
+  "total_seconds": 159.1337996999937,
+  "threads": 1,
+  "data_manifest_sha256": "2b6a499755aecdb28410a072113be9e1d17f032626205512ad5f6dd2ae007675",
+  "source_sha256": "de04e67c91f92075ef9f010582165014ccf1c78fd03be19e4487454ee7c3ea1a",
+  "environment": {
+    "python": "3.10.21",
+    "numpy": "1.26.4",
+    "sklearn": "1.6.1",
+    "platform": "Windows-10-10.0.26200-SP0"
+  },
+  "scope": "strong handcrafted-feature tree baseline; popularity/content are separate sanity baselines",
+  "feature_policy": "only fixed train-fitted text/category features and provided past history; no IDs, labels, or CTR target encoding"
+}

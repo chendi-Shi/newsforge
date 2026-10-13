@@ -1,0 +1,18 @@
+negative cache 12/12 impressions (1 vectorized chunks)
+{"variant": "mean_random", "seed": 17, "epoch": 1, "examples": 8, "total_examples": 12, "loss": 1.6603881120681763, "examples_per_second": 130.3583387678334}
+{"variant": "mean_random", "seed": 17, "epoch": 1, "validation": {"auc": {"mean": 0.8333333333333334, "eligible_impressions": 6}, "mrr": {"mean": 1.0, "eligible_impressions": 6}, "ndcg5": {"mean": 1.0, "eligible_impressions": 6}, "ndcg10": {"mean": 1.0, "eligible_impressions": 6}}}
+{"variant": "mean_random", "seed": 17, "epoch": 2, "examples": 8, "total_examples": 12, "loss": 0.8596308827400208, "examples_per_second": 722.7261228275247}
+{"variant": "mean_random", "seed": 17, "epoch": 2, "validation": {"auc": {"mean": 0.8333333333333334, "eligible_impressions": 6}, "mrr": {"mean": 1.0, "eligible_impressions": 6}, "ndcg5": {"mean": 1.0, "eligible_impressions": 6}, "ndcg10": {"mean": 1.0, "eligible_impressions": 6}}}
+{"variant": "mean_mixed", "seed": 17, "epoch": 1, "examples": 8, "total_examples": 12, "loss": 1.6603881120681763, "examples_per_second": 944.5546411280899}
+{"variant": "mean_mixed", "seed": 17, "epoch": 1, "validation": {"auc": {"mean": 0.8333333333333334, "eligible_impressions": 6}, "mrr": {"mean": 1.0, "eligible_impressions": 6}, "ndcg5": {"mean": 1.0, "eligible_impressions": 6}, "ndcg10": {"mean": 1.0, "eligible_impressions": 6}}}
+{"variant": "mean_mixed", "seed": 17, "epoch": 2, "examples": 8, "total_examples": 12, "loss": 0.8645830154418945, "examples_per_second": 616.2758453482955}
+{"variant": "mean_mixed", "seed": 17, "epoch": 2, "validation": {"auc": {"mean": 0.8333333333333334, "eligible_impressions": 6}, "mrr": {"mean": 1.0, "eligible_impressions": 6}, "ndcg5": {"mean": 1.0, "eligible_impressions": 6}, "ndcg10": {"mean": 1.0, "eligible_impressions": 6}}}
+{"baseline": "popularity", "metrics": {"auc": {"mean": 1.0, "eligible_impressions": 6}, "mrr": {"mean": 1.0, "eligible_impressions": 6}, "ndcg5": {"mean": 1.0, "eligible_impressions": 6}, "ndcg10": {"mean": 1.0, "eligible_impressions": 6}}}
+{"baseline": "content", "metrics": {"auc": {"mean": 0.3333333333333333, "eligible_impressions": 6}, "mrr": {"mean": 0.611111111111111, "eligible_impressions": 6}, "ndcg5": {"mean": 0.7103099178571526, "eligible_impressions": 6}, "ndcg10": {"mean": 0.7103099178571526, "eligible_impressions": 6}}}
+{"run_id": "mean_random-seed17", "metrics": {"auc": {"mean": 0.8333333333333334, "eligible_impressions": 6}, "mrr": {"mean": 1.0, "eligible_impressions": 6}, "ndcg5": {"mean": 1.0, "eligible_impressions": 6}, "ndcg10": {"mean": 1.0, "eligible_impressions": 6}}}
+{"run_id": "mean_mixed-seed17", "metrics": {"auc": {"mean": 0.8333333333333334, "eligible_impressions": 6}, "mrr": {"mean": 1.0, "eligible_impressions": 6}, "ndcg5": {"mean": 1.0, "eligible_impressions": 6}, "ndcg10": {"mean": 1.0, "eligible_impressions": 6}}}
+.
+----------------------------------------------------------------------
+Ran 1 test in 9.416s
+
+OK

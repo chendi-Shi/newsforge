@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "checkpoint_sha256": "7a2d99c80188cd2d18df1dc2ba05e7aa76e2b420c762ab19ae3cacb43d841571",
+  "data_manifest_sha256": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+  "selected_row_indices_sha256": "58dd0af6cba54cabcad6ceb8a729be40d7c88d6a1516da9ca6acaf414d93f6da",
+  "feature_mode": "rich",
+  "feature_count": 85,
+  "evaluation_source_sha256": {
+    "gbdt.py": "3caac77ffbd3404a391b3b573bc3b237cf87c2296690276d5b3207418f1c8703",
+    "store.py": "0c6c3662478db583538bcb93b195761861688aaf01c1cfd3b1d5c6290054e08b",
+    "evaluate.py": "4dc7237f30a4e6b9fc305e538cd4951c57ac58a940127e34a22c1157b52dd1f8",
+    "metrics.py": "b1467c60980c2ccd27bdaf715191bf0d411acfb3115f12ea1b0003dce64e6008"
+  },
+  "scheduler_source_sha256": "009c8df9fcff63666ab243521241c3be870ec701fc30f6cb121ef747661ff94f",
+  "order_helper_source_sha256": "8980977d0323e8a6bc161bc84b8cda72c20faf9a2109b35c1adc90137d2e8eff",
+  "features_sha256": "c4831220c97afe072eb5af628e740860b4c665624b47e5bc2a1655169e60f3dc",
+  "selection_evidence_sha256": "0e0a9d052c9135e32f848fb96431b0038ee4c5047b6842d8f8006dd0206788f2",
+  "internal_validation_evidence_file": "gbdt_evaluation_scheduler_validation_12000.json",
+  "internal_validation_evidence_sha256": "71f1ad1f4cfb08eac8afd573e8e9f152d20266e9a1d1da6e8527728dae92c698",
+  "entrypoint_source_sha256": "3756f0dadc6bb0678f821e05fb5692759dc5924d4e4897e24e2bf6e30566cf56",
+  "official_dev_evaluated_by_preflight": false
+}

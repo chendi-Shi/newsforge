@@ -1,0 +1,20 @@
+{
+  "python": "3.10.21",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "processor": "Intel64 Family 6 Model 140 Stepping 1, GenuineIntel",
+  "packages": {
+    "numpy": "1.26.4",
+    "scipy": "1.15.3",
+    "scikit-learn": "1.6.1",
+    "torch": "2.14.0+cpu",
+    "joblib": "1.6.0",
+    "threadpoolctl": "3.7.0",
+    "fastapi": "0.143.0",
+    "uvicorn": "0.54.0",
+    "httpx": "0.28.1",
+    "psutil": "7.2.2"
+  },
+  "gpu_used": false,
+  "threads_per_experiment": 1,
+  "shared_desktop": true
+}

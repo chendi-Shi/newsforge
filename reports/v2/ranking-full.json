@@ -1,0 +1,146 @@
+{
+  "impressions": 376471,
+  "candidates": 14085557,
+  "row_indices_sha256": "422c1c38ef23d20d6641de6646c3e4d28ad1a8244829945351c1303f89cdd55d",
+  "metrics": {
+    "full-seed29": {
+      "auc": {
+        "mean": 0.678085695119776,
+        "eligible_impressions": 376471
+      },
+      "mrr": {
+        "mean": 0.32230531268948487,
+        "eligible_impressions": 376471
+      },
+      "ndcg5": {
+        "mean": 0.3559990895581759,
+        "eligible_impressions": 376471
+      },
+      "ndcg10": {
+        "mean": 0.4200520504240695,
+        "eligible_impressions": 376471
+      }
+    }
+  },
+  "seed_statistics": {},
+  "paired_user_intervals": {},
+  "feature_sha256": "b83c3f7799363ea7a7d181c5af660927e67aefaed0312ce709178fb4871241ed",
+  "feature_columns": 22,
+  "seconds": 1051.6395750000001,
+  "native_thread_pools": [
+    {
+      "internal_api": "openblas",
+      "prefix": "libopenblas",
+      "num_threads": 1
+    },
+    {
+      "internal_api": "openblas",
+      "prefix": "libscipy_openblas",
+      "num_threads": 1
+    },
+    {
+      "internal_api": "openmp",
+      "prefix": "vcomp",
+      "num_threads": 1
+    }
+  ],
+  "limitations": [
+    "Follow-up on the v1-observed MIND dev benchmark; not a new untouched holdout.",
+    "Rolling replay uses previous validation/dev feedback with an hourly snapshot and at least one-hour lag; v1 used frozen training feedback.",
+    "First observed timestamp is an availability proxy, not publication time.",
+    "Only logged clicks are observed relevance; retrieval recall is not online CTR or causal reward.",
+    "Shared CPU desktop timings are not production capacity estimates."
+  ],
+  "tie_policy": "stable logged candidate order, same as v1 MIND ranking; catalogue ties use article index",
+  "phase": "ranking-full",
+  "selection_sha256": "2b1d7e70c24d36fadf8de076bb9ffe3a7ce0e37a46bb25b8978c03bc757c7280",
+  "bindings": {
+    "data_manifest": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+    "temporal_manifest": "e7837008652092988418d3c52dafaa6120e870a16451c48e39e385aa14ebcfff",
+    "processed_files": {
+      "news_features.npy": "c4831220c97afe072eb5af628e740860b4c665624b47e5bc2a1655169e60f3dc",
+      "news_first_seen.npy": "e65cb72ccfdd4a2afdb9325b68ddc6ed34b4dca858edd686e6a2c23893c5b414",
+      "news_train_clicks.npy": "b36c71020a42d05a9f1e7b7de4d5e661b6af1b56d27898bac5cfde56ee23039d",
+      "news_train_exposures.npy": "8437389af916eec567609182c9f2eee3f2f1897a29754ca4274717318dcc3848",
+      "news_ids.json": "c5e4332fd24c20c42c9199d7e1d5ceae2518d28996e2f4ea6665207f064b164f",
+      "all_history.npy": "5430cd48ca8188ecb29760e87f6cf84a1ef7b1f98c5e6ac14d4e2d2b545d97cb",
+      "all_candidates.npy": "1494666249092025ae7b6ee0203ff205fbcee697f0bd17e068f100da9154a143",
+      "all_labels.npy": "7158a9c62acbb1f6345e543e1dddcd6e99954547e25324fe89b65a5d10e614a4",
+      "all_offsets.npy": "43ab7dfa5f2b2c967b3c9ec5b9813794622aeb44b132a6f7a036983f3954cbc5",
+      "all_timestamps.npy": "b701fd8ec3632243b1e6b67b5544f18e52023872c6d5e61ce9ef003c520a9e4e",
+      "all_users.npy": "aa622e6c2ccd4c250851f1908241114cb0caaa4fcb6b6745bb9fb9315c1c7dbd",
+      "all_split.npy": "fb4bffa43754b78a91c23433d8f03f3fa824a5a6c3e80bd0c49614c123426ac7",
+      "training_cache.json": "e6fde05b44c683385c17def7a1bb295aa4b524e89c4fc654b1b9f2ba843de52b",
+      "negative_pool.npy": "ce21963f96683023f96ea30a24bf800111f72a7d2fd3770c2a804e27a6015fe9",
+      "positive_rows.npy": "b08b643a4b7e2e4ca3d57cd6a96e8500473358c2029d805f9f16fc8657f639a0",
+      "positive_items.npy": "dd03290092c06d26aa91850eef18d6dd0d69f85723e77c7c6a35f05e702c268c"
+    },
+    "retrieval_artifacts": {
+      "article_embeddings": "30151a2cce8070b6100a654416f635ad1a8a6aaa37056a33f2b37cbb07544b1a",
+      "retriever": "01225e5d5d39eff85b1e9fc1345276530066a1efc20918ada96a54e2bd405526",
+      "encoder": "769db4a4ab25f879e0f3397bf0eb2922cf29d2bf3256bf1c4c2274dec2261283",
+      "encoder_manifest": "aa423e79664e3d4a2bef9479c1e4bf9f77baaf23eb56a9fea3c63b84fa70af33"
+    },
+    "ranker_artifacts": {
+      "content_only-seed17": {
+        "model_path": "artifacts/v2/ranker/content_only-seed17.joblib",
+        "model_sha256": "ca8a6e3f155b49d728818d8d663f30d3a2a8f013c6eb5f6666189d95af729615",
+        "manifest_sha256": "5b3005b7face4cf383ef56106757fa978e8179d56258a6b2855efa99a7be2a19"
+      },
+      "content_only-seed29": {
+        "model_path": "artifacts/v2/ranker/content_only-seed29.joblib",
+        "model_sha256": "3674b97d2bd529926883af1e2e178018be93e6f763e58680383349d80f9d530e",
+        "manifest_sha256": "170b7205aac4d6cb6ce64249dae452dbaaa5285af994c235b0243acfd8f2f42a"
+      },
+      "content_only-seed43": {
+        "model_path": "artifacts/v2/ranker/content_only-seed43.joblib",
+        "model_sha256": "533d92c3dbcfe1f222986d4fa0029dd00d846c7cd178efd10ebbc3142452df2e",
+        "manifest_sha256": "54ecb93543f935a2c43344e9ff90c1af50d52022a5405cedba99f2d43203558a"
+      },
+      "context_only-seed17": {
+        "model_path": "artifacts/v2/ranker/context_only-seed17.joblib",
+        "model_sha256": "9c21df3ccb783ddca6a50f3dbb8fd52bf2d7071ed3b9ae973c7a5d58c4057255",
+        "manifest_sha256": "057e4de5b24ff94fd39765ba64ac0c5ed8e50fadd07db10bf978ab31383ab4dd"
+      },
+      "context_only-seed29": {
+        "model_path": "artifacts/v2/ranker/context_only-seed29.joblib",
+        "model_sha256": "f6bdf0b6707a16271f52d976f8bedbc7a4d491747b5dba71cd8fe2c233e3f968",
+        "manifest_sha256": "faacf8bc8b3600781d1fa0432ad3be862ef1c0212533af0cbac9b7e1d1e5a215"
+      },
+      "context_only-seed43": {
+        "model_path": "artifacts/v2/ranker/context_only-seed43.joblib",
+        "model_sha256": "ca8ca40b230451f969c064410af6fb49b94bce03ed9c824442aea510368091ae",
+        "manifest_sha256": "1fa895101af3df17a0cc26758baf323391d18d43e3e61c9196b97df80ad1ce9c"
+      },
+      "full-seed17": {
+        "model_path": "artifacts/v2/ranker/full-seed17.joblib",
+        "model_sha256": "ea6f683486bea3d0d86f9e22c81e568bfa3141c4819084e88d18d77a2e3252f6",
+        "manifest_sha256": "76b6453630a213a49ee8474c75beb56d8c684f6b04e08c7cc05047d965a69405"
+      },
+      "full-seed29": {
+        "model_path": "artifacts/v2/ranker/full-seed29.joblib",
+        "model_sha256": "2bbe0dfa4aae158768c453a2ddc2781a26a1cce34c46622a7bb4d49b9aa611e5",
+        "manifest_sha256": "41f3ea6a38e7389d0450831be1409777928c8989131a8db7ab36814f779a089d"
+      },
+      "full-seed43": {
+        "model_path": "artifacts/v2/ranker/full-seed43.joblib",
+        "model_sha256": "d6a452cd9a3147caa7800ebd817185b057e52d0dd77437dc8e7ddae138cacad7",
+        "manifest_sha256": "d11b1a0b447758f028f76d958bfae5b41cd25ec1a58197271c509d45abd62081"
+      }
+    },
+    "ranker_selection": "d7593d19fd862be176289b50ae4e2f5bc09392cd252f8f27134a1c423815ccff",
+    "backbone_matured_selection": "c1c31a56ac4381c682fea32400d8369b420114d08fd1abc9f08db420db6438dd",
+    "query_cache_equivalence": "a5b845efa70fbea8459304563c59ac8b28bb0c19d9d60468e834815f03886564",
+    "source": {
+      "experiment.py": "cc3a48796bb7a0d5501cfc92da7c23537add9e7984f210c5a96ca8f1eeb0a90b",
+      "retrieval.py": "51f55d67591752d67b7565650e2d77333995925384ee6ba3083f0747b2a3eaf9",
+      "temporal.py": "eab4f03b0d2db5aedcce1b6744a2c2df05521611525c179c36b8d81cc9b4a80a",
+      "ranker.py": "524f96ce39eeeda9ff04de58d7842e09840a0e2513bf3bcf507d8702dcb3c00c",
+      "verify_cache.py": "0bbf43428beb835485859cbd5c4885e16313d70f71ab7b7852e02156847ac261",
+      "mature_selection.py": "0fe38e2d3eedd6f6dfcee059af4c708318fbd5aa1576bb7c0c812b2b873dcab4",
+      "select_backbone.py": "c3d2fecce191f0f6ac6e9e0878c745210c5dadc3b3579a10d57b8a13475ec442"
+    },
+    "metrics_source": "b1467c60980c2ccd27bdaf715191bf0d411acfb3115f12ea1b0003dce64e6008"
+  },
+  "selected_before_v2_dev": "2026-10-13T04:31:25.850664+00:00"
+}

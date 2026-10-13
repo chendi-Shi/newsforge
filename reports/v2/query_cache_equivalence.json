@@ -1,0 +1,206 @@
+{
+  "created_utc": "2026-10-13T04:20:23.174164+00:00",
+  "passed": true,
+  "split": "internal_validation only",
+  "minimum_timestamp": 1573722000,
+  "maximum_timestamp_exclusive": 1573772400,
+  "official_dev_metrics_evaluated": false,
+  "feedback_artifact_integrity": "TemporalStore verifies source hashes, including labels; no labels used for selection, relevance or metrics in this audit.",
+  "queries": 16,
+  "seed": 2026,
+  "row_indices_sha256": "f83d031809974bf6cd05a1b2a5556582b3d81f4ccd99d23458cbee35c8f9c7f1",
+  "recipes": {
+    "full": {
+      "pool_size": 100,
+      "route_size": 200,
+      "recent_hours": 48,
+      "channels": [
+        "popular",
+        "content",
+        "tower"
+      ],
+      "freeze_feedback": false,
+      "rank_constant": 60
+    },
+    "no_popular": {
+      "pool_size": 100,
+      "route_size": 200,
+      "recent_hours": 48,
+      "channels": [
+        "content",
+        "tower"
+      ],
+      "freeze_feedback": false,
+      "rank_constant": 60
+    },
+    "no_content": {
+      "pool_size": 100,
+      "route_size": 200,
+      "recent_hours": 48,
+      "channels": [
+        "popular",
+        "tower"
+      ],
+      "freeze_feedback": false,
+      "rank_constant": 60
+    },
+    "no_tower": {
+      "pool_size": 100,
+      "route_size": 200,
+      "recent_hours": 48,
+      "channels": [
+        "popular",
+        "content"
+      ],
+      "freeze_feedback": false,
+      "rank_constant": 60
+    },
+    "popular_only": {
+      "pool_size": 100,
+      "route_size": 200,
+      "recent_hours": 48,
+      "channels": [
+        "popular"
+      ],
+      "freeze_feedback": false,
+      "rank_constant": 60
+    },
+    "content_only": {
+      "pool_size": 100,
+      "route_size": 200,
+      "recent_hours": 48,
+      "channels": [
+        "content"
+      ],
+      "freeze_feedback": false,
+      "rank_constant": 60
+    },
+    "tower_only": {
+      "pool_size": 100,
+      "route_size": 200,
+      "recent_hours": 48,
+      "channels": [
+        "tower"
+      ],
+      "freeze_feedback": false,
+      "rank_constant": 60
+    },
+    "no_freshness": {
+      "pool_size": 100,
+      "route_size": 200,
+      "recent_hours": null,
+      "channels": [
+        "popular",
+        "content",
+        "tower"
+      ],
+      "freeze_feedback": false,
+      "rank_constant": 60
+    },
+    "frozen_feedback": {
+      "pool_size": 100,
+      "route_size": 200,
+      "recent_hours": 48,
+      "channels": [
+        "popular",
+        "content",
+        "tower"
+      ],
+      "freeze_feedback": true,
+      "rank_constant": 60
+    }
+  },
+  "candidate_batches_compared": 576,
+  "field_names_compared": [
+    "ids",
+    "scores",
+    "source_mask",
+    "sources",
+    "snapshot_index",
+    "cutoff",
+    "as_of",
+    "shortfall",
+    "metadata"
+  ],
+  "comparison": "exact field equality, including ndarray dtype and every score, ID, source list, mask, cutoff, shortfall and metadata value",
+  "mismatch_count": 0,
+  "mismatches": [],
+  "max_absolute_score_error": 0.0,
+  "warmup": "one uncached pass of the same 16 queries x 9 recipes; excluded from observation durations",
+  "observation_order": "uncached, cached, cached, uncached (ABBA)",
+  "timing_includes": "retrieval sweep, exact equality checks and _dot call-count instrumentation",
+  "catalogue_and_query_caches_cleared_before_each_observation": true,
+  "observations": [
+    {
+      "observation": 1,
+      "reuse_query_routes": false,
+      "seconds": 6.364419300000009,
+      "matrix_scoring_calls": 180,
+      "batches_compared": 144
+    },
+    {
+      "observation": 2,
+      "reuse_query_routes": true,
+      "seconds": 4.87330109999948,
+      "matrix_scoring_calls": 60,
+      "batches_compared": 144
+    },
+    {
+      "observation": 3,
+      "reuse_query_routes": true,
+      "seconds": 4.779562400000032,
+      "matrix_scoring_calls": 60,
+      "batches_compared": 144
+    },
+    {
+      "observation": 4,
+      "reuse_query_routes": false,
+      "seconds": 5.8085141999999905,
+      "matrix_scoring_calls": 180,
+      "batches_compared": 144
+    }
+  ],
+  "matrix_scoring_call_reduction": 0.6666666666666667,
+  "native_thread_pools": [
+    {
+      "internal_api": "openblas",
+      "prefix": "libopenblas",
+      "num_threads": 1
+    },
+    {
+      "internal_api": "openblas",
+      "prefix": "libscipy_openblas",
+      "num_threads": 1
+    }
+  ],
+  "bindings": {
+    "features": "c4831220c97afe072eb5af628e740860b4c665624b47e5bc2a1655169e60f3dc",
+    "first_seen": "e65cb72ccfdd4a2afdb9325b68ddc6ed34b4dca858edd686e6a2c23893c5b414",
+    "train_clicks": "b36c71020a42d05a9f1e7b7de4d5e661b6af1b56d27898bac5cfde56ee23039d",
+    "train_exposures": "8437389af916eec567609182c9f2eee3f2f1897a29754ca4274717318dcc3848",
+    "embeddings": "30151a2cce8070b6100a654416f635ad1a8a6aaa37056a33f2b37cbb07544b1a",
+    "retriever": "01225e5d5d39eff85b1e9fc1345276530066a1efc20918ada96a54e2bd405526",
+    "encoder": "769db4a4ab25f879e0f3397bf0eb2922cf29d2bf3256bf1c4c2274dec2261283",
+    "encoder_manifest": "aa423e79664e3d4a2bef9479c1e4bf9f77baaf23eb56a9fea3c63b84fa70af33",
+    "data_manifest": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+    "news_ids": "c5e4332fd24c20c42c9199d7e1d5ceae2518d28996e2f4ea6665207f064b164f",
+    "temporal_manifest": "e7837008652092988418d3c52dafaa6120e870a16451c48e39e385aa14ebcfff"
+  },
+  "input_array_sha256": {
+    "all_split.npy": "fb4bffa43754b78a91c23433d8f03f3fa824a5a6c3e80bd0c49614c123426ac7",
+    "all_timestamps.npy": "b701fd8ec3632243b1e6b67b5544f18e52023872c6d5e61ce9ef003c520a9e4e",
+    "all_history.npy": "5430cd48ca8188ecb29760e87f6cf84a1ef7b1f98c5e6ac14d4e2d2b545d97cb"
+  },
+  "source_sha256": {
+    "retrieval.py": "51f55d67591752d67b7565650e2d77333995925384ee6ba3083f0747b2a3eaf9",
+    "verify_cache.py": "0bbf43428beb835485859cbd5c4885e16313d70f71ab7b7852e02156847ac261",
+    "experiment.py": "cc3a48796bb7a0d5501cfc92da7c23537add9e7984f210c5a96ca8f1eeb0a90b",
+    "temporal.py": "eab4f03b0d2db5aedcce1b6744a2c2df05521611525c179c36b8d81cc9b4a80a"
+  },
+  "seconds_including_loading_and_warmup": 34.86394389999987,
+  "limitations": [
+    "Cached observations share computation across ablation recipes; they are not independent strategy or HTTP request latency.",
+    "Shared desktop timings are individual observations, not a hardware-independent speed guarantee.",
+    "Production service retains reuse_query_routes=False; only current-query semantic top IDs are reusable."
+  ]
+}

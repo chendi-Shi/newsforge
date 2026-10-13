@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "validation_seconds": 8.22698579999269,
+  "rows": 2609219,
+  "candidates": 97592931,
+  "news": 104151,
+  "dimensions": 115,
+  "split_recomputed": {
+    "0": {
+      "impressions": 1897844,
+      "candidates": 70314722,
+      "positives": 2869013
+    },
+    "1": {
+      "impressions": 334904,
+      "candidates": 13192652,
+      "positives": 514643
+    },
+    "2": {
+      "impressions": 376471,
+      "candidates": 14085557,
+      "positives": 574845
+    }
+  },
+  "checks": [
+    "full candidate IDs and binary labels",
+    "full offsets and history padding",
+    "full per-split row/candidate/positive totals",
+    "full per-news training exposure and click count reconstruction",
+    "positive index split and per-news distribution",
+    "finite features, text L2 norms, category onehot, zero padding",
+    "strict temporal boundaries",
+    "training fit count and unseen sentinel"
+  ]
+}

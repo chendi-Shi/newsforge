@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "inputs": {
+    "catalog": {
+      "file_name": "catalog.json",
+      "sha256": "26ac049762fffddd27c7823816ac88894efa431a5c1a1e8005d64249d88619f3"
+    },
+    "ranking": {
+      "file_name": "ranking.json",
+      "sha256": "d7c362bdedab4019e270891eda65735c42ac2cdecfdb51b73ecd3ab14fb69fb5"
+    }
+  },
+  "plot_source": {
+    "path": "newsforge/v2/plot.py",
+    "sha256": "be53bb18f892d6b84c11aec94101a2f726added04c8850c837d2bc04d5b2b0a3"
+  },
+  "dependencies": {
+    "python": "3.10.21",
+    "matplotlib": "3.10.9",
+    "numpy": "1.26.4",
+    "Pillow": "12.3.0",
+    "contourpy": "1.3.2",
+    "cycler": "0.12.1",
+    "fonttools": "4.64.0",
+    "kiwisolver": "1.5.1",
+    "packaging": "26.3",
+    "pyparsing": "3.3.2",
+    "python-dateutil": "2.9.0.post0"
+  },
+  "rendering": {
+    "backend": "Agg",
+    "size_inches": [
+      12.2,
+      5.9
+    ],
+    "png_dpi": 220,
+    "font": "DejaVu Sans",
+    "svg_hashsalt": "newsforge-v2-component-ablations-v1",
+    "svg_date": null,
+    "svg_fonttype": "path"
+  },
+  "plotted_data": {
+    "catalog_queries": 5000,
+    "ranking_impressions": 12000,
+    "selection_sha256": "2b1d7e70c24d36fadf8de076bb9ffe3a7ce0e37a46bb25b8978c03bc757c7280",
+    "catalog_components": [
+      {
+        "arm": "no_popular",
+        "label": "Popularity route",
+        "delta_pp": 29.963041182682154,
+        "ci95_pp": [
+          28.792462227154168,
+          31.11940429646896
+        ],
+        "bootstrap_replicates": 1000
+      },
+      {
+        "arm": "no_content",
+        "label": "Content similarity",
+        "delta_pp": -3.748680042238648,
+        "ci95_pp": [
+          -4.313234362684321,
+          -3.1752674080165444
+        ],
+        "bootstrap_replicates": 1000
+      },
+      {
+        "arm": "no_tower",
+        "label": "Learned tower",
+        "delta_pp": -3.022703273495248,
+        "ci95_pp": [
+          -3.6137375134879557,
+          -2.4511440352668363
+        ],
+        "bootstrap_replicates": 1000
+      },
+      {
+        "arm": "no_freshness",
+        "label": "First-seen window",
+        "delta_pp": 9.30570221752904,
+        "ci95_pp": [
+          8.156528342192152,
+          10.5076678396508
+        ],
+        "bootstrap_replicates": 1000
+      }
+    ],
+    "ranking_feature_groups": [
+      {
+        "variant": "content_only",
+        "label": "Content\n15 features",
+        "mean_ndcg10": 0.36995876631547314,
+        "sample_std_ndcg10": 0.00022927394108764629,
+        "seeds": [
+          17,
+          29,
+          43
+        ],
+        "per_seed_ndcg10": [
+          0.3699437284543213,
+          0.3701951890186618,
+          0.36973738147346136
+        ]
+      },
+      {
+        "variant": "context_only",
+        "label": "Temporal context\n7 features",
+        "mean_ndcg10": 0.37530654605068264,
+        "sample_std_ndcg10": 0.0022263555741907095,
+        "seeds": [
+          17,
+          29,
+          43
+        ],
+        "per_seed_ndcg10": [
+          0.37642014442770777,
+          0.3727431120838134,
+          0.3767563816405493
+        ]
+      },
+      {
+        "variant": "full",
+        "label": "Combined\n22 features",
+        "mean_ndcg10": 0.4150052833127678,
+        "sample_std_ndcg10": 0.00019769931486024166,
+        "seeds": [
+          17,
+          29,
+          43
+        ],
+        "per_seed_ndcg10": [
+          0.4151990525885088,
+          0.41480387537639457,
+          0.4150129219734129
+        ]
+      }
+    ]
+  },
+  "uncertainty": {
+    "left": "paired user-cluster bootstrap 95% CI for full-minus-ablated micro Recall@100; raw fractions multiplied by 100 to percentage points",
+    "right": "arithmetic mean and sample standard deviation (ddof=1) across three training-seed nDCG@10 means; not a confidence interval"
+  },
+  "outputs": {
+    "png": {
+      "file_name": "ablation.png",
+      "sha256": "75c57ba543e3533c75611bc37bb42394c7badf3a33d6d411e4c64a47d9ac3a69",
+      "bytes": 240286
+    },
+    "svg": {
+      "file_name": "ablation.svg",
+      "sha256": "8214d3a3e195655ae3f8d89d3d9db2836c6b98c51872c95dc554766be2af4144",
+      "bytes": 122048
+    }
+  }
+}
