@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "inputs": {
+    "dev": {
+      "file_name": "dev.json",
+      "sha256": "6cb1fee93108bc8d7ffea7be1d0f6425e58cb48893734d1034f86d1635ed2811"
+    },
+    "confirm": {
+      "file_name": "confirm.json",
+      "sha256": "a5f72fcde9295fc290bb91af78e99c6f44912245a5a3c50ff1ebb229f0c509d7"
+    },
+    "benchmark": {
+      "file_name": "fast_retrieval_benchmark.json",
+      "sha256": "c929770fe0c1e4c7c7f52ab28be4986e3848286b1ed8334103cac2a5a5b07b1d"
+    }
+  },
+  "plot_source": {
+    "path": "scripts/plot_v3_results.py",
+    "sha256": "2cc90c036a6c938a3d22a7d8a7196680331489a2eb3d605c0fe8c8ea7f07ed42"
+  },
+  "dependencies": {
+    "python": "3.10.21",
+    "matplotlib": "3.10.9",
+    "numpy": "1.26.4",
+    "Pillow": "12.3.0",
+    "contourpy": "1.3.2",
+    "cycler": "0.12.1",
+    "fonttools": "4.64.0",
+    "kiwisolver": "1.5.1",
+    "packaging": "26.3",
+    "pyparsing": "3.3.2",
+    "python-dateutil": "2.9.0.post0"
+  },
+  "rendering": {
+    "backend": "Agg",
+    "size_inches": [
+      16.8,
+      7.2
+    ],
+    "png_dpi": 220,
+    "font": "DejaVu Sans",
+    "svg_hashsalt": "newsforge-v3-results-v1",
+    "svg_date": null,
+    "svg_fonttype": "path"
+  },
+  "plotted_data": {
+    "selection_sha256": "44ddde9c62b01609167d2a28591f39fcfa48e7014e6b2917a616a45ecd03ed82",
+    "delta": 10,
+    "dev_requests": 5000,
+    "baseline_recall10": 0.2348204857444562,
+    "all_arms_recall100": 0.4446937697993664,
+    "arms_versus_baseline": [
+      {
+        "arm": "full13",
+        "label": "Full + history gate",
+        "recall10": 0.2390443505807814,
+        "delta_pp": 0.42238648363252373,
+        "ci95_pp": [
+          0.1065862218616148,
+          0.7617624398873623
+        ]
+      },
+      {
+        "arm": "no_category",
+        "label": "Without explicit\ncategory columns",
+        "recall10": 0.2391763463569166,
+        "delta_pp": 0.43558606124604016,
+        "ci95_pp": [
+          0.11709943238066235,
+          0.7752070081316081
+        ]
+      },
+      {
+        "arm": "no_recent",
+        "label": "Without last-history\ninteraction column",
+        "recall10": 0.2390443505807814,
+        "delta_pp": 0.42238648363252373,
+        "ci95_pp": [
+          0.1065862218616148,
+          0.7617624398873623
+        ]
+      },
+      {
+        "arm": "no_gate",
+        "label": "Without history gate",
+        "recall10": 0.23970432946145723,
+        "delta_pp": 0.4883843717001056,
+        "ci95_pp": [
+          0.14336641276487724,
+          0.8714810772080157
+        ]
+      }
+    ],
+    "full_minus_ablations": [
+      {
+        "ablated_arm": "no_category",
+        "label": "Explicit category\noverlap columns",
+        "delta_pp": -0.013199577613516367,
+        "ci95_pp": [
+          -0.03993716663147067,
+          0.0
+        ]
+      },
+      {
+        "ablated_arm": "no_recent",
+        "label": "Last-history\ninteraction column",
+        "delta_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "ablated_arm": "no_gate",
+        "label": "History-length gate",
+        "delta_pp": -0.06599788806758183,
+        "ci95_pp": [
+          -0.24987753989752043,
+          0.09359540045460624
+        ]
+      }
+    ],
+    "confirmation": {
+      "delta_pp": 0.36411784177424694,
+      "ci95_pp": [
+        0.06679859552271043,
+        0.6395964440197507
+      ],
+      "gate_passed": true,
+      "deployed_recipe": "full13+gate",
+      "requests": 2000
+    },
+    "performance": [
+      {
+        "mode": "cold",
+        "observed_pooled_ratio": 0.9770725397885272,
+        "cycle_ratios": [
+          0.8551975464193502,
+          1.0022466300952912,
+          1.0926043757346393
+        ],
+        "queries_per_implementation": 384,
+        "v2_seconds": 19.8892639,
+        "fast_seconds": 20.355974699999997,
+        "latency_ms": {
+          "v2": {
+            "p50": 51.09255,
+            "p95": 64.15758999999996,
+            "p99": 73.31436500000007
+          },
+          "v3_fast": {
+            "p50": 50.1105,
+            "p95": 74.36219499999999,
+            "p99": 106.51577300000001
+          }
+        }
+      },
+      {
+        "mode": "warm",
+        "observed_pooled_ratio": 2.5934701259511286,
+        "cycle_ratios": [
+          2.633587985865295,
+          2.2769435130611253,
+          2.9530609394997724
+        ],
+        "queries_per_implementation": 384,
+        "v2_seconds": 1.2977530000000002,
+        "fast_seconds": 0.5003925,
+        "latency_ms": {
+          "v2": {
+            "p50": 2.9122,
+            "p95": 5.807934999999999,
+            "p99": 13.740594000000044
+          },
+          "v3_fast": {
+            "p50": 1.1003,
+            "p95": 2.102765,
+            "p99": 4.441195000000002
+          }
+        }
+      }
+    ],
+    "exact_batches_compared": 1536
+  },
+  "uncertainty": {
+    "quality_panels": "paired user-cluster bootstrap 95% CI, 1000 repeats, seed 2026; exploratory dev comparisons",
+    "cost_panel": "pooled measured-time ratios and all three ABBA cycle ratios; no speedup confidence interval"
+  },
+  "outputs": {
+    "png": {
+      "file_name": "v3_results.png",
+      "sha256": "0c4aa7b44d96b6c083ca1b6805bbc8277b66e66db385a6b317be2b6f770ebdc0",
+      "bytes": 369379
+    },
+    "svg": {
+      "file_name": "v3_results.svg",
+      "sha256": "301f49f3f9660f409fc29bf9ce0f6d2f712fdc28b7fbfbc81ceb7768cf3c6588",
+      "bytes": 183131
+    }
+  }
+}
