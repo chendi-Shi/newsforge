@@ -46,21 +46,31 @@ if ($LASTEXITCODE -ne 0) { throw '外部前置制品导入失败' }
 
 这个包只允许来源报告中的 **27 个明示制品**；另 **9 个源码、协议及来源文件**必须已存在并逐字节匹配，不从包中安装。两个 joblib 文件仅作为不透明字节复制，导入不反序列化。冲突检查在写入之前完成，已有不同内容会拒绝，相同内容可以跳过；原始 Adressa 日志不在包内。该工具与服务制品包各有明确范围。实际独立目录的导出、校验及两次导入结果见 [移交凭据](../reports/external/frozen_bundle_delivery.json)。该次接收验证使用源码骨架，不能描述成一次完整的新 Git 克隆外部评测。
 
+历史下载及首次失败准备目录为 `artifacts/external/adressa_v1_parallel`；资源修订后的成功运行目录为 `artifacts/external/adressa_v1_resource20m`，公开历史结果位于 `reports/external/adressa_v1`。以下命令使用新的复跑目录，避免覆盖随 Git 分发的报告、图片和验收凭据。
+
 ```powershell
+$adressaRun = 'artifacts/external/adressa_replay'
+$adressaReports = 'reports/external/adressa_replay'
+$adressaArchive = 'data/external/adressa/raw_replay/one_week.tar.gz'
+foreach ($adressaPath in @($adressaRun, $adressaReports, $adressaArchive)) {
+    if (Test-Path -LiteralPath $adressaPath) {
+        throw "路径已存在，请保留已有证据并选择新的复跑路径：$adressaPath"
+    }
+}
 $env:OPENBLAS_NUM_THREADS='1'
 $env:OMP_NUM_THREADS='1'
 $env:MKL_NUM_THREADS='1'
-python -m newsforge.external acquisition-parallel --run-dir artifacts/external/adressa_v1_parallel
+python -m newsforge.external acquisition-parallel --repo . --run-dir $adressaRun --archive $adressaArchive
 if ($LASTEXITCODE -ne 0) { throw '获取阶段失败，保留本次目录' }
-python -m newsforge.external prepare --run-dir artifacts/external/adressa_v1_parallel
+python -m newsforge.external prepare --repo . --run-dir $adressaRun --archive $adressaArchive
 if ($LASTEXITCODE -ne 0) { throw '准备阶段失败，保留本次目录' }
-python -m newsforge.external evaluate --run-dir artifacts/external/adressa_v1_parallel
+python -m newsforge.external evaluate --repo . --run-dir $adressaRun
 if ($LASTEXITCODE -ne 0) { throw '评测阶段失败，保留本次目录' }
-python -m newsforge.external aggregate --run-dir artifacts/external/adressa_v1_parallel --reports reports/external/adressa_v1
+python -m newsforge.external aggregate --repo . --run-dir $adressaRun --reports $adressaReports
 if ($LASTEXITCODE -ne 0) { throw '聚合阶段失败，保留本次目录' }
 ```
 
-默认原始文件为 `data/external/adressa/raw/one_week.tar.gz`。已由独立冻结下载快照完成 acquisition 时，直接从 `prepare` 开始。并行传输仍是同一官方 URL 的相同压缩原字节，固定默认 8 个线程、4 MiB 范围。每段必须返回精确的 HTTP 206、绝对范围、总长度和稳定 ETag/Last-Modified；每段和最终串接文件均写入后重新计算 SHA-256。断开的尝试保留 `.partial`；不解析目标事件。串接后的整体 SHA-256 是本次实际取得文件的摘要，并非冒充官方发布的校验值。
+默认原始文件为 `data/external/adressa/raw/one_week.tar.gz`，上例显式使用新归档路径。已完成 acquisition 时可以从 `prepare` 继续，但必须保留同一运行目录内的下载凭据并传入对应 `--archive`；仅有压缩文件不足以继续。并行传输仍是同一官方 URL 的相同压缩原字节，固定默认 8 个线程、4 MiB 范围。每段必须返回精确的 HTTP 206、绝对范围、总长度和稳定 ETag/Last-Modified；每段和最终串接文件均写入后重新计算 SHA-256。断开的尝试保留 `.partial`；不解析目标事件。串接后的整体 SHA-256 是本次实际取得文件的摘要，并非冒充官方发布的校验值。
 
 每阶段在自己的目录写入 `progress.jsonl`、`receipt.json`，失败写 `failure.json`。私有进程日志保留具体异常；公开 receipt 不包含本机绝对路径或事件内容。任何失败须保留完整旧目录；不得删掉失败证据后用同一个目录重跑。后续修复须记录原因和新实现提交，另建运行目录。若已经读取目标事件，须明确披露，并保持原协议的样本、模型、超参数和指标不变。
 
@@ -79,14 +89,20 @@ if ($LASTEXITCODE -ne 0) { throw '聚合阶段失败，保留本次目录' }
 
 公开产物为 `evaluation.json`、`audit.json`、`RESULTS.md`。它们报告总体、三个固定日期、全部消融、区间、语言词表覆盖、未知类别、不可见/已读目标、候选不足及阶段资源消耗。`status=passed` 代表实现审计和聚合校验通过；只有主差大于零且 95% 用户簇区间下界大于零，`positive_transfer_supported_on_preregistered_sample` 才为真。用户簇区间条件于这三个已经实现的日期，不提供跨日期或生产保证。
 
-聚合成功后，可在安装了 `requirements-raw-windows.lock` 的环境运行 `python scripts/plot_external_results.py`，从已保存的聚合数值生成 PNG、SVG 和摘要元数据。绘图不接触原始事件、不重新计算统计量；负差值和跨零区间照常呈现，已有图片不会覆盖。
+聚合成功后，在安装了 `requirements-raw-windows.lock` 的环境接着使用上述变量，从本次聚合数值生成 PNG、SVG 和摘要元数据。绘图不接触原始事件、不重新计算统计量；负差值和跨零区间照常呈现，已有图片不会覆盖。
+
+```powershell
+python scripts/plot_external_results.py `
+  --report "$adressaReports/evaluation.json" --output-dir $adressaReports
+if ($LASTEXITCODE -ne 0) { throw '绘图失败，保留本次目录' }
+```
 
 持有完整本地运行产物后，再执行只读补充验收：
 
 ```powershell
 python scripts/verify_external_results.py `
-  --run-dir artifacts/external/adressa_v1_resource20m --reports reports/external/adressa_v1 `
-  --output reports/external/adressa_v1/supplemental_verification.json
+  --run-dir $adressaRun --reports $adressaReports `
+  --output "$adressaReports/supplemental_verification.json"
 if ($LASTEXITCODE -ne 0) { throw '外部结果补充验收失败，保留证据' }
 ```
 

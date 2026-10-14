@@ -14,4 +14,4 @@
 
 口径与面试准备：本项目使用公开 MIND 数据，未使用腾讯内部数据。dev 是已观察 benchmark；+0.422 pp 不等于 +0.422% 线上 CTR。服务使用确认前冻结的 `full13 + gate, δ=10`；MIND 消融没有证明显式类别列、最后历史交互列或门控各自有稳定正收益，不能声称所有组件都有效。2026-10-14 两次复验的单条串行 HTTP p95 为 **87.58 / 166.89 ms**、吞吐 **25.99 / 16.46 query/s**，均为共享桌面观测，不是生产 SLO；不能拿它们与历史时延计算算法加速比。该轮本机联合验收 249 项通过、2 项因符号链接权限跳过，对应 CI 的 251 项全部通过；后续扩展 CI 的 366 项也全部通过。上述字节一致复训继承原有处理数据和 v2 基线，没有从原始数据重训全部系统。Adressa 为独立出版商的历史访问压力测试，使用原发布模型；资源行数上限在部分事件已读取、效果未产生时单独修订，不能称完全事前的资源注册。外部结果不支持正向迁移，也不是未来泛化、线上 A/B 或多机分布式验证。
 
-材料：[完整结果与消融](../reports/V3_RESULTS.md) · [交付复验结果](../reports/DELIVERY_RESULTS.md) · [扩展 CI](../reports/raw_rebuild/ci_extended.json) · [外部负结果与全部消融](../reports/external/adressa_v1/DISCUSSION.md) · [交付指南](DELIVERY.md) · [时间与统计协议](V3_PROTOCOL.md) · [旧版简历条目](RESUME_V2_CN.md)
+材料：[方法与面试说明](V3_INTERVIEW_CN.md) · [完整结果与消融](../reports/V3_RESULTS.md) · [交付复验结果](../reports/DELIVERY_RESULTS.md) · [扩展 CI](../reports/raw_rebuild/ci_extended.json) · [外部负结果与全部消融](../reports/external/adressa_v1/DISCUSSION.md) · [交付指南](DELIVERY.md) · [时间与统计协议](V3_PROTOCOL.md) · [旧版简历条目](RESUME_V2_CN.md)
