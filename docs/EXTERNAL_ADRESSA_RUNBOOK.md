@@ -11,6 +11,8 @@
 
 合成测试只生成虚构事件与虚构模型参数。四阶段测试实际经过 acquisition、prepare、evaluate、aggregate 的 CLI，固定 150 个请求并完成 128 个独立参考审计；这证明实现路径贯通，不是外部效果结论。
 
+本轮协议提交为 `d0c911af44366162a06333d56bf0bb0b3e2a52c9`，八个外部实现模块在 `8daf7109380dba6c449e1f29b7b75ac75710a994` 冻结，读取前记录见 [adressa_pre_access.json](../reports/external/adressa_pre_access.json)。完整下载于 2026-10-14 04:25:22 UTC 验证通过，随后启动实际数据准备；文件字节、整体 SHA256、338 个分段及传输绑定见 [获取凭据](../reports/external/adressa_acquisition.json)。原协议及来源报告里的“尚未下载/读取”描述注册时的状态，作为快照保留，不改写为后来的结果。
+
 ```powershell
 python -m unittest discover -s tests -p 'test_external*.py' -v
 ```

@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "status": "comparison_completed",
+  "created_utc": "2026-10-14T04:46:25.463384+00:00",
+  "scope": "Numerical comparison only; no historical-environment inference or downstream causal attribution.",
+  "script_sha256": "9ed467a20e517d86cbc8811b1f02baa0e07bb3616fc68ee8247f4dfc45f49b30",
+  "input_sha256": {
+    "feature_array": {
+      "old_sha256": "c4831220c97afe072eb5af628e740860b4c665624b47e5bc2a1655169e60f3dc",
+      "new_sha256": "2a08fda2cdb55023c28591033853b4dbfed292b1e9ab08e66db48318eab3e432"
+    },
+    "article_index": {
+      "old_sha256": "c5e4332fd24c20c42c9199d7e1d5ceae2518d28996e2f4ea6665207f064b164f",
+      "new_sha256": "c5e4332fd24c20c42c9199d7e1d5ceae2518d28996e2f4ea6665207f064b164f"
+    },
+    "category_dictionary": {
+      "old_sha256": "b15e143eed2167ac56cac855abe94c4b677e4025c634ca9c113288a303668691",
+      "new_sha256": "b15e143eed2167ac56cac855abe94c4b677e4025c634ca9c113288a303668691"
+    },
+    "manifest": {
+      "old_sha256": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+      "new_sha256": "de432931456fbf234cb027f0ee6437b9a337c2a9255a5999cb30b99e6caac443"
+    },
+    "tfidf_state": {
+      "old_sha256": "5a5ec7778369a6fc77b3e2b5e9c670da38b1f945538b9d92910e1a2942b6224e",
+      "new_sha256": "57b1f86e07a99f8cb7b632837d05ee24d8ad9855cd0b3b30848e929f87692704"
+    },
+    "svd_state": {
+      "old_sha256": "907aea6e46290961ff806c25af3319045a3ac6e59c26648b5f2d19ae606e8f4e",
+      "new_sha256": "bff57fc0676bd6bea5e7c5a2297979ff5a7aea16ee1b42fb7064f6f489b26f9f"
+    },
+    "training_visibility": {
+      "old_sha256": "b5796742b6ffc497fde362963af5c487d47f91ce2457ae9eade8bc13cd49c857",
+      "new_sha256": "b5796742b6ffc497fde362963af5c487d47f91ce2457ae9eade8bc13cd49c857"
+    },
+    "article_first_seen": {
+      "old_sha256": "e65cb72ccfdd4a2afdb9325b68ddc6ed34b4dca858edd686e6a2c23893c5b414",
+      "new_sha256": "e65cb72ccfdd4a2afdb9325b68ddc6ed34b4dca858edd686e6a2c23893c5b414"
+    }
+  },
+  "mappings": {
+    "article_index": {
+      "equal": true,
+      "entries": 104152
+    },
+    "category_dictionary": {
+      "equal": true,
+      "entries": 19
+    }
+  },
+  "max_feature_rows_per_chunk": 4096,
+  "svd_component_rows_per_chunk": 16,
+  "statistics_dtype": "float64",
+  "text_dimensions": 96,
+  "numerical_comparison": {
+    "all_features": {
+      "shape_equal": true,
+      "shape": [
+        104152,
+        115
+      ],
+      "old_dtype": "float32",
+      "new_dtype": "float32",
+      "exact_equal": false,
+      "different_elements": 9967583,
+      "elements": 11977480,
+      "max_absolute_difference": 0.0010710209608078003,
+      "mean_absolute_difference": 5.4309331095030085e-06
+    },
+    "text": {
+      "shape_equal": true,
+      "shape": [
+        104152,
+        96
+      ],
+      "old_dtype": "float32",
+      "new_dtype": "float32",
+      "exact_equal": false,
+      "different_elements": 9967583,
+      "elements": 9998592,
+      "max_absolute_difference": 0.0010710209608078003,
+      "mean_absolute_difference": 6.505805287425479e-06
+    },
+    "category": {
+      "shape_equal": true,
+      "shape": [
+        104152,
+        19
+      ],
+      "old_dtype": "float32",
+      "new_dtype": "float32",
+      "exact_equal": true,
+      "different_elements": 0,
+      "elements": 1978888,
+      "max_absolute_difference": 0.0,
+      "mean_absolute_difference": 0.0
+    },
+    "row_geometry": {
+      "nonpadding_rows": 104151,
+      "nonzero_paired_rows": 104151,
+      "text_rows_with_any_difference": 104151,
+      "old_zero_text_rows": 0,
+      "new_zero_text_rows": 0,
+      "means": {
+        "old_norm": 1.0000000001418985,
+        "new_norm": 1.0000000000393072,
+        "norm_absolute_difference": 4.524376672881096e-08,
+        "cosine_distance": 3.7375173794773126e-08,
+        "l2_difference": 0.00023934066024907793
+      },
+      "maxima": {
+        "norm_absolute_difference": 2.8439494803578214e-07,
+        "cosine_distance": 6.338207209077851e-07,
+        "l2_difference": 0.0011258958720484298,
+        "old_unit_norm_error": 2.149639735105069e-07,
+        "new_unit_norm_error": 1.948339796165044e-07
+      },
+      "minimum_cosine_similarity": 0.9999993661792791
+    },
+    "padding": {
+      "old_all_zero": true,
+      "new_all_zero": true
+    }
+  },
+  "tfidf": {
+    "parameters_equal": true,
+    "vocabulary_equal": true,
+    "old_vocabulary_size": 60000,
+    "new_vocabulary_size": 60000,
+    "idf": {
+      "shape_equal": true,
+      "shape": [
+        60000
+      ],
+      "old_dtype": "float32",
+      "new_dtype": "float32",
+      "exact_equal": true,
+      "different_elements": 0,
+      "elements": 60000,
+      "max_absolute_difference": 0.0,
+      "mean_absolute_difference": 0.0
+    }
+  },
+  "svd": {
+    "parameters_equal": true,
+    "components": {
+      "shape_equal": true,
+      "shape": [
+        96,
+        60000
+      ],
+      "old_dtype": "float32",
+      "new_dtype": "float32",
+      "exact_equal": false,
+      "different_elements": 5732153,
+      "elements": 5760000,
+      "max_absolute_difference": 0.0005158453714102507,
+      "mean_absolute_difference": 1.1168100867430798e-07
+    },
+    "singular_values": {
+      "shape_equal": true,
+      "shape": [
+        96
+      ],
+      "old_dtype": "float32",
+      "new_dtype": "float32",
+      "exact_equal": false,
+      "different_elements": 77,
+      "elements": 96,
+      "max_absolute_difference": 1.1444091796875e-05,
+      "mean_absolute_difference": 1.6689300537109375e-06
+    },
+    "explained_variance": {
+      "shape_equal": true,
+      "shape": [
+        96
+      ],
+      "old_dtype": "float32",
+      "new_dtype": "float32",
+      "exact_equal": false,
+      "different_elements": 93,
+      "elements": 96,
+      "max_absolute_difference": 5.3551048040390015e-09,
+      "mean_absolute_difference": 8.73721243503193e-10
+    },
+    "explained_variance_ratio": {
+      "shape_equal": true,
+      "shape": [
+        96
+      ],
+      "old_dtype": "float32",
+      "new_dtype": "float32",
+      "exact_equal": false,
+      "different_elements": 93,
+      "elements": 96,
+      "max_absolute_difference": 5.3551048040390015e-09,
+      "mean_absolute_difference": 8.837256852226952e-10
+    }
+  },
+  "inputs_unchanged_after_comparison": true,
+  "fitting_or_transform_performed": false,
+  "analysis_environment_only": {
+    "historical_run_environment": false,
+    "python": "3.10.21",
+    "packages": {
+      "numpy": "1.26.4",
+      "scipy": "1.15.3",
+      "scikit-learn": "1.6.1",
+      "joblib": "1.6.0"
+    }
+  },
+  "elapsed_seconds": 11.585221799992723
+}
