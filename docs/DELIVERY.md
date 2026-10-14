@@ -1,0 +1,136 @@
+# 交付与独立环境复验
+
+这份流程把“已有结果能运行”“模型能重新训练”“原始数据能重建”分开验证。所有命令在 Windows PowerShell、CPython 3.10、仓库根目录执行。数据、权重、逐请求记录和原始日志保留在本地 `data/`、`artifacts/`，不随 Git 仓库发布。
+
+| 路径 | 实际验证内容 | 不包含的结论 |
+|---|---|---|
+| 独立环境 + 冻结制品验收 | 从 GitHub 克隆、隔离安装依赖、校验源代码和制品、运行单元测试与真实 localhost HTTP | 不等于重新训练，也不是生产容量测试 |
+| v3 重训练 | 从已校验的处理后数据和 v2 基线重新执行 fit/tune/confirm/dev，比较参数、逐查询计数、指标和决策 | 没有重做原始数据预处理，也没有重训继承的文本编码器 |
+| 原始数据流水线 | 组织原始 MIND 数据到 v3 独立审计的完整依赖顺序，保存每阶段成功或失败凭据 | 有可执行入口不等于已经完成全链路实测 |
+
+本轮验证使用同一台电脑的新克隆和新虚拟环境；Python 基础解释器及标准库仍来自这台电脑。旧研究环境配置为 `include-system-site-packages = true`，不能用它证明独立安装成功。验收器要求新环境显式为 `false`，并检查安装分发包、导入模块和搜索路径均没有继承外部第三方包。
+
+**结果状态：正式独立环境验收与 v3 重训练正在执行，当前文档仅说明可运行入口。最终结论以 `reports/delivery/` 中实际生成的凭据为准；原始数据全链路本轮尚未实际重跑。** 已观察过的 dev 仍是固定基准，不能作为新的外部泛化集，也不能据此宣称线上 CTR、生产部署或分布式性能。
+
+## 1. 固定源代码和依赖
+
+先从可信发布记录取得完整 40 位 Git 提交 SHA，创建新克隆。不要复制旧虚拟环境。虚拟环境使用用户目录下一个尚不存在的短路径，避免把 Torch 安装到深层 OneDrive 克隆目录时触发 Windows 长路径错误。虚拟环境可以位于克隆之外；验收器检查真实解释器前缀，不要求环境必须叫 `.venv`。
+
+```powershell
+git clone https://github.com/chendi-Shi/newsforge.git newsforge-clean
+Set-Location newsforge-clean
+$expectedCommit = '<发布记录中的完整 Git SHA>'
+git checkout --detach $expectedCommit
+$venvRoot = Join-Path $env:USERPROFILE 'nf-delivery-venv'
+py -3.10 -m venv --copies $venvRoot
+$venvPython = Join-Path $venvRoot 'Scripts/python.exe'
+$env:PYTHONPATH = $null
+$env:PYTHONHOME = $null
+& $venvPython -m pip --isolated install --require-hashes --only-binary=:all: -r requirements-delivery-windows.lock
+& $venvPython -m pip check
+```
+
+`requirements-delivery-windows.lock` 绑定实际下载 wheel 的完整 SHA256，目标为 CPython 3.10 / Windows x86-64。其他 Python 版本或操作系统需要单独解析、校验和测试依赖，不能直接宣称适用。`pip` 自身作为虚拟环境安装工具单独记录；其他已安装分发包必须出现在锁文件中且版本一致。
+
+维护者更新依赖时，应在新目录下载完整闭包后生成新锁和凭据；这不是普通复验必需步骤，不能为让失败安装通过而覆盖既有锁。
+
+```powershell
+python -m newsforge.delivery.wheels --wheelhouse artifacts/delivery/wheelhouse --lock requirements-delivery-windows.lock --receipt reports/delivery/wheels.json
+```
+
+离线安装可使用已下载的相同 wheel，并保留哈希约束：
+
+```powershell
+& $venvPython -m pip --isolated install --no-index --find-links '<wheelhouse 的绝对路径>' --require-hashes -r requirements-delivery-windows.lock
+```
+
+## 2. 导出、校验和导入私有制品
+
+这一步需要持有已完成 v3 审计的研究工作目录。普通 Git 克隆没有 MIND 数据和权重。没有可信制品包时，应使用第 5 节原始数据流程，不能用合成数据替代正式复验。
+
+在持有制品的研究目录导出独立字节副本。下列额外文件使包同时支持 HTTP 工作负载和 v3 重训练对照；它们必须已经绑定在冻结 fit/审计报告中。
+
+```powershell
+python -m newsforge.delivery.bundle export --repo . --bundle artifacts/delivery/replay_bundle `
+  --extra-file data/processed/all_history.npy `
+  --extra-file data/processed/all_users.npy `
+  --extra-file data/processed/all_split.npy `
+  --extra-file artifacts/v2/dev_catalog_counts.npz `
+  --extra-file artifacts/v3/confirm/counts.npz `
+  --extra-file artifacts/v3/dev/counts.npz
+```
+
+将导出返回的 `manifest_sha256` 通过可信渠道交给接收方。只读取包内自带的校验文件可以发现意外损坏，不能验证来源。接收方在新克隆内执行：
+
+```powershell
+$bundlePath = '<私有制品包的绝对路径>'
+$bundleSha = '<可信渠道取得的 manifest SHA256>'
+& $venvPython -m newsforge.delivery.bundle verify --bundle $bundlePath --expected-manifest-sha256 $bundleSha
+& $venvPython -m newsforge.delivery.bundle import --repo . --bundle $bundlePath --expected-manifest-sha256 $bundleSha
+```
+
+导入先检查全部现有文件冲突和 payload 哈希，再复制；同路径相同字节可以跳过，不同字节会拒绝。路径穿越、符号链接、Windows junction/reparse 路径均拒绝。包不安装源代码或环境，也不在导入阶段反序列化模型。`bundle plan` 只列出期望输入，只有 export/verify/import 才逐文件读取并核对 payload 字节。
+
+## 3. 在新环境重训 v3
+
+```powershell
+& $venvPython -m newsforge.delivery.retrain --output artifacts/delivery/retrain_v3
+```
+
+运行器在训练前写入比较协议，然后顺序调用冻结的四个阶段。新的模型、缓存、报告、每阶段返回码与日志哈希全部写入独立输出目录，不覆盖已发布结果。比较规则为：
+
+- fit 行、采样、训练 pair 和特征 SHA256 必须一致。
+- 九个模型的数组形状和类型必须一致；浮点参数使用预先声明的 `atol=1e-8, rtol=0`，同时分别报告逐元素完全相等和序列化字节相等。
+- confirm/dev 的逐查询计数必须完全一致；调参网格、选择结果、部署门禁、指标、区间和切片结果必须完全一致。
+
+成功以新目录的 `comparison.json` 为准。失败日志和输出应保留，修正原因后使用新的输出目录重新执行。此流程使用原有处理后数据、文本表示和 v2 基线；其结论范围不能扩展为“从原始数据重新得到整个系统”。
+
+若需要验证新训练模型到 API 的路径，可在训练比较成功后顺序执行：
+
+```powershell
+& $venvPython -m newsforge.v3.benchmark_service `
+  --selection artifacts/delivery/retrain_v3/models_and_caches/selection.json `
+  --confirm artifacts/delivery/retrain_v3/reports/confirm.json `
+  --fit-report artifacts/delivery/retrain_v3/reports/fit.json `
+  --raw-dir artifacts/delivery/retrained_http `
+  --report artifacts/delivery/retrained_http_report.json
+```
+
+该命令单独生成实测报告；重训练比较成功本身不代表已经完成这次 HTTP 检查。正式性能测量期间不要并行运行训练或其他基准任务。
+
+## 4. 运行冻结发布制品的交付验收
+
+```powershell
+& $venvPython -m newsforge.delivery.acceptance --expected-commit $expectedCommit
+```
+
+验收器依次检查 Git HEAD 和工作树、隔离环境、每个锁定分发包版本和模块实际路径、`pip check`、完整单元测试，然后启动真实 v3 服务。HTTP 检查使用固定 64 个 dev 请求、4 组 batch/concurrency 配置、每组 3 轮，共 768 个正式查询，以及 13 个 API 边界/模式契约；它要求所有响应字段与独立离线参考完全相等，并重新检查原始证据哈希。进程回收限定于本次启动的 PID 与创建时间身份。
+
+公共输出为 `reports/delivery/acceptance.json` 和 `acceptance_http.json`；请求、响应、服务器日志和失败堆栈在 `artifacts/delivery/`。凭据记录完整源文件哈希，但环境路径归一化为 `<venv>`、`<clone>`、`<base>`。单元测试分别记录发现总数、跳过数和实际执行数，不将跳过项算作通过。
+
+输出必须原先不存在，工作树不得有源代码修改或其他未跟踪文件；重训练输出应放在被忽略的 `artifacts/` 下。默认使用 PATH 中的 Git；必要时通过 `--git '<Git 可执行文件绝对路径>'` 指定。`--skip-tests` 仅用于诊断，生成 `status=partial`、`passed=false`，并返回退出码 2，不能作为完整验收通过凭据。
+
+GitHub Actions 只执行 Windows CPU 的哈希依赖安装、`pip check`、全部小型测试和无数据 `pipeline plan`。CI 不下载 MIND、不执行完整训练，也不生成正式研究指标。CI 绿色不能替代此节的本地数据与服务验收。
+
+## 5. 从原始数据重建的独立流水线
+
+先查看真正要执行的依赖图，`plan` 不安装依赖、不下载数据、不训练：
+
+```powershell
+python -m newsforge.delivery.pipeline plan --output artifacts/delivery/raw_plan.json
+```
+
+完整流水线还需要 `requirements-plot.txt` 中的绘图依赖。绘图依赖目前只有版本约束，未合并入交付哈希锁，因此为它另建环境；不要往第 4 节验收环境加入未锁定包。
+
+```powershell
+python -m newsforge.delivery.pipeline init --source . --workspace ../newsforge-raw-rebuild --raw '<原始 MIND 数据根目录>'
+$rawVenvRoot = Join-Path $env:USERPROFILE 'nf-raw-venv'
+py -3.10 -m venv --copies $rawVenvRoot
+$rawPython = Join-Path $rawVenvRoot 'Scripts/python.exe'
+& $rawPython -m pip install -r requirements-windows.lock -r requirements-plot.txt
+python -m newsforge.delivery.pipeline run --workspace ../newsforge-raw-rebuild --python $rawPython --through v3-audit
+```
+
+`--workspace` 必须是源仓库之外尚不存在的目录。`--raw` 目录结构为 `train/{news,behaviors}.tsv` 和 `dev/{news,behaviors}.tsv`；省略该参数会在数据阶段走原有下载入口。`init` 创建独立源代码副本，并将副本中已有报告保留为 `reports-delivered/`，新报告从空目录开始。流水线包括预处理与审计、九次 v1 神经模型训练、v1 完整评估、内部时间窗口的 backbone 选择与导出、v2 训练选择评估审计，以及 v3 训练、消融、真实 HTTP、绘图和独立审计。
+
+阶段凭据绑定冻结源代码、明确提供的原始文件、依赖阶段的凭据与声明输出，以及本阶段声明输出的哈希；各研究审计器继续验证自身完整制品绑定。阶段凭据不保证覆盖所有临时文件。失败记录及日志保留，不把已有发布指标复制成新实验结果。若新的内部选择不满足冻结 v3 的基线前提，流水线会失败，不能强制使用历史赢家或从 dev 反选。基于旧阶段耗时，普通 CPU 上全链路预计需要数小时；该估计不是本轮完整重跑的实测耗时。
