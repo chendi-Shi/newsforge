@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-14T05:03:56.533955+00:00",
+  "status": "frozen_before_retry_event_read",
+  "source_commit": "5e9024a925f7fdd257f0fd6de2782631243e5294",
+  "prior_target_event_access": true,
+  "prior_effect_metrics_observed": false,
+  "retry_target_events_accessed_at_record_time": false,
+  "resource_change": {
+    "original_max_raw_lines": 10000000,
+    "retry_max_raw_lines": 20000000
+  },
+  "scientific_parameters_changed": false,
+  "old_failed_database_reused": false,
+  "original_archive_reused_and_rehashed": true,
+  "archive_sha256": "a68a1af8322e7fabada7a8b8a118ba0564beab7eb0433e80b3dec13cf5158e03",
+  "archive_bytes": 1414905649,
+  "original_acquisition_receipt_copied_exactly": true,
+  "original_acquisition_receipt_sha256": "d4e2ed6078f61a9a55ceffe2721922c6847d32eed082757a314e87f4d48f169d",
+  "acquisition_label_flag_scope": "Original download timestamp only; true prior event access is disclosed above.",
+  "failure_summary_sha256": "ae2a4710959f92b482aaa9d599206925f5ab00de4929818278dd0e87a54fc313",
+  "resource_amendment_sha256": "0da4cbbbb3f16e76eb5b1617d3e5277a1c2ce23d3119e639baa519e2245b3991",
+  "implementation_sha256": {
+    "newsforge/external/__init__.py": "77cbe3c82eabb499351fe033ab743ed45ef1ae773af46fbaa7cb73a53630ce3a",
+    "newsforge/external/__main__.py": "5e7bfbf68e67f38fa31877f088ae43e058794df528a788d1d09cd16c29b933b5",
+    "newsforge/external/acquire.py": "3e4240b615a734877642f8c5cb570e3c8fec23b29bf8610aadc8a79d8a079554",
+    "newsforge/external/acquire_parallel.py": "6d23dd1b187f85d9d06f448c254a245a2da3320bc44890475b4e1530104987d8",
+    "newsforge/external/aggregate.py": "537e4136f5feb8ea4148c80dc13dacab3feddc39ec93f01c0724ec890916ba7c",
+    "newsforge/external/common.py": "f6667f9372731589e68c67a70f945811ed583d9c594c17005e35092f9e1700bd",
+    "newsforge/external/evaluate.py": "7b7b276c602bd7a37a1d189782442029109fdb12100bd883ff1e856d8adf7287",
+    "newsforge/external/prepare.py": "cb3727c615aa3731fbaa1def31d401d10458c014d1b748e9f235666d0b2687e1"
+  },
+  "synthetic_tests": {
+    "passed": 34,
+    "skipped": 0,
+    "elapsed_seconds": 6.268,
+    "log_sha256": "b5a09b987b71acc3487ec6a3def6e87846c38e48a7ad099c8d515dcd9f4415e5"
+  },
+  "test_source_sha256": {
+    "tests/test_external_adressa.py": "84e9dfae731fe42f78348a69f260fa351a8e2ade6f529bdb3ab360bab09f81f6",
+    "tests/test_external_acquire_parallel.py": "fbda3ded1902c417a48d21a37d0d0bedf5458e838b454aebc18c36c430c1ddb6"
+  },
+  "all_original_frozen_model_and_protocol_bindings_unchanged": true,
+  "note": "Resource amendment after partial event parsing; no target sampling or quality evaluation had completed. Fresh full parse required."
+}

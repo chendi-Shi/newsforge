@@ -15,6 +15,8 @@
 
 首次真实准备于 04:58:09 UTC 因第 10,000,001 个原始行超过上限失败，尚未抽样或计算效果。已保留[失败摘要](../reports/external/adressa_prepare_limit_failure.json)，并单独登记[资源上限修订](EXTERNAL_ADRESSA_RESOURCE_AMENDMENT.md)：上限提高到 20,000,000 行，其余科学方案和资源限制不变。修订发生在部分真实事件读取后，不能称为完全事前的资源注册。修订文本 SHA 加入后续阶段绑定；另建运行目录从同一完整归档重新处理，保留旧失败数据库。
 
+修订实现于 `5e9024a925f7fdd257f0fd6de2782631243e5294` 提交后，在独立的 `artifacts/external/adressa_v1_resource20m` 目录启动完整重跑。[重跑前记录](../reports/external/adressa_resource_retry.json)绑定实现、修订、34 项合成测试及原下载凭据的精确副本，并明确此前已访问部分真实事件但没有效果结果。
+
 ```powershell
 python -m unittest discover -s tests -p 'test_external*.py' -v
 ```
@@ -76,5 +78,16 @@ if ($LASTEXITCODE -ne 0) { throw '聚合阶段失败，保留本次目录' }
 公开产物为 `evaluation.json`、`audit.json`、`RESULTS.md`。它们报告总体、三个固定日期、全部消融、区间、语言词表覆盖、未知类别、不可见/已读目标、候选不足及阶段资源消耗。`status=passed` 代表实现审计和聚合校验通过；只有主差大于零且 95% 用户簇区间下界大于零，`positive_transfer_supported_on_preregistered_sample` 才为真。用户簇区间条件于这三个已经实现的日期，不提供跨日期或生产保证。
 
 聚合成功后，可在安装了 `requirements-raw-windows.lock` 的环境运行 `python scripts/plot_external_results.py`，从已保存的聚合数值生成 PNG、SVG 和摘要元数据。绘图不接触原始事件、不重新计算统计量；负差值和跨零区间照常呈现，已有图片不会覆盖。
+
+持有完整本地运行产物后，再执行只读补充验收：
+
+```powershell
+python scripts/verify_external_results.py `
+  --run-dir artifacts/external/adressa_v1_resource20m --reports reports/external/adressa_v1 `
+  --output reports/external/adressa_v1/supplemental_verification.json
+if ($LASTEXITCODE -ne 0) { throw '外部结果补充验收失败，保留证据' }
+```
+
+该脚本核对文件与阶段摘要、全部请求的有效评分、候选排列、命中与倒数排名，以及每日分母、覆盖计数和消融方向。它验证保存的 128 请求审计及区间配置，但不重新解压原始事件、不重新推理或重抽 bootstrap；验收通过也不等于得到正向迁移收益。输出仅含聚合检查及摘要，已有结果不会覆盖。
 
 原始访问日志、用户/文章映射、逐请求数组和模型二进制保持本地，不能随公开代码仓库发布。Adressa 数据沿用其 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可，代码许可不替代数据许可。
