@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "target_event_access": false,
+  "real_external_effect_evaluated": false,
+  "tests": {
+    "adapter_count": 26,
+    "adapter_elapsed_seconds": 4.867,
+    "transport_count": 6,
+    "transport_elapsed_seconds": 1.74,
+    "total": 32,
+    "full_cli_synthetic_queries": 150,
+    "full_cli_reference_audit_queries": 128,
+    "combined_count": 32,
+    "combined_elapsed_seconds": 5.884,
+    "combined_status": "passed"
+  },
+  "environment": {
+    "python": "3.10.21",
+    "platform": "Windows-10-10.0.26300-SP0",
+    "packages": {
+      "numpy": "1.26.4",
+      "scipy": "1.15.3",
+      "scikit-learn": "1.6.1",
+      "joblib": "1.6.0",
+      "threadpoolctl": "3.7.0"
+    },
+    "numeric_threads": 1
+  },
+  "implementation": {
+    "newsforge/external/__init__.py": "77cbe3c82eabb499351fe033ab743ed45ef1ae773af46fbaa7cb73a53630ce3a",
+    "newsforge/external/__main__.py": "5e7bfbf68e67f38fa31877f088ae43e058794df528a788d1d09cd16c29b933b5",
+    "newsforge/external/acquire.py": "3e4240b615a734877642f8c5cb570e3c8fec23b29bf8610aadc8a79d8a079554",
+    "newsforge/external/acquire_parallel.py": "6d23dd1b187f85d9d06f448c254a245a2da3320bc44890475b4e1530104987d8",
+    "newsforge/external/aggregate.py": "537e4136f5feb8ea4148c80dc13dacab3feddc39ec93f01c0724ec890916ba7c",
+    "newsforge/external/common.py": "8b9029d5d365ec609780611cc246412f374e78c89d65f106492d19376b47e52b",
+    "newsforge/external/evaluate.py": "7b7b276c602bd7a37a1d189782442029109fdb12100bd883ff1e856d8adf7287",
+    "newsforge/external/prepare.py": "cb3727c615aa3731fbaa1def31d401d10458c014d1b748e9f235666d0b2687e1"
+  },
+  "tests_sha256": {
+    "tests/test_external_acquire_parallel.py": "fbda3ded1902c417a48d21a37d0d0bedf5458e838b454aebc18c36c430c1ddb6",
+    "tests/test_external_adressa.py": "64a9091b6d470fb2dcd5bfda82a702de03444b5e9fb885076ad159a68fb57226"
+  },
+  "scope": "Invented event fixtures and model parameters only; no target event content was read.",
+  "review_repairs": [
+    "Independent reference raw aggregation performed once on disk; from-zero EMA per cutoff",
+    "Separate preparation RSS and elapsed time",
+    "Malformed primary article ID cannot fall back",
+    "Parser and article transformation bounded by row count and string bytes",
+    "Accept safe leading ./ in POSIX tar while preserving raw physical member identity; root dot entries require actual directories"
+  ],
+  "synthetic_harness_retry": {
+    "initial_errors": 2,
+    "initial_elapsed_seconds": 4.525,
+    "reason": "Staging search path initially selected the previously copied implementation; test-only import precedence corrected before this passing run.",
+    "failed_private_log_retained": true,
+    "target_event_access": false
+  }
+}

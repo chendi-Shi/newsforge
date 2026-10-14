@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "created_utc": "2026-10-14T03:43:52.740444+00:00",
+  "scope": "Separate-process validation of retained public installation CLI evidence",
+  "installation_receipt_sha256": "c846d9e40ecab2a67559543f31b60ea67a1d8ad0f9463c32935c085bf1c2b37d",
+  "validation_source_sha256": "0e8680de039457a9944a65d10a89b63b7a5c81b5c6e86a5e203e224246e31616",
+  "validation": {
+    "passed": true,
+    "locked_distributions": 45,
+    "lock_sha256": "9ad728d429f637117f246c8f81bf753a837f87f690b3c75949552a22e731b39a",
+    "wheel_receipt_sha256": "3fff75c2c675ed7576b95635631d36621090a762ee88db23f44ec8b8a415cb4c",
+    "install_log_sha256": "7be5c642a370b366bf1187080e90ddb2b5646be3064a4e01fa71fe0d1493216a",
+    "complete_locked_reinstall_recorded": true
+  },
+  "installer_source_sha256": "3870a78422a71683d02982a538a59018ce966a7ad9ba73c8f87591a3a0e83814",
+  "elapsed_install_seconds": 187.63925179999933,
+  "pip_install_returncode": 0,
+  "pip_check_returncode": 0
+}

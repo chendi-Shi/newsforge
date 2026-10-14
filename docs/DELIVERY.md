@@ -102,12 +102,13 @@ $bundleSha = '<可信渠道取得的 manifest SHA256>'
 ## 4. 运行冻结发布制品的交付验收
 
 ```powershell
-& $venvPython -m newsforge.delivery.acceptance --expected-commit $expectedCommit
+& $venvPython -m newsforge.delivery.acceptance --expected-commit $expectedCommit `
+  --report reports/delivery/replay_acceptance.json
 ```
 
 验收器依次检查 Git HEAD 和工作树、隔离环境、每个锁定分发包版本和模块实际路径、`pip check`、完整单元测试，然后启动真实 v3 服务。HTTP 检查使用固定 64 个 dev 请求、4 组 batch/concurrency 配置、每组 3 轮，共 768 个正式查询，以及 13 个 API 边界/模式契约；它要求所有响应字段与独立离线参考完全相等，并重新检查原始证据哈希。进程回收限定于本次启动的 PID 与创建时间身份。
 
-公共输出为 `reports/delivery/acceptance.json` 和 `acceptance_http.json`；请求、响应、服务器日志和失败堆栈在 `artifacts/delivery/`。凭据记录完整源文件哈希，但环境路径归一化为 `<venv>`、`<clone>`、`<base>`。单元测试分别记录发现总数、跳过数和实际执行数，不将跳过项算作通过。
+上述命令的新公共输出为 `reports/delivery/replay_acceptance.json` 和 `replay_acceptance_http.json`；仓库中的历史 `acceptance.json` 保留。请求、响应、服务器日志和失败堆栈在 `artifacts/delivery/`。凭据记录完整源文件哈希，但环境路径归一化为 `<venv>`、`<clone>`、`<base>`。单元测试分别记录发现总数、跳过数和实际执行数，不将跳过项算作通过。
 
 输出必须原先不存在，工作树不得有源代码修改或其他未跟踪文件；重训练输出应放在被忽略的 `artifacts/` 下。默认使用 PATH 中的 Git；必要时通过 `--git '<Git 可执行文件绝对路径>'` 指定。`--skip-tests` 仅用于诊断，生成 `status=partial`、`passed=false`，并返回退出码 2，不能作为完整验收通过凭据。
 
@@ -121,17 +122,34 @@ GitHub Actions 只执行 Windows CPU 的哈希依赖安装、`pip check`、全�
 python -m newsforge.delivery.pipeline plan --output artifacts/delivery/raw_plan.json
 ```
 
-完整流水线还需要 `requirements-plot.txt` 中的绘图依赖。绘图依赖目前只有版本约束，未合并入交付哈希锁，因此为它另建环境；不要往第 4 节验收环境加入未锁定包。
+完整流水线使用单独的 `requirements-raw-windows.lock`，将运行与绘图的 **45 个分发包**一起锁定版本和 wheel SHA256。它面向 Windows x86-64 / CPython 3.10；另建短路径环境和工作目录，避免 Windows 长路径问题。第 4 节的 36 包服务验收环境保持独立。
 
 ```powershell
-python -m newsforge.delivery.pipeline init --source . --workspace ../newsforge-raw-rebuild --raw '<原始 MIND 数据根目录>'
-$rawVenvRoot = Join-Path $env:USERPROFILE 'nf-raw-venv'
-py -3.10 -m venv --copies $rawVenvRoot
-$rawPython = Join-Path $rawVenvRoot 'Scripts/python.exe'
-& $rawPython -m pip install -r requirements-windows.lock -r requirements-plot.txt
-python -m newsforge.delivery.pipeline run --workspace ../newsforge-raw-rebuild --python $rawPython --through v3-audit
+$rawReplayVenv = Join-Path $env:USERPROFILE 'nf-raw-replay-env'
+$rawWorkspace = Join-Path $env:USERPROFILE 'nf-raw-replay'
+if ((Test-Path $rawReplayVenv) -or (Test-Path $rawWorkspace)) { throw '使用尚不存在的新环境和工作目录' }
+py -3.10 -m venv --copies $rawReplayVenv
+$rawReplayPython = Join-Path $rawReplayVenv 'Scripts/python.exe'
+& $rawReplayPython -m pip --isolated download --only-binary=:all: --no-cache-dir --require-hashes `
+  -r requirements-raw-windows.lock --dest artifacts/raw_rebuild/wheelhouse
+& $rawReplayPython -m newsforge.delivery.raw_install --root . `
+  --wheelhouse artifacts/raw_rebuild/wheelhouse --lock requirements-raw-windows.lock `
+  --wheel-receipt reports/raw_rebuild/wheels.json --output reports/raw_rebuild/replay_install.json `
+  --log artifacts/raw_rebuild/replay_install.log
+if ($LASTEXITCODE -ne 0) { throw '安装验收失败，保留日志后处理原因' }
+& $rawReplayPython -m newsforge.delivery.pipeline init --source . --workspace $rawWorkspace --raw '<原始 MIND 数据根目录>'
+if ($LASTEXITCODE -ne 0) { throw '初始化失败，保留现场' }
+& $rawReplayPython -m newsforge.delivery.pipeline run --workspace $rawWorkspace --python $rawReplayPython --through v3-audit
+if ($LASTEXITCODE -ne 0) { throw '原始数据重建失败，保留现场' }
+& $rawReplayPython -m newsforge.delivery.raw_acceptance --workspace $rawWorkspace `
+  --environment-receipt reports/raw_rebuild/replay_install.json `
+  --install-log artifacts/raw_rebuild/replay_install.log --output reports/raw_rebuild/replay_acceptance.json
 ```
 
-`--workspace` 必须是源仓库之外尚不存在的目录。`--raw` 目录结构为 `train/{news,behaviors}.tsv` 和 `dev/{news,behaviors}.tsv`；省略该参数会在数据阶段走原有下载入口。`init` 创建独立源代码副本，并将副本中已有报告保留为 `reports-delivered/`，新报告从空目录开始。流水线包括预处理与审计、九次 v1 神经模型训练、v1 完整评估、内部时间窗口的 backbone 选择与导出、v2 训练选择评估审计，以及 v3 训练、消融、真实 HTTP、绘图和独立审计。
+`--workspace` 必须是源仓库之外尚不存在的目录。完整验收路径必须显式提供 `--raw`，目录结构为 `train/{news,behaviors}.tsv` 和 `dev/{news,behaviors}.tsv`，初始化时绑定四个原始文件。省略该参数只会在数据阶段走原有下载入口；当前最终 `raw_acceptance` 不接受这种模式。`init` 创建独立源代码副本，并将副本中已有报告保留为 `reports-delivered/`，新报告从空目录开始。流水线包括预处理与审计、九次 v1 神经模型训练、v1 完整评估、内部时间窗口的 backbone 选择与导出、v2 训练选择评估审计，以及 v3 训练、消融、真实 HTTP、绘图和独立审计。
+
+安装器先校验实际 wheel、哈希锁与分发包清单，再离线强制安装全部锁定包，记录原始 pip 日志、隔离环境检查和 `pip check`。既有回执、日志及失败尝试均不能覆盖。完整测试原始日志保存为 `reports/delivery/all_unit_tests.txt`；单独执行全部研究测试且要求无跳过，其原始日志保存为 `reports/v3_release_unit_tests.txt`，供冻结研究审计读取。神经训练结束后先检查三种子检查点的 epoch-2 资格，再进入全量评估。
+
+最终 `raw_acceptance` 必须由实际训练的同一个解释器运行。它逐级核验全部阶段、原始四文件与处理 provenance、安装日志及实际依赖代码、v2/v3 审计的模型和数组绑定、真实 HTTP 记录；还会描述新旧结果差异。确认门未通过时正确回退 baseline 可以是有效结果，历史指标完全相同不是通过条件。只有完整执行及最终验收成功才能声称原始数据重建已完成。
 
 阶段凭据绑定冻结源代码、明确提供的原始文件、依赖阶段的凭据与声明输出，以及本阶段声明输出的哈希；各研究审计器继续验证自身完整制品绑定。阶段凭据不保证覆盖所有临时文件。失败记录及日志保留，不把已有发布指标复制成新实验结果。若新的内部选择不满足冻结 v3 的基线前提，流水线会失败，不能强制使用历史赢家或从 dev 反选。基于旧阶段耗时，普通 CPU 上全链路预计需要数小时；该估计不是本轮完整重跑的实测耗时。

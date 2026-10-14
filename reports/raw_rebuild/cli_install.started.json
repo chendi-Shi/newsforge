@@ -1,0 +1,14 @@
+{
+  "status": "running",
+  "created_utc": "2026-10-14T03:39:51.849639+00:00",
+  "installer_source_sha256": "3870a78422a71683d02982a538a59018ce966a7ad9ba73c8f87591a3a0e83814",
+  "requested_action": "hash_checked_reinstall",
+  "install_options": [
+    "--isolated",
+    "--no-compile",
+    "--force-reinstall",
+    "--no-index",
+    "--find-links",
+    "--require-hashes"
+  ]
+}
