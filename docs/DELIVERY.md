@@ -144,6 +144,9 @@ if ($LASTEXITCODE -ne 0) { throw '原始数据重建失败，保留现场' }
 & $rawReplayPython -m newsforge.delivery.raw_acceptance --workspace $rawWorkspace `
   --environment-receipt reports/raw_rebuild/replay_install.json `
   --install-log artifacts/raw_rebuild/replay_install.log --output reports/raw_rebuild/replay_acceptance.json
+if ($LASTEXITCODE -ne 0) { throw '完整重建验收失败，保留证据' }
+& $rawReplayPython -m newsforge.delivery.raw_report --workspace $rawWorkspace `
+  --acceptance reports/raw_rebuild/replay_acceptance.json --output-dir reports/raw_rebuild/replay
 ```
 
 `--workspace` 必须是源仓库之外尚不存在的目录。完整验收路径必须显式提供 `--raw`，目录结构为 `train/{news,behaviors}.tsv` 和 `dev/{news,behaviors}.tsv`，初始化时绑定四个原始文件。省略该参数只会在数据阶段走原有下载入口；当前最终 `raw_acceptance` 不接受这种模式。`init` 创建独立源代码副本，并将副本中已有报告保留为 `reports-delivered/`，新报告从空目录开始。流水线包括预处理与审计、九次 v1 神经模型训练、v1 完整评估、内部时间窗口的 backbone 选择与导出、v2 训练选择评估审计，以及 v3 训练、消融、真实 HTTP、绘图和独立审计。
@@ -151,5 +154,7 @@ if ($LASTEXITCODE -ne 0) { throw '原始数据重建失败，保留现场' }
 安装器先校验实际 wheel、哈希锁与分发包清单，再离线强制安装全部锁定包，记录原始 pip 日志、隔离环境检查和 `pip check`。既有回执、日志及失败尝试均不能覆盖。完整测试原始日志保存为 `reports/delivery/all_unit_tests.txt`；单独执行全部研究测试且要求无跳过，其原始日志保存为 `reports/v3_release_unit_tests.txt`，供冻结研究审计读取。神经训练结束后先检查三种子检查点的 epoch-2 资格，再进入全量评估。
 
 最终 `raw_acceptance` 必须由实际训练的同一个解释器运行。它逐级核验全部阶段、原始四文件与处理 provenance、安装日志及实际依赖代码、v2/v3 审计的模型和数组绑定、真实 HTTP 记录；还会描述新旧结果差异。确认门未通过时正确回退 baseline 可以是有效结果，历史指标完全相同不是通过条件。只有完整执行及最终验收成功才能声称原始数据重建已完成。
+
+随后 `raw_report` 从已经通过且仍匹配的验收与阶段记录生成新的 `execution_summary.json` 和 `RESULTS.md`，列出本轮 v1/v2/v3 指标、区间、消融、测试通过与跳过数、HTTP 观测及新旧差异。它重新检查源代码、阶段链及汇总报告的摘要，依赖此前完整验收对大数组和原始 TSV 的核验，不冒充再次执行所有预测。输出不能覆盖既有结果。
 
 阶段凭据绑定冻结源代码、明确提供的原始文件、依赖阶段的凭据与声明输出，以及本阶段声明输出的哈希；各研究审计器继续验证自身完整制品绑定。阶段凭据不保证覆盖所有临时文件。失败记录及日志保留，不把已有发布指标复制成新实验结果。若新的内部选择不满足冻结 v3 的基线前提，流水线会失败，不能强制使用历史赢家或从 dev 反选。基于旧阶段耗时，普通 CPU 上全链路预计需要数小时；该估计不是本轮完整重跑的实测耗时。

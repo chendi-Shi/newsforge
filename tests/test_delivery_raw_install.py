@@ -19,7 +19,9 @@ class RawInstallTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
-        self.root = Path(self.temp.name)
+        # Windows runners may return an 8.3 alias for the same temp directory.
+        # Match the installer's canonical paths while retaining exact assertions.
+        self.root = Path(self.temp.name).resolve()
         self.wheelhouse = self.root / "wheelhouse"
         self.wheelhouse.mkdir()
         self.wheel = self.wheelhouse / "example-1.2-py3-none-any.whl"
@@ -90,6 +92,12 @@ class RawInstallTests(unittest.TestCase):
         self.assertEqual(self.failure()["phase"], "preflight")
         self.assertIsNone(self.failure()["pip_install_returncode"])
         self.assertFalse(self.output.exists())
+
+    def test_equivalent_root_path_is_canonicalized_before_install(self):
+        self.kwargs["root"] = self.wheelhouse / ".."
+        result = self.run_installer()
+        self.assertTrue(result["installation_executed_by_this_cli"])
+        self.assertEqual(len(self.events), 2)
 
     def test_coherent_receipt_cannot_override_required_wheel_hash(self):
         content = self.lock.read_text()

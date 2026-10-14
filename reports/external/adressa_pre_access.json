@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-14T03:56:55.174346+00:00",
+  "status": "implementation_frozen_before_target_event_access",
+  "target_events_accessed": false,
+  "external_effect_evaluated": false,
+  "protocol_commit": "d0c911af44366162a06333d56bf0bb0b3e2a52c9",
+  "implementation_commit": "8daf7109380dba6c449e1f29b7b75ac75710a994",
+  "protocol_sha256": "5999cfe6edf8c00791e87830753cd6872425ebb51ee1f7019efb01eb6000d4dd",
+  "source_report_sha256": "ddcada356ffc545daa822a041ac3ba783bca4b669dc6645983ee06638581823d",
+  "implementation": {
+    "newsforge/external/__init__.py": "77cbe3c82eabb499351fe033ab743ed45ef1ae773af46fbaa7cb73a53630ce3a",
+    "newsforge/external/__main__.py": "5e7bfbf68e67f38fa31877f088ae43e058794df528a788d1d09cd16c29b933b5",
+    "newsforge/external/acquire.py": "3e4240b615a734877642f8c5cb570e3c8fec23b29bf8610aadc8a79d8a079554",
+    "newsforge/external/acquire_parallel.py": "6d23dd1b187f85d9d06f448c254a245a2da3320bc44890475b4e1530104987d8",
+    "newsforge/external/aggregate.py": "537e4136f5feb8ea4148c80dc13dacab3feddc39ec93f01c0724ec890916ba7c",
+    "newsforge/external/common.py": "8b9029d5d365ec609780611cc246412f374e78c89d65f106492d19376b47e52b",
+    "newsforge/external/evaluate.py": "7b7b276c602bd7a37a1d189782442029109fdb12100bd883ff1e856d8adf7287",
+    "newsforge/external/prepare.py": "cb3727c615aa3731fbaa1def31d401d10458c014d1b748e9f235666d0b2687e1"
+  },
+  "tests_sha256": {
+    "tests/test_external_acquire_parallel.py": "fbda3ded1902c417a48d21a37d0d0bedf5458e838b454aebc18c36c430c1ddb6",
+    "tests/test_external_adressa.py": "64a9091b6d470fb2dcd5bfda82a702de03444b5e9fb885076ad159a68fb57226"
+  },
+  "root_checkout_tests": {
+    "discovered": 32,
+    "passed": 32,
+    "skipped": 0,
+    "elapsed_seconds": 5.379,
+    "log_sha256": "03c4e68ae919ec10231eac029df170ffb1c37928d448bc09c699c44eda156fe5"
+  },
+  "transport_attempts": [
+    {
+      "run": "adressa_v1",
+      "status": "terminated_before_labels",
+      "reason": "The sequential byte download was too slow; retained the partial file and termination receipt.",
+      "retained_partial_bytes": 5242880,
+      "termination_receipt_sha256": "42fbc9c7e97c1a4149b153ad073cff5161c70dfeb43c16e488f045c59971e23c"
+    },
+    {
+      "run": "adressa_v1_parallel",
+      "status_at_recording": "compressed_bytes_downloading",
+      "workers": 8,
+      "part_bytes": 4194304,
+      "note": "Same official URL and expected compressed length. No gzip, tar or target event parsing before this record."
+    }
+  ],
+  "limits": [
+    "Local process chronology and Git commits are evidence, not remote attestation.",
+    "Synthetic fixtures do not establish real external quality. Statistical choices remain those of the preregistered protocol."
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "run_id": 38508804215,
+  "url": "https://github.com/chendi-Shi/newsforge/actions/runs/38508804215",
+  "commit": "8daf7109380dba6c449e1f29b7b75ac75710a994",
+  "status": "completed",
+  "conclusion": "failure",
+  "failed_step": "Run all synthetic and contract tests",
+  "tests": {
+    "discovered": 320,
+    "passed": 316,
+    "failures": 4,
+    "errors": 0,
+    "skipped": 0,
+    "elapsed_seconds": 45.002
+  },
+  "failure_type": "Windows temporary-directory short-name alias in test fixture",
+  "cause": "The installer correctly resolves its working directory. Four mock-install tests compared that canonical path to the unnormalized temporary-directory string, which used an equivalent Windows 8.3 name on the hosted runner.",
+  "repair": "Canonicalize the fixture root and preserve exact working-directory, wheelhouse and lock-path assertions; add an equivalent-root-path regression test.",
+  "production_installer_changed": false,
+  "frozen_research_implementation_changed": false,
+  "original_ci_run_retained": true,
+  "subsequent_validation_required": true
+}

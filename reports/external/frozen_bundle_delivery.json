@@ -1,0 +1,46 @@
+{
+  "passed": true,
+  "scope": "Independent short-path checkout skeleton and exact frozen MIND prerequisite import; no Git clone, external events, deserialization, training, or external evaluation",
+  "verify": {
+    "scope": "Exact preregistered MIND inputs for external Adressa evaluation; no external events, fitting or evaluation",
+    "action": "verify",
+    "verified": true,
+    "manifest_sha256": "bf5b78f23497a56586da3c3d8ca05dd4d3b6694b738d7d5a84e19de196101a07",
+    "payload_files": 27,
+    "required_checkout_files": 9,
+    "total_bytes": 25027782,
+    "external_events_included": false,
+    "model_deserialization_performed": false
+  },
+  "first_import": {
+    "scope": "Exact preregistered MIND inputs for external Adressa evaluation; no external events, fitting or evaluation",
+    "action": "import",
+    "verified": true,
+    "manifest_sha256": "bf5b78f23497a56586da3c3d8ca05dd4d3b6694b738d7d5a84e19de196101a07",
+    "payload_files": 27,
+    "required_checkout_files": 9,
+    "total_bytes": 25027782,
+    "external_events_included": false,
+    "model_deserialization_performed": false,
+    "copied_files": 27,
+    "identical_existing_files": 0
+  },
+  "repeat_import": {
+    "scope": "Exact preregistered MIND inputs for external Adressa evaluation; no external events, fitting or evaluation",
+    "action": "import",
+    "verified": true,
+    "manifest_sha256": "bf5b78f23497a56586da3c3d8ca05dd4d3b6694b738d7d5a84e19de196101a07",
+    "payload_files": 27,
+    "required_checkout_files": 9,
+    "total_bytes": 25027782,
+    "external_events_included": false,
+    "model_deserialization_performed": false,
+    "copied_files": 0,
+    "identical_existing_files": 27
+  },
+  "external_frozen_input_preflight_files": 35,
+  "original_frozen_inputs_unchanged": true,
+  "independent_payload_copies": true,
+  "helper_sha256": "ecb550da5c095f5f772d32472cddc369c5776a446d1beeb2125cd59cf11f40b3",
+  "tests_sha256": "50acf8eb5b0fcaf163db92f1f1aa709698a9cb1bd5cf80c086969149bde1d1e4"
+}
