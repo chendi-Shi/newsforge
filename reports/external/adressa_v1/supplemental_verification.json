@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "created_utc": "2026-10-14T05:51:01.555164+00:00",
+  "scope": "Supplemental verification of existing hashes, arrays and aggregates; not an independent raw-data reconstruction or new statistical experiment.",
+  "bootstrap_recomputed": false,
+  "model_inference_repeated": false,
+  "original_archive_rehashed": false,
+  "queries_checked": 15000,
+  "stored_reference_queries": 128,
+  "verified_file_count": 68,
+  "positive_transfer_supported": false,
+  "resource_amendment_bound": true,
+  "checks": {
+    "source_and_receipt_hash_chain": true,
+    "artifact_hashes": true,
+    "fixed_all_request_denominators": true,
+    "method_counts_and_ablation_directions": true,
+    "stored_ci_bounds_and_bootstrap_configuration": true,
+    "reference_index_identity": true,
+    "candidate_permutations_and_hit100_identity": true,
+    "finite_valid_scores": true,
+    "saved_hit_and_rr_recalculation": true,
+    "daily_count_conservation": true,
+    "diagnostic_count_bounds": true,
+    "article_and_candidate_coverage_counts": true,
+    "overall_conclusion_rule": true
+  },
+  "input_sha256": {
+    "acquisition_receipt": "d4e2ed6078f61a9a55ceffe2721922c6847d32eed082757a314e87f4d48f169d",
+    "prepare_receipt": "709f935f3d6d8655426ecb8af66ec80a57afc70ce2a5e4e64fef1e039b854cc4",
+    "evaluate_receipt": "64d127f433d237bd644fbc8ce39e9b0b52cabfe07101d576855a81815d9e42e3",
+    "aggregate_receipt": "25ac00456cfd530a92abaca50dfd6bfbc5e929f326f2de05f70dbcc26d938646",
+    "evaluation_report": "6d847815932753608a8ed8e4a8d69b3262791eee6c3b51ea14e20d64972be498",
+    "audit_report": "3d2a2382005d61b23d5ade19e21c616725a0700535aa09292a3e9768e04bd6a3",
+    "acquisition_ranges": "9d0ca202abf79d929a92510247e4bb92e92ce2bcff85e9a7d70a9b5979d11ec1",
+    "source_report": "ddcada356ffc545daa822a041ac3ba783bca4b669dc6645983ee06638581823d",
+    "dependency_lock": "fc3ac6bf1252f43d87da07bf63ae6c380d909c625ac6369b651c21bc8eba0801",
+    "resource_amendment": "0da4cbbbb3f16e76eb5b1617d3e5277a1c2ce23d3119e639baa519e2245b3991",
+    "frozen_inventory": "5807392f4159fbbd7b960e9476c0f1f0203dc4c840d95679657a7684025ca252",
+    "implementation_inventory": "fca41a333c59583d7a21590bd4c823577b4691bd863e2c793bfeb944929d8556",
+    "prepared_files": {
+      "coverage.npy": "26227ecef90b1cde30a6bf7ed7b23e2ace8aa446813608ddefbbdde1e86ebb8a",
+      "events.sqlite": "08585e6882c656fdefda6072a4436aef7f48d2861888b405cff15d8f52920953",
+      "features.npy": "0c132c5c20e74bb3c45190ac1c439fcf0cb64ccd191a444fee44716418d0b5ae",
+      "first_seen.npy": "360f6889ec660571a5f9087aadc4331ffe224a97accaf184b2463fff4a12927d"
+    },
+    "evaluated_files": {
+      "audit.json": "3d2a2382005d61b23d5ade19e21c616725a0700535aa09292a3e9768e04bd6a3",
+      "hits10.npy": "21f7feb4a0dc998f751739f5eac6f734a796e4d209a5d67b34bf1167b837ea70",
+      "hits100.npy": "49da6b92e45e942214fc64369958d94bbc34cf69e0c0fae8dbcec73626d28f45",
+      "orders.npy": "e4efef4c27a3258a7862be53dcc88f152a1464b4a621a655c78a4d2ad39bf578",
+      "pools.npy": "a217a60835470e838681b8ed37df3f2b38454258c773e576d5f4a25049d30469",
+      "queries.npy": "bfa154f1b3fc4ed4707b168d238035a8dc99090a1c4ca00565fcd12e54280cca",
+      "reciprocal10.npy": "3dabe03c4642f75279902ce2c9154f272500f6cbb653ff12d7925c77429e06b9",
+      "reference_counts.sqlite": "8e7924ec8005208c5523976e2c817c94de97f2d8ed7ca0a54e6891e15d01c1bf",
+      "scores.npy": "4e7ecba3a4549e4bf48d932cb68504170b82c4e3cd9aa3103c72bb6a9b856e40",
+      "sizes.npy": "1b2d09b2d9bd128bf6b930c1db872b74643f7f0e6be29b9beaf73a4a95e42073"
+    },
+    "archive_identity_from_receipts": "a68a1af8322e7fabada7a8b8a118ba0564beab7eb0433e80b3dec13cf5158e03",
+    "sample_identity_from_receipts": "3f23e63933de61554fc1fa9d05d63371ff213d732265f8377ee77309af7c88fe",
+    "script": "0a8f9a50f001e730eef5564db470f0137dfdbb25c4674e20ff7f5561cc746038"
+  },
+  "limits": [
+    "Stored CIs are checked for configuration, finite bounds and point-estimate direction, not resampled again.",
+    "The saved 128-query reference audit is hash-checked, not rerun. History coverage is bounded by its reported occurrence count; user histories are not reconstructed.",
+    "Archive and sample identities are linked through existing receipts. Original compressed bytes and target-independent sampling are not recomputed here.",
+    "A resource amendment, when bound, occurred after partial target-event access; the original scientific plan remained fixed. Verification success does not establish positive transfer."
+  ]
+}

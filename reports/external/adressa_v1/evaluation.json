@@ -1,0 +1,618 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "dataset": "Adressa light one week",
+  "scope": "Independent retrospective cross-publisher and cross-language frozen-MIND-model stress test",
+  "external_model_fitting": false,
+  "external_hyperparameter_selection": false,
+  "prospective_future_generalization": false,
+  "online_ab_test": false,
+  "feedback": "observed page visits; no exposure negatives or calibrated CTR",
+  "text_representation": "frozen English MIND TF-IDF/SVD applied to unmodified Norwegian first-observed titles",
+  "category_representation": "frozen exact MIND category lookup; unknown categories retain UNKNOWN one-hot",
+  "delta": 10,
+  "seeds": [
+    17,
+    29,
+    43
+  ],
+  "overall": {
+    "queries": 15000,
+    "users": 14196,
+    "methods": {
+      "baseline": {
+        "hits10": 4430,
+        "hit_rate10": 0.29533333333333334,
+        "hits100": 7613,
+        "hit_rate100": 0.5075333333333333,
+        "mrr10": 0.11177563492063493,
+        "denominator": 15000
+      },
+      "full13+gate": {
+        "hits10": 4374,
+        "hit_rate10": 0.2916,
+        "hits100": 7613,
+        "hit_rate100": 0.5075333333333333,
+        "mrr10": 0.10620650793650795,
+        "denominator": 15000
+      },
+      "no_category+gate": {
+        "hits10": 4363,
+        "hit_rate10": 0.29086666666666666,
+        "hits100": 7613,
+        "hit_rate100": 0.5075333333333333,
+        "mrr10": 0.1053984656084656,
+        "denominator": 15000
+      },
+      "no_recent+gate": {
+        "hits10": 4376,
+        "hit_rate10": 0.29173333333333334,
+        "hits100": 7613,
+        "hit_rate100": 0.5075333333333333,
+        "mrr10": 0.10612719576719576,
+        "denominator": 15000
+      },
+      "full13+no_gate": {
+        "hits10": 4275,
+        "hit_rate10": 0.285,
+        "hits100": 7613,
+        "hit_rate100": 0.5075333333333333,
+        "mrr10": 0.09863074074074073,
+        "denominator": 15000
+      }
+    },
+    "comparisons": {
+      "full13+gate_minus_baseline": {
+        "difference": -0.0037333333333333333,
+        "ci95": [
+          -0.005814157752949581,
+          -0.0015982954275880214
+        ],
+        "user_clusters": 14196,
+        "bootstrap_repetitions": 1000,
+        "bootstrap_rng_seed": 2026,
+        "valid_repetitions": 1000,
+        "estimand": "total paired hit difference / total requests in resampled user clusters"
+      },
+      "no_category+gate_minus_full13+gate": {
+        "difference": -0.0007333333333333333,
+        "ci95": [
+          -0.0012693047117141054,
+          -0.0002664353120328884
+        ],
+        "user_clusters": 14196,
+        "bootstrap_repetitions": 1000,
+        "bootstrap_rng_seed": 2026,
+        "valid_repetitions": 1000,
+        "estimand": "total paired hit difference / total requests in resampled user clusters"
+      },
+      "no_recent+gate_minus_full13+gate": {
+        "difference": 0.00013333333333333334,
+        "ci95": [
+          -0.00019921445589928322,
+          0.0004670449749199974
+        ],
+        "user_clusters": 14196,
+        "bootstrap_repetitions": 1000,
+        "bootstrap_rng_seed": 2026,
+        "valid_repetitions": 1000,
+        "estimand": "total paired hit difference / total requests in resampled user clusters"
+      },
+      "full13+no_gate_minus_full13+gate": {
+        "difference": -0.0066,
+        "ci95": [
+          -0.008648837380515093,
+          -0.0046026772842801805
+        ],
+        "user_clusters": 14196,
+        "bootstrap_repetitions": 1000,
+        "bootstrap_rng_seed": 2026,
+        "valid_repetitions": 1000,
+        "estimand": "total paired hit difference / total requests in resampled user clusters"
+      }
+    }
+  },
+  "by_day": {
+    "2017-01-05": {
+      "queries": 5000,
+      "users": 4883,
+      "methods": {
+        "baseline": {
+          "hits10": 1452,
+          "hit_rate10": 0.2904,
+          "hits100": 2443,
+          "hit_rate100": 0.4886,
+          "mrr10": 0.10282571428571427,
+          "denominator": 5000
+        },
+        "full13+gate": {
+          "hits10": 1440,
+          "hit_rate10": 0.288,
+          "hits100": 2443,
+          "hit_rate100": 0.4886,
+          "mrr10": 0.10545555555555557,
+          "denominator": 5000
+        },
+        "no_category+gate": {
+          "hits10": 1435,
+          "hit_rate10": 0.287,
+          "hits100": 2443,
+          "hit_rate100": 0.4886,
+          "mrr10": 0.10505563492063492,
+          "denominator": 5000
+        },
+        "no_recent+gate": {
+          "hits10": 1440,
+          "hit_rate10": 0.288,
+          "hits100": 2443,
+          "hit_rate100": 0.4886,
+          "mrr10": 0.10548642857142859,
+          "denominator": 5000
+        },
+        "full13+no_gate": {
+          "hits10": 1410,
+          "hit_rate10": 0.282,
+          "hits100": 2443,
+          "hit_rate100": 0.4886,
+          "mrr10": 0.10086968253968255,
+          "denominator": 5000
+        }
+      },
+      "comparisons": {
+        "full13+gate_minus_baseline": {
+          "difference": -0.0024,
+          "ci95": [
+            -0.005811196543421827,
+            0.0008009691758315106
+          ],
+          "user_clusters": 4883,
+          "bootstrap_repetitions": 1000,
+          "bootstrap_rng_seed": 2026,
+          "valid_repetitions": 1000,
+          "estimand": "total paired hit difference / total requests in resampled user clusters"
+        },
+        "no_category+gate_minus_full13+gate": {
+          "difference": -0.001,
+          "ci95": [
+            -0.0022017724289541745,
+            0.0001992508292873431
+          ],
+          "user_clusters": 4883,
+          "bootstrap_repetitions": 1000,
+          "bootstrap_rng_seed": 2026,
+          "valid_repetitions": 1000,
+          "estimand": "total paired hit difference / total requests in resampled user clusters"
+        },
+        "no_recent+gate_minus_full13+gate": {
+          "difference": 0.0,
+          "ci95": [
+            0.0,
+            0.0
+          ],
+          "user_clusters": 4883,
+          "bootstrap_repetitions": 1000,
+          "bootstrap_rng_seed": 2026,
+          "valid_repetitions": 1000,
+          "estimand": "total paired hit difference / total requests in resampled user clusters"
+        },
+        "full13+no_gate_minus_full13+gate": {
+          "difference": -0.006,
+          "ci95": [
+            -0.009582798885329091,
+            -0.002588162782762486
+          ],
+          "user_clusters": 4883,
+          "bootstrap_repetitions": 1000,
+          "bootstrap_rng_seed": 2026,
+          "valid_repetitions": 1000,
+          "estimand": "total paired hit difference / total requests in resampled user clusters"
+        }
+      }
+    },
+    "2017-01-06": {
+      "queries": 5000,
+      "users": 4870,
+      "methods": {
+        "baseline": {
+          "hits10": 1908,
+          "hit_rate10": 0.3816,
+          "hits100": 2912,
+          "hit_rate100": 0.5824,
+          "mrr10": 0.1625804761904762,
+          "denominator": 5000
+        },
+        "full13+gate": {
+          "hits10": 1855,
+          "hit_rate10": 0.371,
+          "hits100": 2912,
+          "hit_rate100": 0.5824,
+          "mrr10": 0.14086103174603173,
+          "denominator": 5000
+        },
+        "no_category+gate": {
+          "hits10": 1849,
+          "hit_rate10": 0.3698,
+          "hits100": 2912,
+          "hit_rate100": 0.5824,
+          "mrr10": 0.13946150793650794,
+          "denominator": 5000
+        },
+        "no_recent+gate": {
+          "hits10": 1857,
+          "hit_rate10": 0.3714,
+          "hits100": 2912,
+          "hit_rate100": 0.5824,
+          "mrr10": 0.14064238095238094,
+          "denominator": 5000
+        },
+        "full13+no_gate": {
+          "hits10": 1793,
+          "hit_rate10": 0.3586,
+          "hits100": 2912,
+          "hit_rate100": 0.5824,
+          "mrr10": 0.1253461111111111,
+          "denominator": 5000
+        }
+      },
+      "comparisons": {
+        "full13+gate_minus_baseline": {
+          "difference": -0.0106,
+          "ci95": [
+            -0.014220199697804697,
+            -0.0068039463950315794
+          ],
+          "user_clusters": 4870,
+          "bootstrap_repetitions": 1000,
+          "bootstrap_rng_seed": 2026,
+          "valid_repetitions": 1000,
+          "estimand": "total paired hit difference / total requests in resampled user clusters"
+        },
+        "no_category+gate_minus_full13+gate": {
+          "difference": -0.0012,
+          "ci95": [
+            -0.002205314817334567,
+            -0.0003991219317501497
+          ],
+          "user_clusters": 4870,
+          "bootstrap_repetitions": 1000,
+          "bootstrap_rng_seed": 2026,
+          "valid_repetitions": 1000,
+          "estimand": "total paired hit difference / total requests in resampled user clusters"
+        },
+        "no_recent+gate_minus_full13+gate": {
+          "difference": 0.0004,
+          "ci95": [
+            -0.0003993630163777102,
+            0.0012019290973752756
+          ],
+          "user_clusters": 4870,
+          "bootstrap_repetitions": 1000,
+          "bootstrap_rng_seed": 2026,
+          "valid_repetitions": 1000,
+          "estimand": "total paired hit difference / total requests in resampled user clusters"
+        },
+        "full13+no_gate_minus_full13+gate": {
+          "difference": -0.0124,
+          "ci95": [
+            -0.0163937706230033,
+            -0.008615464767671553
+          ],
+          "user_clusters": 4870,
+          "bootstrap_repetitions": 1000,
+          "bootstrap_rng_seed": 2026,
+          "valid_repetitions": 1000,
+          "estimand": "total paired hit difference / total requests in resampled user clusters"
+        }
+      }
+    },
+    "2017-01-07": {
+      "queries": 5000,
+      "users": 4868,
+      "methods": {
+        "baseline": {
+          "hits10": 1070,
+          "hit_rate10": 0.214,
+          "hits100": 2258,
+          "hit_rate100": 0.4516,
+          "mrr10": 0.06992071428571428,
+          "denominator": 5000
+        },
+        "full13+gate": {
+          "hits10": 1079,
+          "hit_rate10": 0.2158,
+          "hits100": 2258,
+          "hit_rate100": 0.4516,
+          "mrr10": 0.0723029365079365,
+          "denominator": 5000
+        },
+        "no_category+gate": {
+          "hits10": 1079,
+          "hit_rate10": 0.2158,
+          "hits100": 2258,
+          "hit_rate100": 0.4516,
+          "mrr10": 0.07167825396825396,
+          "denominator": 5000
+        },
+        "no_recent+gate": {
+          "hits10": 1079,
+          "hit_rate10": 0.2158,
+          "hits100": 2258,
+          "hit_rate100": 0.4516,
+          "mrr10": 0.07225277777777778,
+          "denominator": 5000
+        },
+        "full13+no_gate": {
+          "hits10": 1072,
+          "hit_rate10": 0.2144,
+          "hits100": 2258,
+          "hit_rate100": 0.4516,
+          "mrr10": 0.06967642857142857,
+          "denominator": 5000
+        }
+      },
+      "comparisons": {
+        "full13+gate_minus_baseline": {
+          "difference": 0.0018,
+          "ci95": [
+            -0.00200169158788029,
+            0.005807026524778452
+          ],
+          "user_clusters": 4868,
+          "bootstrap_repetitions": 1000,
+          "bootstrap_rng_seed": 2026,
+          "valid_repetitions": 1000,
+          "estimand": "total paired hit difference / total requests in resampled user clusters"
+        },
+        "no_category+gate_minus_full13+gate": {
+          "difference": 0.0,
+          "ci95": [
+            -0.0006001230258056413,
+            0.0005995263764997597
+          ],
+          "user_clusters": 4868,
+          "bootstrap_repetitions": 1000,
+          "bootstrap_rng_seed": 2026,
+          "valid_repetitions": 1000,
+          "estimand": "total paired hit difference / total requests in resampled user clusters"
+        },
+        "no_recent+gate_minus_full13+gate": {
+          "difference": 0.0,
+          "ci95": [
+            -0.0005995263764997597,
+            0.0006003602161296778
+          ],
+          "user_clusters": 4868,
+          "bootstrap_repetitions": 1000,
+          "bootstrap_rng_seed": 2026,
+          "valid_repetitions": 1000,
+          "estimand": "total paired hit difference / total requests in resampled user clusters"
+        },
+        "full13+no_gate_minus_full13+gate": {
+          "difference": -0.0014,
+          "ci95": [
+            -0.0044214444395523,
+            0.0017923478567800474
+          ],
+          "user_clusters": 4868,
+          "bootstrap_repetitions": 1000,
+          "bootstrap_rng_seed": 2026,
+          "valid_repetitions": 1000,
+          "estimand": "total paired hit difference / total requests in resampled user clusters"
+        }
+      }
+    }
+  },
+  "positive_transfer_supported_on_preregistered_sample": false,
+  "conclusion": "this external test did not support positive transfer",
+  "selection_policy": "Report all fixed methods; never change the production recipe based on these outcomes.",
+  "interval_limit": "User-cluster intervals condition on three realized days and common feedback; no across-date or production guarantee.",
+  "source_counts": {
+    "raw_lines": 10043269,
+    "invalid_article": 6941278,
+    "valid_before_dedup": 3083312,
+    "empty_title_events": 0,
+    "empty_category_events": 3083312,
+    "out_of_range": 18679,
+    "deduplicated_events": 3082807,
+    "duplicate_events_removed": 505,
+    "expanded_bytes": 13188488467
+  },
+  "identity_counts": {
+    "users": 637730,
+    "articles": 20395,
+    "daily_populations": {
+      "2017-01-05": 461222,
+      "2017-01-06": 287001,
+      "2017-01-07": 305828
+    }
+  },
+  "daily_samples": {
+    "2017-01-05": 5000,
+    "2017-01-06": 5000,
+    "2017-01-07": 5000
+  },
+  "sample_identity_sha256": "3f23e63933de61554fc1fa9d05d63371ff213d732265f8377ee77309af7c88fe",
+  "article_text_coverage": {
+    "empty_title": 0,
+    "zero_tfidf": 5064,
+    "zero_svd": 5064,
+    "unknown_category": 20395,
+    "articles": 20395
+  },
+  "query_diagnostics": {
+    "empty_history": 1945,
+    "unavailable_target": 3976,
+    "already_read_target": 1566,
+    "shortfall": 0,
+    "queries_with_shortfall": 0,
+    "fallback_items": 0,
+    "queries_with_fallback": 0,
+    "history_items": 156788,
+    "candidate_items": 1500000,
+    "history_empty_title": 0,
+    "history_zero_tfidf": 23040,
+    "history_zero_svd": 23040,
+    "history_unknown_category": 156788,
+    "candidate_empty_title": 0,
+    "candidate_zero_tfidf": 250271,
+    "candidate_zero_svd": 250271,
+    "candidate_unknown_category": 1500000
+  },
+  "audit": {
+    "schema_version": 1,
+    "status": "passed",
+    "queries": 128,
+    "selection": "linspace(0,n-1,128,dtype=int64); includes first and last fixed query",
+    "indices_sha256": "41e53e54de868197a01a8acc442d2922b3ee1710f7e48068f2fbba01de42c6b5",
+    "candidate_id_equality": "exact",
+    "ranking_equality": "exact",
+    "hit_equality": "exact",
+    "score_atol": 1e-08,
+    "score_rtol": 0.0,
+    "score_max_absolute_error": 0.0,
+    "independently_rebuilt": [
+      "historical event prefix",
+      "hourly EMA",
+      "full history filter",
+      "candidate fallback",
+      "normalization and model scores",
+      "sorting",
+      "target hits"
+    ],
+    "shared_frozen_definition": "newsforge.v2.ranker.content_features",
+    "reference_aggregation": "separate raw-event SQL aggregation on disk; EMA rebuilt from zero per distinct cutoff; one-cutoff cache",
+    "all_method_per_query_candidate_set_invariant": true,
+    "all_method_per_query_hit100_invariant": true
+  },
+  "evaluation_elapsed_seconds": 174.48219849998713,
+  "evaluation_memory": {
+    "sampling_interval_ms": 100,
+    "samples": 1489,
+    "initial_rss_bytes": 90083328,
+    "max_observed_rss_bytes": 296165376,
+    "minimum_system_available_bytes": 2129420288,
+    "note": "RSS includes mapped pages; sampling can miss peaks; shared desktop load is uncontrolled."
+  },
+  "preparation_elapsed_seconds": 2217.137218700009,
+  "preparation_memory": {
+    "sampling_interval_ms": 100,
+    "samples": 19756,
+    "initial_rss_bytes": 89964544,
+    "max_observed_rss_bytes": 194277376,
+    "minimum_system_available_bytes": 953171968,
+    "note": "RSS includes mapped pages; sampling can miss peaks; shared desktop load is uncontrolled."
+  },
+  "bindings": {
+    "frozen_files": {
+      "docs/EXTERNAL_ADRESSA_PROTOCOL.md": "5999cfe6edf8c00791e87830753cd6872425ebb51ee1f7019efb01eb6000d4dd",
+      "docs/V3_PROTOCOL.md": "b60187a595e42063066814923be65999b9675fd1dd1c2c973667d5f823efdc2e",
+      "newsforge/data.py": "b4247444dc714eb437f95a7b61e6ce12b48f99616aabe6f283b8b17374b2fef7",
+      "newsforge/v2/ranker.py": "524f96ce39eeeda9ff04de58d7842e09840a0e2513bf3bcf507d8702dcb3c00c",
+      "newsforge/v2/temporal.py": "eab4f03b0d2db5aedcce1b6744a2c2df05521611525c179c36b8d81cc9b4a80a",
+      "newsforge/v2/retrieval.py": "51f55d67591752d67b7565650e2d77333995925384ee6ba3083f0747b2a3eaf9",
+      "newsforge/v3/residual.py": "7acd117f276ba12aab38f6ae646ab7db44e7b271c121705c2072ef6d7fee132e",
+      "newsforge/v3/fast_retrieval.py": "9149c5dd4139f6ac96f14567ad8b9097552141deed1e771191ac750739ed9098",
+      "data/processed/tfidf.joblib": "5a5ec7778369a6fc77b3e2b5e9c670da38b1f945538b9d92910e1a2942b6224e",
+      "data/processed/svd.joblib": "907aea6e46290961ff806c25af3319045a3ac6e59c26648b5f2d19ae606e8f4e",
+      "data/processed/category_vocabulary.json": "b15e143eed2167ac56cac855abe94c4b677e4025c634ca9c113288a303668691",
+      "data/processed/manifest.json": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+      "artifacts/v3/selection.json": "44ddde9c62b01609167d2a28591f39fcfa48e7014e6b2917a616a45ecd03ed82",
+      "artifacts/v2/selection.json": "2b1d7e70c24d36fadf8de076bb9ffe3a7ce0e37a46bb25b8978c03bc757c7280",
+      "reports/v3/fit.json": "cd32b6052240ae18a1b84812334871efc6ea9297736aa05d0619259506d87d38",
+      "reports/v3/tune.json": "dfdbfa8ddeedbb42574ac331c695a415227368ce816cb9662c5593a36588546f",
+      "reports/v3/confirm.json": "a5f72fcde9295fc290bb91af78e99c6f44912245a5a3c50ff1ebb229f0c509d7",
+      "artifacts/v3/models/full13-seed17.npz": "fb4039ac4f550e4cd47ba628859fddc236dbc85ea681e5e05d99f889f7c44934",
+      "artifacts/v3/models/full13-seed17.npz.json": "de0a9c4d8065360a8beff5f5b87e37aeb41d3194e554ab72b42214f2a844e0da",
+      "artifacts/v3/models/full13-seed29.npz": "a9e6fe999c0eb698cf82a5d211915fba98c48456deea01068a4f9232399fe797",
+      "artifacts/v3/models/full13-seed29.npz.json": "8f19a9153a3a1bc35bedb1e76599df01ce97be5ba4be31c8bdeb048abc962d08",
+      "artifacts/v3/models/full13-seed43.npz": "22f0464606ec335372f5bb92fb6bd086c86eea3d4ae1b31c3f5e0c82ea489e45",
+      "artifacts/v3/models/full13-seed43.npz.json": "6797976c70ed93847c2b2e01174bd6ee5657dcd7fd2bbd371c9cd135c01de421",
+      "artifacts/v3/models/no_category-seed17.npz": "657f1c5b22838b02a4baf077ddcc03943080539630ac2dc3dd527b887120d391",
+      "artifacts/v3/models/no_category-seed17.npz.json": "f5293c00683d4a40c406deb98616001ec9ad2a43509b4559937e0bf66507d0ba",
+      "artifacts/v3/models/no_category-seed29.npz": "930f7f1b53584c9b575d8ad3ea6fb0f3e0fc8130e70af330ca13d446ea865131",
+      "artifacts/v3/models/no_category-seed29.npz.json": "8a120dc2aa1e1ee1ebcc1407900242b8abe744f3ae7fe4a63d9b5e6af2ebc70e",
+      "artifacts/v3/models/no_category-seed43.npz": "ec2fc553badb6838fae6df811f353c2a5579a16bd353ad493245452fddf759cd",
+      "artifacts/v3/models/no_category-seed43.npz.json": "de42ea526108946ea34ab187371fca5c3d77ada831c18057a7e369d427ebaa8d",
+      "artifacts/v3/models/no_recent-seed17.npz": "caab646b255e35dadefbcbe2204348410a258ce9a36a9465953953a51facf99a",
+      "artifacts/v3/models/no_recent-seed17.npz.json": "252f4ac3e99cce5e60371cd111f5a13bf44a0409660f9c04b5884b3c13dfa26f",
+      "artifacts/v3/models/no_recent-seed29.npz": "c09b924bab2051aaa23f379ac4c9cb668f8ab9c697553fce43c2326ca83111c2",
+      "artifacts/v3/models/no_recent-seed29.npz.json": "b1661c51c55509db2cb4f7d085997fb69a1e51c2829f598f369763f8834c27f0",
+      "artifacts/v3/models/no_recent-seed43.npz": "52239c7fa7170033acb66677022a0aeeea73ad84036572312625e9b152552025",
+      "artifacts/v3/models/no_recent-seed43.npz.json": "e2e83f88336000a0d2975caa499b4bbc2ed18880b2b7bb8200d2cd685cebc6e1"
+    },
+    "implementation": {
+      "newsforge/external/__init__.py": "77cbe3c82eabb499351fe033ab743ed45ef1ae773af46fbaa7cb73a53630ce3a",
+      "newsforge/external/__main__.py": "5e7bfbf68e67f38fa31877f088ae43e058794df528a788d1d09cd16c29b933b5",
+      "newsforge/external/acquire.py": "3e4240b615a734877642f8c5cb570e3c8fec23b29bf8610aadc8a79d8a079554",
+      "newsforge/external/acquire_parallel.py": "6d23dd1b187f85d9d06f448c254a245a2da3320bc44890475b4e1530104987d8",
+      "newsforge/external/aggregate.py": "537e4136f5feb8ea4148c80dc13dacab3feddc39ec93f01c0724ec890916ba7c",
+      "newsforge/external/common.py": "f6667f9372731589e68c67a70f945811ed583d9c594c17005e35092f9e1700bd",
+      "newsforge/external/evaluate.py": "7b7b276c602bd7a37a1d189782442029109fdb12100bd883ff1e856d8adf7287",
+      "newsforge/external/prepare.py": "cb3727c615aa3731fbaa1def31d401d10458c014d1b748e9f235666d0b2687e1"
+    },
+    "source_report_sha256": "ddcada356ffc545daa822a041ac3ba783bca4b669dc6645983ee06638581823d",
+    "environment": {
+      "python": "3.10.21",
+      "platform": "Windows-10-10.0.26300-SP0",
+      "packages": {
+        "numpy": "1.26.4",
+        "scipy": "1.15.3",
+        "scikit-learn": "1.6.1",
+        "joblib": "1.6.0",
+        "threadpoolctl": "3.7.0"
+      },
+      "numeric_threads": 1
+    },
+    "resource_amendment_sha256": "0da4cbbbb3f16e76eb5b1617d3e5277a1c2ce23d3119e639baa519e2245b3991",
+    "dependency_lock_sha256": "fc3ac6bf1252f43d87da07bf63ae6c380d909c625ac6369b651c21bc8eba0801"
+  },
+  "archive_sha256": "a68a1af8322e7fabada7a8b8a118ba0564beab7eb0433e80b3dec13cf5158e03",
+  "phase_receipts_sha256": {
+    "acquisition": "d4e2ed6078f61a9a55ceffe2721922c6847d32eed082757a314e87f4d48f169d",
+    "prepare": "709f935f3d6d8655426ecb8af66ec80a57afc70ce2a5e4e64fef1e039b854cc4",
+    "evaluate": "64d127f433d237bd644fbc8ce39e9b0b52cabfe07101d576855a81815d9e42e3"
+  },
+  "per_query_files": {
+    "queries.npy": {
+      "sha256": "bfa154f1b3fc4ed4707b168d238035a8dc99090a1c4ca00565fcd12e54280cca",
+      "bytes": 480128
+    },
+    "pools.npy": {
+      "sha256": "a217a60835470e838681b8ed37df3f2b38454258c773e576d5f4a25049d30469",
+      "bytes": 6000128
+    },
+    "sizes.npy": {
+      "sha256": "1b2d09b2d9bd128bf6b930c1db872b74643f7f0e6be29b9beaf73a4a95e42073",
+      "bytes": 30128
+    },
+    "orders.npy": {
+      "sha256": "e4efef4c27a3258a7862be53dcc88f152a1464b4a621a655c78a4d2ad39bf578",
+      "bytes": 15000128
+    },
+    "scores.npy": {
+      "sha256": "4e7ecba3a4549e4bf48d932cb68504170b82c4e3cd9aa3103c72bb6a9b856e40",
+      "bytes": 60000128
+    },
+    "hits10.npy": {
+      "sha256": "21f7feb4a0dc998f751739f5eac6f734a796e4d209a5d67b34bf1167b837ea70",
+      "bytes": 75128
+    },
+    "hits100.npy": {
+      "sha256": "49da6b92e45e942214fc64369958d94bbc34cf69e0c0fae8dbcec73626d28f45",
+      "bytes": 75128
+    },
+    "reciprocal10.npy": {
+      "sha256": "3dabe03c4642f75279902ce2c9154f272500f6cbb653ff12d7925c77429e06b9",
+      "bytes": 600128
+    },
+    "audit.json": {
+      "sha256": "3d2a2382005d61b23d5ade19e21c616725a0700535aa09292a3e9768e04bd6a3",
+      "bytes": 930
+    },
+    "reference_counts.sqlite": {
+      "sha256": "8e7924ec8005208c5523976e2c817c94de97f2d8ed7ca0a54e6891e15d01c1bf",
+      "bytes": 1564672
+    }
+  },
+  "aggregate_elapsed_seconds": 13.716371500006062
+}

@@ -75,6 +75,8 @@ if ($LASTEXITCODE -ne 0) { throw '聚合阶段失败，保留本次目录' }
 
 ## 产物解释
 
+2026-10-14 的正式实验已经完成：15,000 个请求上，完整模型相对热度基线的 HitRate@10 差为 **−0.3733 个百分点**，95% 用户簇区间 **[−0.5814, −0.1598] 个百分点**，不支持正向迁移。128 请求慢速审计及 15,000 请求保存数组补充验收均通过。结果、全部消融、资源修订和类别覆盖退化的解释见 [结果讨论](../reports/external/adressa_v1/DISCUSSION.md)；机器生成的 [RESULTS.md](../reports/external/adressa_v1/RESULTS.md) 和 [evaluation.json](../reports/external/adressa_v1/evaluation.json) 原样保留。
+
 公开产物为 `evaluation.json`、`audit.json`、`RESULTS.md`。它们报告总体、三个固定日期、全部消融、区间、语言词表覆盖、未知类别、不可见/已读目标、候选不足及阶段资源消耗。`status=passed` 代表实现审计和聚合校验通过；只有主差大于零且 95% 用户簇区间下界大于零，`positive_transfer_supported_on_preregistered_sample` 才为真。用户簇区间条件于这三个已经实现的日期，不提供跨日期或生产保证。
 
 聚合成功后，可在安装了 `requirements-raw-windows.lock` 的环境运行 `python scripts/plot_external_results.py`，从已保存的聚合数值生成 PNG、SVG 和摘要元数据。绘图不接触原始事件、不重新计算统计量；负差值和跨零区间照常呈现，已有图片不会覆盖。

@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "queries": 128,
+  "selection": "linspace(0,n-1,128,dtype=int64); includes first and last fixed query",
+  "indices_sha256": "41e53e54de868197a01a8acc442d2922b3ee1710f7e48068f2fbba01de42c6b5",
+  "candidate_id_equality": "exact",
+  "ranking_equality": "exact",
+  "hit_equality": "exact",
+  "score_atol": 1e-08,
+  "score_rtol": 0.0,
+  "score_max_absolute_error": 0.0,
+  "independently_rebuilt": [
+    "historical event prefix",
+    "hourly EMA",
+    "full history filter",
+    "candidate fallback",
+    "normalization and model scores",
+    "sorting",
+    "target hits"
+  ],
+  "shared_frozen_definition": "newsforge.v2.ranker.content_features",
+  "reference_aggregation": "separate raw-event SQL aggregation on disk; EMA rebuilt from zero per distinct cutoff; one-cutoff cache",
+  "all_method_per_query_candidate_set_invariant": true,
+  "all_method_per_query_hit100_invariant": true
+}

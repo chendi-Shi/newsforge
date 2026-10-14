@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "source_commit": "90bbe01d8111f84f156d698e240ab1a30593c7b7",
+  "run_id": 38516648595,
+  "url": "https://github.com/chendi-Shi/newsforge/actions/runs/38516648595",
+  "conclusion": "success",
+  "runner": "GitHub-hosted Windows, CPython 3.10.11",
+  "scope": "Independent host hash-locked installation, dependency check, synthetic/contract tests and data-independent pipeline plan",
+  "hash_locked_install_passed": true,
+  "pip_check_passed": true,
+  "tests": {
+    "discovered": 366,
+    "passed": 366,
+    "skipped": 0,
+    "elapsed_seconds": 44.136
+  },
+  "pipeline_plan_passed": true,
+  "raw_data_or_training_executed": false,
+  "full_data_http_executed": false,
+  "ci_log_sha256": "678f90e6d6844de8a506fb6244bdec54fb7a39e533d8093e9c9d4f26c294c4b2",
+  "previous_success_record": "ci.json",
+  "previous_success_record_sha256": "a74134199e0f7020c0384c4fc15cee7d5a460f51caeae5c083846f8176c11685"
+}

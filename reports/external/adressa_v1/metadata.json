@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-14T05:44:46.161022+00:00",
+  "source_name": "evaluation.json",
+  "source_sha256": "6d847815932753608a8ed8e4a8d69b3262791eee6c3b51ea14e20d64972be498",
+  "script_name": "plot_external_results.py",
+  "script_sha256": "bc9fb4d2bcd79fca779ec674f1f8612dccadab467191e6a10f0ccc3bb15a72c5",
+  "source_status": "passed",
+  "source_scope": "Independent retrospective cross-publisher and cross-language frozen-MIND-model stress test",
+  "synthetic_fixture": false,
+  "archive_sha256": "a68a1af8322e7fabada7a8b8a118ba0564beab7eb0433e80b3dec13cf5158e03",
+  "sample_identity_sha256": "3f23e63933de61554fc1fa9d05d63371ff213d732265f8377ee77309af7c88fe",
+  "source_positive_transfer_supported": false,
+  "presentation_only": true,
+  "raw_event_access": false,
+  "statistical_recomputation": false,
+  "displayed_units": {
+    "panel_a": "percent",
+    "panel_b": "percentage points (left method minus right method)"
+  },
+  "interval_note": "Stored 95% paired user-cluster intervals; three realized dates; ablations descriptive.",
+  "plotted_data": {
+    "periods": [
+      {
+        "label": "Overall",
+        "queries": 15000,
+        "hit_rate10_percent": {
+          "baseline": 29.533333333333335,
+          "full13+gate": 29.160000000000004,
+          "no_category+gate": 29.086666666666666,
+          "no_recent+gate": 29.173333333333336,
+          "full13+no_gate": 28.499999999999996
+        }
+      },
+      {
+        "label": "2017-01-05",
+        "queries": 5000,
+        "hit_rate10_percent": {
+          "baseline": 29.04,
+          "full13+gate": 28.799999999999997,
+          "no_category+gate": 28.7,
+          "no_recent+gate": 28.799999999999997,
+          "full13+no_gate": 28.199999999999996
+        }
+      },
+      {
+        "label": "2017-01-06",
+        "queries": 5000,
+        "hit_rate10_percent": {
+          "baseline": 38.16,
+          "full13+gate": 37.1,
+          "no_category+gate": 36.980000000000004,
+          "no_recent+gate": 37.14,
+          "full13+no_gate": 35.86
+        }
+      },
+      {
+        "label": "2017-01-07",
+        "queries": 5000,
+        "hit_rate10_percent": {
+          "baseline": 21.4,
+          "full13+gate": 21.58,
+          "no_category+gate": 21.58,
+          "no_recent+gate": 21.58,
+          "full13+no_gate": 21.44
+        }
+      }
+    ],
+    "intervals": [
+      {
+        "comparison": "full13+gate_minus_baseline",
+        "label": "Full + gate minus baseline\nPrimary comparison",
+        "left_method": "full13+gate",
+        "right_method": "baseline",
+        "difference_pp": -0.37333333333333335,
+        "ci95_pp": [
+          -0.581415775294958,
+          -0.15982954275880215
+        ],
+        "interpretation": "primary"
+      },
+      {
+        "comparison": "no_category+gate_minus_full13+gate",
+        "label": "Without category minus full\nDescriptive ablation",
+        "left_method": "no_category+gate",
+        "right_method": "full13+gate",
+        "difference_pp": -0.07333333333333333,
+        "ci95_pp": [
+          -0.12693047117141054,
+          -0.02664353120328884
+        ],
+        "interpretation": "descriptive ablation"
+      },
+      {
+        "comparison": "no_recent+gate_minus_full13+gate",
+        "label": "Without recent-history minus full\nDescriptive ablation",
+        "left_method": "no_recent+gate",
+        "right_method": "full13+gate",
+        "difference_pp": 0.013333333333333334,
+        "ci95_pp": [
+          -0.01992144558992832,
+          0.04670449749199974
+        ],
+        "interpretation": "descriptive ablation"
+      },
+      {
+        "comparison": "full13+no_gate_minus_full13+gate",
+        "label": "Without gate minus full\nDescriptive ablation",
+        "left_method": "full13+no_gate",
+        "right_method": "full13+gate",
+        "difference_pp": -0.66,
+        "ci95_pp": [
+          -0.8648837380515093,
+          -0.46026772842801805
+        ],
+        "interpretation": "descriptive ablation"
+      }
+    ],
+    "methods": [
+      {
+        "key": "baseline",
+        "label": "Visit-popularity baseline",
+        "color": "#64748b"
+      },
+      {
+        "key": "full13+gate",
+        "label": "Full + history gate",
+        "color": "#2563eb"
+      },
+      {
+        "key": "no_category+gate",
+        "label": "Without category columns",
+        "color": "#c2410c"
+      },
+      {
+        "key": "no_recent+gate",
+        "label": "Without recent-history column",
+        "color": "#7c3aed"
+      },
+      {
+        "key": "full13+no_gate",
+        "label": "Without history gate",
+        "color": "#0f766e"
+      }
+    ]
+  },
+  "environment": {
+    "python": "3.10.21",
+    "matplotlib": "3.10.9"
+  },
+  "outputs": {
+    "png": {
+      "name": "external_results.png",
+      "sha256": "88e74d1803d7442b896d4e68f5cf8d93b4ab19b6e82be523b97ee0bf319cfc6c"
+    },
+    "svg": {
+      "name": "external_results.svg",
+      "sha256": "16ed0f89434b10fc27d02dede7409040d6344da992771d84d1a9eb10192a7251"
+    }
+  }
+}
