@@ -8,17 +8,18 @@
 | v3 重训练 | 从已校验的处理后数据和 v2 基线重新执行 fit/tune/confirm/dev，比较参数、逐查询计数、指标和决策 | 没有重做原始数据预处理，也没有重训继承的文本编码器 |
 | 原始数据流水线 | 组织原始 MIND 数据到 v3 独立审计的完整依赖顺序，保存每阶段成功或失败凭据 | 有可执行入口不等于已经完成全链路实测 |
 
-本轮验证使用同一台电脑的新克隆和新虚拟环境；Python 基础解释器及标准库仍来自这台电脑。旧研究环境配置为 `include-system-site-packages = true`，不能用它证明独立安装成功。验收器要求新环境显式为 `false`，并检查安装分发包、导入模块和搜索路径均没有继承外部第三方包。
+本轮验证使用同一台电脑上两个从 GitHub 取得的新克隆和一个新的短路径隔离环境：深层目录克隆完成 v3 重训练与新模型 HTTP，另一短路径克隆完成冻结发布制品的联合验收。两者固定同一提交，使用同一隔离解释器；所有检查并非在一个克隆中完成。Python 基础解释器及标准库仍来自这台电脑。旧研究环境配置为 `include-system-site-packages = true`，不能用它证明独立安装成功。验收器要求新环境显式为 `false`，并检查安装分发包、导入模块和搜索路径均没有继承外部第三方包。
 
-**结果状态：正式独立环境验收与 v3 重训练正在执行，当前文档仅说明可运行入口。最终结论以 `reports/delivery/` 中实际生成的凭据为准；原始数据全链路本轮尚未实际重跑。** 已观察过的 dev 仍是固定基准，不能作为新的外部泛化集，也不能据此宣称线上 CTR、生产部署或分布式性能。
+**结果状态：v3 重训练、新模型 HTTP、短路径克隆的冻结发布制品联合验收均已通过。** 本机联合验收发现 251 项测试，249 项执行通过，2 项因符号链接权限跳过；真实 HTTP 的 768 个查询及 13 项契约通过。独立 GitHub runner 的 251 项测试全部通过、没有跳过。深层克隆第一次联合验收的 13 个长路径相关错误及失败凭据保留，未计为通过。结果见 [交付复验报告](../reports/DELIVERY_RESULTS.md)；原始数据全链路本轮尚未实际重跑。已观察过的 dev 仍是固定基准，不能作为新的外部泛化集，也不能据此宣称线上 CTR、生产部署或分布式性能。
 
 ## 1. 固定源代码和依赖
 
-先从可信发布记录取得完整 40 位 Git 提交 SHA，创建新克隆。不要复制旧虚拟环境。虚拟环境使用用户目录下一个尚不存在的短路径，避免把 Torch 安装到深层 OneDrive 克隆目录时触发 Windows 长路径错误。虚拟环境可以位于克隆之外；验收器检查真实解释器前缀，不要求环境必须叫 `.venv`。
+先从可信发布记录取得完整 40 位 Git 提交 SHA，创建新克隆。不要复制旧虚拟环境。**克隆与虚拟环境都使用用户目录下尚不存在的短路径**：深层工作目录不仅会影响 Torch 安装，也可能使制品测试的临时文件超过 Windows 路径限制。虚拟环境可以位于克隆之外；验收器检查真实解释器前缀，不要求环境必须叫 `.venv`。
 
 ```powershell
-git clone https://github.com/chendi-Shi/newsforge.git newsforge-clean
-Set-Location newsforge-clean
+$clone = Join-Path $env:USERPROFILE 'nf-replay'
+git clone https://github.com/chendi-Shi/newsforge.git $clone
+Set-Location $clone
 $expectedCommit = '<发布记录中的完整 Git SHA>'
 git checkout --detach $expectedCommit
 $venvRoot = Join-Path $env:USERPROFILE 'nf-delivery-venv'

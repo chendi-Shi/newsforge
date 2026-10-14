@@ -1,0 +1,22 @@
+{
+  "source_commit": "d1b7ef285614a50ee86bcf62c2147a388e355d13",
+  "run_id": 38500896562,
+  "job_id": 115647336582,
+  "url": "https://github.com/chendi-Shi/newsforge/actions/runs/38500896562",
+  "job_conclusion": "success",
+  "runner": "GitHub-hosted Windows, CPython 3.10",
+  "scope": "Independent host hash-locked installation, dependency check, synthetic/contract tests and data-independent pipeline plan",
+  "hash_locked_install_passed": true,
+  "pip_check_passed": true,
+  "tests": {"discovered": 251, "passed": 251, "skipped": 0, "elapsed_seconds": 8.839},
+  "pipeline_plan_passed": true,
+  "raw_data_or_training_executed": false,
+  "full_data_http_executed": false,
+  "prior_attempt": {
+    "source_commit": "f4032eb7e59a92c8c5dde89545a52f9d20fdf69e",
+    "run_id": 38500699790,
+    "conclusion": "failure_before_job_start",
+    "cause": "Unquoted YAML scalar contained the colon-space sequence in --only-binary=:all: -r",
+    "fix": "Use a folded block scalar for the installation command"
+  }
+}

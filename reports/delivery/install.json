@@ -1,0 +1,204 @@
+{
+  "passed": true,
+  "scope": "Same-host fresh isolated short-path virtual environment; base CPython standard library reused",
+  "python": "3.10.21",
+  "pip": "23.0.1",
+  "include_system_site_packages": false,
+  "lock_sha256": "fc3ac6bf1252f43d87da07bf63ae6c380d909c625ac6369b651c21bc8eba0801",
+  "pip_report_sha256": "ec4e30bdf5303d9d92b73ce6130d79c21874b993c14cac49bd13ec4f2e213672",
+  "install_options": [
+    "--isolated",
+    "--no-index",
+    "--find-links",
+    "--require-hashes"
+  ],
+  "locked_distributions": 36,
+  "installed_from_hash_checked_downloads": [
+    {
+      "name": "annotated-doc",
+      "version": "0.0.5",
+      "wheel_sha256": "117bac03a25ede5df5440e855b32d556049ca169ead221505badf432fed4b101"
+    },
+    {
+      "name": "annotated-types",
+      "version": "0.8.0",
+      "wheel_sha256": "f072f4d804ea359e4eaf198b1af7a8b0943881a87f31bb764f8bf219bb9419e0"
+    },
+    {
+      "name": "anyio",
+      "version": "4.15.1",
+      "wheel_sha256": "6152fdbbf9a77fdec97731721bebf7c4c44f7c29b424b0065826173efc7ed101"
+    },
+    {
+      "name": "certifi",
+      "version": "2026.7.22",
+      "wheel_sha256": "62f22742b58a1a33014a2b6b706588a8d7e2a88ae7bd1a6ebe8c992928483775"
+    },
+    {
+      "name": "click",
+      "version": "8.5.0",
+      "wheel_sha256": "255bc9599cf7748b4b1a446ccc735421bd08a2ae529a8b88597d3de5664ee360"
+    },
+    {
+      "name": "cloudpickle",
+      "version": "3.1.2",
+      "wheel_sha256": "9acb47f6afd73f60dc1df93bb801b472f05ff42fa6c84167d25cb206be1fbf4a"
+    },
+    {
+      "name": "exceptiongroup",
+      "version": "1.3.1",
+      "wheel_sha256": "a7a39a3bd276781e98394987d3a5701d0c4edffb633bb7a5144577f82c773598"
+    },
+    {
+      "name": "faiss-cpu",
+      "version": "1.15.1",
+      "wheel_sha256": "424f7e634f806ca9a925eebf8469e764f3288773e9b9dd2608352de8287b852f"
+    },
+    {
+      "name": "fastapi",
+      "version": "0.143.0",
+      "wheel_sha256": "3e9395fd35276425b61b516a31fdd7c77fe2af83e41b4da22e30696fb1304c5d"
+    },
+    {
+      "name": "filelock",
+      "version": "3.32.3",
+      "wheel_sha256": "7f0ca4bcc0e181c60dbbd8aa9ab5b120ebb99e4e064e83636340056f833a1f09"
+    },
+    {
+      "name": "fsspec",
+      "version": "2026.7.0",
+      "wheel_sha256": "b57ddbafedfaef7018c1ecab32aa200a9d7ca26b77965f64e48b70061249d279"
+    },
+    {
+      "name": "h11",
+      "version": "0.16.0",
+      "wheel_sha256": "63cf8bbe7522de3bf65932fda1d9c2772064ffb3dae62d55932da54b31cb6c86"
+    },
+    {
+      "name": "httpcore",
+      "version": "1.0.9",
+      "wheel_sha256": "2d400746a40668fc9dec9810239072b40b4484b640a8c38fd654a024c7a1bf55"
+    },
+    {
+      "name": "httpx",
+      "version": "0.28.1",
+      "wheel_sha256": "d909fcccc110f8c7faf814ca82a9a4d816bc5a6dbfea25d6591d6985b8ba59ad"
+    },
+    {
+      "name": "idna",
+      "version": "3.20",
+      "wheel_sha256": "ab7ae7122974553370f0bdb919e1a960b2cd1bc1ef0276416d896db81c14582c"
+    },
+    {
+      "name": "jinja2",
+      "version": "3.1.6",
+      "wheel_sha256": "85ece4451f492d0c13c5dd7c13a64681a86afae63a5f347908daf103ce6d2f67"
+    },
+    {
+      "name": "joblib",
+      "version": "1.6.0",
+      "wheel_sha256": "3dbbf9f6e4b592a2357b854608e980fe6390d131d7a82f011a377ef2ebef7aba"
+    },
+    {
+      "name": "markupsafe",
+      "version": "3.0.3",
+      "wheel_sha256": "c4ffb7ebf07cfe8931028e3e4c85f0357459a3f9f9490886198848f4fa002ec8"
+    },
+    {
+      "name": "mpmath",
+      "version": "1.3.0",
+      "wheel_sha256": "a0b2b9fe80bbcd81a6647ff13108738cfb482d481d826cc0e02f5b35e5c88d2c"
+    },
+    {
+      "name": "networkx",
+      "version": "3.4.2",
+      "wheel_sha256": "df5d4365b724cf81b8c6a7312509d0c22386097011ad1abe274afd5e9d3bbc5f"
+    },
+    {
+      "name": "numpy",
+      "version": "1.26.4",
+      "wheel_sha256": "b97fe8060236edf3662adfc2c633f56a08ae30560c56310562cb4f95500022d5"
+    },
+    {
+      "name": "opentelemetry-api",
+      "version": "1.45.1",
+      "wheel_sha256": "b31553efa588ae44bc306f863c785c5333a9ecc091248c6ee68b4b6c87fdedfb"
+    },
+    {
+      "name": "packaging",
+      "version": "26.3",
+      "wheel_sha256": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c"
+    },
+    {
+      "name": "psutil",
+      "version": "7.2.2",
+      "wheel_sha256": "eb7e81434c8d223ec4a219b5fc1c47d0417b12be7ea866e24fb5ad6e84b3d988"
+    },
+    {
+      "name": "pydantic",
+      "version": "2.14.0",
+      "wheel_sha256": "15fab1bea6f1dc5003b54fc2ecab230c1fd1dbade2acd4addc52d81e32416d4b"
+    },
+    {
+      "name": "pydantic-core",
+      "version": "2.50.0",
+      "wheel_sha256": "56178c4116fc0c859786875ff4acc1c8d52678f095c312b0eff2a2dd9d6f8d5f"
+    },
+    {
+      "name": "scikit-learn",
+      "version": "1.6.1",
+      "wheel_sha256": "8a600c31592bd7dab31e1c61b9bbd6dea1b3433e67d264d17ce1017dbdce8002"
+    },
+    {
+      "name": "scipy",
+      "version": "1.15.3",
+      "wheel_sha256": "9d61e97b186a57350f6d6fd72640f9e99d5a4a2b8fbf4b9ee9a841eab327dc13"
+    },
+    {
+      "name": "starlette",
+      "version": "1.7.0",
+      "wheel_sha256": "67f8e99895493dd2911a03f11314af6ceebeae4e704bb9f43dfc6a9db151c93e"
+    },
+    {
+      "name": "sympy",
+      "version": "1.14.0",
+      "wheel_sha256": "e091cc3e99d2141a0ba2847328f5479b05d94a6635cb96148ccb3f34671bd8f5"
+    },
+    {
+      "name": "threadpoolctl",
+      "version": "3.7.0",
+      "wheel_sha256": "cd8b60b5641b45c67bbf73c64c843235fc2d8a480c87389f52f5dbee893b86be"
+    },
+    {
+      "name": "torch",
+      "version": "2.14.0+cpu",
+      "wheel_sha256": "ff2e3a049e4c6d406d2f87acad9b2907d5052a3fa6d0e658b5f6e48d46bae11b"
+    },
+    {
+      "name": "typing-extensions",
+      "version": "4.16.0",
+      "wheel_sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8"
+    },
+    {
+      "name": "typing-inspection",
+      "version": "0.4.4",
+      "wheel_sha256": "65b8397ba37ccbce054456aaccddfc91e6e3083c92824df348d96ca832f3f147"
+    },
+    {
+      "name": "uvicorn",
+      "version": "0.54.0",
+      "wheel_sha256": "505bdb0f318731d45f1f712071fc781a8981f6847a31c902c9f5e652d4f67faf"
+    }
+  ],
+  "bootstrap": {
+    "setuptools": {
+      "version": "79.0.1",
+      "origin": "fresh venv ensurepip; same pinned version already satisfied, not reinstalled from downloaded wheel"
+    }
+  },
+  "retained_failed_attempt": {
+    "error": "WinError 206 path too long while extracting Torch license tree",
+    "log_sha256": "fd0e6d2de85b05d23c28439fe85788c3ab142d2a2e14d4103fdfca20780b4065",
+    "remedy": "Use a new short external venv; preserve the original failed environment and logs"
+  }
+}

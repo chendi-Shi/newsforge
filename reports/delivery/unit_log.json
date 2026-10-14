@@ -1,0 +1,5 @@
+{
+  "original_sha256": "91123d057f6bf926b1d426ce60fc5e80fa4e9df102de5cb94748beb5a8ee41d8",
+  "published_sha256": "bfaa1d92a9bb509d4e242ddbb2e570e0506c717e59d087ce1d6575e04e7c7ce6",
+  "sanitization": "Replace absolute clone, venv and base paths with portable labels; prepend disclosure"
+}

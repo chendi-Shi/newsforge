@@ -1,0 +1,27 @@
+{
+  "created_utc": "2026-10-14T02:31:28.910510+00:00",
+  "scope": "same-host isolated-environment v3 retraining from frozen processed data and v2 baseline",
+  "raw_data_preprocessing_repeated": false,
+  "text_encoder_retrained": false,
+  "parameter_atol": 1e-08,
+  "parameter_rtol": 0.0,
+  "fit_pairs_and_features": "SHA256 exact",
+  "per_query_counts": "exact",
+  "metrics_intervals_selection_and_gate": "exact",
+  "phases": [
+    "fit",
+    "tune",
+    "confirm",
+    "dev"
+  ],
+  "runner_sha256": "e7b42506561d64efd3a92147bf7d924e907a5a7a4f79fbf22e3ad2b16f05051f",
+  "environment_preflight_passed": true,
+  "environment_receipt_sha256": "208076c7cfbffeacb438b930225566e37ad1ec3b942fb7d18aeec0bc6597a448",
+  "wheel_lock_sha256": "fc3ac6bf1252f43d87da07bf63ae6c380d909c625ac6369b651c21bc8eba0801",
+  "reference_reports": {
+    "fit": "cd32b6052240ae18a1b84812334871efc6ea9297736aa05d0619259506d87d38",
+    "tune": "dfdbfa8ddeedbb42574ac331c695a415227368ce816cb9662c5593a36588546f",
+    "confirm": "a5f72fcde9295fc290bb91af78e99c6f44912245a5a3c50ff1ebb229f0c509d7",
+    "dev": "6cb1fee93108bc8d7ffea7be1d0f6425e58cb48893734d1034f86d1635ed2811"
+  }
+}

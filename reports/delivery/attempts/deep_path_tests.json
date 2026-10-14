@@ -1,0 +1,16 @@
+{
+  "scope": "Retained failed deep-path clean-clone unit-test attempt; not a passing acceptance",
+  "source_commit": "d1b7ef285614a50ee86bcf62c2147a388e355d13",
+  "tests_discovered": 251,
+  "errors": 13,
+  "skipped": 1,
+  "elapsed_seconds": 46.737,
+  "failing_paths_characters": {
+    "min": 263,
+    "max": 263
+  },
+  "private_test_log_sha256": "e09b46cb1b6bbd5308890967b430a8a3b59d508810992cb4c498332d151956d3",
+  "cause": "Bundle test temporary paths exceed the conventional 260-character Windows path limit",
+  "remedy": "Fresh short-path GitHub clone, same committed source and isolated environment",
+  "failed_receipt": "deep_path_acceptance.json"
+}

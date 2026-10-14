@@ -1,0 +1,458 @@
+{
+  "benchmark_version": 3,
+  "created_at": "2026-10-14T02:41:11.234068+00:00",
+  "sampling": {
+    "split": "dev",
+    "seed": 2026,
+    "queries": 64,
+    "row_sha256": "cc33140ac9c1e92219c0d6a6578aba656cdee07243ee9609ec3611bd7db28a05",
+    "timestamp_min": 1573779741,
+    "timestamp_max": 1573851648,
+    "source_arrays_sha256": {
+      "all_split.npy": "fb4bffa43754b78a91c23433d8f03f3fa824a5a6c3e80bd0c49614c123426ac7",
+      "all_timestamps.npy": "b701fd8ec3632243b1e6b67b5544f18e52023872c6d5e61ce9ef003c520a9e4e",
+      "all_history.npy": "5430cd48ca8188ecb29760e87f6cf84a1ef7b1f98c5e6ac14d4e2d2b545d97cb",
+      "news_ids.json": "c5e4332fd24c20c42c9199d7e1d5ceae2518d28996e2f4ea6665207f064b164f"
+    },
+    "labels_deserialized_for_sampling": false
+  },
+  "protocol": {
+    "transport": "localhost HTTP via urllib; fresh connection per request",
+    "request_order": "ascending sampled row IDs, same order in each round",
+    "cpu_threads": 1,
+    "server_workers": 1,
+    "execution": "offline worker exits before HTTP server starts; cleanup is restricted to owned PID/create-time identities",
+    "latency_includes": "client JSON serialization, connection, server work, response JSON decoding",
+    "parity": "all response fields and numeric scores exact; no float tolerance",
+    "timing_limit": "Shared desktop CPU and fixed small workload; not production capacity, and not compared as a speed ratio to historical v2 HTTP timings."
+  },
+  "source_sha256": {
+    "v3/benchmark_service.py": "44402bd21fa8a78da3deb37ee55c408256841c3b28a54767756a76ea26beeff1",
+    "v2/benchmark.py": "6e63e4439fac65ae34bd308c3ee6215405a1e5651a7b238e87bcc08953df4365",
+    "v3/serve.py": "efe75d7a9315a7f036247f715201a004a054ce919c1f1fc4578c9d552253bdb8",
+    "v3/residual.py": "7acd117f276ba12aab38f6ae646ab7db44e7b271c121705c2072ef6d7fee132e",
+    "v3/fast_retrieval.py": "9149c5dd4139f6ac96f14567ad8b9097552141deed1e771191ac750739ed9098",
+    "v2/serve.py": "3c5125e2ed8550132f94438335027849d30f80adedc1d1b626b951d4aa57c293",
+    "v2/retrieval.py": "51f55d67591752d67b7565650e2d77333995925384ee6ba3083f0747b2a3eaf9",
+    "v2/temporal.py": "eab4f03b0d2db5aedcce1b6744a2c2df05521611525c179c36b8d81cc9b4a80a",
+    "v2/ranker.py": "524f96ce39eeeda9ff04de58d7842e09840a0e2513bf3bcf507d8702dcb3c00c"
+  },
+  "release_evidence_sha256": {
+    "selection": "0deb70b2337282ce4575ea0eef934fc1a37986dfb12f1762681b284385064557",
+    "confirm": "2989edf12d4069f0670cfd39bf52e42068fbf115d0bb17ecbfb2633ee4f16772",
+    "fit_report": "499c31afd8b4e4a3f4d78b7adf82ddad6c488690b97b757e52be52704aa04d97",
+    "v2_selection": "2b1d7e70c24d36fadf8de076bb9ffe3a7ce0e37a46bb25b8978c03bc757c7280"
+  },
+  "processed_manifest_sha256": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+  "private_evidence": {
+    "requests_sha256": "a51bafaf31e2c7d20ccc4e60480de9e34a565e4bf298374e8d6e989117e95372",
+    "offline_sha256": "377c983bf2cf803bd5b02090634fa50f3bf9fe84a2ccb1e4d9864052614861ef",
+    "http_records_sha256": "d17e48d889926c32b76eb7030389b1661734c8e5bbcbfd627410da1c19fa2dc3"
+  },
+  "health": {
+    "status": "ok",
+    "api_version": "v3",
+    "model_version": "705f5b44d91d4216dbc95fa641a0ee728c7992188bddff2cde71364281d05561",
+    "candidate_config": {
+      "pool_size": 100,
+      "route_size": 200,
+      "recent_hours": 24,
+      "channels": [
+        "popular"
+      ],
+      "freeze_feedback": false,
+      "rank_constant": 60
+    },
+    "bindings": {
+      "candidate_generator_version": "00eaacf6b2e902b6e3458747331549b7e7f20d99ed2c31d0bd169781ebbd7d1f",
+      "candidate_inputs": {
+        "features": "c4831220c97afe072eb5af628e740860b4c665624b47e5bc2a1655169e60f3dc",
+        "first_seen": "e65cb72ccfdd4a2afdb9325b68ddc6ed34b4dca858edd686e6a2c23893c5b414",
+        "train_clicks": "b36c71020a42d05a9f1e7b7de4d5e661b6af1b56d27898bac5cfde56ee23039d",
+        "train_exposures": "8437389af916eec567609182c9f2eee3f2f1897a29754ca4274717318dcc3848",
+        "embeddings": "30151a2cce8070b6100a654416f635ad1a8a6aaa37056a33f2b37cbb07544b1a",
+        "retriever": "01225e5d5d39eff85b1e9fc1345276530066a1efc20918ada96a54e2bd405526",
+        "encoder": "769db4a4ab25f879e0f3397bf0eb2922cf29d2bf3256bf1c4c2274dec2261283",
+        "encoder_manifest": "aa423e79664e3d4a2bef9479c1e4bf9f77baaf23eb56a9fea3c63b84fa70af33",
+        "data_manifest": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+        "news_ids": "c5e4332fd24c20c42c9199d7e1d5ceae2518d28996e2f4ea6665207f064b164f",
+        "temporal_manifest": "e7837008652092988418d3c52dafaa6120e870a16451c48e39e385aa14ebcfff"
+      },
+      "candidate_config_sha256": "f031199f9a209c3e3767471eb819b96fd92946e3db77d5ca659a71851c7a9699",
+      "selection_sha256": "2b1d7e70c24d36fadf8de076bb9ffe3a7ce0e37a46bb25b8978c03bc757c7280",
+      "temporal_manifest_sha256": "e7837008652092988418d3c52dafaa6120e870a16451c48e39e385aa14ebcfff",
+      "temporal_policy_sha256": "be3838344edd2d0d9f4b88fb7727d8d6a8d9a60714f0ac77fb99faa0917e89d2",
+      "ranker_sha256": null,
+      "ranker_manifest_sha256": null,
+      "reranker_enabled": true,
+      "service_source_sha256": "3c5125e2ed8550132f94438335027849d30f80adedc1d1b626b951d4aa57c293",
+      "runtime_source_sha256": {
+        "retrieval.py": "51f55d67591752d67b7565650e2d77333995925384ee6ba3083f0747b2a3eaf9",
+        "serve.py": "3c5125e2ed8550132f94438335027849d30f80adedc1d1b626b951d4aa57c293",
+        "temporal.py": "eab4f03b0d2db5aedcce1b6744a2c2df05521611525c179c36b8d81cc9b4a80a",
+        "ranker.py": "524f96ce39eeeda9ff04de58d7842e09840a0e2513bf3bcf507d8702dcb3c00c"
+      },
+      "api_version": "v3",
+      "v3_runtime_sources": {
+        "v3/serve.py": "efe75d7a9315a7f036247f715201a004a054ce919c1f1fc4578c9d552253bdb8",
+        "v3/residual.py": "7acd117f276ba12aab38f6ae646ab7db44e7b271c121705c2072ef6d7fee132e",
+        "v3/fast_retrieval.py": "9149c5dd4139f6ac96f14567ad8b9097552141deed1e771191ac750739ed9098",
+        "v2/ranker.py": "524f96ce39eeeda9ff04de58d7842e09840a0e2513bf3bcf507d8702dcb3c00c",
+        "v2/retrieval.py": "51f55d67591752d67b7565650e2d77333995925384ee6ba3083f0747b2a3eaf9",
+        "v2/serve.py": "3c5125e2ed8550132f94438335027849d30f80adedc1d1b626b951d4aa57c293",
+        "v2/temporal.py": "eab4f03b0d2db5aedcce1b6744a2c2df05521611525c179c36b8d81cc9b4a80a"
+      },
+      "v2_ranker_enabled": false,
+      "v3_evidence": {
+        "selection_sha256": "0deb70b2337282ce4575ea0eef934fc1a37986dfb12f1762681b284385064557",
+        "confirmation_sha256": "2989edf12d4069f0670cfd39bf52e42068fbf115d0bb17ecbfb2633ee4f16772",
+        "tune_report_sha256": "0e7200c1e7384f83ddf6bd786156d92d7d23b63f92e9dfceece38689fd6ba72a",
+        "tune_cache_manifest_sha256": "901c994e86609eb67ad7ed02f847dfd1c08abe4ec343d047df0d53059567e067",
+        "confirm_cache_manifest_sha256": "eab22bd41740f343681dc954d4df2fd84bdf70a9f524b6a2e67f003e3c5e0ff6",
+        "fit_report_sha256": "499c31afd8b4e4a3f4d78b7adf82ddad6c488690b97b757e52be52704aa04d97",
+        "v2_selection_sha256": "2b1d7e70c24d36fadf8de076bb9ffe3a7ce0e37a46bb25b8978c03bc757c7280",
+        "model_files_sha256": {
+          "artifacts/delivery/retrain_v3/models_and_caches/models/full13-seed17.npz": "fb4039ac4f550e4cd47ba628859fddc236dbc85ea681e5e05d99f889f7c44934",
+          "artifacts/delivery/retrain_v3/models_and_caches/models/full13-seed17.npz.json": "dfa7425e4a0fff2ab6fca3ac1b56b0651845e5533a7fb6bf16f1472c87d0df9e",
+          "artifacts/delivery/retrain_v3/models_and_caches/models/full13-seed29.npz": "a9e6fe999c0eb698cf82a5d211915fba98c48456deea01068a4f9232399fe797",
+          "artifacts/delivery/retrain_v3/models_and_caches/models/full13-seed29.npz.json": "d072b683e5befd979f0c4c30da96e6971992a172afe1af6c9e8b6accba2fb913",
+          "artifacts/delivery/retrain_v3/models_and_caches/models/full13-seed43.npz": "22f0464606ec335372f5bb92fb6bd086c86eea3d4ae1b31c3f5e0c82ea489e45",
+          "artifacts/delivery/retrain_v3/models_and_caches/models/full13-seed43.npz.json": "68cacbf6fdde6c40d53291db9cc879c78eb726f135635513c58408455a446adc",
+          "artifacts/delivery/retrain_v3/models_and_caches/models/no_category-seed17.npz": "657f1c5b22838b02a4baf077ddcc03943080539630ac2dc3dd527b887120d391",
+          "artifacts/delivery/retrain_v3/models_and_caches/models/no_category-seed17.npz.json": "ab1746cd4afc96d39c80c3679e708384566d6e6415b60664a1966ceeded70551",
+          "artifacts/delivery/retrain_v3/models_and_caches/models/no_category-seed29.npz": "930f7f1b53584c9b575d8ad3ea6fb0f3e0fc8130e70af330ca13d446ea865131",
+          "artifacts/delivery/retrain_v3/models_and_caches/models/no_category-seed29.npz.json": "07e9c5881036605e5d2b0353b4d3cef6f2f4ab32601ecb4a529974128ed27bf0",
+          "artifacts/delivery/retrain_v3/models_and_caches/models/no_category-seed43.npz": "ec2fc553badb6838fae6df811f353c2a5579a16bd353ad493245452fddf759cd",
+          "artifacts/delivery/retrain_v3/models_and_caches/models/no_category-seed43.npz.json": "3b7b1fdf4d52f5603c7b12490034212047c8aca07d6fc843820f79f477704323",
+          "artifacts/delivery/retrain_v3/models_and_caches/models/no_recent-seed17.npz": "caab646b255e35dadefbcbe2204348410a258ce9a36a9465953953a51facf99a",
+          "artifacts/delivery/retrain_v3/models_and_caches/models/no_recent-seed17.npz.json": "6136c605c952be3f88df772e4d7ebb22eb3f9cbbf8b43ff8803b2afacb9949f2",
+          "artifacts/delivery/retrain_v3/models_and_caches/models/no_recent-seed29.npz": "c09b924bab2051aaa23f379ac4c9cb668f8ab9c697553fce43c2326ca83111c2",
+          "artifacts/delivery/retrain_v3/models_and_caches/models/no_recent-seed29.npz.json": "f79a998107152bd694e50fd4851ccef2bcbe8a44060900d4a432a2bb48560459",
+          "artifacts/delivery/retrain_v3/models_and_caches/models/no_recent-seed43.npz": "52239c7fa7170033acb66677022a0aeeea73ad84036572312625e9b152552025",
+          "artifacts/delivery/retrain_v3/models_and_caches/models/no_recent-seed43.npz.json": "40edd83bf5901529a132f446008f56e1d1d1ff1c2778c3f75d2ad16a53653919"
+        },
+        "fit_sources_sha256": {
+          "docs/V3_PROTOCOL.md": "b60187a595e42063066814923be65999b9675fd1dd1c2c973667d5f823efdc2e",
+          "newsforge/store.py": "0c6c3662478db583538bcb93b195761861688aaf01c1cfd3b1d5c6290054e08b",
+          "newsforge/metrics.py": "b1467c60980c2ccd27bdaf715191bf0d411acfb3115f12ea1b0003dce64e6008",
+          "newsforge/v2/experiment.py": "cc3a48796bb7a0d5501cfc92da7c23537add9e7984f210c5a96ca8f1eeb0a90b",
+          "newsforge/v2/ranker.py": "524f96ce39eeeda9ff04de58d7842e09840a0e2513bf3bcf507d8702dcb3c00c",
+          "newsforge/v2/retrieval.py": "51f55d67591752d67b7565650e2d77333995925384ee6ba3083f0747b2a3eaf9",
+          "newsforge/v2/serve.py": "3c5125e2ed8550132f94438335027849d30f80adedc1d1b626b951d4aa57c293",
+          "newsforge/v2/temporal.py": "eab4f03b0d2db5aedcce1b6744a2c2df05521611525c179c36b8d81cc9b4a80a",
+          "newsforge/v3/experiment.py": "07c0ff1bbcf61a33b7089ac13576acb057b4c3151b3963d80dcb5aef2c84bc16",
+          "newsforge/v3/residual.py": "7acd117f276ba12aab38f6ae646ab7db44e7b271c121705c2072ef6d7fee132e",
+          "newsforge/v3/fast_retrieval.py": "9149c5dd4139f6ac96f14567ad8b9097552141deed1e771191ac750739ed9098"
+        }
+      },
+      "deployment_gate_passed": true,
+      "residual_enabled": true,
+      "delta": 10.0,
+      "text_dimensions": 96,
+      "deployment_available_as_of": 1573776000,
+      "residual_model_content_sha256": [
+        "e5caf6d87c4b1c8d78380a030e213e83666ba17235c34c7986d982750a9743b5",
+        "e2c5190055a6a660026008ae54c1b6ff84c9763833236dee35d6cd6cf7d70864",
+        "d1bea3e52d72fa13bc0f0c0d727866512fdadef5e7d64c562afcfffbc3d982f0"
+      ],
+      "residual_ensemble": "mean of three seed-wise clips; n/(n+5) gate; stable original-rank tie"
+    },
+    "catalogue_rows": 104152,
+    "default_as_of": 1573862383,
+    "minimum_as_of": 1573776000,
+    "maximum_as_of": 1573862383,
+    "timestamp_policy": "strict first_seen < hourly snapshot cutoff; no future snapshot fallback",
+    "device": "cpu",
+    "threads": 1,
+    "native_thread_pools": [
+      {
+        "internal_api": "openblas",
+        "prefix": "libopenblas",
+        "num_threads": 1
+      },
+      {
+        "internal_api": "openblas",
+        "prefix": "libscipy_openblas",
+        "num_threads": 1
+      }
+    ],
+    "reranker_enabled": true,
+    "deployment_gate_passed": true,
+    "selected_delta": 10.0,
+    "residual_seed_count": 3,
+    "residual_score_type": "bounded preference adjustment, not a click probability",
+    "fast_retrieval_cache": {
+      "entries": 0,
+      "capacity": 8,
+      "array_bytes": 0,
+      "hits": 0,
+      "misses": 0,
+      "closed": false
+    }
+  },
+  "api_contract_checks": [
+    {
+      "name": "oov_history",
+      "expected_status": 422,
+      "observed_status": 422,
+      "passed": true
+    },
+    {
+      "name": "pad_history",
+      "expected_status": 422,
+      "observed_status": 422,
+      "passed": true
+    },
+    {
+      "name": "negative_timestamp",
+      "expected_status": 422,
+      "observed_status": 422,
+      "passed": true
+    },
+    {
+      "name": "before_coverage",
+      "expected_status": 422,
+      "observed_status": 422,
+      "passed": true
+    },
+    {
+      "name": "after_coverage",
+      "expected_status": 422,
+      "observed_status": 422,
+      "passed": true
+    },
+    {
+      "name": "invalid_top_k",
+      "expected_status": 422,
+      "observed_status": 422,
+      "passed": true
+    },
+    {
+      "name": "empty_batch",
+      "expected_status": 422,
+      "observed_status": 422,
+      "passed": true
+    },
+    {
+      "name": "oversized_batch",
+      "expected_status": 422,
+      "observed_status": 422,
+      "passed": true
+    },
+    {
+      "name": "empty_history",
+      "expected_status": 200,
+      "observed_status": 200,
+      "passed": true
+    },
+    {
+      "name": "coverage_minimum",
+      "expected_status": 200,
+      "observed_status": 200,
+      "passed": true
+    },
+    {
+      "name": "coverage_maximum",
+      "expected_status": 200,
+      "observed_status": 200,
+      "passed": true
+    },
+    {
+      "name": "hour_boundary_minus_one",
+      "expected_status": 200,
+      "observed_status": 200,
+      "passed": true,
+      "expected_cutoff": 1573804800,
+      "observed_cutoff": 1573804800
+    },
+    {
+      "name": "hour_boundary_exact",
+      "expected_status": 200,
+      "observed_status": 200,
+      "passed": true,
+      "expected_cutoff": 1573808400,
+      "observed_cutoff": 1573808400
+    }
+  ],
+  "offline_causal_output_check": {
+    "passed": true,
+    "queries": 64,
+    "items": 640,
+    "checks": [
+      "unique IDs",
+      "all supplied history excluded",
+      "first_seen strictly below cutoff"
+    ]
+  },
+  "configurations": [
+    {
+      "batch_size": 1,
+      "concurrency": 1,
+      "rounds": 3,
+      "warmup_http_requests": 8,
+      "measured_http_requests": 192,
+      "measured_queries": 192,
+      "wall_seconds": 7.387274199994863,
+      "successful_queries_per_second": 25.990642123468696,
+      "latency_unit": "one HTTP request, including all queries in a batch",
+      "latency_ms": {
+        "p50": 15.668349999032216,
+        "p95": 87.58227000034822,
+        "p99": 107.35729900130536,
+        "max": 127.02580000041053
+      },
+      "http_errors": 0,
+      "failed_queries": 0,
+      "offline_http_mismatches": 0,
+      "queries_with_output_shortfall": 0,
+      "queries_with_retrieval_shortfall": 0,
+      "round_results": [
+        {
+          "round": 1,
+          "wall_seconds": 2.6000004000015906,
+          "successful_queries_per_second": 24.61538082838789
+        },
+        {
+          "round": 2,
+          "wall_seconds": 2.3830364999957965,
+          "successful_queries_per_second": 26.856491707161386
+        },
+        {
+          "round": 3,
+          "wall_seconds": 2.404237299997476,
+          "successful_queries_per_second": 26.61966853274724
+        }
+      ]
+    },
+    {
+      "batch_size": 8,
+      "concurrency": 1,
+      "rounds": 3,
+      "warmup_http_requests": 8,
+      "measured_http_requests": 24,
+      "measured_queries": 192,
+      "wall_seconds": 4.8421945999944,
+      "successful_queries_per_second": 39.65144234397809,
+      "latency_unit": "one HTTP request, including all queries in a batch",
+      "latency_ms": {
+        "p50": 198.50265000059153,
+        "p95": 325.95615999925934,
+        "p99": 381.6159280030115,
+        "max": 397.1194000041578
+      },
+      "http_errors": 0,
+      "failed_queries": 0,
+      "offline_http_mismatches": 0,
+      "queries_with_output_shortfall": 0,
+      "queries_with_retrieval_shortfall": 0,
+      "round_results": [
+        {
+          "round": 1,
+          "wall_seconds": 2.0048440000027767,
+          "successful_queries_per_second": 31.9226832610973
+        },
+        {
+          "round": 2,
+          "wall_seconds": 1.5252706999963266,
+          "successful_queries_per_second": 41.95976491265068
+        },
+        {
+          "round": 3,
+          "wall_seconds": 1.3120798999952967,
+          "successful_queries_per_second": 48.7775172839927
+        }
+      ]
+    },
+    {
+      "batch_size": 1,
+      "concurrency": 4,
+      "rounds": 3,
+      "warmup_http_requests": 8,
+      "measured_http_requests": 192,
+      "measured_queries": 192,
+      "wall_seconds": 3.6514200000092387,
+      "successful_queries_per_second": 52.582283056869436,
+      "latency_unit": "one HTTP request, including all queries in a batch",
+      "latency_ms": {
+        "p50": 69.34259999979986,
+        "p95": 129.94306999826222,
+        "p99": 145.71732099509973,
+        "max": 164.10800000448944
+      },
+      "http_errors": 0,
+      "failed_queries": 0,
+      "offline_http_mismatches": 0,
+      "queries_with_output_shortfall": 0,
+      "queries_with_retrieval_shortfall": 0,
+      "round_results": [
+        {
+          "round": 1,
+          "wall_seconds": 1.090472400006547,
+          "successful_queries_per_second": 58.69016033749754
+        },
+        {
+          "round": 2,
+          "wall_seconds": 1.2805097000018577,
+          "successful_queries_per_second": 49.980097768808115
+        },
+        {
+          "round": 3,
+          "wall_seconds": 1.280437900000834,
+          "successful_queries_per_second": 49.98290038115735
+        }
+      ]
+    },
+    {
+      "batch_size": 8,
+      "concurrency": 4,
+      "rounds": 3,
+      "warmup_http_requests": 8,
+      "measured_http_requests": 24,
+      "measured_queries": 192,
+      "wall_seconds": 2.2409136000060244,
+      "successful_queries_per_second": 85.67934078292168,
+      "latency_unit": "one HTTP request, including all queries in a batch",
+      "latency_ms": {
+        "p50": 327.28715000121156,
+        "p95": 408.32611499790795,
+        "p99": 414.15681999511435,
+        "max": 415.23229999438627
+      },
+      "http_errors": 0,
+      "failed_queries": 0,
+      "offline_http_mismatches": 0,
+      "queries_with_output_shortfall": 0,
+      "queries_with_retrieval_shortfall": 0,
+      "round_results": [
+        {
+          "round": 1,
+          "wall_seconds": 0.726419700004044,
+          "successful_queries_per_second": 88.10333750536186
+        },
+        {
+          "round": 2,
+          "wall_seconds": 0.7518596000008984,
+          "successful_queries_per_second": 85.12227548856666
+        },
+        {
+          "round": 3,
+          "wall_seconds": 0.762634300001082,
+          "successful_queries_per_second": 83.91964536594958
+        }
+      ]
+    }
+  ],
+  "resources": {
+    "server_peak_rss_bytes": 237178880,
+    "minimum_system_available_bytes": 3678654464,
+    "resource_samples": 199,
+    "sample_interval_seconds": 0.1,
+    "sampling_error": null,
+    "measurement_window": "healthy server: API checks and all four HTTP cases; startup excluded",
+    "server_pid": 8184,
+    "server_create_time": 1791945634.993572,
+    "rss_scope": "one owned HTTP server process; excludes benchmark client"
+  },
+  "elapsed_seconds": 36.49928759999602,
+  "passed": true
+}

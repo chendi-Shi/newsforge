@@ -1,0 +1,9 @@
+{
+  "copied_files": 50,
+  "files": 54,
+  "identical_existing_files": 4,
+  "manifest_sha256": "4722f3837123ec111ab929f6e167e75c972a353979918b370a4614d3c6066db2",
+  "scope": "artifact replay of frozen v3; no raw-data rebuild, retraining or new evaluation",
+  "total_bytes": 1111244279,
+  "verified": true
+}

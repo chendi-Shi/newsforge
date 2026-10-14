@@ -1,0 +1,322 @@
+{
+  "created_utc": "2026-10-14T02:33:32.530018+00:00",
+  "sources": {
+    "docs/V3_PROTOCOL.md": "b60187a595e42063066814923be65999b9675fd1dd1c2c973667d5f823efdc2e",
+    "newsforge/store.py": "0c6c3662478db583538bcb93b195761861688aaf01c1cfd3b1d5c6290054e08b",
+    "newsforge/metrics.py": "b1467c60980c2ccd27bdaf715191bf0d411acfb3115f12ea1b0003dce64e6008",
+    "newsforge/v2/experiment.py": "cc3a48796bb7a0d5501cfc92da7c23537add9e7984f210c5a96ca8f1eeb0a90b",
+    "newsforge/v2/ranker.py": "524f96ce39eeeda9ff04de58d7842e09840a0e2513bf3bcf507d8702dcb3c00c",
+    "newsforge/v2/retrieval.py": "51f55d67591752d67b7565650e2d77333995925384ee6ba3083f0747b2a3eaf9",
+    "newsforge/v2/serve.py": "3c5125e2ed8550132f94438335027849d30f80adedc1d1b626b951d4aa57c293",
+    "newsforge/v2/temporal.py": "eab4f03b0d2db5aedcce1b6744a2c2df05521611525c179c36b8d81cc9b4a80a",
+    "newsforge/v3/experiment.py": "07c0ff1bbcf61a33b7089ac13576acb057b4c3151b3963d80dcb5aef2c84bc16",
+    "newsforge/v3/residual.py": "7acd117f276ba12aab38f6ae646ab7db44e7b271c121705c2072ef6d7fee132e",
+    "newsforge/v3/fast_retrieval.py": "9149c5dd4139f6ac96f14567ad8b9097552141deed1e771191ac750739ed9098"
+  },
+  "input_files": {
+    "data/processed/manifest.json": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+    "data/processed/news_features.npy": "c4831220c97afe072eb5af628e740860b4c665624b47e5bc2a1655169e60f3dc",
+    "data/processed/news_first_seen.npy": "e65cb72ccfdd4a2afdb9325b68ddc6ed34b4dca858edd686e6a2c23893c5b414",
+    "data/processed/news_train_clicks.npy": "b36c71020a42d05a9f1e7b7de4d5e661b6af1b56d27898bac5cfde56ee23039d",
+    "data/processed/news_train_exposures.npy": "8437389af916eec567609182c9f2eee3f2f1897a29754ca4274717318dcc3848",
+    "data/processed/news_ids.json": "c5e4332fd24c20c42c9199d7e1d5ceae2518d28996e2f4ea6665207f064b164f",
+    "data/processed/all_history.npy": "5430cd48ca8188ecb29760e87f6cf84a1ef7b1f98c5e6ac14d4e2d2b545d97cb",
+    "data/processed/all_candidates.npy": "1494666249092025ae7b6ee0203ff205fbcee697f0bd17e068f100da9154a143",
+    "data/processed/all_labels.npy": "7158a9c62acbb1f6345e543e1dddcd6e99954547e25324fe89b65a5d10e614a4",
+    "data/processed/all_offsets.npy": "43ab7dfa5f2b2c967b3c9ec5b9813794622aeb44b132a6f7a036983f3954cbc5",
+    "data/processed/all_timestamps.npy": "b701fd8ec3632243b1e6b67b5544f18e52023872c6d5e61ce9ef003c520a9e4e",
+    "data/processed/all_users.npy": "aa622e6c2ccd4c250851f1908241114cb0caaa4fcb6b6745bb9fb9315c1c7dbd",
+    "data/processed/all_split.npy": "fb4bffa43754b78a91c23433d8f03f3fa824a5a6c3e80bd0c49614c123426ac7",
+    "artifacts/v2/selection.json": "2b1d7e70c24d36fadf8de076bb9ffe3a7ce0e37a46bb25b8978c03bc757c7280"
+  },
+  "environment": {
+    "python": "3.10.21",
+    "packages": {
+      "numpy": "1.26.4",
+      "scipy": "1.15.3",
+      "scikit-learn": "1.6.1",
+      "threadpoolctl": "3.7.0"
+    },
+    "native_threads": 1,
+    "platform": "Windows-10-10.0.26300-SP0"
+  },
+  "fit_rows": {
+    "count": 20000,
+    "row_sha256": "cc136a0389f0813831c22801826745d2dae02e6db9a3c3426fe908fa52536a0f",
+    "timestamp_min": 1573722000,
+    "timestamp_max": 1573736398,
+    "split_values": [
+      1
+    ],
+    "sampling_seed": 2026
+  },
+  "runs": {
+    "17": {
+      "sampling": {
+        "requests": 20000,
+        "pairs": 126660,
+        "negative_draws_per_positive": 4,
+        "replacement": true,
+        "seed": 17,
+        "skipped_no_positive": 0,
+        "skipped_no_negative": 0,
+        "weighting": "equal pairs; repeated draws and multi-click requests have greater weight"
+      },
+      "models": {
+        "full13": {
+          "path": "artifacts/delivery/retrain_v3/models_and_caches/models/full13-seed17.npz",
+          "npz_sha256": "fb4039ac4f550e4cd47ba628859fddc236dbc85ea681e5e05d99f889f7c44934",
+          "sidecar_sha256": "dfa7425e4a0fff2ab6fca3ac1b56b0651845e5533a7fb6bf16f1472c87d0df9e",
+          "fit_metadata": {
+            "pairs": 126660,
+            "pair_weighting": "equal weight per supplied pair",
+            "normalization": "population mean/SD of the supplied positive and negative fit rows; constant scale=1",
+            "objective": "mean(logaddexp(0,-((positive-negative)/scale)@w)) + 0.5*l2*sum(w*w)",
+            "l2": 0.01,
+            "max_iterations": 200,
+            "optimizer": "L-BFGS-B",
+            "optimizer_success": true,
+            "optimizer_status": 0,
+            "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 45,
+            "function_evaluations": 49,
+            "loss": 0.6654884482912342,
+            "gradient_max_absolute": 2.314768144284947e-07,
+            "model_randomness": "none; randomness belongs to caller's pair sampling"
+          }
+        },
+        "no_category": {
+          "path": "artifacts/delivery/retrain_v3/models_and_caches/models/no_category-seed17.npz",
+          "npz_sha256": "657f1c5b22838b02a4baf077ddcc03943080539630ac2dc3dd527b887120d391",
+          "sidecar_sha256": "ab1746cd4afc96d39c80c3679e708384566d6e6415b60664a1966ceeded70551",
+          "fit_metadata": {
+            "pairs": 126660,
+            "pair_weighting": "equal weight per supplied pair",
+            "normalization": "population mean/SD of the supplied positive and negative fit rows; constant scale=1",
+            "objective": "mean(logaddexp(0,-((positive-negative)/scale)@w)) + 0.5*l2*sum(w*w)",
+            "l2": 0.01,
+            "max_iterations": 200,
+            "optimizer": "L-BFGS-B",
+            "optimizer_success": true,
+            "optimizer_status": 0,
+            "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 41,
+            "function_evaluations": 46,
+            "loss": 0.6655566431633384,
+            "gradient_max_absolute": 2.7022258801542506e-07,
+            "model_randomness": "none; randomness belongs to caller's pair sampling"
+          }
+        },
+        "no_recent": {
+          "path": "artifacts/delivery/retrain_v3/models_and_caches/models/no_recent-seed17.npz",
+          "npz_sha256": "caab646b255e35dadefbcbe2204348410a258ce9a36a9465953953a51facf99a",
+          "sidecar_sha256": "6136c605c952be3f88df772e4d7ebb22eb3f9cbbf8b43ff8803b2afacb9949f2",
+          "fit_metadata": {
+            "pairs": 126660,
+            "pair_weighting": "equal weight per supplied pair",
+            "normalization": "population mean/SD of the supplied positive and negative fit rows; constant scale=1",
+            "objective": "mean(logaddexp(0,-((positive-negative)/scale)@w)) + 0.5*l2*sum(w*w)",
+            "l2": 0.01,
+            "max_iterations": 200,
+            "optimizer": "L-BFGS-B",
+            "optimizer_success": true,
+            "optimizer_status": 0,
+            "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 40,
+            "function_evaluations": 46,
+            "loss": 0.6654887695589128,
+            "gradient_max_absolute": 4.0211697893921925e-07,
+            "model_randomness": "none; randomness belongs to caller's pair sampling"
+          }
+        }
+      },
+      "pairs_sha256": "5cf009fd27d805375f5b1fe5ce7d925bdd53b5eacbf73e0ac29ebaf46bfa7101",
+      "pair_features_sha256": "7bc47db1594efaa7a6549f747edb287d664a36c3d1bb5a181c01195a483a0d05",
+      "elapsed_seconds": 30.547342899997602
+    },
+    "29": {
+      "sampling": {
+        "requests": 20000,
+        "pairs": 126660,
+        "negative_draws_per_positive": 4,
+        "replacement": true,
+        "seed": 29,
+        "skipped_no_positive": 0,
+        "skipped_no_negative": 0,
+        "weighting": "equal pairs; repeated draws and multi-click requests have greater weight"
+      },
+      "models": {
+        "full13": {
+          "path": "artifacts/delivery/retrain_v3/models_and_caches/models/full13-seed29.npz",
+          "npz_sha256": "a9e6fe999c0eb698cf82a5d211915fba98c48456deea01068a4f9232399fe797",
+          "sidecar_sha256": "d072b683e5befd979f0c4c30da96e6971992a172afe1af6c9e8b6accba2fb913",
+          "fit_metadata": {
+            "pairs": 126660,
+            "pair_weighting": "equal weight per supplied pair",
+            "normalization": "population mean/SD of the supplied positive and negative fit rows; constant scale=1",
+            "objective": "mean(logaddexp(0,-((positive-negative)/scale)@w)) + 0.5*l2*sum(w*w)",
+            "l2": 0.01,
+            "max_iterations": 200,
+            "optimizer": "L-BFGS-B",
+            "optimizer_success": true,
+            "optimizer_status": 0,
+            "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 46,
+            "function_evaluations": 51,
+            "loss": 0.6668191048299067,
+            "gradient_max_absolute": 1.4994390897173787e-07,
+            "model_randomness": "none; randomness belongs to caller's pair sampling"
+          }
+        },
+        "no_category": {
+          "path": "artifacts/delivery/retrain_v3/models_and_caches/models/no_category-seed29.npz",
+          "npz_sha256": "930f7f1b53584c9b575d8ad3ea6fb0f3e0fc8130e70af330ca13d446ea865131",
+          "sidecar_sha256": "07e9c5881036605e5d2b0353b4d3cef6f2f4ab32601ecb4a529974128ed27bf0",
+          "fit_metadata": {
+            "pairs": 126660,
+            "pair_weighting": "equal weight per supplied pair",
+            "normalization": "population mean/SD of the supplied positive and negative fit rows; constant scale=1",
+            "objective": "mean(logaddexp(0,-((positive-negative)/scale)@w)) + 0.5*l2*sum(w*w)",
+            "l2": 0.01,
+            "max_iterations": 200,
+            "optimizer": "L-BFGS-B",
+            "optimizer_success": true,
+            "optimizer_status": 0,
+            "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 42,
+            "function_evaluations": 46,
+            "loss": 0.6668659442151535,
+            "gradient_max_absolute": 2.646069744804795e-07,
+            "model_randomness": "none; randomness belongs to caller's pair sampling"
+          }
+        },
+        "no_recent": {
+          "path": "artifacts/delivery/retrain_v3/models_and_caches/models/no_recent-seed29.npz",
+          "npz_sha256": "c09b924bab2051aaa23f379ac4c9cb668f8ab9c697553fce43c2326ca83111c2",
+          "sidecar_sha256": "f79a998107152bd694e50fd4851ccef2bcbe8a44060900d4a432a2bb48560459",
+          "fit_metadata": {
+            "pairs": 126660,
+            "pair_weighting": "equal weight per supplied pair",
+            "normalization": "population mean/SD of the supplied positive and negative fit rows; constant scale=1",
+            "objective": "mean(logaddexp(0,-((positive-negative)/scale)@w)) + 0.5*l2*sum(w*w)",
+            "l2": 0.01,
+            "max_iterations": 200,
+            "optimizer": "L-BFGS-B",
+            "optimizer_success": true,
+            "optimizer_status": 0,
+            "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 41,
+            "function_evaluations": 50,
+            "loss": 0.6668200506424131,
+            "gradient_max_absolute": 2.9835260131102614e-07,
+            "model_randomness": "none; randomness belongs to caller's pair sampling"
+          }
+        }
+      },
+      "pairs_sha256": "26b2d34115caa09d99305a1f735526d16e81c3d36b53761b6e09dad90e5954ed",
+      "pair_features_sha256": "7d397c724385806be6224fde0c784b32e5ae41b371aa049551d8eb489ae1bb68",
+      "elapsed_seconds": 32.92530870000337
+    },
+    "43": {
+      "sampling": {
+        "requests": 20000,
+        "pairs": 126660,
+        "negative_draws_per_positive": 4,
+        "replacement": true,
+        "seed": 43,
+        "skipped_no_positive": 0,
+        "skipped_no_negative": 0,
+        "weighting": "equal pairs; repeated draws and multi-click requests have greater weight"
+      },
+      "models": {
+        "full13": {
+          "path": "artifacts/delivery/retrain_v3/models_and_caches/models/full13-seed43.npz",
+          "npz_sha256": "22f0464606ec335372f5bb92fb6bd086c86eea3d4ae1b31c3f5e0c82ea489e45",
+          "sidecar_sha256": "68cacbf6fdde6c40d53291db9cc879c78eb726f135635513c58408455a446adc",
+          "fit_metadata": {
+            "pairs": 126660,
+            "pair_weighting": "equal weight per supplied pair",
+            "normalization": "population mean/SD of the supplied positive and negative fit rows; constant scale=1",
+            "objective": "mean(logaddexp(0,-((positive-negative)/scale)@w)) + 0.5*l2*sum(w*w)",
+            "l2": 0.01,
+            "max_iterations": 200,
+            "optimizer": "L-BFGS-B",
+            "optimizer_success": true,
+            "optimizer_status": 0,
+            "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 45,
+            "function_evaluations": 51,
+            "loss": 0.6647343930975335,
+            "gradient_max_absolute": 2.385775797359173e-07,
+            "model_randomness": "none; randomness belongs to caller's pair sampling"
+          }
+        },
+        "no_category": {
+          "path": "artifacts/delivery/retrain_v3/models_and_caches/models/no_category-seed43.npz",
+          "npz_sha256": "ec2fc553badb6838fae6df811f353c2a5579a16bd353ad493245452fddf759cd",
+          "sidecar_sha256": "3b7b1fdf4d52f5603c7b12490034212047c8aca07d6fc843820f79f477704323",
+          "fit_metadata": {
+            "pairs": 126660,
+            "pair_weighting": "equal weight per supplied pair",
+            "normalization": "population mean/SD of the supplied positive and negative fit rows; constant scale=1",
+            "objective": "mean(logaddexp(0,-((positive-negative)/scale)@w)) + 0.5*l2*sum(w*w)",
+            "l2": 0.01,
+            "max_iterations": 200,
+            "optimizer": "L-BFGS-B",
+            "optimizer_success": true,
+            "optimizer_status": 0,
+            "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 40,
+            "function_evaluations": 44,
+            "loss": 0.6647960038065737,
+            "gradient_max_absolute": 2.7573821232817347e-07,
+            "model_randomness": "none; randomness belongs to caller's pair sampling"
+          }
+        },
+        "no_recent": {
+          "path": "artifacts/delivery/retrain_v3/models_and_caches/models/no_recent-seed43.npz",
+          "npz_sha256": "52239c7fa7170033acb66677022a0aeeea73ad84036572312625e9b152552025",
+          "sidecar_sha256": "40edd83bf5901529a132f446008f56e1d1d1ff1c2778c3f75d2ad16a53653919",
+          "fit_metadata": {
+            "pairs": 126660,
+            "pair_weighting": "equal weight per supplied pair",
+            "normalization": "population mean/SD of the supplied positive and negative fit rows; constant scale=1",
+            "objective": "mean(logaddexp(0,-((positive-negative)/scale)@w)) + 0.5*l2*sum(w*w)",
+            "l2": 0.01,
+            "max_iterations": 200,
+            "optimizer": "L-BFGS-B",
+            "optimizer_success": true,
+            "optimizer_status": 0,
+            "optimizer_message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+            "iterations": 47,
+            "function_evaluations": 54,
+            "loss": 0.664742575670802,
+            "gradient_max_absolute": 2.894765690269682e-07,
+            "model_randomness": "none; randomness belongs to caller's pair sampling"
+          }
+        }
+      },
+      "pairs_sha256": "c213e1e7283608124e7f060901c214ce86c335e302aceba8c75314b8777fe496",
+      "pair_features_sha256": "f24bd06e9c9ab7cd3ecf6f6795962aedfbad4a97ebb1921da53cce6659c354af",
+      "elapsed_seconds": 41.878119500004686
+    }
+  },
+  "models": {
+    "full13": {
+      "17": "artifacts/delivery/retrain_v3/models_and_caches/models/full13-seed17.npz",
+      "29": "artifacts/delivery/retrain_v3/models_and_caches/models/full13-seed29.npz",
+      "43": "artifacts/delivery/retrain_v3/models_and_caches/models/full13-seed43.npz"
+    },
+    "no_category": {
+      "17": "artifacts/delivery/retrain_v3/models_and_caches/models/no_category-seed17.npz",
+      "29": "artifacts/delivery/retrain_v3/models_and_caches/models/no_category-seed29.npz",
+      "43": "artifacts/delivery/retrain_v3/models_and_caches/models/no_category-seed43.npz"
+    },
+    "no_recent": {
+      "17": "artifacts/delivery/retrain_v3/models_and_caches/models/no_recent-seed17.npz",
+      "29": "artifacts/delivery/retrain_v3/models_and_caches/models/no_recent-seed29.npz",
+      "43": "artifacts/delivery/retrain_v3/models_and_caches/models/no_recent-seed43.npz"
+    }
+  },
+  "elapsed_seconds": 112.79094330000225
+}
