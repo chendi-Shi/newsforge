@@ -60,16 +60,21 @@ class PipelinePlanTests(unittest.TestCase):
         for stage in plan["stages"]:
             for dependency in stage["dependencies"]:
                 self.assertLess(names.index(dependency), names.index(stage["name"]))
-        chain = ["neural-train", "v1-full-ranking", "backbone-initial", "backbone-provisional",
+        chain = ["unit-tests", "research-unit-tests", "neural-train", "backbone-eligibility", "v1-full-ranking", "backbone-initial", "backbone-provisional",
                  "backbone-materialize", "backbone-final", "encoder", "v2-select",
                  "v3-baseline-gate", "v2-catalog", "v2-audit", "v3-dev", "v3-audit"]
         self.assertEqual([names.index(name) for name in chain], sorted(names.index(name) for name in chain))
         self.assertIn("v3-http", names)
         self.assertIn("v3-plot", names)
         self.assertIn("--skip-test", next(s for s in plan["stages"] if s["name"] == "neural-train")["argv"])
+        lookup = {stage.name: stage for stage in p.stages()}
+        self.assertEqual(lookup["backbone-eligibility"].dependencies, ("neural-train",))
+        self.assertEqual(lookup["v1-full-ranking"].dependencies, ("backbone-eligibility",))
+        self.assertIn("research-unit-tests", lookup["v3-audit"].dependencies)
 
     def test_target_dependency_closure_and_invalid_graphs(self):
-        self.assertEqual([s.name for s in p.ordered_stages("data")], ["environment", "unit-tests", "data"])
+        self.assertEqual([s.name for s in p.ordered_stages("data")],
+                         ["environment", "unit-tests", "research-unit-tests", "data"])
         a = p.Stage("a", (), ("-c", "pass"), ())
         b = p.Stage("b", ("a",), ("-c", "pass"), ())
         for definitions, target in [((a, a), "a"), ((a,), "missing"),
@@ -94,6 +99,60 @@ class PipelinePlanTests(unittest.TestCase):
                 with self.subTest(path=path), self.assertRaises(ValueError):
                     p.inside(directory, path)
             self.assertEqual(p.inside(directory, "a/b"), Path(directory).resolve() / "a/b")
+
+
+class ResearchTestEvidenceTests(unittest.TestCase):
+    def test_inventory_includes_all_research_and_nested_modules_only(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name in ("test_data.py", "test_v3_service.py", "nested/test_new.py",
+                         "test_delivery_pipeline.py", "nested/test_delivery_other.py", "support.py"):
+                path = root / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text("# inventory fixture\n")
+            modules = p.research_test_modules(root)
+            self.assertEqual(set(modules), {"tests.test_data", "tests.test_v3_service", "tests.nested.test_new"})
+            with self.assertRaisesRegex(ValueError, "no research"):
+                p.research_test_modules(root / "absent")
+
+    def execute_research_fixture(self, outcome):
+        """Use a real subprocess so imports, filtering and unittest output are tested."""
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "tests").mkdir()
+            (root / "tests/__init__.py").write_text("")
+            (root / "tests/test_alpha.py").write_text(
+                "import unittest\nclass Research(unittest.TestCase):\n"
+                "    def test_actual(self):\n        " + outcome + "\n")
+            (root / "tests/test_delivery_excluded.py").write_text(
+                "raise AssertionError('delivery module must not be imported by research run')\n")
+            # Import the orchestrator from the real repository, but let cwd own
+            # the independent tests package. No source or research data copied.
+            command = [sys.executable, "-c",
+                       "import sys; sys.path.append(" + repr(str(p.ROOT)) + "); "
+                       "from newsforge.delivery.pipeline import research_tests; research_tests()"]
+            result = subprocess.run(command, cwd=root, capture_output=True, text=True, timeout=30,
+                                    creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0)
+            inventory = p.read(root / "reports/delivery/research_unit_test_inventory.json")
+            self.assertEqual(set(inventory["module_sha256"]), {"tests.test_alpha"})
+            self.assertEqual(inventory["collected_tests"], 1)
+            return result
+
+    def test_research_process_records_actual_successful_summary(self):
+        result = self.execute_research_fixture("self.assertEqual(2 + 2, 4)")
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertRegex(result.stdout, r"Ran 1 test in [\d.]+s\s+OK\s*$")
+
+    def test_research_process_retains_failure_and_nonzero_exit(self):
+        result = self.execute_research_fixture("self.fail('actual failure')")
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("FAILED (failures=1)", result.stdout)
+
+    def test_research_process_does_not_disguise_skips_as_success(self):
+        result = self.execute_research_fixture("self.skipTest('fixture platform limitation')")
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("OK (skipped=1)", result.stdout)
+        self.assertIn("without skips", result.stderr)
 
 
 class PipelineWorkspaceTests(unittest.TestCase):
@@ -243,6 +302,53 @@ class PipelineWorkspaceTests(unittest.TestCase):
             self.run_pipeline(executor=executor)
         self.assertTrue((self.workspace / p.STATE / "first/failed.json").exists())
         self.assertFalse((self.workspace / p.STATE / "first/success.json").exists())
+
+    def test_full_and_research_test_logs_are_separate_unedited_bytes(self):
+        self.initialize()
+        stages = (p.Stage("unit-tests", (), ("-c", "pass"), ()),
+                  p.Stage("research-unit-tests", ("unit-tests",), ("-c", "pass"), ()))
+        logs = iter((b"Ran 3 tests in 0.001s\n\nOK (skipped=1)\n",
+                     b"Ran 2 tests in 0.001s\n\nOK\n"))
+        def executor(command, **kwargs):
+            kwargs["stdout"].write(next(logs))
+            return subprocess.CompletedProcess(command, 0)
+        self.run_pipeline("research-unit-tests", definitions=stages, executor=executor)
+        full = self.workspace / "reports/delivery/all_unit_tests.txt"
+        research = self.workspace / "reports/v3_release_unit_tests.txt"
+        self.assertIn(b"OK (skipped=1)", full.read_bytes())
+        self.assertEqual(research.read_bytes(), b"Ran 2 tests in 0.001s\n\nOK\n")
+        for stage, output in (("unit-tests", full), ("research-unit-tests", research)):
+            private = self.workspace / p.STATE / stage / "output.log"
+            receipt = p.read(private.parent / "success.json")
+            self.assertEqual(private.read_bytes(), output.read_bytes())
+            self.assertEqual(receipt["outputs"][output.relative_to(self.workspace).as_posix()], p.digest(output))
+
+    def test_backbone_eligibility_rejects_missing_cache_without_creating_it(self):
+        self.initialize()
+        with current_directory(self.workspace), patch("newsforge.store.Store") as store:
+            with self.assertRaisesRegex(FileNotFoundError, "never builds one"):
+                p.load_backbone_candidates()
+            store.assert_not_called()
+            self.assertFalse(Path("data/processed/training_cache.json").exists())
+
+    def test_backbone_eligibility_retains_aliases_and_records_all_candidates(self):
+        self.initialize()
+        self.write(self.workspace / "data/processed/manifest.json", "{}")
+        aliases = ("retriever.pt", "article_embeddings.npy")
+        for name in aliases:
+            self.write(self.workspace / "artifacts" / name, "untouched " + name)
+        candidates = {seed: {"path": Path(f"artifacts/mean_random_seed{seed}.pt"),
+                            "checkpoint_sha256": f"checkpoint-{seed}", "state_sha256": f"state-{seed}",
+                            "model": object(), "evidence": {"epoch": 2}}
+                      for seed in p.SEEDS}
+        with current_directory(self.workspace), patch.object(p, "load_backbone_candidates", return_value=(None, candidates)):
+            p.backbone_eligibility()
+            report = p.read("reports/delivery/backbone_eligibility.json")
+            self.assertEqual(set(report["candidates"]), {str(seed) for seed in p.SEEDS})
+            self.assertFalse(report["official_dev_evaluated"])
+            self.assertFalse(report["serving_aliases_modified"])
+            for name in aliases:
+                self.assertEqual((Path("artifacts") / name).read_text(), "untouched " + name)
 
     def test_mutating_dependency_or_source_during_command_is_failure(self):
         self.initialize()

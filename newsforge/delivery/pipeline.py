@@ -84,8 +84,11 @@ def stages():
     add("environment", (), own, ("_environment",),
         ("reports/delivery/environment.json",), notes="Check Python 3.10 and both dependency files; does not install packages.")
     add("unit-tests", ("environment",), "unittest", ("discover", "-s", "tests", "-v"),
-        notes="The runner saves the successful complete output as reports/v3_release_unit_tests.txt.")
-    add("data", ("unit-tests",), "newsforge.data", ("--threads", "2"),
+        notes="The runner preserves the complete unedited output, including platform skips, as reports/delivery/all_unit_tests.txt.")
+    add("research-unit-tests", ("unit-tests",), own, ("_research_tests",),
+        ("reports/delivery/research_unit_test_inventory.json",),
+        notes="Run every non-delivery research test module again. Require real success without skips; preserve its unedited output as reports/v3_release_unit_tests.txt for the frozen auditor.")
+    add("data", ("research-unit-tests",), "newsforge.data", ("--threads", "2"),
         ("data/processed/manifest.json", "data/processed/provenance.json"), ("data/processed",),
         "Use the explicitly imported train/dev raw TSV files, or download when init omitted --raw.")
     add("data-audit", ("data",), "newsforge.audit_data",
@@ -98,7 +101,10 @@ def stages():
          "--validation-impressions", "12000", "--skip-test"),
         neural + ("reports/matched_warmup_checks.json",),
         neural + ("artifacts/retriever.pt", "artifacts/reranker.pt", "artifacts/article_embeddings.npy"))
-    add("v1-full-ranking", ("neural-train",), "newsforge.final_evaluation", ("--threads", "1"),
+    add("backbone-eligibility", ("neural-train",), own, ("_backbone_eligibility",),
+        ("reports/delivery/backbone_eligibility.json",),
+        notes="Read-only epoch-2 eligibility check for all three mean_random seeds before expensive official-dev evaluation. Never selects or replaces serving aliases.")
+    add("v1-full-ranking", ("backbone-eligibility",), "newsforge.final_evaluation", ("--threads", "1"),
         ("reports/ranking_experiment.json",), ("reports/ranking_experiment.json",),
         "Runs its own internal scheduling gates before official dev. This dependency precedes replacing v1 serving aliases.")
     add("temporal", ("data-audit",), "newsforge.v2.temporal", (),
@@ -153,7 +159,7 @@ def stages():
         ("reports/v3/service_benchmark.json",), ("artifacts/v3/service_benchmark",))
     items.append(Stage("v3-plot", ("v3-dev", "fast-equivalence"), ("scripts/plot_v3_results.py",),
                        ("reports/v3/v3_results.metadata.json", "reports/v3/v3_results.png", "reports/v3/v3_results.svg")))
-    add("v3-audit", ("v3-dev", "v3-http", "v3-plot", "unit-tests"), "newsforge.v3.audit", (),
+    add("v3-audit", ("v3-dev", "v3-http", "v3-plot", "research-unit-tests"), "newsforge.v3.audit", (),
         ("reports/v3/release_integrity.json",),
         notes="Independent array and source audit, including cache-to-V3Engine parity. Only this stage completes the raw research/service verification chain.")
     return tuple(items)
@@ -355,7 +361,9 @@ def run(workspace, python, target="v3-audit", *, definitions=None, executor=None
         for name in set(stage.outputs) | set(stage.forbidden):
             if inside(workspace, name).exists():
                 raise FileExistsError(f"stage {stage.name} would reuse/overwrite an existing output: {name}")
-        if stage.name == "unit-tests" and inside(workspace, "reports/v3_release_unit_tests.txt").exists():
+        test_log = {"unit-tests": "reports/delivery/all_unit_tests.txt",
+                    "research-unit-tests": "reports/v3_release_unit_tests.txt"}.get(stage.name)
+        if test_log is not None and inside(workspace, test_log).exists():
             raise FileExistsError("unit test release log already exists")
         command = [str(python), *stage.argv]
         if stage.name == "data" and manifest["raw_mode"] == "download":
@@ -382,10 +390,11 @@ def run(workspace, python, target="v3-audit", *, definitions=None, executor=None
             if result.returncode != 0:
                 raise RuntimeError(f"stage {stage.name} exited with code {result.returncode}")
             outputs = list(stage.outputs)
-            if stage.name == "unit-tests":
-                output = inside(workspace, "reports/v3_release_unit_tests.txt")
+            if test_log is not None:
+                output = inside(workspace, test_log)
+                output.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copyfile(directory / "output.log", output)
-                outputs.append("reports/v3_release_unit_tests.txt")
+                outputs.append(test_log)
             hashes = {name: digest(inside(workspace, name)) for name in outputs}
             # Detect source/raw mutation during a command, before declaring success.
             verify_workspace(workspace, definitions)
@@ -437,6 +446,41 @@ def check_environment():
               "requirements_sha256": {name: digest(name) for name in ("requirements-windows.lock", "requirements-plot.txt")}})
 
 
+def research_test_modules(directory=Path("tests")):
+    """Inventory research test modules without importing or silently skipping any."""
+    directory = Path(directory)
+    paths = sorted(path for path in directory.rglob("test_*.py")
+                   if not path.name.startswith("test_delivery_")
+                   and "__pycache__" not in path.parts)
+    if not paths:
+        raise ValueError("no research test modules found")
+    return {"tests." + ".".join(path.relative_to(directory).with_suffix("").parts): path
+            for path in paths}
+
+
+def research_tests():
+    """Run the explicitly inventoried research suite, retaining genuine output.
+
+    The frozen v3 auditor predates delivery tests and accepts only a plain OK
+    summary. Its evidence therefore comes from this separate complete research
+    run, while the full suite's platform-dependent skips remain in its own log.
+    """
+    import unittest
+
+    modules = research_test_modules()
+    suite = unittest.TestLoader().loadTestsFromNames(list(modules))
+    count = suite.countTestCases()
+    if count <= 0:
+        raise ValueError("research suite contains no tests")
+    write_new("reports/delivery/research_unit_test_inventory.json", {
+        "scope": "All test_*.py modules except test_delivery_*.py; complete suite recorded separately",
+        "module_sha256": {name: digest(path) for name, path in modules.items()},
+        "collected_tests": count, "required_skips": 0, "runner_sha256": digest(__file__)})
+    result = unittest.TextTestRunner(stream=sys.stdout, verbosity=2).run(suite)
+    if not result.wasSuccessful() or result.testsRun != count or result.skipped:
+        raise RuntimeError("research tests must all execute successfully without skips; retain the original log")
+
+
 def baseline_gate():
     selection = read("artifacts/v2/selection.json")
     serving = selection["serving"]
@@ -467,26 +511,18 @@ def selected_backbone_seed(candidates, selection):
     return winner["seed"]
 
 
-def materialize(phase):
-    """Bridge a known gap in frozen select_backbone without changing its code.
-
-    This validates every eligible checkpoint, then archives the current serving
-    aliases and writes a matched checkpoint/catalog pair. A failed export is
-    retained by the stage runner. Only the provisional internal report chooses
-    the second export; the canonical selection is then rerun independently.
-    """
-    import numpy as np
+def load_backbone_candidates():
+    """Read and validate all fixed epoch-2 candidates without changing artifacts."""
     import torch
     from threadpoolctl import threadpool_limits
-    from newsforge.evaluate import encode_catalog
     from newsforge.store import Store
     from newsforge.train import build_model, state_digest, training_cache_signature, training_source_digests
     from newsforge.v2.select_backbone import checkpoint_evidence
 
-    if phase not in ("initial", "selected"):
-        raise ValueError("unknown materialization phase")
     torch.set_num_threads(1)
     threadpool_limits(1)
+    if not Path("data/processed/training_cache.json").is_file():
+        raise FileNotFoundError("completed training cache required; eligibility never builds one")
     store = Store("data/processed")
     store.ensure_training_cache()
     candidates = {}
@@ -502,6 +538,36 @@ def materialize(phase):
             train_cutoff_timestamp=int(store.manifest["train_cutoff_timestamp"]), eligible_positives=len(store.positive_rows))
         candidates[seed] = {"path": path, "model": model, "state_sha256": state,
                             "checkpoint_sha256": digest(path), "evidence": evidence}
+    return store, candidates
+
+
+def backbone_eligibility():
+    """Fail before official-dev work when the fixed backbone protocol cannot run."""
+    _, candidates = load_backbone_candidates()
+    write_new("reports/delivery/backbone_eligibility.json", {
+        "passed": True, "official_dev_evaluated": False, "serving_aliases_modified": False,
+        "data_manifest_sha256": digest("data/processed/manifest.json"),
+        "candidates": {str(seed): {"checkpoint_path": entry["path"].as_posix(),
+                        "checkpoint_sha256": entry["checkpoint_sha256"],
+                        "state_sha256": entry["state_sha256"], "evidence": entry["evidence"]}
+                       for seed, entry in candidates.items()},
+        "source_sha256": digest(__file__)})
+
+
+def materialize(phase):
+    """Bridge a known gap in frozen select_backbone without changing its code.
+
+    This validates every eligible checkpoint, then archives the current serving
+    aliases and writes a matched checkpoint/catalog pair. A failed export is
+    retained by the stage runner. Only the provisional internal report chooses
+    the second export; the canonical selection is then rerun independently.
+    """
+    import numpy as np
+    from newsforge.evaluate import encode_catalog
+
+    if phase not in ("initial", "selected"):
+        raise ValueError("unknown materialization phase")
+    store, candidates = load_backbone_candidates()
     seed = 17
     if phase == "selected":
         selection = read("reports/delivery/backbone_provisional.json")
@@ -551,6 +617,8 @@ def main():
     p.add_argument("--python", type=Path, required=True)
     p.add_argument("--through", default="v3-audit")
     commands.add_parser("_environment", help=argparse.SUPPRESS)
+    commands.add_parser("_research_tests", help=argparse.SUPPRESS)
+    commands.add_parser("_backbone_eligibility", help=argparse.SUPPRESS)
     commands.add_parser("_baseline_gate", help=argparse.SUPPRESS)
     p = commands.add_parser("_materialize", help=argparse.SUPPRESS)
     p.add_argument("--phase", required=True, choices=("initial", "selected"))
@@ -568,6 +636,10 @@ def main():
         print(json.dumps(run(args.workspace, args.python, args.through), indent=2))
     elif args.command == "_environment":
         check_environment()
+    elif args.command == "_research_tests":
+        research_tests()
+    elif args.command == "_backbone_eligibility":
+        backbone_eligibility()
     elif args.command == "_baseline_gate":
         baseline_gate()
     elif args.command == "_materialize":

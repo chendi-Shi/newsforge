@@ -1,0 +1,236 @@
+{
+  "schema_version": 1,
+  "status": "protocol_frozen_pending_download_and_evaluation",
+  "research_date": "2026-10-14",
+  "dataset": "SmartMedia Adressa light one week",
+  "publisher": "NTNU and Adressavisen",
+  "source_homepage": "https://reclab.idi.ntnu.no/dataset/",
+  "documentation": "https://reclab.idi.ntnu.no/dataset/cxdataset_v5.pdf",
+  "download_url": "https://reclab.idi.ntnu.no/dataset/one_week.tar.gz",
+  "license": {
+    "name": "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International",
+    "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "basis": "Official dataset homepage links this license and states non-commercial use only.",
+    "public_light_version_requires_contact": false,
+    "full_text_or_full_version_requires_contact": true,
+    "publication_scope": "Code and aggregate measurements only; no event records, titles, anonymous IDs, or raw arrays."
+  },
+  "metadata_only_network_check": {
+    "method": "HEAD",
+    "status": 200,
+    "content_length_bytes": 1414905649,
+    "last_modified": "Mon, 23 Oct 2017 12:45:37 GMT",
+    "dataset_body_downloaded": false,
+    "dataset_event_labels_read": false,
+    "raw_archive_sha256": null
+  },
+  "official_description": {
+    "collection_start_date": "2017-01-01",
+    "collection_end_date_inclusive": "2017-01-07",
+    "language": "Norwegian",
+    "observed_feedback": "page visit events",
+    "has_logged_impression_negative_sets": false,
+    "webpage_and_pdf_counts_differ": true,
+    "counts_policy": "Do not use conflicting webpage/PDF totals as measured totals; report actual acquired archive counts."
+  },
+  "protocol": {
+    "path": "docs/EXTERNAL_ADRESSA_PROTOCOL.md",
+    "experiment": "retrospective cross-publisher cross-language frozen-model stress test",
+    "prospective_future_evaluation": false,
+    "online_ab_test": false,
+    "warmup_utc": [
+      "2017-01-01T00:00:00Z",
+      "2017-01-05T00:00:00Z"
+    ],
+    "evaluation_utc": [
+      "2017-01-05T00:00:00Z",
+      "2017-01-08T00:00:00Z"
+    ],
+    "daily_max_queries": 5000,
+    "maximum_queries": 15000,
+    "sampling": "lowest SHA256 of protocol version, UTC day, archive member name, physical line number; target independent",
+    "trained_on_external_data": false,
+    "primary_variant": "full13+gate",
+    "primary_baseline": "lagged hourly EMA reading-count popularity",
+    "frozen_delta": 10,
+    "seeds": [
+      17,
+      29,
+      43
+    ],
+    "bootstrap_user_clusters": 1000,
+    "bootstrap_rng_seed": 2026,
+    "mean_scale_weights_reused_without_fit": true,
+    "no_exposure_auc_or_ctr": true,
+    "model_selection_on_external_results": false
+  },
+  "alternatives": {
+    "mind": {
+      "homepage": "https://msnews.github.io/",
+      "existing_dev_is_already_observed": true,
+      "test_evaluation": "official server scoring; no public test click labels established",
+      "source": "https://competitions.codalab.org/competitions/24122",
+      "tested_download": "https://mind201910small.blob.core.windows.net/release/MINDlarge_test.zip",
+      "actual_head_status": 409,
+      "actual_response": "Public access is not permitted on this storage account."
+    },
+    "pens": {
+      "homepage": "https://msnews.github.io/pens.html",
+      "documentation": "https://msnews.github.io/pens_data.html",
+      "tested_download": "https://mind201910small.blob.core.windows.net/release/PENS.tar.gz",
+      "actual_head_status": 409,
+      "actual_response": "Public access is not permitted on this storage account.",
+      "reason_not_selected": "Official download not publicly accessible at check; did not use an unverified third-party mirror."
+    },
+    "ebnerd": {
+      "homepage": "https://recsys.eb.dk/",
+      "documentation": "https://recsys.eb.dk/dataset/",
+      "license": "https://recsys.eb.dk/assets/pdf/general_license_terms.pdf",
+      "license_condition": "Section 1.1 requires name, email, organizational affiliation; official Download Dataset opens registration form.",
+      "reason_not_selected": "No registration or third-party personal-information submission performed."
+    }
+  },
+  "frozen_mind_and_protocol_files": {
+    "docs/EXTERNAL_ADRESSA_PROTOCOL.md": {
+      "sha256": "5999cfe6edf8c00791e87830753cd6872425ebb51ee1f7019efb01eb6000d4dd",
+      "bytes": 13461
+    },
+    "docs/V3_PROTOCOL.md": {
+      "sha256": "b60187a595e42063066814923be65999b9675fd1dd1c2c973667d5f823efdc2e",
+      "bytes": 15560
+    },
+    "newsforge/data.py": {
+      "sha256": "b4247444dc714eb437f95a7b61e6ce12b48f99616aabe6f283b8b17374b2fef7",
+      "bytes": 20218
+    },
+    "newsforge/v2/ranker.py": {
+      "sha256": "524f96ce39eeeda9ff04de58d7842e09840a0e2513bf3bcf507d8702dcb3c00c",
+      "bytes": 32365
+    },
+    "newsforge/v2/temporal.py": {
+      "sha256": "eab4f03b0d2db5aedcce1b6744a2c2df05521611525c179c36b8d81cc9b4a80a",
+      "bytes": 20985
+    },
+    "newsforge/v2/retrieval.py": {
+      "sha256": "51f55d67591752d67b7565650e2d77333995925384ee6ba3083f0747b2a3eaf9",
+      "bytes": 23112
+    },
+    "newsforge/v3/residual.py": {
+      "sha256": "7acd117f276ba12aab38f6ae646ab7db44e7b271c121705c2072ef6d7fee132e",
+      "bytes": 13089
+    },
+    "newsforge/v3/fast_retrieval.py": {
+      "sha256": "9149c5dd4139f6ac96f14567ad8b9097552141deed1e771191ac750739ed9098",
+      "bytes": 11335
+    },
+    "data/processed/tfidf.joblib": {
+      "sha256": "5a5ec7778369a6fc77b3e2b5e9c670da38b1f945538b9d92910e1a2942b6224e",
+      "bytes": 1880011
+    },
+    "data/processed/svd.joblib": {
+      "sha256": "907aea6e46290961ff806c25af3319045a3ac6e59c26648b5f2d19ae606e8f4e",
+      "bytes": 23041895
+    },
+    "data/processed/category_vocabulary.json": {
+      "sha256": "b15e143eed2167ac56cac855abe94c4b677e4025c634ca9c113288a303668691",
+      "bytes": 269
+    },
+    "data/processed/manifest.json": {
+      "sha256": "2123d605db364c1a7c8829f9f2b9cf58dea1a4d5641cdc06f035345d54c4422a",
+      "bytes": 3077
+    },
+    "artifacts/v3/selection.json": {
+      "sha256": "44ddde9c62b01609167d2a28591f39fcfa48e7014e6b2917a616a45ecd03ed82",
+      "bytes": 4323
+    },
+    "artifacts/v2/selection.json": {
+      "sha256": "2b1d7e70c24d36fadf8de076bb9ffe3a7ce0e37a46bb25b8978c03bc757c7280",
+      "bytes": 7593
+    },
+    "reports/v3/fit.json": {
+      "sha256": "cd32b6052240ae18a1b84812334871efc6ea9297736aa05d0619259506d87d38",
+      "bytes": 16289
+    },
+    "reports/v3/tune.json": {
+      "sha256": "dfdbfa8ddeedbb42574ac331c695a415227368ce816cb9662c5593a36588546f",
+      "bytes": 7821
+    },
+    "reports/v3/confirm.json": {
+      "sha256": "a5f72fcde9295fc290bb91af78e99c6f44912245a5a3c50ff1ebb229f0c509d7",
+      "bytes": 7190
+    },
+    "artifacts/v3/models/full13-seed17.npz": {
+      "sha256": "fb4039ac4f550e4cd47ba628859fddc236dbc85ea681e5e05d99f889f7c44934",
+      "bytes": 1062
+    },
+    "artifacts/v3/models/full13-seed17.npz.json": {
+      "sha256": "de0a9c4d8065360a8beff5f5b87e37aeb41d3194e554ab72b42214f2a844e0da",
+      "bytes": 5591
+    },
+    "artifacts/v3/models/full13-seed29.npz": {
+      "sha256": "a9e6fe999c0eb698cf82a5d211915fba98c48456deea01068a4f9232399fe797",
+      "bytes": 1062
+    },
+    "artifacts/v3/models/full13-seed29.npz.json": {
+      "sha256": "8f19a9153a3a1bc35bedb1e76599df01ce97be5ba4be31c8bdeb048abc962d08",
+      "bytes": 5592
+    },
+    "artifacts/v3/models/full13-seed43.npz": {
+      "sha256": "22f0464606ec335372f5bb92fb6bd086c86eea3d4ae1b31c3f5e0c82ea489e45",
+      "bytes": 1062
+    },
+    "artifacts/v3/models/full13-seed43.npz.json": {
+      "sha256": "6797976c70ed93847c2b2e01174bd6ee5657dcd7fd2bbd371c9cd135c01de421",
+      "bytes": 5591
+    },
+    "artifacts/v3/models/no_category-seed17.npz": {
+      "sha256": "657f1c5b22838b02a4baf077ddcc03943080539630ac2dc3dd527b887120d391",
+      "bytes": 1014
+    },
+    "artifacts/v3/models/no_category-seed17.npz.json": {
+      "sha256": "f5293c00683d4a40c406deb98616001ec9ad2a43509b4559937e0bf66507d0ba",
+      "bytes": 5520
+    },
+    "artifacts/v3/models/no_category-seed29.npz": {
+      "sha256": "930f7f1b53584c9b575d8ad3ea6fb0f3e0fc8130e70af330ca13d446ea865131",
+      "bytes": 1014
+    },
+    "artifacts/v3/models/no_category-seed29.npz.json": {
+      "sha256": "8a120dc2aa1e1ee1ebcc1407900242b8abe744f3ae7fe4a63d9b5e6af2ebc70e",
+      "bytes": 5519
+    },
+    "artifacts/v3/models/no_category-seed43.npz": {
+      "sha256": "ec2fc553badb6838fae6df811f353c2a5579a16bd353ad493245452fddf759cd",
+      "bytes": 1014
+    },
+    "artifacts/v3/models/no_category-seed43.npz.json": {
+      "sha256": "de42ea526108946ea34ab187371fca5c3d77ada831c18057a7e369d427ebaa8d",
+      "bytes": 5520
+    },
+    "artifacts/v3/models/no_recent-seed17.npz": {
+      "sha256": "caab646b255e35dadefbcbe2204348410a258ce9a36a9465953953a51facf99a",
+      "bytes": 1038
+    },
+    "artifacts/v3/models/no_recent-seed17.npz.json": {
+      "sha256": "252f4ac3e99cce5e60371cd111f5a13bf44a0409660f9c04b5884b3c13dfa26f",
+      "bytes": 5547
+    },
+    "artifacts/v3/models/no_recent-seed29.npz": {
+      "sha256": "c09b924bab2051aaa23f379ac4c9cb668f8ab9c697553fce43c2326ca83111c2",
+      "bytes": 1038
+    },
+    "artifacts/v3/models/no_recent-seed29.npz.json": {
+      "sha256": "b1661c51c55509db2cb4f7d085997fb69a1e51c2829f598f369763f8834c27f0",
+      "bytes": 5547
+    },
+    "artifacts/v3/models/no_recent-seed43.npz": {
+      "sha256": "52239c7fa7170033acb66677022a0aeeea73ad84036572312625e9b152552025",
+      "bytes": 1038
+    },
+    "artifacts/v3/models/no_recent-seed43.npz.json": {
+      "sha256": "e2e83f88336000a0d2975caa499b4bbc2ed18880b2b7bb8200d2cd685cebc6e1",
+      "bytes": 5545
+    }
+  },
+  "execution_results": null
+}
