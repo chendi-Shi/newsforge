@@ -13,6 +13,8 @@
 
 本轮协议提交为 `d0c911af44366162a06333d56bf0bb0b3e2a52c9`，八个外部实现模块在 `8daf7109380dba6c449e1f29b7b75ac75710a994` 冻结，读取前记录见 [adressa_pre_access.json](../reports/external/adressa_pre_access.json)。完整下载于 2026-10-14 04:25:22 UTC 验证通过，随后启动实际数据准备；文件字节、整体 SHA256、338 个分段及传输绑定见 [获取凭据](../reports/external/adressa_acquisition.json)。原协议及来源报告里的“尚未下载/读取”描述注册时的状态，作为快照保留，不改写为后来的结果。
 
+首次真实准备于 04:58:09 UTC 因第 10,000,001 个原始行超过上限失败，尚未抽样或计算效果。已保留[失败摘要](../reports/external/adressa_prepare_limit_failure.json)，并单独登记[资源上限修订](EXTERNAL_ADRESSA_RESOURCE_AMENDMENT.md)：上限提高到 20,000,000 行，其余科学方案和资源限制不变。修订发生在部分真实事件读取后，不能称为完全事前的资源注册。修订文本 SHA 加入后续阶段绑定；另建运行目录从同一完整归档重新处理，保留旧失败数据库。
+
 ```powershell
 python -m unittest discover -s tests -p 'test_external*.py' -v
 ```

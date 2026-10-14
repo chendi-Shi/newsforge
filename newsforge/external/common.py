@@ -17,7 +17,7 @@ EVAL_START = START + 4 * DAY
 END = START + 7 * DAY
 DAYS = ("2017-01-05", "2017-01-06", "2017-01-07")
 MAX_PER_DAY = 5000
-MAX_LINES = 10_000_000
+MAX_LINES = 20_000_000
 MAX_ARTICLES = 200_000
 MAX_USERS = 2_000_000
 MAX_EXPANDED_BYTES = 25 * (1 << 30)
@@ -28,6 +28,7 @@ DECAY = 2.0 ** (-1.0 / 12.0)
 METHODS = ("baseline", "full13+gate", "no_category+gate", "no_recent+gate", "full13+no_gate")
 SOURCE_REPORT = "reports/external/adressa_source.json"
 PROTOCOL = "docs/EXTERNAL_ADRESSA_PROTOCOL.md"
+RESOURCE_AMENDMENT = "docs/EXTERNAL_ADRESSA_RESOURCE_AMENDMENT.md"
 
 
 def sha256(path):
@@ -80,7 +81,8 @@ def implementation_bindings():
 
 def experiment_bindings(repo):
     result = {"frozen_files": frozen_bindings(repo), "implementation": implementation_bindings(),
-              "source_report_sha256": sha256(Path(repo) / SOURCE_REPORT), "environment": environment()}
+              "source_report_sha256": sha256(Path(repo) / SOURCE_REPORT), "environment": environment(),
+              "resource_amendment_sha256": sha256(Path(repo) / RESOURCE_AMENDMENT)}
     lock = Path(repo) / "requirements-delivery-windows.lock"
     result["dependency_lock_sha256"] = sha256(lock) if lock.exists() else None
     return result

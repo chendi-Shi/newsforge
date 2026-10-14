@@ -409,6 +409,38 @@ class CausalReplayTests(unittest.TestCase):
 
 
 class ReceiptsAndMetricsTests(unittest.TestCase):
+    def test_resource_amendment_is_actually_bound_and_change_is_rejected(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "docs").mkdir()
+            (root / "reports/external").mkdir(parents=True)
+            (root / "artifacts/v3").mkdir(parents=True)
+            protocol = root / common_module.PROTOCOL
+            protocol.write_text("Invented fixed scientific protocol.\n", encoding="utf-8")
+            amendment = root / common_module.RESOURCE_AMENDMENT
+            amendment.write_text("Invented resource-only amendment: raw rows 20000000.\n", encoding="utf-8")
+            source = {"frozen_mind_and_protocol_files": {common_module.PROTOCOL: {
+                "bytes": protocol.stat().st_size, "sha256": common_module.sha256(protocol)}}}
+            (root / common_module.SOURCE_REPORT).write_text(json.dumps(source), encoding="utf-8")
+            (root / "artifacts/v3/selection.json").write_text('{"delta":10,"primary_recipe":"full13+gate"}', encoding="utf-8")
+            before = common_module.experiment_bindings(root)
+            self.assertEqual(before["resource_amendment_sha256"], common_module.sha256(amendment))
+            self.assertEqual(common_module.check_previous_bindings(root, before), before)
+            amendment.write_text("Invented resource amendment was changed.\n", encoding="utf-8")
+            after = common_module.experiment_bindings(root)
+            self.assertEqual([key for key in before if before[key] != after[key]], ["resource_amendment_sha256"])
+            with self.assertRaisesRegex(ValueError, "changed between phases"):
+                common_module.check_previous_bindings(root, before)
+
+    def test_resource_amendment_missing_is_not_silently_unbound(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            (root / "reports/external").mkdir(parents=True)
+            (root / common_module.SOURCE_REPORT).write_text("{}", encoding="utf-8")
+            with patch.object(common_module, "frozen_bindings", return_value={}):
+                with self.assertRaises(FileNotFoundError):
+                    common_module.experiment_bindings(root)
+
     def test_four_phase_cli_synthetic_end_to_end_with_128_query_audit(self):
         class Vectorizer:
             def transform(self, titles):
@@ -424,6 +456,9 @@ class ReceiptsAndMetricsTests(unittest.TestCase):
             root = Path(folder)
             processed = root / "data/processed"
             processed.mkdir(parents=True)
+            amendment = root / common_module.RESOURCE_AMENDMENT
+            amendment.parent.mkdir(parents=True)
+            amendment.write_text("Invented resource-only amendment.\n", encoding="utf-8")
             (processed / "category_vocabulary.json").write_text(json.dumps(["[UNKNOWN]"] + [f"category{i}" for i in range(18)]))
             (processed / "manifest.json").write_text(json.dumps({"features": {"text_dimensions": 96, "dimensions": 115}}))
             records = [{"userId": "warmup", "time": START + i, "id": f"article{i:03d}",
@@ -439,11 +474,15 @@ class ReceiptsAndMetricsTests(unittest.TestCase):
                 headers = {"Content-Length": str(len(payload)), "Last-Modified": "invented"}
                 def geturl(self):
                     return acquisition_module.DATA_URL
-            bindings = {"implementation": {"invented.py": "synthetic"}, "frozen_files": {}}
+            legacy_bindings = {"implementation": {"invented.py": "synthetic"}, "frozen_files": {}}
+            bindings = {**legacy_bindings, "resource_amendment_sha256": common_module.sha256(amendment)}
             run, target, reports = root / "run", root / "target.tar.gz", root / "public"
             with ExitStack() as stack:
-                for module in (common_module, acquisition_module, preparation_module):
+                for module in (common_module, preparation_module):
                     stack.enter_context(patch.object(module, "experiment_bindings", return_value=bindings))
+                # The old acquisition receipt remains unchanged and predates
+                # the resource amendment; preparation adds the new binding.
+                stack.enter_context(patch.object(acquisition_module, "experiment_bindings", return_value=legacy_bindings))
                 stack.enter_context(patch.object(acquisition_module, "ARCHIVE_BYTES", len(payload)))
                 stack.enter_context(patch.object(acquisition_module.urllib.request, "urlopen", return_value=Response(payload)))
                 stack.enter_context(patch.object(preparation_module.joblib, "load", side_effect=[Vectorizer(), SVD()]))
@@ -464,6 +503,10 @@ class ReceiptsAndMetricsTests(unittest.TestCase):
             self.assertEqual(set(report["by_day"]), {"2017-01-05", "2017-01-06", "2017-01-07"})
             for name in ("acquisition", "prepare", "evaluate", "aggregate"):
                 self.assertTrue((run / name / "receipt.json").exists())
+            acquired = json.loads((run / "acquisition/receipt.json").read_text(encoding="utf-8"))
+            prepared = json.loads((run / "prepare/receipt.json").read_text(encoding="utf-8"))
+            self.assertNotIn("resource_amendment_sha256", acquired["bindings"])
+            self.assertEqual(prepared["bindings"]["resource_amendment_sha256"], common_module.sha256(amendment))
 
     def test_append_only_failure_receipt(self):
         with tempfile.TemporaryDirectory() as folder:

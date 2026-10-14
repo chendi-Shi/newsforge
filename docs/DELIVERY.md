@@ -158,3 +158,16 @@ if ($LASTEXITCODE -ne 0) { throw '完整重建验收失败，保留证据' }
 随后 `raw_report` 从已经通过且仍匹配的验收与阶段记录生成新的 `execution_summary.json` 和 `RESULTS.md`，列出本轮 v1/v2/v3 指标、区间、消融、测试通过与跳过数、HTTP 观测及新旧差异。它重新检查源代码、阶段链及汇总报告的摘要，依赖此前完整验收对大数组和原始 TSV 的核验，不冒充再次执行所有预测。输出不能覆盖既有结果。
 
 阶段凭据绑定冻结源代码、明确提供的原始文件、依赖阶段的凭据与声明输出，以及本阶段声明输出的哈希；各研究审计器继续验证自身完整制品绑定。阶段凭据不保证覆盖所有临时文件。失败记录及日志保留，不把已有发布指标复制成新实验结果。若新的内部选择不满足冻结 v3 的基线前提，流水线会失败，不能强制使用历史赢家或从 dev 反选。基于旧阶段耗时，普通 CPU 上全链路预计需要数小时；该估计不是本轮完整重跑的实测耗时。
+
+### 预处理数值对照
+
+持有可信的旧、新处理制品后，可以用 [compare_preprocessing.py](../scripts/compare_preprocessing.py) 单独重算差异；以下旧目录指原冻结研究目录中的 `data/processed`，输出必须尚不存在：
+
+```powershell
+& $rawReplayPython scripts/compare_preprocessing.py `
+  --old-processed data/processed --new-processed (Join-Path $rawWorkspace 'data/processed') `
+  --output reports/raw_rebuild/replay_preprocessing_comparison.json
+if ($LASTEXITCODE -ne 0) { throw '预处理对照失败，保留现场' }
+```
+
+脚本读取保存的特征及 TF-IDF/SVD 状态，不训练、不执行 `fit` 或 `transform`；报告绑定脚本与输入文件 SHA256，并在比较结束后再次核验输入未变。已完成的[公开脚本数值重算](../reports/raw_rebuild/preprocessing_numeric_recomputed.json)与[包含来源、环境及下游观察的比较记录](../reports/raw_rebuild/preprocessing_comparison.json)应分别阅读：原始 train/dev 新闻 TSV、文章索引和类别一致，TF-IDF 词表及 IDF 一致，但 SVD 参数数组与文本向量不逐位一致。文本向量几何上接近不证明下游统计等价；当前环境检查也不是历史执行快照，差异根因尚未确定。此项对照已经完成，完整原始数据重建与最终验收仍未完成。
