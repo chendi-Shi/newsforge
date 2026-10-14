@@ -10,7 +10,7 @@
 
 本轮验证使用同一台电脑上两个从 GitHub 取得的新克隆和一个新的短路径隔离环境：深层目录克隆完成 v3 重训练与新模型 HTTP，另一短路径克隆完成冻结发布制品的联合验收。两者固定同一提交，使用同一隔离解释器；所有检查并非在一个克隆中完成。Python 基础解释器及标准库仍来自这台电脑。旧研究环境配置为 `include-system-site-packages = true`，不能用它证明独立安装成功。验收器要求新环境显式为 `false`，并检查安装分发包、导入模块和搜索路径均没有继承外部第三方包。
 
-**结果状态：v3 重训练、新模型 HTTP、短路径克隆的冻结发布制品联合验收均已通过。** 本机联合验收发现 251 项测试，249 项执行通过，2 项因符号链接权限跳过；真实 HTTP 的 768 个查询及 13 项契约通过。独立 GitHub runner 的 251 项测试全部通过、没有跳过。深层克隆第一次联合验收的 13 个长路径相关错误及失败凭据保留，未计为通过。结果见 [交付复验报告](../reports/DELIVERY_RESULTS.md)；原始数据全链路本轮尚未实际重跑。已观察过的 dev 仍是固定基准，不能作为新的外部泛化集，也不能据此宣称线上 CTR、生产部署或分布式性能。
+**结果状态：v3 重训练、新模型 HTTP、短路径克隆的冻结发布制品联合验收均已通过。** 本机联合验收发现 251 项测试，249 项执行通过，2 项因符号链接权限跳过；真实 HTTP 的 768 个查询及 13 项契约通过。独立 GitHub runner 的 251 项测试全部通过、没有跳过。深层克隆第一次联合验收的 13 个长路径相关错误及失败凭据保留，未计为通过。结果见 [交付复验报告](../reports/DELIVERY_RESULTS.md)。另一次原始数据重建已完成预处理、九组神经训练与 [v1 全量评估](../reports/raw_rebuild/V1_REBUILD.md)，后续 v2/v3 与最终验收尚未完成。已观察过的 dev 仍是固定基准，不能作为新的外部泛化集，也不能据此宣称线上 CTR、生产部署或分布式性能。
 
 ## 1. 固定源代码和依赖
 
@@ -147,6 +147,10 @@ if ($LASTEXITCODE -ne 0) { throw '原始数据重建失败，保留现场' }
 if ($LASTEXITCODE -ne 0) { throw '完整重建验收失败，保留证据' }
 & $rawReplayPython -m newsforge.delivery.raw_report --workspace $rawWorkspace `
   --acceptance reports/raw_rebuild/replay_acceptance.json --output-dir reports/raw_rebuild/replay
+if ($LASTEXITCODE -ne 0) { throw '汇总失败，保留证据' }
+& $rawReplayPython scripts/summarize_checkpoint_selection.py --workspace $rawWorkspace `
+  --output reports/raw_rebuild/replay/checkpoint_selection.json
+if ($LASTEXITCODE -ne 0) { throw '选轮元数据核对失败，保留证据' }
 ```
 
 `--workspace` 必须是源仓库之外尚不存在的目录。完整验收路径必须显式提供 `--raw`，目录结构为 `train/{news,behaviors}.tsv` 和 `dev/{news,behaviors}.tsv`，初始化时绑定四个原始文件。省略该参数只会在数据阶段走原有下载入口；当前最终 `raw_acceptance` 不接受这种模式。`init` 创建独立源代码副本，并将副本中已有报告保留为 `reports-delivered/`，新报告从空目录开始。流水线包括预处理与审计、九次 v1 神经模型训练、v1 完整评估、内部时间窗口的 backbone 选择与导出、v2 训练选择评估审计，以及 v3 训练、消融、真实 HTTP、绘图和独立审计。
@@ -156,6 +160,8 @@ if ($LASTEXITCODE -ne 0) { throw '完整重建验收失败，保留证据' }
 最终 `raw_acceptance` 必须由实际训练的同一个解释器运行。它逐级核验全部阶段、原始四文件与处理 provenance、安装日志及实际依赖代码、v2/v3 审计的模型和数组绑定、真实 HTTP 记录；还会描述新旧结果差异。确认门未通过时正确回退 baseline 可以是有效结果，历史指标完全相同不是通过条件。只有完整执行及最终验收成功才能声称原始数据重建已完成。
 
 随后 `raw_report` 从已经通过且仍匹配的验收与阶段记录生成新的 `execution_summary.json` 和 `RESULTS.md`，列出本轮 v1/v2/v3 指标、区间、消融、测试通过与跳过数、HTTP 观测及新旧差异。它重新检查源代码、阶段链及汇总报告的摘要，依赖此前完整验收对大数组和原始 TSV 的核验，不冒充再次执行所有预测。输出不能覆盖既有结果。
+
+[选轮补充脚本](../scripts/summarize_checkpoint_selection.py)另行汇总九组 v1 的实际训练轮数和最终保留轮次，核对已有训练、资格检查、最终评估元数据和三段阶段凭据。它不读取 checkpoint 或重新预测，文件摘要属于此次补充绑定。2026-10-14 的[实际选轮与负结果](../reports/raw_rebuild/V1_REBUILD.md)表明：九组都训练两轮，但五组选中第一轮；难负例配置的六组中只有一组最终保留第二轮更新。报告应描述训练策略加验证选模的效果，不能只根据配置文件宣称全部最终权重采用了难负例。
 
 阶段凭据绑定冻结源代码、明确提供的原始文件、依赖阶段的凭据与声明输出，以及本阶段声明输出的哈希；各研究审计器继续验证自身完整制品绑定。阶段凭据不保证覆盖所有临时文件。失败记录及日志保留，不把已有发布指标复制成新实验结果。若新的内部选择不满足冻结 v3 的基线前提，流水线会失败，不能强制使用历史赢家或从 dev 反选。基于旧阶段耗时，普通 CPU 上全链路预计需要数小时；该估计不是本轮完整重跑的实测耗时。
 

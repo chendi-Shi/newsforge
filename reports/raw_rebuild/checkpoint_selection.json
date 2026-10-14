@@ -1,0 +1,316 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "scope": "supplemental checkpoint-selection metadata reconciliation",
+  "generated_utc": "2026-10-14T07:05:50.854698+00:00",
+  "script_sha256": "5e5eb31d79143d052d8933ee3c5f6dddfc88abd2dce0c3e30190d39671bc4140",
+  "input_sha256": {
+    "artifacts/delivery/pipeline/workspace.json": "5443e3a1a2db7648bc2a1f975be2c1a994da210a6803b45f4666b92790aa90ae",
+    "artifacts/delivery/pipeline/neural-train/started.json": "e1a6dc6768983097a8176fb32dc783b4c8620426cbd1a75ad708677b7f3e528c",
+    "artifacts/delivery/pipeline/neural-train/success.json": "d482264c9610546e00b5f99d0d4e84aefc83669f255725187f912d2331110f80",
+    "artifacts/delivery/pipeline/backbone-eligibility/started.json": "b7a8812bf7eaa7201e528cd52fe54b3326d44514835e56141ffb04af9e90b4c4",
+    "artifacts/delivery/pipeline/backbone-eligibility/success.json": "ad4ce438723334d0833b6f3571c2bce7628d3bd45d8aa126e3e7ab3ce0ae5191",
+    "artifacts/delivery/pipeline/v1-full-ranking/started.json": "2449e268500a22cf6e578d2beaf8715fe55453a21410e1e447d31d7316e4f5ec",
+    "artifacts/delivery/pipeline/v1-full-ranking/success.json": "bce4f4e6dd020c9d3fac8f4709a509d8ecb6c72eeb0131b1f6d3244db901d350",
+    "reports/delivery/backbone_eligibility.json": "fbdb00c3e88ae71dcef483f71e89053b68f99a9ae4f26360cf53347b3d51503c",
+    "reports/ranking_experiment.json": "a3ee08503f2efbb01ffcf174fbe9338fdc959a7f32dd8930058d08e7b7bea4d9",
+    "reports/final_evaluation_preflight.json": "2957644fa8b050957233098383b24e6cebac05799dfb0b637cbbdb252719985d",
+    "reports/matched_warmup_checks.json": "522b01abb89a6e1db74feb4d8b38c907163767dc3d231c07a7bf14a304640a2d",
+    "data/processed/manifest.json": "de432931456fbf234cb027f0ee6437b9a337c2a9255a5999cb30b99e6caac443",
+    "newsforge/models.py": "d2379f85cfe6861458d87100d9e988069144e5a4b9e0e2519695763e1747b1af",
+    "newsforge/train.py": "c325e7221be318a05acff3bc1c685dd57d9bd9c5af6d578b3e6e2b2158879a64",
+    "newsforge/store.py": "0c6c3662478db583538bcb93b195761861688aaf01c1cfd3b1d5c6290054e08b",
+    "newsforge/evaluate.py": "4dc7237f30a4e6b9fc305e538cd4951c57ac58a940127e34a22c1157b52dd1f8",
+    "newsforge/metrics.py": "b1467c60980c2ccd27bdaf715191bf0d411acfb3115f12ea1b0003dce64e6008",
+    "newsforge/final_evaluation.py": "21d792a54dd0e0d07f7d724a76cb763db3ea0f1e6cc328de25f5a48eaaca4432",
+    "newsforge/evaluation_scheduler.py": "8980977d0323e8a6bc161bc84b8cda72c20faf9a2109b35c1adc90137d2e8eff",
+    "reports/mean_random_seed17_training.json": "c8e3f441f8d7f45af7e061d72baff86915c3d9742d18b05e4fcb4454183aa468",
+    "reports/mean_random_seed29_training.json": "99e1799e8acd2194a503d31636cace8f2d7838709ecb5e8cd9ccd8e835e4c911",
+    "reports/mean_random_seed43_training.json": "934cb48078a3120bbdceb9fff23e30de836f82a8189cb59a282751d78283e5bf",
+    "reports/mean_mixed_seed17_training.json": "db3aeabe194095d3f4274de7d40959c377d126777595aca8e066a68f9a90fb20",
+    "reports/mean_mixed_seed29_training.json": "524d0101608b97ccf220adb60b6a3fa38e3bdea28841d1a7d710ce2a152a1d9d",
+    "reports/mean_mixed_seed43_training.json": "4c85f67a0853e9c14bd1b87cc8a514969e3da4584fad90207441c9b70727b82b",
+    "reports/ranker_seed17_training.json": "07395c6258b148ffaf91198fcb2e407a2084d7d3f1e8c9872e677d1aa51c5e95",
+    "reports/ranker_seed29_training.json": "fcf714064036bca44c1ad33b6e1f82e631ce3df3d0068648286aef2555b97f3d",
+    "reports/ranker_seed43_training.json": "4ba6b8091afc4767413c3678103e7be26785c81a57f0cc236862f03ce28e1d81",
+    "reports/evaluation_scheduler_validation_12000.json": "82a716134cd886edee15502591516c603c2a62d754fb610f4f3b5a6d660b9a1b",
+    "reports/evaluation_scheduler_ranker_seed29_validation_12000.json": "f42bfbe3b175d94f7ccde97eff3d66e116e92c6ae816ede007456d6100658c04",
+    "reports/evaluation_scheduler_ranker_seed43_validation_12000.json": "00a3fdc23e13cbcfc84f9132cf04733d39f5cecbe5afb1610d3f272a70f12d72"
+  },
+  "data_manifest_sha256": "de432931456fbf234cb027f0ee6437b9a337c2a9255a5999cb30b99e6caac443",
+  "training_source_sha256": {
+    "models.py": "d2379f85cfe6861458d87100d9e988069144e5a4b9e0e2519695763e1747b1af",
+    "train.py": "c325e7221be318a05acff3bc1c685dd57d9bd9c5af6d578b3e6e2b2158879a64",
+    "store.py": "0c6c3662478db583538bcb93b195761861688aaf01c1cfd3b1d5c6290054e08b",
+    "evaluate.py": "4dc7237f30a4e6b9fc305e538cd4951c57ac58a940127e34a22c1157b52dd1f8",
+    "metrics.py": "b1467c60980c2ccd27bdaf715191bf0d411acfb3115f12ea1b0003dce64e6008"
+  },
+  "training_cache_signature": {
+    "cache_version": 3,
+    "sampler": "grouped_random_keys_v1",
+    "seed": 20261010,
+    "pool_size": 16,
+    "max_chunk_exposures": 400000,
+    "data_manifest_sha256": "de432931456fbf234cb027f0ee6437b9a337c2a9255a5999cb30b99e6caac443",
+    "features_sha256": "2a08fda2cdb55023c28591033853b4dbfed292b1e9ab08e66db48318eab3e432"
+  },
+  "training_configuration": {
+    "epochs": 2,
+    "batch_size": 1024,
+    "threads": 1,
+    "learning_rate": 0.001,
+    "validation_impressions": 12000,
+    "negative_pool_size": 16
+  },
+  "internal_validation_impressions": 12000,
+  "internal_validation_candidate_exposures": 477756,
+  "runs": {
+    "mean_random-seed17": {
+      "variant": "mean_random",
+      "seed": 17,
+      "completed_epochs": 2,
+      "selected_epoch": 2,
+      "selected_weights_include_hard_negative_epoch": false,
+      "selected_state_sha256": "aafa6038bb5c1b06337398867be0d6c97ebb8311e502dce3c14d46d487a5017a",
+      "history": [
+        {
+          "epoch": 1,
+          "negative_policy": "four_random",
+          "training_examples": 2869013,
+          "internal_validation_ndcg10": 0.3772810185059966,
+          "state_sha256": "ff1fca3b2df9c73aa3843ec57ba420ce974d3c001e3be16537b8838c043e416f"
+        },
+        {
+          "epoch": 2,
+          "negative_policy": "four_random",
+          "training_examples": 2869013,
+          "internal_validation_ndcg10": 0.3783665386064528,
+          "state_sha256": "aafa6038bb5c1b06337398867be0d6c97ebb8311e502dce3c14d46d487a5017a"
+        }
+      ],
+      "training_json_sha256": "c8e3f441f8d7f45af7e061d72baff86915c3d9742d18b05e4fcb4454183aa468",
+      "checkpoint_sha256_recorded_by_neural_receipt": "8d72900389b2c9dafcd3e5ddd2fefa2100834122fbe74e330ba905e1aa0a0240"
+    },
+    "mean_random-seed29": {
+      "variant": "mean_random",
+      "seed": 29,
+      "completed_epochs": 2,
+      "selected_epoch": 2,
+      "selected_weights_include_hard_negative_epoch": false,
+      "selected_state_sha256": "ed3cbfed50d746e2fbe47b80d55db90bc0ab2344ce8bfa05bc5ffab202f874c3",
+      "history": [
+        {
+          "epoch": 1,
+          "negative_policy": "four_random",
+          "training_examples": 2869013,
+          "internal_validation_ndcg10": 0.3834094111858874,
+          "state_sha256": "98efce4bd3a4a3cd0d120e6f4a5097741beb33188021241607f9c79ebce2a262"
+        },
+        {
+          "epoch": 2,
+          "negative_policy": "four_random",
+          "training_examples": 2869013,
+          "internal_validation_ndcg10": 0.3866193404802844,
+          "state_sha256": "ed3cbfed50d746e2fbe47b80d55db90bc0ab2344ce8bfa05bc5ffab202f874c3"
+        }
+      ],
+      "training_json_sha256": "99e1799e8acd2194a503d31636cace8f2d7838709ecb5e8cd9ccd8e835e4c911",
+      "checkpoint_sha256_recorded_by_neural_receipt": "dfe4bd871aea119718e988c32f2ea218fafb5b4b30e4c2c52a871c5c00f3439e"
+    },
+    "mean_random-seed43": {
+      "variant": "mean_random",
+      "seed": 43,
+      "completed_epochs": 2,
+      "selected_epoch": 2,
+      "selected_weights_include_hard_negative_epoch": false,
+      "selected_state_sha256": "8d976d2297a84c5e7c051dc624d5f4bfee8238001314ee95f1f11e4b32ae06b4",
+      "history": [
+        {
+          "epoch": 1,
+          "negative_policy": "four_random",
+          "training_examples": 2869013,
+          "internal_validation_ndcg10": 0.39023075015585174,
+          "state_sha256": "0ea3e36581ce091ceeba7fbe42ee39c90ddcf3ae6db3a4dfb80689187ae24916"
+        },
+        {
+          "epoch": 2,
+          "negative_policy": "four_random",
+          "training_examples": 2869013,
+          "internal_validation_ndcg10": 0.39027907774290543,
+          "state_sha256": "8d976d2297a84c5e7c051dc624d5f4bfee8238001314ee95f1f11e4b32ae06b4"
+        }
+      ],
+      "training_json_sha256": "934cb48078a3120bbdceb9fff23e30de836f82a8189cb59a282751d78283e5bf",
+      "checkpoint_sha256_recorded_by_neural_receipt": "8dac932a5edfe17a02960534234d70918daed188012021e0b086bbfcc105f157"
+    },
+    "mean_mixed-seed17": {
+      "variant": "mean_mixed",
+      "seed": 17,
+      "completed_epochs": 2,
+      "selected_epoch": 1,
+      "selected_weights_include_hard_negative_epoch": false,
+      "selected_state_sha256": "ff1fca3b2df9c73aa3843ec57ba420ce974d3c001e3be16537b8838c043e416f",
+      "history": [
+        {
+          "epoch": 1,
+          "negative_policy": "four_random",
+          "training_examples": 2869013,
+          "internal_validation_ndcg10": 0.3772810185059966,
+          "state_sha256": "ff1fca3b2df9c73aa3843ec57ba420ce974d3c001e3be16537b8838c043e416f"
+        },
+        {
+          "epoch": 2,
+          "negative_policy": "two_hard_two_random",
+          "training_examples": 2869013,
+          "internal_validation_ndcg10": 0.37512646995665855,
+          "state_sha256": "a37bafffcb91e10dc9134eb886b40fd380833a51abbe4c73f9961988fc494e9b"
+        }
+      ],
+      "training_json_sha256": "db3aeabe194095d3f4274de7d40959c377d126777595aca8e066a68f9a90fb20",
+      "checkpoint_sha256_recorded_by_neural_receipt": "683df3a9b3ea674a1397099bfdfcefc2d12e2717893581cdc07ce54d13287663"
+    },
+    "mean_mixed-seed29": {
+      "variant": "mean_mixed",
+      "seed": 29,
+      "completed_epochs": 2,
+      "selected_epoch": 2,
+      "selected_weights_include_hard_negative_epoch": true,
+      "selected_state_sha256": "0d25645e765b34312b4af9eb702202200ad462b20039b56a4d706883b7481e2d",
+      "history": [
+        {
+          "epoch": 1,
+          "negative_policy": "four_random",
+          "training_examples": 2869013,
+          "internal_validation_ndcg10": 0.3834094111858874,
+          "state_sha256": "98efce4bd3a4a3cd0d120e6f4a5097741beb33188021241607f9c79ebce2a262"
+        },
+        {
+          "epoch": 2,
+          "negative_policy": "two_hard_two_random",
+          "training_examples": 2869013,
+          "internal_validation_ndcg10": 0.38387853652805326,
+          "state_sha256": "0d25645e765b34312b4af9eb702202200ad462b20039b56a4d706883b7481e2d"
+        }
+      ],
+      "training_json_sha256": "524d0101608b97ccf220adb60b6a3fa38e3bdea28841d1a7d710ce2a152a1d9d",
+      "checkpoint_sha256_recorded_by_neural_receipt": "6574e51e551d2b0ae3a219334b44e47e9443cd65c7bf201f70810e35095ad13d"
+    },
+    "mean_mixed-seed43": {
+      "variant": "mean_mixed",
+      "seed": 43,
+      "completed_epochs": 2,
+      "selected_epoch": 1,
+      "selected_weights_include_hard_negative_epoch": false,
+      "selected_state_sha256": "0ea3e36581ce091ceeba7fbe42ee39c90ddcf3ae6db3a4dfb80689187ae24916",
+      "history": [
+        {
+          "epoch": 1,
+          "negative_policy": "four_random",
+          "training_examples": 2869013,
+          "internal_validation_ndcg10": 0.39023075015585174,
+          "state_sha256": "0ea3e36581ce091ceeba7fbe42ee39c90ddcf3ae6db3a4dfb80689187ae24916"
+        },
+        {
+          "epoch": 2,
+          "negative_policy": "two_hard_two_random",
+          "training_examples": 2869013,
+          "internal_validation_ndcg10": 0.38537981898677975,
+          "state_sha256": "aa5bf58b155ebebadf7591c4be8ebc45ee0392c43137fa085b705992424f5a1e"
+        }
+      ],
+      "training_json_sha256": "4c85f67a0853e9c14bd1b87cc8a514969e3da4584fad90207441c9b70727b82b",
+      "checkpoint_sha256_recorded_by_neural_receipt": "7cc080fc2b0ee4ae62a16b115351e1ab1135e6eb062cc45e6e8bb3e904302cf2"
+    },
+    "ranker-seed17": {
+      "variant": "ranker",
+      "seed": 17,
+      "completed_epochs": 2,
+      "selected_epoch": 1,
+      "selected_weights_include_hard_negative_epoch": false,
+      "selected_state_sha256": "a7a013d7d730e97d9cc457f63cb03556e021d2debcaa48ba79b8ed1c1e929fad",
+      "history": [
+        {
+          "epoch": 1,
+          "negative_policy": "four_random",
+          "training_examples": 2869013,
+          "internal_validation_ndcg10": 0.38148944195597534,
+          "state_sha256": "a7a013d7d730e97d9cc457f63cb03556e021d2debcaa48ba79b8ed1c1e929fad"
+        },
+        {
+          "epoch": 2,
+          "negative_policy": "two_hard_two_random",
+          "training_examples": 2869013,
+          "internal_validation_ndcg10": 0.35717623120260633,
+          "state_sha256": "edef8e3fb2ec5b498670f329f26eb8bfbbf13058f717da9eb05373ebd89c4a98"
+        }
+      ],
+      "training_json_sha256": "07395c6258b148ffaf91198fcb2e407a2084d7d3f1e8c9872e677d1aa51c5e95",
+      "checkpoint_sha256_recorded_by_neural_receipt": "80a3f46a7accb6f0e90092c9262f4defb7c16d301711bdba464f223f452dadff"
+    },
+    "ranker-seed29": {
+      "variant": "ranker",
+      "seed": 29,
+      "completed_epochs": 2,
+      "selected_epoch": 1,
+      "selected_weights_include_hard_negative_epoch": false,
+      "selected_state_sha256": "350dbb5d01c2d619bc2b25fa28dc5000a04457c2c9f0da472fa65871ea2abc35",
+      "history": [
+        {
+          "epoch": 1,
+          "negative_policy": "four_random",
+          "training_examples": 2869013,
+          "internal_validation_ndcg10": 0.38211449044706797,
+          "state_sha256": "350dbb5d01c2d619bc2b25fa28dc5000a04457c2c9f0da472fa65871ea2abc35"
+        },
+        {
+          "epoch": 2,
+          "negative_policy": "two_hard_two_random",
+          "training_examples": 2869013,
+          "internal_validation_ndcg10": 0.3721195718794683,
+          "state_sha256": "b3defc372700763e2bf97d34d3ad419374bf55d87343f01b47a677fac4c89c92"
+        }
+      ],
+      "training_json_sha256": "fcf714064036bca44c1ad33b6e1f82e631ce3df3d0068648286aef2555b97f3d",
+      "checkpoint_sha256_recorded_by_neural_receipt": "abbd221d53e8feb902858cb268b3540b86e823044797d896b242e68b2ef60ec4"
+    },
+    "ranker-seed43": {
+      "variant": "ranker",
+      "seed": 43,
+      "completed_epochs": 2,
+      "selected_epoch": 1,
+      "selected_weights_include_hard_negative_epoch": false,
+      "selected_state_sha256": "b6aeb566e40eebf22432b41022234fd76608370983f34cd86d75f9d20001522b",
+      "history": [
+        {
+          "epoch": 1,
+          "negative_policy": "four_random",
+          "training_examples": 2869013,
+          "internal_validation_ndcg10": 0.3737810814410427,
+          "state_sha256": "b6aeb566e40eebf22432b41022234fd76608370983f34cd86d75f9d20001522b"
+        },
+        {
+          "epoch": 2,
+          "negative_policy": "two_hard_two_random",
+          "training_examples": 2869013,
+          "internal_validation_ndcg10": 0.35357618753784026,
+          "state_sha256": "bd5850c057532bfd8df042f73963a6be6f558321a3b0cc80c7dfefbf49b0c9cb"
+        }
+      ],
+      "training_json_sha256": "4ba6b8091afc4767413c3678103e7be26785c81a57f0cc236862f03ce28e1d81",
+      "checkpoint_sha256_recorded_by_neural_receipt": "0427a253e31714149a97f1b7a526bccf2b0dc228c9f613fdf74e15f44b621247"
+    }
+  },
+  "counts": {
+    "completed_two_epochs": 9,
+    "selected_epoch1": 5,
+    "selected_epoch2": 4,
+    "selected_weights_include_hard_negative_epoch": 1
+  },
+  "limitations": [
+    "Training JSON and preflight hashes are bound at this supplemental check, not retrospectively added to neural-train's declared output hashes.",
+    "No checkpoint bytes are opened or hashed and no predictions are recomputed. Selected state hashes are metadata assertions cross-checked where existing warmup, eligibility or scheduling evidence permits; this is not independent checkpoint verification.",
+    "The frozen final-evaluation implementation verifies training JSON against checkpoint metadata and selected-state bytes before dev evaluation. This summary reconciles retained evidence and source hashes; hashes and a passed preflight alone do not independently prove that historical execution.",
+    "Only the neural-train to backbone-eligibility to v1-full-ranking receipt segment is reconciled. Full pipeline, raw data, cache arrays and stage logs are not re-audited here; cache hashes are retained references.",
+    "Dev comparisons describe training strategies followed by internal-validation checkpoint selection, not a fixed-epoch causal effect of hard negatives. Ranker comparisons additionally change architecture."
+  ]
+}
