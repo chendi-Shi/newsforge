@@ -33,6 +33,22 @@ pp 为百分点。曝光内排序和目录召回是两项不同任务。检索�
 
 在 Adressa 的 **308.3 万条去重访问、15,000 个固定请求**上，冻结的原发布模型 HitRate@10 为 **29.5333% → 29.1600%**，差值 **−0.3733 pp，95% CI [−0.5814, −0.1598] pp**。本次不支持正向迁移；门控减轻退化，类别输入全部为 UNKNOWN，类别变体不能解释为语义贡献。128 请求慢速审计和全部请求的保存数组核验通过。此项使用原发布模型，并非本次 raw 重训模型。[外部结果、全部消融与修订记录](reports/external/adressa_v1/DISCUSSION.md)
 
+## 目标域适配与保守回退（2026-10-15）
+
+继续研究上述负迁移：只用 Jan 1 截止前 **4,553 篇标题**拟合字符 TF-IDF/SVD，目录中零文本向量从 **5,064 / 20,395（24.83%）降到 3 / 20,395（0.0147%）**。按时间分别使用 30,000 / 5,000 / 5,000 请求拟合、选参、确认；英文重拟合、本地表示和移除近期专用列三个变体，共训练 **9 个模型**，每 seed 共享 **85,136 个训练对**。
+
+**覆盖改善没有转化为推荐提升。** 选参集的 δ=0/2/5/10 分别命中 1,435/1,434/1,426/1,420 个请求，预定规则选择 δ=0，确认门未通过，服务保留热度基线。原 15,000 请求上实际策略 HR@10 为 **29.5333%**；比旧冻结模型高 0.3733 pp 来自回退，不能归因于新模型。δ=0 关闭全部残差，匹配消融的零差值不能用于判断各组件贡献。
+
+55,000 行缓存与原候选核验、128 请求独立慢速审计及全部保存排名重算通过；冻结实现的独立 GitHub Windows CI **418 项测试全部通过、零跳过**。这是已观察基准上的后续适配研究。[结果与消融](reports/adaptation/adressa_v1/RESULTS.md) · [研究解读](reports/adaptation/adressa_v1/DISCUSSION.md) · [冻结协议](docs/ADRESSA_ADAPTATION_PROTOCOL.md) · [复现与 HTTP 入口](docs/ADRESSA_ADAPTATION_RUNBOOK.md) · [CI 凭据](reports/adaptation/ci_source_freeze.json)
+
+实际回退策略的 **768 次 HTTP 查询、19 项接口契约全部通过，零错误、零离线差异**；单条串行观测 51.663 query/s、p95 35.165 ms。这里测量的是 Adressa 热度回放服务，没有执行被关闭的适配评分，不能与 MIND 服务计算模型加速比。[HTTP 原始聚合凭据](reports/adaptation/adressa_v1/http.json)
+
+![目标域适配的完整结果与确认决策](reports/adaptation/adressa_v1/adaptation_results.png)
+
+图中匹配方案因 δ=0 而同序；legacy 的正差值来自回退，不是组件增益。[图表输入与摘要](reports/adaptation/adressa_v1/adaptation_results.metadata.json)
+
+[本轮最终执行验收](reports/adaptation/adressa_v1/acceptance.json)通过，记录新模型推荐收益未成立，并绑定全部阶段、独立核验、HTTP 和图表证据。
+
 ## 方法与工程
 
 ```mermaid

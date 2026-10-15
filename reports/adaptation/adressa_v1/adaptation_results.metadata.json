@@ -1,0 +1,259 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-10-15T03:17:59.502931+00:00",
+  "source_name": "evaluation.json",
+  "source_sha256": "21134c2cb18092242c80222ebb9fd9aa01e72a9bc84795e72297ad2755228a32",
+  "source_bytes": 52445,
+  "plot_source_name": "plot_adaptation_results.py",
+  "plot_source_sha256": "3c1f659e4d3fb16ccc0a4020ecfaf79158c9839f88bc493af15eea6200545218",
+  "presentation_only": true,
+  "raw_event_access": false,
+  "statistical_recomputation": false,
+  "synthetic_fixture": false,
+  "new_unseen_external_test": false,
+  "target_domain_fitting": true,
+  "displayed_units": {
+    "panel_a": "percent",
+    "panels_b_c": "percentage points"
+  },
+  "render_config": {
+    "figsize_inches": [
+      18,
+      11.5
+    ],
+    "dpi": 180,
+    "font_family": "DejaVu Sans",
+    "font_size": 10,
+    "svg_fonttype": "none",
+    "background": "white",
+    "panel_a_rectangle": [
+      0.19,
+      0.5,
+      0.285,
+      0.285
+    ],
+    "panel_b_rectangle": [
+      0.735,
+      0.23,
+      0.235,
+      0.555
+    ],
+    "panel_c_rectangle": [
+      0.19,
+      0.2,
+      0.285,
+      0.19
+    ],
+    "absolute_rate_axis_starts_at_zero": true,
+    "effect_units": "percentage points; left method minus right method"
+  },
+  "plotted_data": {
+    "requests": 15000,
+    "methods": [
+      {
+        "key": "baseline",
+        "label": "Popularity baseline",
+        "color": "#64748b",
+        "hits10": 4430,
+        "denominator": 15000,
+        "hit_rate10_percent": 29.533333333333335
+      },
+      {
+        "key": "legacy_frozen_english_delta10",
+        "label": "Frozen English (legacy delta 10)",
+        "color": "#b45309",
+        "hits10": 4374,
+        "denominator": 15000,
+        "hit_rate10_percent": 29.160000000000004
+      },
+      {
+        "key": "matched_frozen_english",
+        "label": "Frozen English (matched delta)",
+        "color": "#a16207",
+        "hits10": 4430,
+        "denominator": 15000,
+        "hit_rate10_percent": 29.533333333333335
+      },
+      {
+        "key": "adapted_english",
+        "label": "Refit English",
+        "color": "#7c3aed",
+        "hits10": 4430,
+        "denominator": 15000,
+        "hit_rate10_percent": 29.533333333333335
+      },
+      {
+        "key": "adapted_local",
+        "label": "Refit local (full)",
+        "color": "#2563eb",
+        "hits10": 4430,
+        "denominator": 15000,
+        "hit_rate10_percent": 29.533333333333335
+      },
+      {
+        "key": "adapted_local_no_recent",
+        "label": "Local without recent column",
+        "color": "#0891b2",
+        "hits10": 4430,
+        "denominator": 15000,
+        "hit_rate10_percent": 29.533333333333335
+      },
+      {
+        "key": "adapted_local_no_gate",
+        "label": "Local without history gate",
+        "color": "#0f766e",
+        "hits10": 4430,
+        "denominator": 15000,
+        "hit_rate10_percent": 29.533333333333335
+      },
+      {
+        "key": "deployed",
+        "label": "Selected replay policy",
+        "color": "#334155",
+        "hits10": 4430,
+        "denominator": 15000,
+        "hit_rate10_percent": 29.533333333333335
+      }
+    ],
+    "overall_comparisons": [
+      {
+        "key": "adapted_local_minus_baseline",
+        "label": "Local full minus popularity",
+        "left_method": "adapted_local",
+        "right_method": "baseline",
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "key": "deployed_minus_baseline",
+        "label": "Selected policy minus popularity",
+        "left_method": "deployed",
+        "right_method": "baseline",
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "key": "adapted_english_minus_matched_frozen_english",
+        "label": "Refit English minus\nmatched frozen English",
+        "left_method": "adapted_english",
+        "right_method": "matched_frozen_english",
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "key": "adapted_local_minus_adapted_english",
+        "label": "Local full minus refit English",
+        "left_method": "adapted_local",
+        "right_method": "adapted_english",
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "key": "adapted_local_minus_no_recent",
+        "label": "Local full minus\nwithout recent column",
+        "left_method": "adapted_local",
+        "right_method": "adapted_local_no_recent",
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "key": "adapted_local_minus_no_gate",
+        "label": "Local full minus\nwithout history gate",
+        "left_method": "adapted_local",
+        "right_method": "adapted_local_no_gate",
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "key": "adapted_local_minus_legacy_frozen_english",
+        "label": "Local full minus\nlegacy frozen English",
+        "left_method": "adapted_local",
+        "right_method": "legacy_frozen_english_delta10",
+        "difference_pp": 0.37333333333333335,
+        "ci95_pp": [
+          0.15982954275880215,
+          0.581415775294958
+        ]
+      }
+    ],
+    "daily_local_minus_baseline": [
+      {
+        "day": "2017-01-05",
+        "requests": 5000,
+        "comparison": "adapted_local_minus_baseline",
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "day": "2017-01-06",
+        "requests": 5000,
+        "comparison": "adapted_local_minus_baseline",
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ]
+      },
+      {
+        "day": "2017-01-07",
+        "requests": 5000,
+        "comparison": "adapted_local_minus_baseline",
+        "difference_pp": 0.0,
+        "ci95_pp": [
+          0.0,
+          0.0
+        ]
+      }
+    ],
+    "confirmation": {
+      "gate_passed": false,
+      "delta": 0,
+      "requests": 5000,
+      "selected_replay_policy": "baseline",
+      "difference_pp": 0.0,
+      "ci95_pp": [
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "dependencies": {
+    "python": "3.10.21",
+    "matplotlib": "3.10.9",
+    "numpy": "1.26.4",
+    "pillow": "12.3.0"
+  },
+  "outputs": {
+    "png": {
+      "name": "adaptation_results.png",
+      "sha256": "492c9558d67f64f708599be60fc3d86f81dd21d87a05220af53cc8e3b459078d",
+      "bytes": 354657
+    },
+    "svg": {
+      "name": "adaptation_results.svg",
+      "sha256": "529986dd5a709f2bdfae011590fb3db058080eea52bc74d19e709284f9012355",
+      "bytes": 38499
+    }
+  }
+}

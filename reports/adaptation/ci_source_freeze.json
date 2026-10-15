@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "source_commit": "a74fecbf9ddcc1918a28abd58d23a159f6c0fd4a",
+  "run_id": 38671352008,
+  "url": "https://github.com/chendi-Shi/newsforge/actions/runs/38671352008",
+  "conclusion": "success",
+  "runner": "GitHub-hosted Windows, CPython 3.10",
+  "scope": "Hash-locked installation, dependency closure, complete synthetic/contract suite and data-independent pipeline plan",
+  "tests": {
+    "discovered": 418,
+    "passed": 418,
+    "skipped": 0,
+    "elapsed_seconds": 56.856
+  },
+  "raw_data_or_training_executed": false,
+  "full_data_http_executed": false,
+  "ci_log_sha256": "3f1352c3b65694b07381d5a0140f729c7e4cca85a49d40f84376fdcd7bf24a6e",
+  "local_full_regression": {
+    "status": "stopped_incomplete",
+    "reason": "Shared desktop free physical memory below 300 MiB; redundant local full suite stopped while formal data experiment continued",
+    "log_sha256": "9ae6138a73a98847cfab82e7b19951ee8ff1f321a84b2253f6307390d3ff113a",
+    "completion_claim": false
+  }
+}

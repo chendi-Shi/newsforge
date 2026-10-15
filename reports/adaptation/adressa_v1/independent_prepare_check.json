@@ -1,0 +1,183 @@
+{
+  "source_commit": "a74fecbf9ddcc1918a28abd58d23a159f6c0fd4a",
+  "source_hashes_checked": 23,
+  "base_receipts_and_old_report_unchanged": true,
+  "large_original_database_rehashed": false,
+  "raw_archive_accessed": false,
+  "representation": {
+    "shape": [
+      20396,
+      115
+    ],
+    "dtype": "float32",
+    "shared_category_suffix_exact": true,
+    "padding_zero": true,
+    "fit_docs": 4553,
+    "fit_max_timestamp": 1483311586,
+    "fit_cutoff_exclusive": 1483311600,
+    "fit_source_digest_recomputed": true,
+    "vocabulary_features": 27307,
+    "coverage_counts": {
+      "english": [
+        0,
+        5064,
+        5064,
+        20395
+      ],
+      "local": [
+        0,
+        3,
+        3,
+        20395
+      ]
+    }
+  },
+  "snapshot_recurrence_all_cutoffs_exact": true,
+  "phases": {
+    "fit": {
+      "requests": 30000,
+      "minimum_timestamp": 1483315229,
+      "maximum_timestamp": 1483397999,
+      "configured_interval": [
+        1483315200,
+        1483398000
+      ],
+      "identity_and_history_spot_checks": 16,
+      "candidate_maturity_and_uniqueness_all_rows": true,
+      "candidate_coverage_recomputed": {
+        "english": [
+          0,
+          408676,
+          408676,
+          3000000
+        ],
+        "local": [
+          0,
+          0,
+          0,
+          3000000
+        ]
+      },
+      "empty_history_requests": 7397,
+      "candidate_shortfall_requests": 0,
+      "eligible_interval_population": 488987,
+      "sample_shortfall": 0
+    },
+    "tune": {
+      "requests": 5000,
+      "minimum_timestamp": 1483401647,
+      "maximum_timestamp": 1483484381,
+      "configured_interval": [
+        1483401600,
+        1483484400
+      ],
+      "identity_and_history_spot_checks": 16,
+      "candidate_maturity_and_uniqueness_all_rows": true,
+      "candidate_coverage_recomputed": {
+        "english": [
+          0,
+          97529,
+          97529,
+          500000
+        ],
+        "local": [
+          0,
+          0,
+          0,
+          500000
+        ]
+      },
+      "empty_history_requests": 1052,
+      "candidate_shortfall_requests": 0,
+      "eligible_interval_population": 477342,
+      "sample_shortfall": 0
+    },
+    "confirm": {
+      "requests": 5000,
+      "minimum_timestamp": 1483488010,
+      "maximum_timestamp": 1483570798,
+      "configured_interval": [
+        1483488000,
+        1483570800
+      ],
+      "identity_and_history_spot_checks": 16,
+      "candidate_maturity_and_uniqueness_all_rows": true,
+      "candidate_coverage_recomputed": {
+        "english": [
+          0,
+          97375,
+          97375,
+          500000
+        ],
+        "local": [
+          0,
+          0,
+          0,
+          500000
+        ]
+      },
+      "empty_history_requests": 929,
+      "candidate_shortfall_requests": 0,
+      "eligible_interval_population": 586982,
+      "sample_shortfall": 0
+    },
+    "evaluate": {
+      "requests": 15000,
+      "minimum_timestamp": 1483574413,
+      "maximum_timestamp": 1483829996,
+      "configured_interval": [
+        1483574400,
+        1483833600
+      ],
+      "identity_and_history_spot_checks": 16,
+      "candidate_maturity_and_uniqueness_all_rows": true,
+      "candidate_coverage_recomputed": {
+        "english": [
+          0,
+          250271,
+          250271,
+          1500000
+        ],
+        "local": [
+          0,
+          0,
+          0,
+          1500000
+        ]
+      },
+      "empty_history_requests": 1945,
+      "candidate_shortfall_requests": 0
+    }
+  },
+  "status": "passed",
+  "original_15000_queries_pools_sizes_exact": true,
+  "checked_at_utc": "2026-10-15T03:15:39.806322+00:00",
+  "bindings": {
+    "script_sha256": "ab4bca2584fac4b0ea183b0473be707821919dcfe39da654b5ecb69c0bf90589",
+    "formal_manifest_sha256": "a308d22e9307c50027933bf43e4937502637167b3eb276c54b53f6677ca452c7",
+    "formal_prepare_receipt_sha256": "d7dffe0b4e3a0610fc56684f3dbd9e82d10837a18df2284dea1ed1559d5036f2",
+    "base_receipt_sha256": {
+      "prepare": "709f935f3d6d8655426ecb8af66ec80a57afc70ce2a5e4e64fef1e039b854cc4",
+      "evaluate": "64d127f433d237bd644fbc8ce39e9b0b52cabfe07101d576855a81815d9e42e3"
+    }
+  },
+  "coverage_columns": [
+    "empty_title",
+    "zero_tfidf",
+    "zero_svd",
+    "unknown_category"
+  ],
+  "resources": {
+    "prepare_wall_seconds_from_receipt": 2653.926553999998,
+    "maximum_progress_log_interval_seconds": 1961.566828,
+    "interval_start_utc": "2026-10-15T02:39:09.609219+00:00",
+    "interval_end_utc": "2026-10-15T03:11:51.176047+00:00",
+    "interpretation": "Observed gap between log records; cause not established. Full stage wall time is retained."
+  },
+  "limits": [
+    "No raw archive scan or new fit.",
+    "All candidate rows checked; source event identity/history spot-checked at 16 fixed rows per phase.",
+    "No new sample selection or training/evaluation result computed; large cache hashes and original database hash not repeated.",
+    "Shared-host timing includes observed pauses and resource contention; no time is subtracted or presented as isolated compute time."
+  ]
+}

@@ -2,6 +2,8 @@
 
 本轮在已知旧模型负迁移后提出，属于已有 Adressa 基准上的后续研究。固定设计见 [协议](ADRESSA_ADAPTATION_PROTOCOL.md)。旧冻结迁移结果、MIND 服务和模型均保留；本轮只增加独立适配模型、证据与回放 API。
 
+2026-10-15 正式执行已完成，使用冻结源代码 `a74fecbf9ddcc1918a28abd58d23a159f6c0fd4a`。[完整结果](../reports/adaptation/adressa_v1/RESULTS.md)、[研究解读](../reports/adaptation/adressa_v1/DISCUSSION.md)和[真实 HTTP 验收](../reports/adaptation/adressa_v1/http.json)均已发布。选择结果为 δ=0，实际回放策略是 baseline；执行成功不表示新模型取得收益。
+
 使用仓库根目录、Windows PowerShell、已有的 CPython 3.10 隔离研究环境。依赖版本与安装方式见 [45 包研究锁及交付指南](DELIVERY.md)。Git 克隆不包含数据和模型：需先完成 [Adressa 原始准备与冻结迁移](EXTERNAL_ADRESSA_RUNBOOK.md)，取得通过校验的 prepare/evaluate 目录及原 MIND 制品，不能以合成数据代替正式实验。
 
 ## 固定源代码与输入

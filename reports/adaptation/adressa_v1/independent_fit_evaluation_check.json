@@ -1,0 +1,119 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-10-15T03:19:55.566048+00:00",
+  "bindings": {
+    "script_sha256": "9ab223b66465c0bd02461b7f8e98197c3b56a37c5aaa1182840da8dfa82218cd",
+    "manifest_sha256": "a308d22e9307c50027933bf43e4937502637167b3eb276c54b53f6677ca452c7",
+    "evaluation_json_sha256": "21134c2cb18092242c80222ebb9fd9aa01e72a9bc84795e72297ad2755228a32",
+    "phase_receipts": {
+      "prepare": "d7dffe0b4e3a0610fc56684f3dbd9e82d10837a18df2284dea1ed1559d5036f2",
+      "fit": "1bc954f343768b55def5b9dd553e636248176515a6422908ac528e023cdd8197",
+      "tune": "4b4565afa00899ec46ee760354be0f955c09522f8b96f397b4b60038d63d2394",
+      "confirm": "d34932f50802d9997000968e08889d4db39dff70ff6e28f868ae815ab3a416bf",
+      "evaluate": "e2f6567bf967747d08780c33ac7457376cc9381120c91f82eaa648663585b66a"
+    },
+    "formal_audit_sha256": "32182266ba69d34fa62ea299c892145501bf1919347a71d059c4dd2ef16276d6"
+  },
+  "fit": {
+    "models_checked": 9,
+    "all_optimizer_success": true,
+    "request_accounting": {
+      "requests": 30000,
+      "empty_history": 7397,
+      "target_outside_pool": 11961,
+      "no_alternatives": 0,
+      "eligible_requests": 10642,
+      "pairs": 85136
+    },
+    "pair_hashes_by_seed": {
+      "17": "1dc33064f33e937429187593ad8084673c0e8401844972e7634b0492f13544c4",
+      "29": "ebc8c91c85a9931fafd6438a141e792f8e0d5f78948b3522cf8834d1c4e71174",
+      "43": "fbbd30d6b524225d70b6b70fb5c99f27eb950c4cb8904bcc1bf164c467f6c663"
+    },
+    "shared_pair_binding_each_seed": true,
+    "all_pairs_target_positive_and_distinct_unobserved_alternatives": true,
+    "optimizer": [
+      {
+        "model": "english-seed17",
+        "success": true,
+        "iterations": 39
+      },
+      {
+        "model": "local-seed17",
+        "success": true,
+        "iterations": 27
+      },
+      {
+        "model": "local_no_recent-seed17",
+        "success": true,
+        "iterations": 26
+      },
+      {
+        "model": "english-seed29",
+        "success": true,
+        "iterations": 38
+      },
+      {
+        "model": "local-seed29",
+        "success": true,
+        "iterations": 31
+      },
+      {
+        "model": "local_no_recent-seed29",
+        "success": true,
+        "iterations": 28
+      },
+      {
+        "model": "english-seed43",
+        "success": true,
+        "iterations": 41
+      },
+      {
+        "model": "local-seed43",
+        "success": true,
+        "iterations": 30
+      },
+      {
+        "model": "local_no_recent-seed43",
+        "success": true,
+        "iterations": 23
+      }
+    ]
+  },
+  "selection": {
+    "selected_delta": 0,
+    "tune_hits10_by_delta": {
+      "0": 1435,
+      "2": 1434,
+      "5": 1426,
+      "10": 1420
+    },
+    "confirmation_gate_passed": false,
+    "deployed_recipe": "baseline"
+  },
+  "evaluation": {
+    "queries": 15000,
+    "methods": 8,
+    "ranking_permutations_checked": 120000,
+    "all_saved_metrics_recomputed": true,
+    "all_overall_and_daily_denominators_correct": true,
+    "matched_orders_scores_and_metrics_equal_baseline": true,
+    "legacy_orders_scores_metrics_equal_old": true,
+    "baseline_hits10": 4430,
+    "legacy_hits10": 4374,
+    "common_hits100": 7613,
+    "baseline_minus_legacy_difference_pp": 0.37333333333333335,
+    "baseline_minus_legacy_wins_losses_ties": [
+      157,
+      101,
+      14742
+    ],
+    "interpretation": "The difference versus legacy is entirely baseline fallback; it is not evidence of adaptation gain."
+  },
+  "formal_128_query_audit_receipt_verified_not_rerun": true,
+  "limits": [
+    "No model inference, model refit, raw archive scan or independent raw-event replay was run.",
+    "Nonzero bootstrap intervals were checked for configuration and finite bounds, not resampled again.",
+    "Prepared large caches and original events database were not rehashed in this saved-array check."
+  ]
+}

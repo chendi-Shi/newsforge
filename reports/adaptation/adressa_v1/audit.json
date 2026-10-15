@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "queries": 128,
+  "score_max_absolute_error": 0.0,
+  "candidate_and_ranking_equality": "exact",
+  "score_atol": 1e-08,
+  "shared_definition": "original content_features and fitted local article vectors",
+  "independent": [
+    "raw-event SQL counts",
+    "from-zero EMA",
+    "user history and candidates",
+    "linear scoring and stable sorting",
+    "hits"
+  ]
+}
